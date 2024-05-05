@@ -1,0 +1,34 @@
+.pips-mapwin-container {
+    position: relative;
+    width: 296px;
+    height: 11px;
+}
+
+.mapwin-line {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 12px;
+    position: absolute;
+    top: 0;
+    &-left {
+        @extend .mapwin-line;
+        left: 0;
+    }
+    &-right {
+        @extend .mapwin-line;
+        left: 239px;
+    }
+}
+
+.mapwin-pip {
+    position: relative;
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    border: 1.5px solid;
+    border-color: #ffffff80;
+    &-full {
+        @extend .mapwin-pip;
+        background-color: #ffffff;
+    }
+}

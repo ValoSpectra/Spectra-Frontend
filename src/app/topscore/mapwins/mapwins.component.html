@@ -1,0 +1,10 @@
+<div class="pips-mapwin-container">
+    <div class="mapwin-line-left">
+        <div class="mapwin-pip-full" *ngFor="let i of numSequence(mapsWonLeft)"></div>
+        <div class="mapwin-pip" *ngFor="let i of numSequence(mapsNeeded - mapsWonLeft)"></div>
+    </div>
+    <div class="mapwin-line-right">
+        <div class="mapwin-pip" *ngFor="let i of numSequence(mapsNeeded - mapsWonRight)"></div>
+        <div class="mapwin-pip-full" *ngFor="let i of numSequence(mapsWonRight)"></div>
+    </div>
+</div>

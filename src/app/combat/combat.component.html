@@ -1,0 +1,20 @@
+<div class="frame-2">
+    <div class="playercards-leftteam">
+        <app-playercard 
+            *ngFor="let player of match.teams[0].players" 
+            [match]="match"
+            [player]="player"
+            [color]="match.teams[0].isAttacking ? 'red' : 'green'"
+            side="left"
+        />
+    </div>
+    <div class="playercards">
+        <app-playercard
+            *ngFor="let player of match.teams[1].players"
+            [match]="match"
+            [player]="player" 
+            [color]="match.teams[1].isAttacking ? 'red' : 'green'"
+            side="right"
+        />
+    </div>
+</div>
