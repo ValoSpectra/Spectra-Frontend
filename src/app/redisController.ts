@@ -16,15 +16,10 @@ export class RedisController {
             console.error(`Redis error: ${error}`);
         });
         this.client.connect();
-        this.client.subscribe("match_info", (msg, chn) => {
-            console.log(`Received message from ${chn}: ${msg}`);
-        });
     }
 
-    registerReceiver(callback: (msg: string) => void) {
-        this.client.subscribe("match_info", (msg, chn) => {
-            callback(msg);
-        });
+    registerReceiver(callback: (data: any) => void) {
+        this.client.subscribe("match_info", (message: string, _chn) => callback(JSON.parse(message)));
     }
 
 }
