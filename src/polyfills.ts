@@ -51,6 +51,9 @@ import { Buffer } from 'buffer';
 
 // @ts-ignore
 window.Buffer = Buffer;
+(window as any).process = {
+    env: { DEBUG: undefined },
+};
 
 
 /***************************************************************************************************

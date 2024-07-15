@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TestingComponent } from './testing/testing.component';
 import { FormsModule } from '@angular/forms';
@@ -17,30 +17,22 @@ import { PlayerscoreComponent } from './scoreboard/playerscore/playerscore.compo
 import { RoundreasonsComponent } from './scoreboard/roundreasons/roundreasons.component';
 import { InhouseTrackerPlayercardComponent } from './combat/playercard/playercard.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    TestingComponent,
-    TrackerComponent,
-    TopscoreComponent,
-    ScoreboardComponent,
-    CombatComponent,
-    MapwinComponent,
-    TopinfoComponent,
-    PlayerscoreComponent,
-    RoundreasonsComponent,
-    InhouseTrackerPlayercardComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    BrowserAnimationsModule
-  ],
-  exports: [
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        TestingComponent,
+        TrackerComponent,
+        TopscoreComponent,
+        ScoreboardComponent,
+        CombatComponent,
+        MapwinComponent,
+        TopinfoComponent,
+        PlayerscoreComponent,
+        RoundreasonsComponent,
+        InhouseTrackerPlayercardComponent
+    ],
+    exports: [],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        BrowserAnimationsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
