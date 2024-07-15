@@ -86,20 +86,26 @@
 .ultimate-tracker-container {
     display: inline-flex;
     height: 21.33px;
-    width: 50%;
+    width: 67%;
     align-items: center;
     gap: 20px;
     position: relative;
     justify-content: center;
 }
 
+.spike-icon-wrapper {
+    position: relative;
+    align-items: center;
+    display: inline-flex;
+    justify-content: end;
+    flex: 0 0 auto;
+    justify-self: end;
+}
+
 .spike-icon {
     position: relative;
-    height: 100%;
+    width: 30px;
     aspect-ratio: 1;
-    margin-top: -18.1px;
-    margin-bottom: -18.1px;
-    margin-left: -18.1px;
 }
 
 .ultimate-tracker {
@@ -107,7 +113,7 @@
     align-items: center;
     gap: 1px;
     position: relative;
-    flex: 0 0 auto;
+    flex: 1 0 auto;
 }
 
 .pip-ultimate {

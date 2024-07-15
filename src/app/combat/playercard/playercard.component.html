@@ -38,7 +38,9 @@
                 <div class="ultimate-tracker" [class]="side" *ngIf="player.ultReady">
                     <img class="ultimate-full-image" src="{{assets}}/ultimates/{{player.agentProper}}Ultimate.png">
                 </div>
-                <img class="spike-icon" *ngIf="false" src="{{assets}}/Spike_Icon.png" />
+                <div class="spike-icon-wrapper">
+                    <img class="spike-icon" *ngIf="player.hasSpike" src="{{assets}}/shop/Spike_Icon.svg" />
+                </div>
             </div>
         </div>
     </div>
