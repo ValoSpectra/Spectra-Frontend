@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PlayerscoreComponent {
 
-  public readonly assets: String = "../../../assets/";
+  public readonly assets: String = "../../../assets";
 
   @Input() match!: any;
   @Input() player!: any;
