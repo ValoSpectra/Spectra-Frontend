@@ -17,22 +17,28 @@ import { PlayerscoreComponent } from './scoreboard/playerscore/playerscore.compo
 import { RoundreasonsComponent } from './scoreboard/roundreasons/roundreasons.component';
 import { InhouseTrackerPlayercardComponent } from './combat/playercard/playercard.component';
 
-@NgModule({ declarations: [
-        AppComponent,
-        TestingComponent,
-        TrackerComponent,
-        TopscoreComponent,
-        ScoreboardComponent,
-        CombatComponent,
-        MapwinComponent,
-        TopinfoComponent,
-        PlayerscoreComponent,
-        RoundreasonsComponent,
-        InhouseTrackerPlayercardComponent
-    ],
-    exports: [],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        BrowserAnimationsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+@NgModule({
+  declarations: [
+    AppComponent,
+    TestingComponent,
+    TrackerComponent,
+    TopscoreComponent,
+    ScoreboardComponent,
+    CombatComponent,
+    MapwinComponent,
+    TopinfoComponent,
+    PlayerscoreComponent,
+    RoundreasonsComponent,
+    InhouseTrackerPlayercardComponent
+  ],
+  exports: [],
+  bootstrap: [AppComponent], 
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule
+  ], 
+  providers: [provideHttpClient(withInterceptorsFromDi())]
+})
 export class AppModule { }
