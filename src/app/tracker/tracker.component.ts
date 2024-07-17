@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 // import { BotConnectorService } from '../services/bot-connector.service';
 // import { InhouseTrackerService } from '../services/inhouse-tracker.service';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { ActivatedRoute } from '@angular/router';
 import * as io from "socket.io-client";
 
 enum Colors {
@@ -47,8 +46,9 @@ export class TrackerComponent implements OnInit {
 
   socket: io.Socket;
 
-  constructor(/*private botService: BotConnectorService, private inhouseTrackerService: InhouseTrackerService, */private route: ActivatedRoute) {
-    this.socket = io.connect("http://localhost:5200", { autoConnect: true, reconnection: true});
+  constructor(/*private botService: BotConnectorService, private inhouseTrackerService: InhouseTrackerService, */) {
+    const siteUrl = window.location.hostname;
+    this.socket = io.connect(`http://${siteUrl}:5200`, { autoConnect: true, reconnection: true});
   }
 
   async ngOnInit(): Promise<void> {
