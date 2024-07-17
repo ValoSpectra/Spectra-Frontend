@@ -67,6 +67,12 @@ export class TrackerComponent implements OnInit {
     this.socket.on("match_data", (data: string) => {
       this.updateMatch(JSON.parse(data));
     });
+    this.socket.io.on("reconnect_attempt", (attempt: number) => {
+      console.log(`Connection lost, attempting to reconnect to server (Attempt: ${attempt})`);
+    });
+    this.socket.io.on("reconnect", () => {
+      console.log("Reconnected to server");
+    });
     this.socket.emit("logon", JSON.stringify({ groupCode: "ABCDE" }));
   }
 
