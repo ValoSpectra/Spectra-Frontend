@@ -56,7 +56,7 @@ export class TrackerComponent implements OnInit {
   async ngOnInit(): Promise<void> {
 
     this.route.queryParams.subscribe(params => {
-      this.groupCode = params['groupCode'];
+      this.groupCode = params['groupCode'].toUpperCase();
       console.log(`Requested group code is ${this.groupCode}`);
     });
 
