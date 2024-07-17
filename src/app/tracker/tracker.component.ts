@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // import { InhouseTrackerService } from '../services/inhouse-tracker.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import * as io from "socket.io-client";
+import { ActivatedRoute } from '@angular/router';
 
 enum Colors {
   ATTACKER_REG = "rgba(232, 130, 125, 0.75)",
@@ -45,13 +46,20 @@ export class TrackerComponent implements OnInit {
   teamRightColorFeint: string = Colors.DEFENDER_FEINT;
 
   socket: io.Socket;
+  groupCode: string = "UNKNOWN";
 
-  constructor(/*private botService: BotConnectorService, private inhouseTrackerService: InhouseTrackerService, */) {
+  constructor(private route: ActivatedRoute) {
     const siteUrl = window.location.hostname;
     this.socket = io.connect(`http://${siteUrl}:5200`, { autoConnect: true, reconnection: true});
   }
 
   async ngOnInit(): Promise<void> {
+
+    this.route.queryParams.subscribe(params => {
+      this.groupCode = params['groupCode'];
+      console.log(`Requested group code is ${this.groupCode}`);
+    });
+
     this.match = null;
     //calling updateMatch here for test purposes before service connection is implemented
     this.updateMatch(
@@ -71,9 +79,11 @@ export class TrackerComponent implements OnInit {
       console.log(`Connection lost, attempting to reconnect to server (Attempt: ${attempt})`);
     });
     this.socket.io.on("reconnect", () => {
+      this.socket.emit("logon", JSON.stringify({ groupCode: this.groupCode }));
       console.log("Reconnected to server");
     });
-    this.socket.emit("logon", JSON.stringify({ groupCode: "ABCDE" }));
+
+    this.socket.emit("logon", JSON.stringify({ groupCode: this.groupCode }));
   }
 
   updateMatch(data: any) {
