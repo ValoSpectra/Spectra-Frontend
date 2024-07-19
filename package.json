@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "dev": "ng serve --disable-host-check",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -19,29 +18,22 @@
     "@angular/platform-browser": "^18.1.0",
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
-    "buffer": "^6.0.3",
-    "crypto-js": "^4.2.0",
-    "net": "^1.0.2",
-    "node-polyfill-webpack-plugin": "^4.0.0",
-    "process": "^0.11.10",
-    "redis": "^4.6.15",
-    "rxjs": "~7.5.0",
-    "tls": "^0.0.1",
+    "rxjs": "~7.8.0",
+    "socket.io-client": "^4.7.5",
     "tslib": "^2.3.0",
-    "zone.js": "^0.14.7"
+    "zone.js": "~0.14.3"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^18.0.0",
     "@angular-devkit/build-angular": "^18.1.0",
-    "@angular/cli": "~18.1.0",
+    "@angular/cli": "^18.1.0",
     "@angular/compiler-cli": "^18.1.0",
-    "@types/jasmine": "~4.0.0",
-    "jasmine-core": "~4.3.0",
+    "@types/jasmine": "~5.1.0",
+    "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.1.0",
+    "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "^5.4.5"
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.5.2"
   }
 }
