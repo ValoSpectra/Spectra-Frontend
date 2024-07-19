@@ -56,7 +56,7 @@ export class TrackerComponent implements OnInit {
     });
 
     //setting up with empty match state so certain ui parts dont complain
-    this.match = {"groupCode":"A","isRanked":false,"isRunning":true,"roundNumber":0,"roundPhase":"combat","teams":[{"players":[]},{"players":[]}]};
+    this.match = {"groupCode":"A","isRanked":false,"isRunning":true,"roundNumber":0,"roundPhase":"combat","teams":[{"players":[]},{"players":[]}],"spikeState": {"planted": false}};
     
     if (this.ranksEnabled) {
       // this.ranksByName = this.inhouseTrackerService.getRanksFromSheet();
