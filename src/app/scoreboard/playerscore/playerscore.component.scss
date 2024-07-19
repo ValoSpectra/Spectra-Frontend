@@ -83,14 +83,14 @@
 
 .pip-ultimate {
     position: relative;
-    background-image: url(/assets/shop/ultimate-pip.svg);
+    background-image: url(/assets/misc/ultimate-pip.svg);
     background-size: 100% 100%;
     width: 10px;
     height: 10px;
 
     &-full {
         @extend .pip-ultimate;
-        background-image: url(/assets/shop/ultimate-pip-full.svg);
+        background-image: url(/assets/misc/ultimate-pip-full.svg);
     }
 }
 

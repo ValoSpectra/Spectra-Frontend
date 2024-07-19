@@ -7,21 +7,21 @@
             src="{{assets}}/agents/{{player.agentProper}}Icon.png"/>
     </div>
     <div class="player-card">
-        <div class="player-info" [class]="color + ' ' + (player.isAlive ? 'alive' : 'dead')">
-            <div class="spectator-icon-container" *ngIf="false">
-                <img class="spectator-icon" src="{{assets}}/shop/ultimate-pip-full.svg" />
+        <div class="player-info" [class]="color + ' ' + (player.isAlive ? 'alive' : 'dead') + ' ' + (player.isObserved ? 'observed' : '')">
+            <div class="spectator-icon-container" *ngIf="player.isObserved">
+                <img class="spectator-icon" src="{{assets}}/misc/ObserverEye.svg" />
             </div>
             <div class="info-container">
                 <div class="shields-currency">
-                    <img class="shield-icon" src="{{assets}}/shop/Shield{{player.initialShield}}{{capitalizeColor(color)}}.svg" />
+                    <img class="shield-icon" src="{{assets}}/shields/Shield{{player.initialShield}}{{capitalizeColor(color)}}.svg" />
                     <div class="currency-container" [class]="side">
-                        <img class="valorant-credits" src="{{assets}}/shop/ValorantCredits{{capitalizeColor(color)}}.svg" />
+                        <img class="valorant-credits" src="{{assets}}/misc/ValorantCredits{{capitalizeColor(color)}}.svg" />
                         <div class="currency-title" [class]="color">{{player.money}}</div>
                     </div>
                 </div>
                 <div class="username-container">
                     <div class="username-title" [class]="side">{{player.name}}</div>
-                    <img class="captain-icon" *ngIf="false" src="{{assets}}/Team_Captain.png" />
+                    <img class="captain-icon" *ngIf="player.isCaptain" src="{{assets}}/misc/TeamCaptain.svg" />
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                     <img class="ultimate-full-image" src="{{assets}}/ultimates/{{player.agentProper}}Ultimate.png">
                 </div>
                 <div class="spike-icon-wrapper">
-                    <img class="spike-icon" *ngIf="player.hasSpike" src="{{assets}}/shop/Spike_Icon.svg" />
+                    <img class="spike-icon" *ngIf="player.hasSpike" src="{{assets}}/misc/Spike_Icon.svg" />
                 </div>
             </div>
         </div>

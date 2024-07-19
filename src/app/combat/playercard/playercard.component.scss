@@ -90,7 +90,7 @@
     align-items: center;
     gap: 20px;
     position: relative;
-    justify-content: center;
+    // justify-content: center;
 }
 
 .spike-icon-wrapper {
@@ -109,11 +109,13 @@
 }
 
 .ultimate-tracker {
+    width: 60%;
     display: inline-flex;
     align-items: center;
     gap: 1px;
     position: relative;
-    flex: 1 0 auto;
+    flex: 0 0 auto;
+    justify-content: center;
 }
 
 .pip-ultimate {
@@ -121,12 +123,12 @@
     width: 10px;
     height: 10px;
     margin-right: -2px;
-    background-image: url(/assets/shop/ultimate-pip.svg);
+    background-image: url(/assets/misc/ultimate-pip.svg);
     background-size: 100% 100%;
 
     &-full {
         @extend .pip-ultimate;
-        background-image: url(/assets/shop/ultimate-pip-full.svg);
+        background-image: url(/assets/misc/ultimate-pip-full.svg);
     }
 }
 
@@ -178,7 +180,7 @@
         @extend .player-info;
         border-color: #61eab6;
         background: linear-gradient(90deg,
-                rgba(31, 122, 88, 0.70) 0%,
+                rgba(31, 122, 88, 0.40) 0%,
                 rgba(31, 122, 88, 0.00) 100%),
             rgba(15, 25, 35, 0.60);
     }
@@ -190,6 +192,14 @@
                 rgba(255, 69, 87, 0.30) 0%,
                 rgba(31, 122, 88, 0.00) 100%),
             rgba(15, 25, 35, 0.60);
+    }
+
+    &.observed {
+        @extend .player-info;
+        background: linear-gradient(90deg, 
+                rgba(225, 181, 22, 0.30) 0%,
+                rgba(225, 181, 22, 0.00) 100%),
+            rgba(15, 25, 35, 0.70);
     }
 
     &.dead {
@@ -244,8 +254,8 @@
 }
 
 .captain-icon {
-    height: 22px;
-    width: 22px;
+    height: 17px;
+    width: 17px;
     position: relative;
     flex: 0 0 auto;
 }
