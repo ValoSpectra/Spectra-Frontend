@@ -25,7 +25,7 @@
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: -1px 1px 1px #0000001f;
+    // box-shadow: -1px 1px 1px #0000001f; This currently creates a weird shadow between the two scoreblocks
 }
 
 .teamcard {
@@ -130,7 +130,7 @@
     font-family: "Unbounded-Bold", Helvetica;
     font-weight: 700;
     color: #fefeff99;
-    font-size: 13px;
+    font-size: 15px;
     text-align: center;
     letter-spacing: 0.39px;
     line-height: normal;

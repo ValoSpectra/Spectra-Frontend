@@ -23,9 +23,9 @@
             </div>
         </div>
         <app-mapwins *ngIf="false" />
-        <!-- <div class="spike-indicator" *ngIf="match.roundPhase === 'combat' && !match.spikePlanted">
-            <img class="spike-icon" src="../../assets/misc/Spike_Icon.svg" />
-        </div> -->
+        <div class="spike-indicator" *ngIf="match.roundPhase === 'combat' && !match.spikePlanted" [@fade]>
+            <img class="spike-icon" src="../../assets/misc/Spike-top.svg" />
+        </div>
     </div>
     <div class="round-number">ROUND {{match.roundNumber}}</div>
 </div>

@@ -1,9 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-playercard',
   templateUrl: './playercard.component.html',
   styleUrls: ['./playercard.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition(':enter', [
+        style({ 'opacity': '0' }),
+        animate('0.5s', style({ 'opacity': '1' }))
+      ]),
+
+      transition(':leave',
+        animate('0.5s', style({ 'opacity': '0' }))
+      )
+    ])
+  ]
 })
 export class InhouseTrackerPlayercardComponent {
 
