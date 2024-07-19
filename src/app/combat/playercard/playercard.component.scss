@@ -121,12 +121,12 @@
     width: 10px;
     height: 10px;
     margin-right: -2px;
-    background-image: url(../../../assets/shop/ultimate-pip.svg);
+    background-image: url(/assets/shop/ultimate-pip.svg);
     background-size: 100% 100%;
 
     &-full {
         @extend .pip-ultimate;
-        background-image: url(../../../assets/shop/ultimate-pip-full.svg);
+        background-image: url(/assets/shop/ultimate-pip-full.svg);
     }
 }
 
