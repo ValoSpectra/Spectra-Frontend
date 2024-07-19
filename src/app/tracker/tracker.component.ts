@@ -86,7 +86,7 @@ export class TrackerComponent implements OnInit {
     this.socket.emit("logon", JSON.stringify({ groupCode: this.groupCode }));
   }
 
-  updateMatch(data: any) {
+  public updateMatch(data: any) {
     this.match = data;
     this.teamLeft = this.match.teams[0];
     this.teamRight = this.match.teams[1];
