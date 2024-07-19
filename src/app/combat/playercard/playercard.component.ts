@@ -7,6 +7,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./playercard.component.scss'],
   animations: [
     trigger('fade', [
+      transition(':enter', [
+        style({ 'opacity': '1' })
+      ]),
+
       transition(':leave', [
         style({ 'opacity': '0' }),
         animate('0.5s', style({ 'opacity': '0' }))
