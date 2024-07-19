@@ -16,7 +16,7 @@ export class TestingComponent implements OnInit, AfterViewInit {
 
   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
-      this.groupCode = params['groupCode'].toUpperCase();
+      this.groupCode = params['groupCode']?.toUpperCase() || "UNKNOWN";
       console.log(`Requested group code is ${this.groupCode}`);
     });
   }

@@ -42,18 +42,10 @@ export class TrackerComponent implements OnInit {
   teamRightColor: string = Colors.DEFENDER_REG;
   teamRightColorFeint: string = Colors.DEFENDER_FEINT;
 
-  groupCode: string = "UNKNOWN";
-
-  constructor(private route: ActivatedRoute) {
-    const siteUrl = window.location.hostname;
+  constructor() {
   }
 
   async ngOnInit(): Promise<void> {
-
-    this.route.queryParams.subscribe(params => {
-      this.groupCode = params['groupCode'].toUpperCase();
-      console.log(`Requested group code is ${this.groupCode}`);
-    });
 
     //setting up with empty match state so certain ui parts dont complain
     this.match = {"groupCode":"A","isRanked":false,"isRunning":true,"roundNumber":0,"roundPhase":"combat","teams":[{"players":[]},{"players":[]}],"spikeState": {"planted": false}};
