@@ -23,7 +23,7 @@
             </div>
         </div>
         <app-mapwins *ngIf="false" />
-        <div class="spike-indicator" *ngIf="match.roundPhase === 'combat' && !match.spikePlanted" [@fade]>
+        <div class="spike-indicator" *ngIf="match.roundPhase === 'combat' && match.spikeState.planted" [@fade]>
             <img class="spike-icon" src="../../assets/misc/Spike-top.svg" />
         </div>
     </div>

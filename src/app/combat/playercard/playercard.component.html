@@ -6,7 +6,7 @@
         <img class="agent-icon" [class]="player.isAlive ? '' : 'dead'" 
             src="{{assets}}/agents/{{player.agentProper}}Icon.png"/>
     </div>
-    <div class="player-card">
+    <div class="player-card" [@fade]>
         <div class="player-info" [class]="color + ' ' + (player.isAlive ? 'alive' : 'dead') + ' ' + (player.isObserved ? 'observed' : '')">
             <div class="spectator-icon-container" *ngIf="player.isObserved">
                 <img class="spectator-icon" src="{{assets}}/misc/ObserverEye.svg" />
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="utility-container" [class]="color" *ngIf="player.isAlive" [@fade]>
+        <div class="utility-container" [class]="color" *ngIf="player.isAlive">
             <div class="weapon-icon-wrapper">
                 <img class="weapon-icon"
                     src="{{assets}}/weapons/{{player.highestWeapon}}Killfeed.png" />
