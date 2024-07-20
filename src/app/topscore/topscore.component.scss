@@ -136,20 +136,21 @@
     line-height: normal;
 }
 
-// .spike-indicator {
-//     display: inline-flex;
-//     align-items: center;
-//     gap: 9px;
-//     position: relative;
-//     flex: 0 0 auto;
-// }
+.spike-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    top: -58px;
+    flex: 0 0 auto;
+}
 
-// .spike-icon {
-//     position: relative;
-//     width: 67.24px;
-//     height: 61.99px;
-//     margin-top: -7px;
-//     margin-bottom: -9px;
-//     margin-left: -8px;
-//     margin-right: -8px;
-// }
+.spike-icon {
+    position: relative;
+    width: 67.24px;
+    height: 61.99px;
+    margin-top: -7px;
+    margin-bottom: -9px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
