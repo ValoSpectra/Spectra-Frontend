@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-topscore',
@@ -21,8 +21,66 @@ import { Component, Input } from '@angular/core';
 export class TopscoreComponent {
 
   @Input() match!: any;
+  
+  spikePlanted: boolean = false;
+  blinkState: boolean = false;
+
+  detonationTime: number = 0;
+  lastActedTime: number = 9999;
+  blinkInterval: any = undefined;
 
   constructor() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes["match"]) {
+      const match = changes["match"].currentValue;
+      if (match["spikeState"]["planted"] != this.spikePlanted) {
+        this.spikePlanted = match["spikeState"]["planted"];
+
+        if (this.spikePlanted) {
+          this.detonationTime = match["spikeDetonationTime"];
+          this.blinkState = false;
+          this.lastActedTime = 9999;
+          this.initSpikeBlink();
+        } else {
+          clearInterval(this.blinkInterval);
+          this.blinkState = false;
+        }
+      }
+    }
+  }
+
+  initSpikeBlink() {
+
+    this.blinkInterval = setInterval(() => {
+      const timeLeft = (this.detonationTime - Date.now()) / 1000;
+      if (timeLeft > 20) {
+        if (this.lastActedTime >= (timeLeft + .95)) {
+          this.blinkState = !this.blinkState;
+          this.lastActedTime = timeLeft;
+        }
+      } else if (timeLeft > 10) {
+        if (this.lastActedTime >= (timeLeft + .45)) {
+          this.blinkState = !this.blinkState;
+          this.lastActedTime = timeLeft;
+        }
+      } else if (timeLeft > 5) {
+        if (this.lastActedTime >= (timeLeft + .275)) {
+          this.blinkState = !this.blinkState;
+          this.lastActedTime = timeLeft;
+        }
+      } else if (timeLeft > 0) {
+        if (this.lastActedTime >= (timeLeft + .125)) {
+          this.blinkState = !this.blinkState;
+          this.lastActedTime = timeLeft;
+        }
+      } else {
+        clearInterval(this.blinkInterval);
+        this.blinkState = true;
+      }
+    }, 25);
+
   }
 
 }
