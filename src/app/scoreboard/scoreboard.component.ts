@@ -12,6 +12,10 @@ export class ScoreboardComponent {
   constructor() {
   }
 
+  trackByPlayerId(index: number, player: any) {
+    return player.playerId;
+  }
+
   numSequence(n: number): Array<number> {
     return Array(n);
   }

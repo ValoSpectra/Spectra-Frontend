@@ -37,11 +37,6 @@ export class TrackerComponent implements OnInit {
   ranksEnabled: boolean = false;
   ranksByName: any = {};
 
-  teamLeftColor: string = Colors.ATTACKER_REG;
-  teamLeftColorFeint: string = Colors.ATTACKER_FEINT;
-  teamRightColor: string = Colors.DEFENDER_REG;
-  teamRightColorFeint: string = Colors.DEFENDER_FEINT;
-
   constructor() {
   }
 
@@ -56,16 +51,12 @@ export class TrackerComponent implements OnInit {
   }
 
   public updateMatch(data: any) {
+    delete data.eventNumber;
+    delete data.replayLog;
     this.match = data;
+
     this.teamLeft = this.match.teams[0];
     this.teamRight = this.match.teams[1];
-
-    // this.teamLeft.teamName = "TIRA";
-    // this.teamRight.teamName = "DNKL";
-    this.teamLeftColor = this.teamLeft.isAttacking ? Colors.ATTACKER_REG : Colors.DEFENDER_REG;
-    this.teamLeftColorFeint = this.teamLeft.isAttacking ? Colors.ATTACKER_FEINT : Colors.DEFENDER_FEINT;
-    this.teamRightColor = this.teamRight.isAttacking ? Colors.ATTACKER_REG : Colors.DEFENDER_REG;
-    this.teamRightColorFeint = this.teamRight.isAttacking ? Colors.ATTACKER_FEINT : Colors.DEFENDER_FEINT;
 
     this.match.ranksEnabled = this.ranksEnabled;
     this.match.ranksByName = this.ranksByName;

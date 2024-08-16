@@ -31,7 +31,7 @@
     <div class="scoreboard-content-container">
         <div class="playerscore-wrapper">
             <app-playerscore 
-                *ngFor="let player of match.teams[0].players" 
+                *ngFor="let player of match.teams[0].players; trackBy: trackByPlayerId" 
                 [match]="match"
                 [player]="player" 
                 [color]="match.teams[0].isAttacking ? 'red' : 'green'"
@@ -40,7 +40,7 @@
         </div>
         <div class="playerscore-wrapper flip">
             <app-playerscore 
-                *ngFor="let player of match.teams[1].players"
+                *ngFor="let player of match.teams[1].players; trackBy: trackByPlayerId"
                 [match]="match"
                 [player]="player" 
                 [color]="match.teams[1].isAttacking ? 'red' : 'green'"

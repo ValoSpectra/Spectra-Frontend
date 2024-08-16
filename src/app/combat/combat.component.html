@@ -1,7 +1,7 @@
 <div class="frame-2">
     <div class="playercards-leftteam">
         <app-playercard 
-            *ngFor="let player of match.teams[0].players" 
+            *ngFor="let player of match.teams[0].players; trackBy: trackByPlayerId"
             [match]="match"
             [player]="player"
             [color]="match.teams[0].isAttacking ? 'red' : 'green'"
@@ -10,7 +10,7 @@
     </div>
     <div class="playercards">
         <app-playercard
-            *ngFor="let player of match.teams[1].players"
+            *ngFor="let player of match.teams[1].players; trackBy: trackByPlayerId"
             [match]="match"
             [player]="player" 
             [color]="match.teams[1].isAttacking ? 'red' : 'green'"
