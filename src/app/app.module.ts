@@ -17,6 +17,8 @@ import { PlayerscoreComponent } from './scoreboard/playerscore/playerscore.compo
 import { RoundreasonsComponent } from './scoreboard/roundreasons/roundreasons.component';
 import { InhouseTrackerPlayercardComponent } from './combat/playercard/playercard.component';
 import { OverlayComponent } from './overlay/overlay.component';
+import { PlayerControllerComponent } from './testing/player-controller/player-controller.component';
+import { TeamControllerComponent } from './testing/team-controller/team-controller.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { OverlayComponent } from './overlay/overlay.component';
     PlayerscoreComponent,
     RoundreasonsComponent,
     InhouseTrackerPlayercardComponent,
-    OverlayComponent
+    OverlayComponent,
+    PlayerControllerComponent,
+    TeamControllerComponent
   ],
   exports: [],
   bootstrap: [AppComponent], 
