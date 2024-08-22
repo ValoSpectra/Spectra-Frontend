@@ -10,7 +10,7 @@ export class SocketService {
     this.groupCode = groupCode;
     this.socketEndpoint = socketEndpoint;
 
-    this.socket = io.connect(this.socketEndpoint, { autoConnect: true, reconnection: true, rejectUnauthorized: false });
+    this.socket = io.connect(this.socketEndpoint, { autoConnect: true, reconnection: true });
 
     this.socket.once("logon_success", () => { console.log("Logged on successfully") });
 
