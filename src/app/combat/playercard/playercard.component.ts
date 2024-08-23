@@ -7,10 +7,12 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./playercard.component.scss'],
   animations: [
     trigger('deathAnimation', [
-      transition(':leave',
+      transition('true => false, true => void',
         [style({ 'filter': 'grayscale(50%)' }),
-        animate(100, style({ 'width': '0', 'opacity': 0 }))]
-      )
+        animate('100ms ease-in', style({ 'width': '0', 'opacity': 1, 'filter': 'grayscale(100%)' }))]),
+      transition('false => true, void => true',
+        [style({ 'filter': 'grayscale(50%)', 'width': '0', 'opacity': 0.5 }),
+        animate('250ms ease-out', style({ 'width': '*', 'opacity': 1, 'filter': 'grayscale(0%)' }))])
     ])
   ]
 })

@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="utility-container" [class]="color" *ngIf="player.isAlive" [@deathAnimation]>
+        <div class="utility-container" [class]="color" *ngIf="player.isAlive" [@deathAnimation]="player.isAlive">
             <div class="weapon-icon-wrapper">
                 <img class="weapon-icon"
                     src="{{assets}}/weapons/{{player.highestWeapon}}Killfeed.png" />
