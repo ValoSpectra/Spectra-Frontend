@@ -24,7 +24,7 @@ export class TestingComponent implements OnInit, AfterViewInit {
   showInterface = true;
   showBackground = true;
   backgroundClass = "bg1";
-  backgroundClassId = 0;
+  backgroundClassId = 1;
 
   constructor(private route: ActivatedRoute, private viewContainerRef: ViewContainerRef) {
     this.route.queryParams.subscribe(params => {
@@ -76,6 +76,11 @@ export class TestingComponent implements OnInit, AfterViewInit {
   plantSpike(): void {
     this.matchData.spikeState = { planted: true, detonated: false, defused: false };
     this.isSpikePlanted = true;
+    console.log(this.backgroundClassId);
+    
+    if (this.backgroundClassId == 1 || this.backgroundClassId == 3) {
+      this.switchBackground();
+    }
   }
 
   detonateDefuseSpike(): void {
@@ -89,7 +94,10 @@ export class TestingComponent implements OnInit, AfterViewInit {
 
   switchBackground(): void {
     this.backgroundClass = "bg" + ++this.backgroundClassId;
-    this.backgroundClassId %= 5
+    this.backgroundClassId %= 5;
+    if (this.isSpikePlanted && (this.backgroundClassId == 1 || this.backgroundClassId == 3)) {
+      this.switchBackground();
+    }
   }
 
 }
