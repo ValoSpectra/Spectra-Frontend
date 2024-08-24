@@ -44,6 +44,7 @@ export class PlayerControllerComponent {
 
   playerObject = {
     name: "Test",
+    playerId: 0,
     isAlive: true,
     agentProper: "Jett",
     isObserved: false,
@@ -63,6 +64,7 @@ export class PlayerControllerComponent {
 
   constructor() {
     this.changeStats();
+    this.playerObject.playerId = Math.floor(Math.random() * (99999 - 11111 + 1) + 11111);
   }
 
   ngOnDestroy() {
@@ -79,10 +81,12 @@ export class PlayerControllerComponent {
   kill(): void {
     this.playerObject.isAlive = false;
     this.stopSpectate();
+    this.playerObject.initialShield = this.shieldOrder[2];
   }
 
   revive(): void {
     this.playerObject.isAlive = true;
+    this.playerObject.initialShield = this.shieldOrder[0];
   }
 
   giveUltPoint(): void {
