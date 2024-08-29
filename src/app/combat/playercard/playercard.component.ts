@@ -13,6 +13,22 @@ import { Component, Input } from '@angular/core';
       transition('false => true, void => true',
         [style({ 'filter': 'grayscale(50%)', 'width': '0', 'opacity': 0.5 }),
         animate('250ms ease-out', style({ 'width': '*', 'opacity': 1, 'filter': 'grayscale(0%)' }))])
+    ]),
+    trigger('ultPipAnimation', [
+      transition(':leave',
+        [style({ opacity: 1 }),
+        animate('150ms', style({ 'opacity': 0, 'transform': 'scale(0, 1.5)' }))]),
+      transition(':enter',
+        [style({ opacity: 0, 'transform': 'scale(0, 1.5)' }),
+        animate('150ms', style({ 'opacity': 1, 'transform': 'scale(1, 1)' }))])
+    ]),
+    trigger('ultImageAnimation', [
+      transition(':enter',
+        [style({ 'opacity': 0, position: 'absolute' }),
+        animate('150ms', style({ 'opacity': 1 }))]),
+      transition(':leave',
+        [style({ 'opacity': 1, 'position': 'absolute' }),
+        animate('150ms', style({ 'opacity': 0 }))])
     ])
   ]
 })

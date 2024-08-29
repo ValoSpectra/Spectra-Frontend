@@ -1,10 +1,10 @@
 <div class="player-container" [class]="side">
     <!-- <div class="rank-icon-container" *ngIf="match.ranksEnabled && match.ranksByName[player.name]">
-        <img class="rank-icon" [class]="side" src="{{assets}}/ranks/{{match.ranksByName[player.name]}}_Rank.png" />
+        <img class="rank-icon" [class]="side" src="{{assets}}/ranks/{{match.ranksByName[player.name]}}_Rank.webp" />
     </div> -->
     <div class="agent-icon-container">
         <img class="agent-icon" [class]="player.isAlive ? '' : 'dead'" 
-            src="{{assets}}/agents/{{player.agentProper}}Icon.png"/>
+            src="{{assets}}/agents/{{player.agentProper}}Icon.webp"/>
     </div>
     <div class="player-card">
         <div class="player-info" [class]="color + ' ' + (player.isAlive ? 'alive' : 'dead') + ' ' + (player.isObserved ? 'observed' : '')">
@@ -28,15 +28,15 @@
         <div class="utility-container" [class]="color" *ngIf="player.isAlive" [@deathAnimation]="player.isAlive">
             <div class="weapon-icon-wrapper">
                 <img class="weapon-icon"
-                    src="{{assets}}/weapons/{{player.highestWeapon}}Killfeed.png" />
+                    src="{{assets}}/weapons/{{player.highestWeapon}}Killfeed.webp" />
             </div>
             <div class="ultimate-tracker-container">
-                <div class="ultimate-tracker" [class]="side" *ngIf="!player.ultReady">
+                <div class="ultimate-tracker" [class]="side" *ngIf="!player.ultReady" [@ultPipAnimation]>
                     <div class="pip-ultimate-full" *ngFor="let i of numSequence(player.currUltPoints)"></div>
                     <div class="pip-ultimate" *ngFor="let i of numSequence(player.maxUltPoints - player.currUltPoints)"></div>
                 </div>
-                <div class="ultimate-tracker" [class]="side" *ngIf="player.ultReady">
-                    <img class="ultimate-full-image" src="{{assets}}/ultimates/{{player.agentProper}}Ultimate.png">
+                <div class="ultimate-tracker" [class]="side" *ngIf="player.ultReady" [@ultImageAnimation]>
+                    <img class="ultimate-full-image" src="{{assets}}/ultimates/{{player.agentProper}}Ultimate.webp">
                 </div>
                 <div class="spike-icon-wrapper">
                     <img class="spike-icon" *ngIf="player.hasSpike" src="{{assets}}/misc/Spike_Icon.svg" />

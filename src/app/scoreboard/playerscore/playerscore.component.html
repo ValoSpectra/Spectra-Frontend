@@ -1,8 +1,8 @@
 <div class="playerscore-component" [class]="color">
     <div class="playerinfo-container">
-        <img class="agent-icon" src="{{assets}}/agents/{{player.agentProper}}Icon.png" />
+        <img class="agent-icon" src="{{assets}}/agents/{{player.agentProper}}Icon.webp" />
         <div class="rank-icon-container" *ngIf="match.ranksEnabled && match.ranksByName[player.name]">
-            <img class="rank-icon" [class]="side" src="{{assets}}/ranks/{{match.ranksByName[player.name]}}_Rank.png" />
+            <img class="rank-icon" [class]="side" src="{{assets}}/ranks/{{match.ranksByName[player.name]}}_Rank.webp" />
         </div>
         <div class="playername-container" [class]="side">
             <div class="playername-text">{{player.name}}</div>
@@ -12,13 +12,13 @@
                 </div>
             </div>
             <div class="ultimate-tracker" *ngIf="player.ultReady">
-                <img class="ultimate-full-image" src="{{assets}}/ultimates/{{player.agentProper}}Ultimate.png">
+                <img class="ultimate-full-image" src="{{assets}}/ultimates/{{player.agentProper}}Ultimate.webp">
             </div>
         </div>
     </div>
     <div class="resources-container">
         <div class="shield-icon-container">
-            <img class="shield-icon" [class]="side" src="{{assets}}/shields/Shield{{player.initialShield}}.png" />
+            <img class="shield-icon" [class]="side" src="{{assets}}/shields/Shield{{player.initialShield}}.webp" />
         </div>
         <div class="KDA-tracker-wrapper">
             <p class="KDA-tracker" [class]="side">
@@ -31,7 +31,7 @@
         </div>
         <div class="weapon-icon-container">
             <div class="weapon-icon-wrapper flip">
-                <img class="weapon-icon" src="{{assets}}/weapons/{{player.highestWeapon}}Killfeed.png" />
+                <img class="weapon-icon" src="{{assets}}/weapons/{{player.highestWeapon}}Killfeed.webp" />
             </div>
         </div>
         <div class="money-container">
