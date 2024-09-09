@@ -44,7 +44,7 @@ export class TeamControllerComponent {
     isAttacking: false,
     teamName: "Team Name",
     teamTricode: "TEAM",
-    teamUrl: "",
+    teamUrl: "assets/misc/logo.webp",
     roundsWon: 0,
     spentThisRound: 1000,
   };
