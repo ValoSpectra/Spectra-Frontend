@@ -4,7 +4,7 @@
     </div> -->
     <div class="agent-icon-container">
         <img class="agent-icon" [class]="player.isAlive ? '' : 'dead'" 
-            src="{{assets}}/agents/{{player.agentProper}}Icon.webp"/>
+            src="{{assets}}/agents/{{player.agentInternal}}Icon.webp"/>
     </div>
     <div class="player-card">
         <div class="player-info" [class]="color + ' ' + (player.isAlive ? 'alive' : 'dead') + ' ' + (player.isObserved ? 'observed' : '')">
@@ -36,7 +36,7 @@
                     <div class="pip-ultimate" *ngFor="let i of numSequence(player.maxUltPoints - player.currUltPoints)"></div>
                 </div>
                 <div class="ultimate-tracker" [class]="side" *ngIf="player.ultReady" [@ultImageAnimation]>
-                    <img class="ultimate-full-image" src="{{assets}}/ultimates/{{player.agentProper}}Ultimate.webp">
+                    <img class="ultimate-full-image" src="{{assets}}/ultimates/{{player.agentInternal}}Ultimate.webp">
                 </div>
                 <div class="spike-icon-wrapper">
                     <img class="spike-icon" *ngIf="player.hasSpike" src="{{assets}}/misc/Spike_Icon.svg" />

@@ -36,7 +36,7 @@ export class PlayerControllerComponent {
   shieldOrder = [50, 25, 0];
 
   static agentIndex = [0, 0];
-  static agentOrder = [["Reyna", "Killjoy", "Skye", "Yoru", "Astra"], ["KAYO", "Chamber", "Neon", "Fade", "Harbor"]];
+  static agentOrder = [["Vampire", "Killjoy", "Guide", "Stealth", "Rift"], ["Grenadier", "Deadeye", "Sprinter", "BountyHunter", "Mage"]];
 
   static playerNameIndex = [0, 0];
   static playerNameOrder = [["Voodoo One", "Twoperator", "ThreeOfLife", "Fourcefield", "FIVEbyFIVE"], ["AlpacaHoarder", "BeeSting", "CowTipper", "DodoDaniel", "Eeliminator"]];
@@ -46,7 +46,7 @@ export class PlayerControllerComponent {
     name: "Test",
     playerId: 0,
     isAlive: true,
-    agentProper: "Jett",
+    agentInternal: "Wushu",
     isObserved: false,
     initialShield: this.shieldOrder[0],
     money: 2100,
@@ -73,7 +73,7 @@ export class PlayerControllerComponent {
   }
 
   getData(): any {
-    this.playerObject.agentProper = PlayerControllerComponent.agentOrder[this.teamId][PlayerControllerComponent.agentIndex[this.teamId]++];
+    this.playerObject.agentInternal = PlayerControllerComponent.agentOrder[this.teamId][PlayerControllerComponent.agentIndex[this.teamId]++];
     this.playerObject.name = PlayerControllerComponent.playerNameOrder[this.teamId][PlayerControllerComponent.playerNameIndex[this.teamId]++];
     return this.playerObject;
   }
