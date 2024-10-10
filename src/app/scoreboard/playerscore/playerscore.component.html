@@ -39,11 +39,13 @@
             <p class="money-element" [class]="side">
                 <span class="money-text-red">-</span>
                 <img class="credits-icon" src="{{assets}}/misc/ValorantCreditsSpent.svg" />
-                <span class="money-text-red">{{player.moneySpent}}</span>
+                <span class="money-text-red" *ngIf="player.scoreboardAvailable">{{player.moneySpent}}</span>
+                <span class="money-text-red" *ngIf="!player.scoreboardAvailable">?</span>
             </p>
             <p class="money-element" [class]="side">
                 <img class="credits-icon" src="{{assets}}/misc/ValorantCreditsWhite.svg" />
-                <span class="money-text-white">{{player.money}}</span>
+                <span class="money-text-white" *ngIf="player.scoreboardAvailable">{{player.money}}</span>
+                <span class="money-text-white" *ngIf="!player.scoreboardAvailable">?</span>
             </p>
         </div>
     </div>
