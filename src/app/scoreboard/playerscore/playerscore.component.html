@@ -26,7 +26,8 @@
                 <span class="KDA-text-delimiter"> / </span>
                 <span class="KDA-text">{{player.deaths}}</span>
                 <span class="KDA-text-delimiter"> / </span>
-                <span class="KDA-text">{{player.assists}}</span>
+                <span class="KDA-text" *ngIf="player.scoreboardAvailable">{{player.assists}}</span>
+                <span class="KDA-text" *ngIf="!player.scoreboardAvailable">?</span>
             </p>
         </div>
         <div class="weapon-icon-container">
