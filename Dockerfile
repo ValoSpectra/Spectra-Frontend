@@ -8,8 +8,6 @@ RUN corepack enable
 RUN yarn install --immutable && \
   yarn build
 
-RUN ls -la /app/dist/spectra-frontend
-
 FROM nginx:1.27.2-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
