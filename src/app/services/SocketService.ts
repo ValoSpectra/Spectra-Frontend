@@ -10,18 +10,25 @@ export class SocketService {
     this.groupCode = groupCode;
     this.socketEndpoint = socketEndpoint;
 
-    this.socket = io.connect(this.socketEndpoint, { autoConnect: true, reconnection: true });
+    this.socket = io.connect(this.socketEndpoint, {
+      autoConnect: true,
+      reconnection: true,
+    });
 
-    this.socket.once("logon_success", () => { console.log("Logged on successfully") });
+    this.socket.once("logon_success", () => {
+      console.log("Logged on successfully");
+    });
 
     //registering main data handler
     this.socket.on("match_data", (data: string) => {
-      this.subscribers.forEach(e => e(JSON.parse(data)));
+      this.subscribers.forEach((e) => e(JSON.parse(data)));
     });
 
     //setting up reconnection attempt handler
     this.socket.io.on("reconnect_attempt", (attempt: number) => {
-      console.log(`Connection lost, attempting to reconnect to server (Attempt: ${attempt})`);
+      console.log(
+        `Connection lost, attempting to reconnect to server (Attempt: ${attempt})`,
+      );
     });
 
     //setting up reconnection handler
@@ -37,5 +44,4 @@ export class SocketService {
   subscribe(handler: Function) {
     this.subscribers.push(handler);
   }
-
 }
