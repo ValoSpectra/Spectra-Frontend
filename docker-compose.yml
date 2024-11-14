@@ -1,7 +1,7 @@
 ---
 services:
   valo-spectra-frontend:
-    image: valo-spectra-frontend
+    image: valospectra/overlay
     build:
       context: .
       dockerfile: Dockerfile
