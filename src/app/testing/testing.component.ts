@@ -43,12 +43,42 @@ export class TestingComponent implements OnInit, AfterViewInit {
     this.matchData = this.trackerComponent.match;
     this.matchData.teams[0] = this.team1.getData();
     this.matchData.teams[1] = this.team2.getData();
+
+    this.matchData.switchRound = 6;
+
+    this.matchData.teams[0].roundRecord = [
+      { type: "detonated", wasAttack: true, round: 1 },
+      { type: "lost", wasAttack: true, round: 2 },
+      { type: "kills", wasAttack: true, round: 3 },
+      { type: "timeout", wasAttack: true, round: 4 },
+      { type: "lost", wasAttack: true, round: 5 },
+      { type: "kills", wasAttack: false, round: 6 },
+      { type: "lost", wasAttack: false, round: 7 },
+      { type: "defused", wasAttack: false, round: 8 },
+      { type: "lost", wasAttack: false, round: 9 },
+      { type: "lost", wasAttack: false, round: 10 }
+    ];
+
+    this.matchData.teams[1].roundRecord = [
+      { type: "lost", wasAttack: false, round: 1 },
+      { type: "defused", wasAttack: false, round: 2 },
+      { type: "lost", wasAttack: false, round: 3 },
+      { type: "lost", wasAttack: false, round: 4 },
+      { type: "kills", wasAttack: false, round: 5 },
+      { type: "lost", wasAttack: true, round: 6 },
+      { type: "detonated", wasAttack: true, round: 7 },
+      { type: "lost", wasAttack: true, round: 8 },
+      { type: "kills", wasAttack: true, round: 9 },
+      { type: "timeout", wasAttack: true, round: 10 }
+    ];
+
     this.team2.swapColor();
     this.trackerComponent.updateMatch(this.matchData);
     for (let i = 0; i < 5; i++) {
       this.team1.addPlayer();
       this.team2.addPlayer();
     }
+
     this.roundPhase = this.matchData.roundPhase;
   }
 
@@ -77,7 +107,7 @@ export class TestingComponent implements OnInit, AfterViewInit {
     this.matchData.spikeState = { planted: true, detonated: false, defused: false };
     this.isSpikePlanted = true;
     console.log(this.backgroundClassId);
-    
+
     if (this.backgroundClassId == 1 || this.backgroundClassId == 3) {
       this.switchBackground();
     }

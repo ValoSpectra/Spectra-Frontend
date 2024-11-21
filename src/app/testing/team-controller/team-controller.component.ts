@@ -47,6 +47,7 @@ export class TeamControllerComponent {
     teamUrl: "assets/misc/logo.webp",
     roundsWon: 0,
     spentThisRound: 1000,
+    roundRecord: [],
   };
 
   getData(): any {
