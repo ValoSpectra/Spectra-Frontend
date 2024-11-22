@@ -21,7 +21,7 @@ mkdir -p spectra-frontend/config
 cd spectra-frontend
 ```
 
-Create a file named docker-compose.yml as follow:
+Create a file named ```docker-compose.yml``` as follow:
 ```
 ---
 services:
