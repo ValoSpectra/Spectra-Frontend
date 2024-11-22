@@ -33,7 +33,7 @@ export class PlayerControllerComponent {
   isAttacking = false;
   weaponOrder = ["Vandal", "Operator", "Classic", "Spectre"];
   moneyOrder = [2900, 4700, 0, 1600];
-  shieldOrder = [50, 25, 0];
+  armorOrder = ["Heavy", "Regen", "Light", "None"];
 
   static agentIndex = [0, 0];
   static agentOrder = [["Vampire", "Killjoy", "Guide", "Stealth", "Rift"], ["Grenadier", "Deadeye", "Sprinter", "BountyHunter", "Mage"]];
@@ -48,7 +48,7 @@ export class PlayerControllerComponent {
     isAlive: true,
     agentInternal: "Wushu",
     isObserved: false,
-    initialShield: this.shieldOrder[0],
+    armorName: this.armorOrder[0],
     money: 2100,
     moneySpent: 2900,
     highestWeapon: this.weaponOrder[0],
@@ -81,12 +81,12 @@ export class PlayerControllerComponent {
   kill(): void {
     this.playerObject.isAlive = false;
     this.stopSpectate();
-    this.playerObject.initialShield = this.shieldOrder[2];
+    this.playerObject.armorName = this.armorOrder[3];
   }
 
   revive(): void {
     this.playerObject.isAlive = true;
-    this.playerObject.initialShield = this.shieldOrder[0];
+    this.playerObject.armorName = this.armorOrder[0];
   }
 
   giveUltPoint(): void {
@@ -144,10 +144,10 @@ export class PlayerControllerComponent {
   }
 
   changeShield(): void {
-    var i = this.shieldOrder.findIndex(e => e == this.playerObject.initialShield);
+    var i = this.armorOrder.findIndex(e => e == this.playerObject.armorName);
     i++;
-    i %= this.shieldOrder.length;
-    this.playerObject.initialShield = this.shieldOrder[i];
+    i %= this.armorOrder.length;
+    this.playerObject.armorName = this.armorOrder[i];
   }
 
   changeStats(): void {
