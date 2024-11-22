@@ -13,4 +13,37 @@ It is comprised of three parts:
 
 Further updates for new features, as well as a detailed setup guide and an easy to host docker container are in the pipeline!
 
+# Docker Compose tutorial:
+
+First, create a seperate folder in your working directory and create a folder ``` config``` inside it:
+```
+mkdir -p spectra-frontend/config
+cd spectra-frontend
+```
+
+Create a file named ```docker-compose.yml``` as follow:
+```
+---
+services:
+  valo-spectra-frontend:
+    image: "ghcr.io/valospectra/overlay"
+    ports:
+      - "3000:80"
+    volumes:
+      - ./config:/usr/share/nginx/html/assets/config/
+```
+You can change ```3000``` to a different port which you want the frontend accessible outside the container to.
+
+Inside ``` config``` folder, create a file named ```config.json``` with the following content: 
+```
+{
+    "serverEndpoint": "https://localhost:5200"
+}
+```
+Replace ``` https://localhost:5200``` with your Spectra Server address and outcoming port (default is 5200).
+
+After that you can start the frontend by running ```docker compose up -d``` and the frontend are accessible at port ```3000``` by default.
+
+# DISCLAIMER
+
 Spectra-Client isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
