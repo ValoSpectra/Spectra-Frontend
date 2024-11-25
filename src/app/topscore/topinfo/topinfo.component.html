@@ -11,13 +11,25 @@
 </div>
 <div class="topinfo-container-right">
   <div class="topinfo-pill-flex">
-    <img src="assets/misc/icon.webp" alt="Underpeel Logo" class="spectra-logo" />
+    <img
+      src="assets/misc/icon.webp"
+      alt="Underpeel Logo"
+      class="spectra-logo"
+    />
     <div class="topinfo-pill-text fadeLoopStart">Overlay by Spectra</div>
     <div class="topinfo-pill-text fadeLoopDelay">valospectra.com</div>
   </div>
 </div>
-<div class="topinfo-ad-display" *ngIf="false">
-  <img class="UP-onlylogo" src="assets/tie-ins/underpeel-icon.webp" />
+<div class="sponsor-container" *ngIf="sponsorsAvailable">
+  <ng-container *ngFor="let sponsor of sponsorImages; let i = index">
+    <img
+      *ngIf="i === currentSponsorIndex"
+      class="sponsor-logo"
+      [@fadeInOut]
+      [src]="sponsor"
+      alt="Sponsor Logo"
+    />
+  </ng-container>
 </div>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">

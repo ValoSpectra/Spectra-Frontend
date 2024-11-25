@@ -1,3 +1,10 @@
 {
-  "serverEndpoint": "http://localhost:5200"
+  "serverEndpoint": "http://localhost:5200",
+  "sponsorImageUrls": [
+    "/assets/misc/logo.webp",
+    "https://projectchaos.ch/wp-content/plugins/maintenance-mode-master/assets/images/logo.png"
+  ],
+  "sponsorImageRotateSpeed": 5000,
+  "attackerColor": "#ff0000",
+  "defenderColor": "#0000ff"
 }
