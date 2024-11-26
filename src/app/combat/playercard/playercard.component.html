@@ -3,52 +3,96 @@
         <img class="rank-icon" [class]="side" src="{{assets}}/ranks/{{match.ranksByName[player.name]}}_Rank.webp" />
     </div> -->
   <div class="agent-icon-container">
-    <img class="agent-icon" [class]="player.isAlive ? '' : 'dead'"
-      src="{{ assets }}/agents/{{ player.agentInternal }}Icon.webp" />
+    <img
+      class="agent-icon"
+      [class]="player.isAlive ? '' : 'dead'"
+      src="{{ assets }}/agents/{{ player.agentInternal }}Icon.webp"
+    />
   </div>
   <div class="player-card">
-    <div class="player-info" [class]="
+    <div
+      class="player-info"
+      [class]="
         color +
         ' ' +
         (player.isAlive ? 'alive' : 'dead') +
         ' ' +
         (player.isObserved ? 'observed' : '')
-      ">
+      "
+    >
       <div class="spectator-icon-container" *ngIf="player.isObserved">
         <img class="spectator-icon" src="{{ assets }}/misc/ObserverEye.svg" />
       </div>
       <div class="info-container">
         <div class="shields-currency">
-          <img class="shield-icon" [class]="color" src="{{ assets }}/shields/{{ player.armorName }}Green.svg" />
-          <!--TODO: dynamically change shield color -->
+          <img class="shield-icon" [src]="shieldImage" />
           <div class="currency-container" [class]="side">
-            <img class="valorant-credits" [class]="color" src="{{ assets }}/misc/ValorantCreditsWhite.svg" />
+            <img
+              class="valorant-credits"
+              [class]="color"
+              src="{{ assets }}/misc/ValorantCreditsWhite.svg"
+            />
             <!--TODO: dynamically change currency color-->
             <div class="currency-title" [class]="color">{{ player.money }}</div>
           </div>
         </div>
         <div class="username-container">
           <div class="username-title" [class]="side">{{ player.name }}</div>
-          <img class="captain-icon" *ngIf="player.isCaptain" src="{{ assets }}/misc/TeamCaptain.svg" />
+          <img
+            class="captain-icon"
+            *ngIf="player.isCaptain"
+            src="{{ assets }}/misc/TeamCaptain.svg"
+          />
         </div>
       </div>
     </div>
-    <div class="utility-container" [class]="color" *ngIf="player.isAlive" [@deathAnimation]="player.isAlive">
+    <div
+      class="utility-container"
+      [class]="color"
+      *ngIf="player.isAlive"
+      [@deathAnimation]="player.isAlive"
+    >
       <div class="weapon-icon-wrapper">
-        <img class="weapon-icon" src="{{ assets }}/weapons/{{ player.highestWeapon }}Killfeed.webp" />
+        <img
+          class="weapon-icon"
+          src="{{ assets }}/weapons/{{ player.highestWeapon }}Killfeed.webp"
+        />
       </div>
       <div class="ultimate-tracker-container">
-        <div class="ultimate-tracker" [class]="side" *ngIf="!player.ultReady" [@ultPipAnimation]>
-          <div class="pip-ultimate-full" *ngFor="let i of numSequence(player.currUltPoints)"></div>
-          <div class="pip-ultimate" *ngFor="
+        <div
+          class="ultimate-tracker"
+          [class]="side"
+          *ngIf="!player.ultReady"
+          [@ultPipAnimation]
+        >
+          <div
+            class="pip-ultimate-full"
+            *ngFor="let i of numSequence(player.currUltPoints)"
+          ></div>
+          <div
+            class="pip-ultimate"
+            *ngFor="
               let i of numSequence(player.maxUltPoints - player.currUltPoints)
-            "></div>
+            "
+          ></div>
         </div>
-        <div class="ultimate-tracker" [class]="side" *ngIf="player.ultReady" [@ultImageAnimation]>
-          <img class="ultimate-full-image" src="{{ assets }}/ultimates/{{ player.agentInternal }}Ultimate.webp" />
+        <div
+          class="ultimate-tracker"
+          [class]="side"
+          *ngIf="player.ultReady"
+          [@ultImageAnimation]
+        >
+          <img
+            class="ultimate-full-image"
+            src="{{ assets }}/ultimates/{{ player.agentInternal }}Ultimate.webp"
+          />
         </div>
         <div class="spike-icon-wrapper">
-          <img class="spike-icon" *ngIf="player.hasSpike" src="{{ assets }}/misc/Spike_Icon.svg" />
+          <img
+            class="spike-icon"
+            *ngIf="player.hasSpike"
+            src="{{ assets }}/misc/Spike_Icon.svg"
+          />
         </div>
       </div>
     </div>

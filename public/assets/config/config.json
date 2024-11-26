@@ -1,10 +1,7 @@
 {
   "serverEndpoint": "http://localhost:5200",
-  "sponsorImageUrls": [
-    "/assets/misc/logo.webp",
-    "https://projectchaos.ch/wp-content/plugins/maintenance-mode-master/assets/images/logo.png"
-  ],
+  "sponsorImageUrls": ["/assets/misc/logo.webp"],
   "sponsorImageRotateSpeed": 5000,
   "attackerColor": "#b82e3c",
-  "defenderColor": "#2e3cb8"
+  "defenderColor": "#25ac79"
 }

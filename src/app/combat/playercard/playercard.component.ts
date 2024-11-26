@@ -1,5 +1,14 @@
 import { trigger, transition, style, animate } from "@angular/animations";
-import { Component, Input } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { Config } from "../../shared/config";
 
 @Component({
   selector: "app-playercard",
@@ -44,7 +53,7 @@ import { Component, Input } from "@angular/core";
     ]),
   ],
 })
-export class InhouseTrackerPlayercardComponent {
+export class InhouseTrackerPlayercardComponent implements OnInit, OnChanges {
   public readonly assets: String = "../../../assets";
 
   @Input() match!: any;
@@ -52,6 +61,14 @@ export class InhouseTrackerPlayercardComponent {
   @Input() side!: "left" | "right";
 
   private _player: any;
+
+  public shieldImage: SafeHtml = "";
+
+  constructor(
+    private http: HttpClient,
+    private sanitizer: DomSanitizer,
+    private config: Config,
+  ) { }
 
   @Input()
   set player(player: any) {
@@ -62,11 +79,35 @@ export class InhouseTrackerPlayercardComponent {
     return this._player;
   }
 
-  numSequence(n: number): number[] {
+  ngOnInit(): void {
+    this.updateSvg();
+  }
+
+  ngOnChanges(): void {
+    console.log("onChanges: " + this.player.armorName);
+    this.updateSvg();
+  }
+
+  numSequence(n: number): Array<number> {
     return Array(n);
   }
 
   capitalizeColor(s: string) {
     return s[0].toUpperCase() + s.substring(1);
+  }
+
+  updateSvg() {
+    console.log(this.player.armorName);
+    let svgUrl = this.assets + "/shields/" + this.player.armorName + ".svg";
+    let color =
+      this.color == "attacker"
+        ? this.config.attackerColor
+        : this.config.defenderColor;
+    this.http.get(svgUrl, { responseType: "text" }).subscribe((svg) => {
+      const modifiedSvg = svg.replace(/fill="[^"]*"/g, `fill="${color}"`);
+      this.shieldImage = this.sanitizer.bypassSecurityTrustUrl(
+        "data:image/svg+xml;base64," + btoa(modifiedSvg),
+      );
+    });
   }
 }

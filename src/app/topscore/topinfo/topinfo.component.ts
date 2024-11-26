@@ -21,17 +21,19 @@ export class TopinfoComponent {
   sponsorImages: string[] = [];
   currentSponsorIndex = 0;
 
-  constructor(private config: Config) {}
+  constructor(private config: Config) { }
 
   ngOnInit() {
     this.sponsorsAvailable = this.config.sponsorImageUrls.length > 0;
     if (this.sponsorsAvailable) {
       this.sponsorImages = this.config.sponsorImageUrls;
       this.currentSponsorIndex = 0;
-      setInterval(
-        () => this.nextSponsor(),
-        this.config.sponsorImageRotateSpeed,
-      );
+      if (this.config.sponsorImageUrls.length > 1) {
+        setInterval(
+          () => this.nextSponsor(),
+          this.config.sponsorImageRotateSpeed,
+        );
+      }
     }
   }
 
