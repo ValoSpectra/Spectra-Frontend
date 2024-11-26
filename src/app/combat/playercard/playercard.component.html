@@ -25,14 +25,25 @@
       </div>
       <div class="info-container">
         <div class="shields-currency">
-          <img class="shield-icon" [src]="shieldImage" />
+          <app-shield-icon
+            [type]="player.armorName"
+            [side]="color"
+          ></app-shield-icon>
           <div class="currency-container" [class]="side">
-            <img
-              class="valorant-credits"
-              [class]="color"
-              src="{{ assets }}/misc/ValorantCreditsWhite.svg"
-            />
-            <!--TODO: dynamically change currency color-->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="9"
+              height="8"
+              viewBox="0 0 9 8"
+              fill="none"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M6.04745 6.92766L7.11979 8L8.25098 6.86881L7.17863 5.79647C7.50002 5.27382 7.68538 4.65856 7.68538 4C7.68538 3.34144 7.50002 2.72618 7.17863 2.20353L8.25098 1.13119L7.11979 0L6.04745 1.07234C5.5248 0.750952 4.90953 0.565594 4.25098 0.565594C3.59242 0.565594 2.97715 0.750952 2.45451 1.07234L1.38216 0L0.250977 1.13119L1.32332 2.20353C1.00193 2.72618 0.81657 3.34144 0.81657 4C0.81657 4.65856 1.00193 5.27382 1.32332 5.79647L0.250977 6.86881L1.38216 8L2.45451 6.92766C2.97715 7.24905 3.59242 7.43441 4.25098 7.43441C4.90953 7.43441 5.5248 7.24905 6.04745 6.92766ZM4.25106 6.37761C5.5642 6.37761 6.62872 5.3131 6.62872 3.99995C6.62872 2.6868 5.5642 1.62228 4.25106 1.62228C2.93791 1.62228 1.87339 2.6868 1.87339 3.99995C1.87339 5.3131 2.93791 6.37761 4.25106 6.37761Z"
+                [attr.fill]="colorHex"
+              />
+            </svg>
             <div class="currency-title" [class]="color">{{ player.money }}</div>
           </div>
         </div>
