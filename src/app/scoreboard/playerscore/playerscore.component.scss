@@ -1,254 +1,258 @@
 .flip {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .right {
-    @extend .flip;
+  @extend .flip;
 }
 
 .playerscore-component {
-    display: flex;
-    height: 74px;
-    width: 760px;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    flex: 0 0 auto;
+  display: flex;
+  height: 74px;
+  width: 760px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  flex: 0 0 auto;
 
-    &.green {
-        background: linear-gradient(90deg,
-                rgba(31, 122, 88, 0.00) 3.74%,
-                #1F7A58 5.57%,
-                rgba(31, 122, 88, 0.45) 22.42%,
-                rgba(31, 122, 88, 0.00) 37.11%);
-    }
+  &.defender {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--defender-color-rgb), 0) 3.74%,
+      var(--defender-color) 5.57%,
+      rgba(var(--defender-color-rgb), 0.45) 22.42%,
+      rgba(var(--defender-color-rgb), 0) 37.11%
+    );
+  }
 
-    &.red {
-        background: linear-gradient(90deg,
-                rgba(165, 68, 77, 0.00) 4.69%,
-                #A5444D 6.5%,
-                rgba(165, 68, 77, 0.45) 23.1%,
-                rgba(165, 68, 77, 0.00) 37.57%);
-    }
+  &.attacker {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--attacker-color-rgb), 0) 4.69%,
+      var(--attacker-color) 6.5%,
+      rgba(var(--attacker-color-rgb), 0.45) 23.1%,
+      rgba(var(--attacker-color-rgb), 0) 37.57%
+    );
+  }
 }
 
 .playerinfo-container {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    position: relative;
-    align-self: stretch;
-    flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  flex: 0 0 auto;
 }
 
 .agent-icon {
-    background-size: cover;
-    background-position: 50% 50%;
-    position: relative;
-    width: 74px;
-    height: 74px;
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+  width: 74px;
+  height: 74px;
 }
 
 .playername-container {
-    display: flex;
-    flex-direction: column;
-    width: 121px;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    position: relative;
-    align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  width: 121px;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  position: relative;
+  align-self: stretch;
 }
 
 .playername-text {
-    position: relative;
-    width: fit-content;
-    font-family: "Montserrat", Helvetica;
-    font-weight: 600;
-    color: #ffffff;
-    font-size: 16px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
+  position: relative;
+  width: fit-content;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
 }
 
 .ultimate-tracker {
-    display: inline-flex;
-    align-items: center;
-    gap: 1.25px;
-    position: relative;
-    flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25px;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .pip-ultimate {
-    position: relative;
-    background-image: url(/assets/misc/ultimate-pip.svg);
-    background-size: 100% 100%;
-    width: 10px;
-    height: 10px;
+  position: relative;
+  background-image: url(/assets/misc/ultimate-pip.svg);
+  background-size: 100% 100%;
+  width: 10px;
+  height: 10px;
 
-    &-full {
-        @extend .pip-ultimate;
-        background-image: url(/assets/misc/ultimate-pip-full.svg);
-    }
+  &-full {
+    @extend .pip-ultimate;
+    background-image: url(/assets/misc/ultimate-pip-full.svg);
+  }
 }
 
 .ultimate-full-image {
-    width: 25px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 25px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .resources-container {
-    display: flex;
-    width: 634.6px;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 16px;
-    position: relative;
-    align-self: stretch;
-    margin-left: -85.6px;
-    left: 7px;
+  display: flex;
+  width: 634.6px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  margin-left: -85.6px;
+  left: 7px;
 }
 
 .rank-icon-container {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    left: -5px;
-    top: 44px;
-    background-size: cover;
-    background-position: 50% 50%;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: -5px;
+  top: 44px;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .rank-icon {
-    height: 100%;
-    aspect-ratio: 1;
+  height: 100%;
+  aspect-ratio: 1;
 }
 
 .shield-icon-container {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    top: 19px;
-    left: 110px;
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  top: 19px;
+  left: 110px;
 }
 
 .shield-icon {
-    height: 100%;
-    aspect-ratio: 1;
+  height: 100%;
+  aspect-ratio: 1;
 }
 
 .KDA-tracker-wrapper {
-    display: flex;
-    width: 120px;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
-    position: relative;
-    align-self: stretch;
-    left: 9px;
+  display: flex;
+  width: 120px;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  position: relative;
+  align-self: stretch;
+  left: 9px;
 }
 
 .KDA-tracker {
-    position: relative;
-    width: fit-content;
-    font-family: "Unbounded", Helvetica;
-    font-weight: 600;
-    color: transparent;
-    font-size: 18px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
+  position: relative;
+  width: fit-content;
+  font-family: "Unbounded", Helvetica;
+  font-weight: 600;
+  color: transparent;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
 }
 
 .KDA-text {
-    color: #ffffff;
-    font-family: "Unbounded", Helvetica;
-    font-weight: 600;
-    font-size: 18px;
-    letter-spacing: 0;
+  color: #ffffff;
+  font-family: "Unbounded", Helvetica;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0;
 
-    &-delimiter {
-        @extend .KDA-text;
-        color: #ffffff80;
-    }
+  &-delimiter {
+    @extend .KDA-text;
+    color: #ffffff80;
+  }
 }
 
 .weapon-icon-container {
-    display: flex;
-    width: 216px;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    position: relative;
-    align-self: stretch;
-    transform: rotate(180deg);
+  display: flex;
+  width: 216px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  align-self: stretch;
+  transform: rotate(180deg);
 }
 
 .weapon-icon-wrapper {
-    align-items: flex-start;
-    justify-content: center;
-    display: inline-flex;
-    flex-direction: column;
-    gap: 20px;
-    position: relative;
-    flex: 0 0 auto;
+  align-items: flex-start;
+  justify-content: center;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .weapon-icon {
-    position: relative;
-    height: 40px;
-    transform: rotate(-180deg);
-    object-fit: cover;
+  position: relative;
+  height: 40px;
+  transform: rotate(-180deg);
+  object-fit: cover;
 }
 
 .money-container {
-    display: flex;
-    flex-direction: column;
-    width: 120px;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    position: relative;
-    align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  align-self: stretch;
 }
 
 .money-element {
-    position: relative;
-    width: fit-content;
-    opacity: 0.8;
-    font-family: "Montserrat", Helvetica;
-    font-weight: 700;
-    font-size: 18px;
-    text-align: center;
-    line-height: normal;
-    white-space: nowrap;
-    margin: -5px;
+  position: relative;
+  width: fit-content;
+  opacity: 0.8;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  line-height: normal;
+  white-space: nowrap;
+  margin: -5px;
 }
 
 .credits-icon {
-    position: relative;
-    width: 12px;
-    height: 12px;
+  position: relative;
+  width: 12px;
+  height: 12px;
 }
 
 .money-text {
-    letter-spacing: 0;
-    opacity: 0.8;
-    font-family: "Montserrat", Helvetica;
-    font-weight: 700;
-    font-size: 18px;
+  letter-spacing: 0;
+  opacity: 0.8;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 700;
+  font-size: 18px;
 
-    &-red {
-        @extend .money-text;
-        color: #ff4557;
-    }
+  &-red {
+    @extend .money-text;
+    color: #ff4557;
+  }
 
-    &-white {
-        @extend .money-text;
-        color: white;
-    }
+  &-white {
+    @extend .money-text;
+    color: white;
+  }
 }

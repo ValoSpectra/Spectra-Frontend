@@ -1,33 +1,40 @@
 <div class="topscore">
-    <div class="topscore-container">
-        <div class="scoreboard">
-            <div class="teamcard">
-                <div class="teaminfo-container">
-                    <img class="team-image" src="{{match.teams[0].teamUrl}}" />
-                    <div class="teamcode">{{match.teams[0].teamTricode}}</div>
-                </div>
-                <div class="divider" [class]="match.teams[0].isAttacking ? 'red' : 'green'"></div>
-                <div class="scoreblock-left" [class]="match.teams[0].isAttacking ? 'red' : 'green'">
-                    <div class="score-text">{{match.teams[0].roundsWon}}</div>
-                </div>
-            </div>
-            <div class="teamcard">
-                <div class="scoreblock-right" [class]="match.teams[1].isAttacking ? 'red' : 'green'">
-                    <div class="score-text">{{match.teams[1].roundsWon}}</div>
-                </div>
-                <div class="divider" [class]="match.teams[1].isAttacking ? 'red' : 'green'"></div>
-                <div class="teaminfo-container">
-                    <div class="teamcode">{{match.teams[1].teamTricode}}</div>
-                    <img class="team-image" src="{{match.teams[1].teamUrl}}" />
-                </div>
-            </div>
+  <div class="topscore-container">
+    <div class="scoreboard">
+      <div class="teamcard">
+        <div class="teaminfo-container">
+          <img class="team-image" src="{{ match.teams[0].teamUrl }}" />
+          <div class="teamcode">{{ match.teams[0].teamTricode }}</div>
         </div>
-        <app-mapwins *ngIf="false" />
-        <div class="spike-indicator" *ngIf="match.roundPhase === 'combat' && match.spikeState.planted && !match.spikeState.detonated && !match.spikeState.defused" [@fade]>
-            <img class="spike-icon" src="../../assets/misc/Spike_top_{{blinkState ? 'light' : 'dark'}}.svg" />
+        <div class="divider" [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'"></div>
+        <div class="scoreblock-left" [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'">
+          <div class="score-text">{{ match.teams[0].roundsWon }}</div>
         </div>
+      </div>
+      <div class="teamcard">
+        <div class="scoreblock-right" [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'">
+          <div class="score-text">{{ match.teams[1].roundsWon }}</div>
+        </div>
+        <div class="divider" [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"></div>
+        <div class="teaminfo-container">
+          <div class="teamcode">{{ match.teams[1].teamTricode }}</div>
+          <img class="team-image" src="{{ match.teams[1].teamUrl }}" />
+        </div>
+      </div>
     </div>
-    <div class="round-number">ROUND {{match.roundNumber}}</div>
+    <app-mapwins *ngIf="false" />
+    <div class="spike-indicator" *ngIf="
+        match.roundPhase === 'combat' &&
+        match.spikeState.planted &&
+        !match.spikeState.detonated &&
+        !match.spikeState.defused
+      " [@fade]>
+      <img class="spike-icon" src="../../assets/misc/Spike_top_{{
+          blinkState ? 'light' : 'dark'
+        }}.svg" />
+    </div>
+  </div>
+  <div class="round-number">ROUND {{ match.roundNumber }}</div>
 </div>
 
 <app-topinfo *ngIf="false" />
