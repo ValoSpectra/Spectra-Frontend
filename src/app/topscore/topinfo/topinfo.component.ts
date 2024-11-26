@@ -21,7 +21,7 @@ export class TopinfoComponent {
   sponsorImages: string[] = [];
   currentSponsorIndex = 0;
 
-  constructor(private config: Config) { }
+  constructor(private config: Config) {}
 
   ngOnInit() {
     this.sponsorsAvailable = this.config.sponsorImageUrls.length > 0;

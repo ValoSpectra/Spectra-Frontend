@@ -6,11 +6,11 @@ import { Component, Input } from "@angular/core";
   styleUrls: ["./playerscore.component.scss"],
 })
 export class PlayerscoreComponent {
-  public readonly assets: string = "../../../assets";
+  public readonly assets: String = "../../../assets";
 
   @Input() match!: any;
   @Input() player!: any;
-  @Input() color!: "red" | "green";
+  @Input() color!: "attacker" | "defender";
   @Input() side!: "left" | "right";
 
   numSequence(n: number): number[] {

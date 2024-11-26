@@ -9,11 +9,17 @@ import { Component, Input } from "@angular/core";
     trigger("deathAnimation", [
       transition("true => false, true => void", [
         style({ filter: "grayscale(50%)" }),
-        animate("100ms ease-in", style({ width: "0", opacity: 0.5, filter: "grayscale(100%)" })),
+        animate(
+          "100ms ease-in",
+          style({ width: "0", opacity: 0.5, filter: "grayscale(100%)" }),
+        ),
       ]),
       transition("false => true, void => true", [
         style({ filter: "grayscale(50%)", width: "0", opacity: 0.5 }),
-        animate("250ms ease-out", style({ width: "*", opacity: 1, filter: "grayscale(0%)" })),
+        animate(
+          "250ms ease-out",
+          style({ width: "*", opacity: 1, filter: "grayscale(0%)" }),
+        ),
       ]),
     ]),
     trigger("ultPipAnimation", [
@@ -39,10 +45,10 @@ import { Component, Input } from "@angular/core";
   ],
 })
 export class InhouseTrackerPlayercardComponent {
-  public readonly assets: string = "../../../assets";
+  public readonly assets: String = "../../../assets";
 
   @Input() match!: any;
-  @Input() color!: "red" | "green";
+  @Input() color!: "attacker" | "defender";
   @Input() side!: "left" | "right";
 
   private _player: any;

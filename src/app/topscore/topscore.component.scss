@@ -68,13 +68,13 @@
   position: relative;
   align-self: stretch;
   width: 3.62px;
-  &.green {
+  &.defender {
     @extend .divider;
-    background-color: #61eab6;
+    background-color: var(--defender-color-light);
   }
-  &.red {
+  &.attacker {
     @extend .divider;
-    background-color: #ff4557;
+    background-color: var(--attacker-color-light);
   }
 }
 
@@ -96,13 +96,13 @@
     @extend .scoreblock;
     border-radius: 4px 0px 0px 4px;
   }
-  &.green {
+  &.defender {
     @extend .scoreblock;
-    background-color: #25ac79;
+    background-color: var(--defender-color);
   }
-  &.red {
+  &.attacker {
     @extend .scoreblock;
-    background-color: #b82e3c;
+    background-color: var(--attacker-color);
   }
 }
 

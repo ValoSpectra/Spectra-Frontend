@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from "@angular/animations";
-import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
+import { Component, Input, SimpleChanges } from "@angular/core";
 
 @Component({
   selector: "app-topscore",
@@ -13,7 +13,7 @@ import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
     ]),
   ],
 })
-export class TopscoreComponent implements OnChanges {
+export class TopscoreComponent {
   @Input() match!: any;
 
   spikePlanted = false;
