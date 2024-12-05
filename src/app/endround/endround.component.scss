@@ -2,6 +2,9 @@
     position: absolute;
     left: 26%;
     top: 40%;
+    width: 875px;
+    height: 200px;
+    overflow-x: hidden;
     animation-name: changepos;
     animation-duration: 4s;
     animation-fill-mode: both;
@@ -28,6 +31,16 @@
     justify-content: center;
     align-items: stretch;
     margin: 10px;
+    animation-name: slide-in;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    transition-timing-function: ease-in-out;
+}
+
+@keyframes slide-in {
+    0%   {left: -102%;}
+    75%  {left: -102%;}
+    100% {left: 0%;}
 }
 
 .win-side-image {
