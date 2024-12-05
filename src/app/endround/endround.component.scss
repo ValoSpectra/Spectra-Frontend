@@ -1,6 +1,6 @@
 .endround {
     position: absolute;
-    left: 30%;
+    left: 26%;
     top: 40%;
     animation-name: changepos;
     animation-duration: 4s;
@@ -8,7 +8,8 @@
 }
 
 @keyframes changepos {
-    0%   {top:40%;}
+    0%   {top:40%; opacity: 0;}
+    25%  {top:40%; opacity: 1;}
     75%  {top:40%;}
     90%  {top:40%;}
     100% {top:81%;}
@@ -16,9 +17,11 @@
 
 .endround-box {
     position: relative;
-    width: 765px;
+    width: 875px;
     height: 200px;
-    background-color: rgba(15, 25, 35, 0.9);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

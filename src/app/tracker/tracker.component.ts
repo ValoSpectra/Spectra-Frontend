@@ -25,11 +25,6 @@ enum Colors {
       )
     ]),
     trigger('fade-endround', [
-      transition(':enter', [
-        style({ 'opacity': '0' }),
-        animate('0.2s', style({ 'opacity': '1' }))
-      ]),
-
       transition(':leave',
         animate('0s', style({ 'opacity': '0' }))
       )
