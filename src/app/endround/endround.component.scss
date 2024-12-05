@@ -1,21 +1,26 @@
 .endround {
     position: absolute;
     left: 26%;
-    top: 40%;
+    top: 100%;
     width: 875px;
     height: 200px;
     overflow-x: hidden;
-    animation-name: changepos;
-    animation-duration: 4s;
+    animation-name: changepos-2;
+    animation-duration: 3.95s;
     animation-fill-mode: both;
 }
 
-@keyframes changepos {
-    0%   {top:40%; opacity: 0;}
-    25%  {top:40%; opacity: 1;}
-    75%  {top:40%;}
-    90%  {top:40%;}
-    100% {top:81%;}
+@keyframes changepos-1 {
+    0%   {top: 40.5%;}
+    90%  {top: 40.5%;}
+    100% {top:150%;}
+}
+
+@keyframes changepos-2 {
+    0%   {top: 100%;}
+    25%  {top: 100%;}
+    90%  {top: 100%;}
+    100% {top:82%;}
 }
 
 .endround-box {
@@ -31,10 +36,10 @@
     justify-content: center;
     align-items: stretch;
     margin: 10px;
-    animation-name: slide-in;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    transition-timing-function: ease-in-out;
+    // animation-name: slide-in;
+    // animation-duration: 1s;
+    // animation-fill-mode: both;
+    // transition-timing-function: ease-in-out;
 }
 
 @keyframes slide-in {
@@ -101,4 +106,35 @@
     text-align: center;
     // letter-spacing: 1.2px;
     line-height: normal;
+}
+
+.intro-box {
+    position: absolute;
+    left: 26.23%;
+    top: 40.5%;
+    width: 875px;
+    height: 200px;
+    overflow-x: hidden;
+    animation-name: changepos-1;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+}
+
+.intro-box-content {
+    position: relative;
+    width: 875px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    animation-name: slide-in;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    transition-timing-function: ease-in-out;
 }
