@@ -8,10 +8,13 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 })
 
 export class EndroundComponent {
-    @Input() match!: any;
-    ngOnChanges(changes: SimpleChanges) {
-        if (changes["match"]) {
-          const match = changes["match"].currentValue;
-        }
-    }
+  @Input() match!: any;
+  teamWon = 0;
+  ngOnChanges(changes: SimpleChanges) {
+      if (changes["match"]) {
+        const match = changes["match"].currentValue;
+        if(match.teams[0].roundRecord[match.roundNumber].type !== 'lost') { this.teamWon = 0 }
+        else { this.teamWon = 1 }
+      }
+  }
 }
