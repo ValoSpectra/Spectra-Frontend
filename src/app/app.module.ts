@@ -15,6 +15,7 @@ import { MapwinComponent } from './topscore/mapwins/mapwins.component';
 import { TopinfoComponent } from './topscore/topinfo/topinfo.component';
 import { PlayerscoreComponent } from './scoreboard/playerscore/playerscore.component';
 import { RoundreasonsComponent } from './scoreboard/roundreasons/roundreasons.component';
+import { EndroundComponent } from './endround/endround.component';
 import { InhouseTrackerPlayercardComponent } from './combat/playercard/playercard.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { PlayerControllerComponent } from './testing/player-controller/player-controller.component';
@@ -34,6 +35,7 @@ import { TeamControllerComponent } from './testing/team-controller/team-controll
     RoundreasonsComponent,
     InhouseTrackerPlayercardComponent,
     OverlayComponent,
+    EndroundComponent,
     PlayerControllerComponent,
     TeamControllerComponent
   ],
