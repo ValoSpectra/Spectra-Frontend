@@ -1,5 +1,4 @@
 {
-  "extends": ["eslint"],
   "semi": true,
   "singleQuote": true,
   "printWidth": 100,

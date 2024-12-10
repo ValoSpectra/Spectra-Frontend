@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write src"
   },
   "private": true,
   "dependencies": {
