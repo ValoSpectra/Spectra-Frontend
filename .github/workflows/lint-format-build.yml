@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  lint-format-build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: "yarn"
       - name: Install dependencies
         run: yarn install --immutable
       - name: Run eslint
