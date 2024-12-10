@@ -13,7 +13,7 @@ export class EndroundComponent {
   ngOnChanges(changes: SimpleChanges) {
       if (changes["match"]) {
         const match = changes["match"].currentValue;
-        if(match.teams[0].roundRecord[match.roundNumber].type !== 'lost') { this.teamWon = 0 }
+        if(match.teams[0].roundRecord[match.roundNumber - 1].type !== 'lost') { this.teamWon = 0 }
         else { this.teamWon = 1 }
       }
   }
