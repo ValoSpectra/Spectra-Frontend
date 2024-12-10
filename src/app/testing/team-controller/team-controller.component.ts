@@ -8,16 +8,16 @@ import {
   Output,
   ViewChild,
   ViewContainerRef,
-} from '@angular/core';
-import { PlayerControllerComponent } from '../player-controller/player-controller.component';
+} from "@angular/core";
+import { PlayerControllerComponent } from "../player-controller/player-controller.component";
 
 @Component({
-  selector: 'app-team-controller',
-  templateUrl: './team-controller.component.html',
-  styleUrl: './team-controller.component.scss',
+  selector: "app-team-controller",
+  templateUrl: "./team-controller.component.html",
+  styleUrl: "./team-controller.component.scss",
 })
 export class TeamControllerComponent {
-  @ViewChild('playerControllerSpace', { read: ViewContainerRef })
+  @ViewChild("playerControllerSpace", { read: ViewContainerRef })
   playerControllerSpace!: ViewContainerRef;
   @Output() roundWinEvent = new EventEmitter<void>();
   @Output() spectateTakenEvent = new EventEmitter<void>();
@@ -26,9 +26,9 @@ export class TeamControllerComponent {
   @Input() teamName!: string;
   @Input() teamCode!: string;
 
-  _roundPhase: 'shopping' | 'combat' = 'combat';
+  _roundPhase: "shopping" | "combat" = "combat";
   @Input()
-  set roundPhase(s: 'shopping' | 'combat') {
+  set roundPhase(s: "shopping" | "combat") {
     this._roundPhase = s;
     this.propagateRoundPhase(s);
   }
@@ -52,9 +52,9 @@ export class TeamControllerComponent {
   teamObject = {
     players: this.players,
     isAttacking: false,
-    teamName: 'Team Name',
-    teamTricode: 'TEAM',
-    teamUrl: 'assets/misc/icon.webp',
+    teamName: "Team Name",
+    teamTricode: "TEAM",
+    teamUrl: "assets/misc/icon.webp",
     roundsWon: 0,
     spentThisRound: 1000,
     roundRecord: [],
@@ -136,7 +136,7 @@ export class TeamControllerComponent {
     }
   }
 
-  propagateRoundPhase(phase: 'shopping' | 'combat') {
+  propagateRoundPhase(phase: "shopping" | "combat") {
     for (const playerController of this.playerControllers) {
       playerController.instance.gamePhase = phase;
     }

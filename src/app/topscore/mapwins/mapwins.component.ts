@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-mapwins',
-  templateUrl: './mapwins.component.html',
-  styleUrls: ['./mapwins.component.scss'],
+  selector: "app-mapwins",
+  templateUrl: "./mapwins.component.html",
+  styleUrls: ["./mapwins.component.scss"],
 })
 export class MapwinComponent {
   mapsNeeded = 3;

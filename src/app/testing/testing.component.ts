@@ -1,28 +1,28 @@
-import { AfterViewInit, Component, ViewChild, ViewContainerRef } from '@angular/core';
-import { TrackerComponent } from '../tracker/tracker.component';
-import { SocketService } from '../services/SocketService';
-import { ActivatedRoute } from '@angular/router';
-import { TeamControllerComponent } from './team-controller/team-controller.component';
+import { AfterViewInit, Component, ViewChild, ViewContainerRef } from "@angular/core";
+import { TrackerComponent } from "../tracker/tracker.component";
+import { SocketService } from "../services/SocketService";
+import { ActivatedRoute } from "@angular/router";
+import { TeamControllerComponent } from "./team-controller/team-controller.component";
 
 @Component({
-  selector: 'app-testing',
-  templateUrl: './testing.component.html',
-  styleUrls: ['./testing.component.scss'],
+  selector: "app-testing",
+  templateUrl: "./testing.component.html",
+  styleUrls: ["./testing.component.scss"],
 })
 export class TestingComponent implements AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
-  @ViewChild('team1') team1!: TeamControllerComponent;
-  @ViewChild('team2') team2!: TeamControllerComponent;
-  groupCode = 'UNKNOWN';
+  @ViewChild("team1") team1!: TeamControllerComponent;
+  @ViewChild("team2") team2!: TeamControllerComponent;
+  groupCode = "UNKNOWN";
   socketService!: SocketService;
 
   matchData: any;
   isSpikePlanted = false;
-  roundPhase: 'shopping' | 'combat' = 'combat';
+  roundPhase: "shopping" | "combat" = "combat";
 
   showInterface = true;
   showBackground = true;
-  backgroundClass = 'bg1';
+  backgroundClass = "bg1";
   backgroundClassId = 1;
 
   constructor(
@@ -30,7 +30,7 @@ export class TestingComponent implements AfterViewInit {
     private viewContainerRef: ViewContainerRef,
   ) {
     this.route.queryParams.subscribe((params) => {
-      this.groupCode = params['groupCode']?.toUpperCase() || 'UNKNOWN';
+      this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
       console.log(`Requested group code is ${this.groupCode}`);
     });
   }
@@ -49,29 +49,29 @@ export class TestingComponent implements AfterViewInit {
     this.matchData.switchRound = 6;
 
     this.matchData.teams[0].roundRecord = [
-      { type: 'detonated', wasAttack: true, round: 1 },
-      { type: 'lost', wasAttack: true, round: 2 },
-      { type: 'kills', wasAttack: true, round: 3 },
-      { type: 'timeout', wasAttack: true, round: 4 },
-      { type: 'lost', wasAttack: true, round: 5 },
-      { type: 'kills', wasAttack: false, round: 6 },
-      { type: 'lost', wasAttack: false, round: 7 },
-      { type: 'defused', wasAttack: false, round: 8 },
-      { type: 'lost', wasAttack: false, round: 9 },
-      { type: 'lost', wasAttack: false, round: 10 },
+      { type: "detonated", wasAttack: true, round: 1 },
+      { type: "lost", wasAttack: true, round: 2 },
+      { type: "kills", wasAttack: true, round: 3 },
+      { type: "timeout", wasAttack: true, round: 4 },
+      { type: "lost", wasAttack: true, round: 5 },
+      { type: "kills", wasAttack: false, round: 6 },
+      { type: "lost", wasAttack: false, round: 7 },
+      { type: "defused", wasAttack: false, round: 8 },
+      { type: "lost", wasAttack: false, round: 9 },
+      { type: "lost", wasAttack: false, round: 10 },
     ];
 
     this.matchData.teams[1].roundRecord = [
-      { type: 'lost', wasAttack: false, round: 1 },
-      { type: 'defused', wasAttack: false, round: 2 },
-      { type: 'lost', wasAttack: false, round: 3 },
-      { type: 'lost', wasAttack: false, round: 4 },
-      { type: 'kills', wasAttack: false, round: 5 },
-      { type: 'lost', wasAttack: true, round: 6 },
-      { type: 'detonated', wasAttack: true, round: 7 },
-      { type: 'lost', wasAttack: true, round: 8 },
-      { type: 'kills', wasAttack: true, round: 9 },
-      { type: 'timeout', wasAttack: true, round: 10 },
+      { type: "lost", wasAttack: false, round: 1 },
+      { type: "defused", wasAttack: false, round: 2 },
+      { type: "lost", wasAttack: false, round: 3 },
+      { type: "lost", wasAttack: false, round: 4 },
+      { type: "kills", wasAttack: false, round: 5 },
+      { type: "lost", wasAttack: true, round: 6 },
+      { type: "detonated", wasAttack: true, round: 7 },
+      { type: "lost", wasAttack: true, round: 8 },
+      { type: "kills", wasAttack: true, round: 9 },
+      { type: "timeout", wasAttack: true, round: 10 },
     ];
 
     this.team2.swapColor();
@@ -85,10 +85,10 @@ export class TestingComponent implements AfterViewInit {
   }
 
   changeRoundPhase(): void {
-    if (this.matchData.roundPhase == 'shopping') {
-      this.matchData.roundPhase = 'combat';
+    if (this.matchData.roundPhase == "shopping") {
+      this.matchData.roundPhase = "combat";
     } else {
-      this.matchData.roundPhase = 'shopping';
+      this.matchData.roundPhase = "shopping";
     }
     this.roundPhase = this.matchData.roundPhase;
   }
@@ -124,7 +124,7 @@ export class TestingComponent implements AfterViewInit {
   }
 
   switchBackground(): void {
-    this.backgroundClass = 'bg' + ++this.backgroundClassId;
+    this.backgroundClass = "bg" + ++this.backgroundClassId;
     this.backgroundClassId %= 5;
     if (this.isSpikePlanted && (this.backgroundClassId == 1 || this.backgroundClassId == 3)) {
       this.switchBackground();

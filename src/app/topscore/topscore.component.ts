@@ -1,15 +1,15 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { animate, style, transition, trigger } from "@angular/animations";
+import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
 
 @Component({
-  selector: 'app-topscore',
-  templateUrl: './topscore.component.html',
-  styleUrls: ['./topscore.component.scss'],
+  selector: "app-topscore",
+  templateUrl: "./topscore.component.html",
+  styleUrls: ["./topscore.component.scss"],
   animations: [
-    trigger('fade', [
-      transition(':enter', [style({ opacity: '0' }), animate('0.5s', style({ opacity: '1' }))]),
+    trigger("fade", [
+      transition(":enter", [style({ opacity: "0" }), animate("0.5s", style({ opacity: "1" }))]),
 
-      transition(':leave', animate('0.5s', style({ opacity: '0' }))),
+      transition(":leave", animate("0.5s", style({ opacity: "0" }))),
     ]),
   ],
 })
@@ -24,13 +24,13 @@ export class TopscoreComponent implements OnChanges {
   blinkInterval: any = undefined;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['match']) {
-      const match = changes['match'].currentValue;
-      if (match['spikeState']['planted'] != this.spikePlanted) {
-        this.spikePlanted = match['spikeState']['planted'];
+    if (changes["match"]) {
+      const match = changes["match"].currentValue;
+      if (match["spikeState"]["planted"] != this.spikePlanted) {
+        this.spikePlanted = match["spikeState"]["planted"];
 
         if (this.spikePlanted) {
-          this.detonationTime = match['spikeDetonationTime'];
+          this.detonationTime = match["spikeDetonationTime"];
           this.blinkState = false;
           this.lastActedTime = 9999;
           this.initSpikeBlink();

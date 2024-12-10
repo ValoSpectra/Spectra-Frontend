@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { Component, OnInit } from "@angular/core";
+import { trigger, transition, style, animate } from "@angular/animations";
 
 // enum Colors {
 //   ATTACKER_REG = 'rgba(232, 130, 125, 0.75)',
@@ -9,14 +9,14 @@ import { trigger, transition, style, animate } from '@angular/animations';
 // }
 
 @Component({
-  selector: 'app-tracker',
-  templateUrl: './tracker.component.html',
-  styleUrls: ['./tracker.component.scss'],
+  selector: "app-tracker",
+  templateUrl: "./tracker.component.html",
+  styleUrls: ["./tracker.component.scss"],
   animations: [
-    trigger('fade', [
-      transition(':enter', [style({ opacity: '0' }), animate('0.5s', style({ opacity: '1' }))]),
+    trigger("fade", [
+      transition(":enter", [style({ opacity: "0" }), animate("0.5s", style({ opacity: "1" }))]),
 
-      transition(':leave', animate('0.5s', style({ opacity: '0' }))),
+      transition(":leave", animate("0.5s", style({ opacity: "0" }))),
     ]),
   ],
 })
@@ -33,11 +33,11 @@ export class TrackerComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     //setting up with empty match state so certain ui parts dont complain
     this.match = {
-      groupCode: 'A',
+      groupCode: "A",
       isRanked: false,
       isRunning: true,
       roundNumber: 0,
-      roundPhase: 'combat',
+      roundPhase: "combat",
       teams: [{ players: [] }, { players: [] }],
       spikeState: { planted: false },
     };

@@ -39,11 +39,13 @@
   flex-grow: 1;
   border-radius: 8px;
   overflow: hidden;
-  background: linear-gradient(90deg,
-      rgba(15, 25, 35, 0.65) 0%,
-      rgba(15, 25, 35, 0.53) 53%,
-      rgba(15, 25, 35, 0) 75%,
-      rgba(15, 25, 35, 0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(15, 25, 35, 0.65) 0%,
+    rgba(15, 25, 35, 0.53) 53%,
+    rgba(15, 25, 35, 0) 75%,
+    rgba(15, 25, 35, 0) 100%
+  );
 }
 
 .money-spent-container {

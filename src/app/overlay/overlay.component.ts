@@ -25,10 +25,7 @@ export class OverlayComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.socketService = new SocketService(
-      this.config.serverEndpoint,
-      this.groupCode,
-    );
+    this.socketService = new SocketService(this.config.serverEndpoint, this.groupCode);
   }
 
   ngAfterViewInit(): void {

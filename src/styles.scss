@@ -1,44 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@800&family=Roboto+Mono:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@800&family=Roboto+Mono:wght@600&family=Roboto:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat:wght@400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@800&family=Roboto+Mono:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@800&family=Roboto+Mono:wght@600&family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat:wght@400;700;900&display=swap");
 
 * {
-    font-family: 'Inter', sans-serif;
-    color: #1E1E1E;
+  font-family: "Inter", sans-serif;
+  color: #1e1e1e;
 }
 
 html {
-    background-color: rgba(0, 0, 0, 0);
-    display: flex;
-    justify-content: center;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 :root {
-    --light: #ffffff;
-    --dark: #000000;
-    --less-dark: #0F0F0F;
-    --chat-msg: #DBDEE1;
-    --cerise: #E52E5E;
-    --slate: #262626;
-    --accent: #FFC700;
-    --blue-dodger: #24AFFE;
-    --tile-dark: #FFC700;
-    --tile-light: #FFFBD3;
-    --grunge-slate: #262626;
+  --light: #ffffff;
+  --dark: #000000;
+  --less-dark: #0f0f0f;
+  --chat-msg: #dbdee1;
+  --cerise: #e52e5e;
+  --slate: #262626;
+  --accent: #ffc700;
+  --blue-dodger: #24affe;
+  --tile-dark: #ffc700;
+  --tile-light: #fffbd3;
+  --grunge-slate: #262626;
 }
 
-
 .marker-square {
-    fill: yellow !important;
-    opacity: 0.5 !important;
+  fill: yellow !important;
+  opacity: 0.5 !important;
 }
 
 // rect.black {
