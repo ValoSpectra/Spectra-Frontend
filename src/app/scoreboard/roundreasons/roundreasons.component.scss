@@ -93,23 +93,23 @@
     border-top-style: solid;
 
     // Colors need to be in top and bottom because the gradient is shifts direction
-    &.red {
+    &.attacker {
       @extend .top;
-      border-color: #ff4557;
+      border-color: var(--attacker-color);
       background: linear-gradient(
         180deg,
-        rgba(255, 69, 87, 0.28) 0%,
-        rgba(255, 69, 87, 0) 100%
+        rgba(var(--attacker-color-rgb), 0.28) 0%,
+        rgba(var(--attacker-color-rgb), 0) 100%
       );
     }
 
-    &.green {
+    &.defender {
       @extend .top;
-      border-color: #61eab6;
+      border-color: var(--defender-color);
       background: linear-gradient(
         180deg,
-        rgba(97, 234, 182, 0.28) 0%,
-        rgba(97, 234, 182, 0) 100%
+        rgba(var(--defender-color-rgb), 0.28) 0%,
+        rgba(var(--defender-color-rgb), 0) 100%
       );
     }
   }
@@ -119,23 +119,23 @@
     border-bottom-width: 2px;
     border-bottom-style: solid;
 
-    &.red {
+    &.attacker {
       @extend .bottom;
-      border-color: #ff4557;
+      border-color: var(--attacker-color);
       background: linear-gradient(
         180deg,
-        rgba(255, 69, 87, 0) 0%,
-        rgba(255, 69, 87, 0.28) 100%
+        rgba(var(--attacker-color-rgb), 0) 0%,
+        rgba(var(--attacker-color-rgb), 0.28) 100%
       );
     }
 
-    &.green {
+    &.defender {
       @extend .bottom;
-      border-color: #61eab6;
+      border-color: var(--defender-color);
       background: linear-gradient(
         180deg,
-        rgba(97, 234, 182, 0) 0%,
-        rgba(97, 234, 182, 0.28) 100%
+        rgba(var(--defender-color-rgb), 0) 0%,
+        rgba(var(--defender-color-rgb), 0.28) 100%
       );
     }
   }

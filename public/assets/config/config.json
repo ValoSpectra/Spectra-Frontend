@@ -1,3 +1,7 @@
 {
-  "serverEndpoint": "http://localhost:5200"
+  "serverEndpoint": "http://localhost:5200",
+  "sponsorImageUrls": ["/assets/misc/logo.webp"],
+  "sponsorImageRotateSpeed": 5000,
+  "attackerColor": "#b82e3c",
+  "defenderColor": "#3c82b8"
 }

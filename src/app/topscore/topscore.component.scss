@@ -1,156 +1,156 @@
 .topscore {
-    position: absolute;
-    width: 601px;
-    height: 143px;
-    top: 4px;
-    left: 660px;
+  position: absolute;
+  width: 601px;
+  height: 143px;
+  top: 4px;
+  left: 660px;
 }
 
 .topscore-container {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 9px;
-    position: absolute;
-    top: 5px;
-    left: 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  position: absolute;
+  top: 5px;
+  left: 0;
 }
 
 .scoreboard {
-    display: inline-flex;
-    height: 62.76px;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 168.97px;
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    // box-shadow: -1px 1px 1px #0000001f; This currently creates a weird shadow between the two scoreblocks
+  display: inline-flex;
+  height: 62.76px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 168.97px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  // box-shadow: -1px 1px 1px #0000001f; This currently creates a weird shadow between the two scoreblocks
 }
 
 .teamcard {
-    display: flex;
-    width: 216px;
-    align-items: center;
-    position: relative;
-    align-self: stretch;
+  display: flex;
+  width: 216px;
+  align-items: center;
+  position: relative;
+  align-self: stretch;
 }
 
 .teaminfo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12.07px;
-    padding: 4.83px 0px 0px;
-    position: relative;
-    flex: 1;
-    align-self: stretch;
-    flex-grow: 1;
-    background-color: #0f1923d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12.07px;
+  padding: 4.83px 0px 0px;
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  background-color: #0f1923d9;
 }
 
 .teamcode {
-    position: relative;
-    width: fit-content;
-    margin-top: -1.21px;
-    font-family: Unbounded, Helvetica;
-    font-weight: 800;
-    color: #ffffff;
-    font-size: 20px;
-    font-style: normal;
-    text-align: center;
-    letter-spacing: -0.48px;
-    line-height: normal;
-    white-space: nowrap;
+  position: relative;
+  width: fit-content;
+  margin-top: -1.21px;
+  font-family: Unbounded, Helvetica;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 20px;
+  font-style: normal;
+  text-align: center;
+  letter-spacing: -0.48px;
+  line-height: normal;
+  white-space: nowrap;
 }
 
 .divider {
-    position: relative;
-    align-self: stretch;
-    width: 3.62px;
-    &.green {
-        @extend .divider;
-        background-color: #61eab6;
-    }
-    &.red {
-        @extend .divider;
-        background-color: #ff4557;
-    }
+  position: relative;
+  align-self: stretch;
+  width: 3.62px;
+  &.defender {
+    @extend .divider;
+    background-color: var(--defender-color-light);
+  }
+  &.attacker {
+    @extend .divider;
+    background-color: var(--attacker-color-light);
+  }
 }
 
 .scoreblock {
-    display: flex;
-    flex-direction: column;
-    width: 70px;
-    align-items: center;
-    justify-content: center;
-    gap: 12.07px;
-    position: relative;
-    align-self: stretch;
-    border: 0px none;
-    &-left {
-        @extend .scoreblock;
-        border-radius: 0px 4px 4px 0px;
-    }
-    &-right {
-        @extend .scoreblock;
-        border-radius: 4px 0px 0px 4px;
-    }
-    &.green {
-        @extend .scoreblock;
-        background-color: #25ac79;
-    }
-    &.red {
-        @extend .scoreblock;
-        background-color: #b82e3c;
-    }
+  display: flex;
+  flex-direction: column;
+  width: 70px;
+  align-items: center;
+  justify-content: center;
+  gap: 12.07px;
+  position: relative;
+  align-self: stretch;
+  border: 0px none;
+  &-left {
+    @extend .scoreblock;
+    border-radius: 0px 4px 4px 0px;
+  }
+  &-right {
+    @extend .scoreblock;
+    border-radius: 4px 0px 0px 4px;
+  }
+  &.defender {
+    @extend .scoreblock;
+    background-color: var(--defender-color);
+  }
+  &.attacker {
+    @extend .scoreblock;
+    background-color: var(--attacker-color);
+  }
 }
 
 .score-text {
-    position: relative;
-    width: fit-content;
-    text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.12);
-    font-family: "Montserrat", Helvetica;
-    font-weight: 700;
-    color: #ffffff;
-    font-size: 40px;
-    font-style: normal;
-    text-align: center;
-    // letter-spacing: 1.2px;
-    line-height: normal;
+  position: relative;
+  width: fit-content;
+  text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.12);
+  font-family: "Montserrat", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 40px;
+  font-style: normal;
+  text-align: center;
+  // letter-spacing: 1.2px;
+  line-height: normal;
 }
 
 .team-image {
-    position: relative;
-    max-width: 38.34px;
-    max-height: 38.34px;
+  position: relative;
+  max-width: 38.34px;
+  max-height: 38.34px;
 }
 
 .round-number {
-    font-family: "Unbounded-Bold", Helvetica;
-    font-weight: 700;
-    color: #fefeff99;
-    font-size: 15px;
-    text-align: center;
-    letter-spacing: 0.39px;
-    line-height: normal;
+  font-family: "Unbounded-Bold", Helvetica;
+  font-weight: 700;
+  color: #fefeff99;
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: 0.39px;
+  line-height: normal;
 }
 
 .spike-indicator {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    position: relative;
-    top: -58px;
-    flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  position: relative;
+  top: -58px;
+  flex: 0 0 auto;
 }
 
 .spike-icon {
-    position: relative;
-    width: 67.24px;
-    height: 61.99px;
-    margin-top: -7px;
-    margin-bottom: -9px;
-    margin-left: -8px;
-    margin-right: -8px;
+  position: relative;
+  width: 67.24px;
+  height: 61.99px;
+  margin-top: -7px;
+  margin-bottom: -9px;
+  margin-left: -8px;
+  margin-right: -8px;
 }

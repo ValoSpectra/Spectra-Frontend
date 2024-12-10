@@ -1,51 +1,41 @@
 <div class="scoreboard-container">
-    <div class="scoreboard-header-container">
-        <div class="team-container">
-            <img class="team-icon" src="{{match.teams[0].teamUrl}}" />
-                <div class="teaminfo-wrapper-left">
-                    <div class="teamname-text">{{match.teams[0].teamName}}</div>
-                    <div class="money-spent-container">
-                        <div class="money-spent-wrapper">
-                            <img class="credits-icon" src="../../assets/misc/ValorantCreditsWhite.svg" />
-                            {{match.teams[0].spentThisRound}}
-                        </div>
-                        <div class="money-spent-label-text">SPENT THIS ROUND</div>
-                    </div>
-                </div>
+  <div class="scoreboard-header-container">
+    <div class="team-container">
+      <img class="team-icon" src="{{ match.teams[0].teamUrl }}" />
+      <div class="teaminfo-wrapper-left">
+        <div class="teamname-text">{{ match.teams[0].teamName }}</div>
+        <div class="money-spent-container">
+          <div class="money-spent-wrapper">
+            <img class="credits-icon" src="../../assets/misc/ValorantCreditsWhite.svg" />
+            {{ match.teams[0].spentThisRound }}
+          </div>
+          <div class="money-spent-label-text">SPENT THIS ROUND</div>
         </div>
-        <app-roundreasons class="round-reasons" [match]="match" />
-        <div class="team-container flip">
-            <img class="team-icon flip" src="{{match.teams[1].teamUrl}}" />
-                <div class="teaminfo-wrapper-right flip">
-                    <div class="teamname-text">{{match.teams[1].teamName}}</div>
-                    <div class="money-spent-container">
-                        <div class="money-spent-label-text">SPENT THIS ROUND</div>
-                        <div class="money-spent-wrapper">
-                            <img class="credits-icon" src="../../assets/misc/ValorantCreditsWhite.svg" />
-                            {{match.teams[1].spentThisRound}}
-                        </div>
-                    </div>
-                </div>
-        </div>
+      </div>
     </div>
-    <div class="scoreboard-content-container">
-        <div class="playerscore-wrapper">
-            <app-playerscore 
-                *ngFor="let player of match.teams[0].players; trackBy: trackByPlayerId" 
-                [match]="match"
-                [player]="player" 
-                [color]="match.teams[0].isAttacking ? 'red' : 'green'"
-                side="left"
-            />
+    <app-roundreasons class="round-reasons" [match]="match" />
+    <div class="team-container flip">
+      <img class="team-icon flip" src="{{ match.teams[1].teamUrl }}" />
+      <div class="teaminfo-wrapper-right flip">
+        <div class="teamname-text">{{ match.teams[1].teamName }}</div>
+        <div class="money-spent-container">
+          <div class="money-spent-label-text">SPENT THIS ROUND</div>
+          <div class="money-spent-wrapper">
+            <img class="credits-icon" src="../../assets/misc/ValorantCreditsWhite.svg" />
+            {{ match.teams[1].spentThisRound }}
+          </div>
         </div>
-        <div class="playerscore-wrapper flip">
-            <app-playerscore 
-                *ngFor="let player of match.teams[1].players; trackBy: trackByPlayerId"
-                [match]="match"
-                [player]="player" 
-                [color]="match.teams[1].isAttacking ? 'red' : 'green'"
-                side="right"
-            />
-        </div>
+      </div>
     </div>
+  </div>
+  <div class="scoreboard-content-container">
+    <div class="playerscore-wrapper">
+      <app-playerscore *ngFor="let player of match.teams[0].players; trackBy: trackByPlayerId" [match]="match"
+        [player]="player" [color]="match.teams[0].isAttacking ? 'attacker' : 'defender'" side="left" />
+    </div>
+    <div class="playerscore-wrapper flip">
+      <app-playerscore *ngFor="let player of match.teams[1].players; trackBy: trackByPlayerId" [match]="match"
+        [player]="player" [color]="match.teams[1].isAttacking ? 'attacker' : 'defender'" side="right" />
+    </div>
+  </div>
 </div>

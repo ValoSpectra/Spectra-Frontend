@@ -1,52 +1,60 @@
 <div class="round-reasons-container" *ngIf="match.teams[0].roundRecord.length > 0">
-
   <div class="left-team">
     <div class="team-info">
-      {{match.teams[0].teamTricode}}
+      {{ match.teams[0].teamTricode }}
     </div>
     <div class="reason-container">
-      <div *ngFor="let record of match.teams[0].roundRecord | slice:-10">
-
-        <div class="divider" *ngIf="record.round === match.switchRound || record.round === match.firstOtRound">
-          <img class="line" src="{{assets}}/roundWinReason/divider-line.svg" />
+      <div *ngFor="let record of match.teams[0].roundRecord | slice: -10">
+        <div class="divider" *ngIf="
+            record.round === match.switchRound ||
+            record.round === match.firstOtRound
+          ">
+          <img class="line" src="{{ assets }}/roundWinReason/divider-line.svg" />
         </div>
 
-        <div [class]="'reason-color top ' + (record.wasAttack ? 'red' : 'green')" *ngIf="record.type !== 'lost'">
-          <div class="image-container"><img class="image" src="{{assets}}/roundWinReason/{{record.type}}.webp" /></div>
+        <div [class]="
+            'reason-color top ' + (record.wasAttack ? 'attacker' : 'defender')
+          " *ngIf="record.type !== 'lost'">
+          <div class="image-container">
+            <img class="image" src="{{ assets }}/roundWinReason/{{ record.type }}.webp" />
+          </div>
         </div>
 
         <div class="reason-color lost" *ngIf="record.type === 'lost'">
-          <div class="round-number">{{record.round}}</div>
+          <div class="round-number">{{ record.round }}</div>
         </div>
-
       </div>
     </div>
   </div>
 
   <div class="right-team">
     <div class="team-info">
-      {{match.teams[1].teamTricode}}
+      {{ match.teams[1].teamTricode }}
     </div>
     <div class="reason-container">
-      <div *ngFor="let record of match.teams[1].roundRecord | slice:-10">
-
-        <div class="divider" *ngIf="record.round === match.switchRound || record.round === match.firstOtRound">
-          <img class="line" src="{{assets}}/roundWinReason/divider-line.svg" />
+      <div *ngFor="let record of match.teams[1].roundRecord | slice: -10">
+        <div class="divider" *ngIf="
+            record.round === match.switchRound ||
+            record.round === match.firstOtRound
+          ">
+          <img class="line" src="{{ assets }}/roundWinReason/divider-line.svg" />
         </div>
 
-        <div [class]="'reason-color bottom ' + (record.wasAttack ? 'red' : 'green')" *ngIf="record.type !== 'lost'">
-          <div class="image-container"><img class="image" src="{{assets}}/roundWinReason/{{record.type}}.webp" /></div>
+        <div [class]="
+            'reason-color bottom ' +
+            (record.wasAttack ? 'attacker' : 'defender')
+          " *ngIf="record.type !== 'lost'">
+          <div class="image-container">
+            <img class="image" src="{{ assets }}/roundWinReason/{{ record.type }}.webp" />
+          </div>
         </div>
 
         <div class="reason-color lost" *ngIf="record.type === 'lost'">
-          <div class="round-number">{{record.round}}</div>
+          <div class="round-number">{{ record.round }}</div>
         </div>
-
       </div>
     </div>
   </div>
-
-
 
   <!-- <div class="reason-color top red">
     <div class="image-container"><img class="image" src="../../assets/roundWinReason/kills.webp" /></div>

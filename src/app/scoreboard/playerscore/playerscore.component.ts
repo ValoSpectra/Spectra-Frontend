@@ -1,24 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-playerscore',
-  templateUrl: './playerscore.component.html',
-  styleUrls: ['./playerscore.component.scss'],
+  selector: "app-playerscore",
+  templateUrl: "./playerscore.component.html",
+  styleUrls: ["./playerscore.component.scss"],
 })
 export class PlayerscoreComponent {
-
   public readonly assets: String = "../../../assets";
 
   @Input() match!: any;
   @Input() player!: any;
-  @Input() color!: "red" | "green";
+  @Input() color!: "attacker" | "defender";
   @Input() side!: "left" | "right";
 
-  constructor() {
-  }
+  constructor() { }
 
   numSequence(n: number): Array<number> {
     return Array(n);
   }
-
 }
