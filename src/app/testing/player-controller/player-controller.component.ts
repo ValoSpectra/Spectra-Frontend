@@ -1,19 +1,19 @@
-import { booleanAttribute, Component, EventEmitter, Input, Output } from '@angular/core';
+import { booleanAttribute, Component, EventEmitter, Input, Output, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-player-controller',
   templateUrl: './player-controller.component.html',
   styleUrl: './player-controller.component.scss'
 })
-export class PlayerControllerComponent {
+export class PlayerControllerComponent implements OnDestroy {
   @Output() spikeTakenEvent = new EventEmitter<void>();
   @Output() captainTakenEvent = new EventEmitter<void>();
   @Output() spectateTakenEvent = new EventEmitter<void>();
 
-  @Input() showInterface: boolean = true;
-  @Input({transform: booleanAttribute}) flipInterface: boolean = false;
+  @Input() showInterface = true;
+  @Input({transform: booleanAttribute}) flipInterface = false;
 
-  @Input() teamId: number = 0;
+  @Input() teamId = 0;
 
   inCombat = true;
   inShopping = false;
@@ -129,13 +129,13 @@ export class PlayerControllerComponent {
   }
 
   changeWeapon(): void {
-    var i = this.weaponOrder.findIndex(e => e == this.playerObject.highestWeapon);
+    let i = this.weaponOrder.findIndex(e => e == this.playerObject.highestWeapon);
     i++;
     i %= this.weaponOrder.length;
     this.playerObject.highestWeapon = this.weaponOrder[i];
 
     //money change here
-    var j = this.moneyOrder.findIndex(e => e == this.playerObject.moneySpent);
+    let j = this.moneyOrder.findIndex(e => e == this.playerObject.moneySpent);
     this.playerObject.money += this.playerObject.moneySpent;
     j++;
     j %= this.moneyOrder.length;
@@ -144,7 +144,7 @@ export class PlayerControllerComponent {
   }
 
   changeShield(): void {
-    var i = this.armorOrder.findIndex(e => e == this.playerObject.armorName);
+    let i = this.armorOrder.findIndex(e => e == this.playerObject.armorName);
     i++;
     i %= this.armorOrder.length;
     this.playerObject.armorName = this.armorOrder[i];

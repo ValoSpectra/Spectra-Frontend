@@ -11,7 +11,7 @@ import { Config } from "../shared/config";
 })
 export class OverlayComponent implements OnInit, AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
-  groupCode: string = "UNKNOWN";
+  groupCode = "UNKNOWN";
   socketService!: SocketService;
 
   constructor(

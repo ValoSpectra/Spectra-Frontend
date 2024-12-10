@@ -4,7 +4,7 @@
         <button class="test-button" *ngIf="playerControllers.length &gt; 0" (click)="removePlayer()">Remove Player</button>
         <button class="test-button" (click)="addRoundwin()">Win round</button>
     </div>
-    <div class="playerControllerSpace" [class.shop]="_roundPhase == 'shopping'">
+    <div class="playerControllerSpace" [class.shop]="_roundPhase === 'shopping'">
         <ng-template #playerControllerSpace></ng-template>
     </div>
 </div>

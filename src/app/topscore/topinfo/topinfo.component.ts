@@ -5,9 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './topinfo.component.html',
   styleUrls: ['./topinfo.component.scss'],
 })
-export class TopinfoComponent {
-
-  constructor() {
-  }
-
-}
+export class TopinfoComponent {}
