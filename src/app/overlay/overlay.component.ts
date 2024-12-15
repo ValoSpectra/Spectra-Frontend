@@ -11,7 +11,7 @@ import { Config } from "../shared/config";
 })
 export class OverlayComponent implements OnInit, AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
-  groupCode: string = "UNKNOWN";
+  groupCode = "UNKNOWN";
   socketService!: SocketService;
 
   constructor(
@@ -25,10 +25,7 @@ export class OverlayComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.socketService = new SocketService(
-      this.config.serverEndpoint,
-      this.groupCode,
-    );
+    this.socketService = new SocketService(this.config.serverEndpoint, this.groupCode);
   }
 
   ngAfterViewInit(): void {

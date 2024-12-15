@@ -1,319 +1,317 @@
 .flip {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .right {
-    @extend .flip;
+  @extend .flip;
 }
 
 .player-container {
-    display: inline-flex;
-    align-items: flex-start;
-    position: relative;
-    flex: 0 0 auto;
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .agent-icon {
-    z-index: 1;
-    background-size: cover;
-    background-position: 50% 50%;
-    position: absolute;
-    aspect-ratio: 1;
-    height: 100%;
-    top: 0;
+  z-index: 1;
+  background-size: cover;
+  background-position: 50% 50%;
+  position: absolute;
+  aspect-ratio: 1;
+  height: 100%;
+  top: 0;
 
-    &.dead {
-        @extend .agent-icon;
-        filter: grayscale(1);
-    }
+  &.dead {
+    @extend .agent-icon;
+    filter: grayscale(1);
+  }
 }
 
 .player-card {
-    display: inline-flex;
-    align-items: flex-start;
-    position: relative;
-    flex: 0 0 auto;
-    z-index: 0;
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+  z-index: 0;
 }
 
 .utility-container {
-    align-items: flex-start;
-    padding: 0px 0px 4px 18px;
-    display: flex;
-    flex-direction: column;
-    width: 186px;
-    height: 74px;
-    justify-content: flex-end;
-    gap: 4px;
-    position: relative;
-    border: 0px none;
+  align-items: flex-start;
+  padding: 0px 0px 4px 18px;
+  display: flex;
+  flex-direction: column;
+  width: 186px;
+  height: 74px;
+  justify-content: flex-end;
+  gap: 4px;
+  position: relative;
+  border: 0px none;
 
-    &.red {
-        @extend .utility-container;
-        background: linear-gradient(90deg,
-                rgba(255, 69, 87, 0.52) 0%,
-                rgba(255, 69, 87, 0.3) 58.5%,
-                rgba(26.56, 7.42, 9.27, 0.09) 90.5%,
-                rgba(10.63, 3.05, 3.79, 0) 100%);
-    }
+  &.red {
+    @extend .utility-container;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 69, 87, 0.52) 0%,
+      rgba(255, 69, 87, 0.3) 58.5%,
+      rgba(26.56, 7.42, 9.27, 0.09) 90.5%,
+      rgba(10.63, 3.05, 3.79, 0) 100%
+    );
+  }
 
-    &.green {
-        @extend .utility-container;
-        background: linear-gradient(90deg,
-                rgba(97, 234, 182, 0.52) 0%,
-                rgba(56.26, 135.72, 105.56, 0.3) 58.5%,
-                rgba(17.62, 42.51, 33.07, 0.09) 90.5%,
-                rgba(0, 0, 0, 0) 100%);
-    }
+  &.green {
+    @extend .utility-container;
+    background: linear-gradient(
+      90deg,
+      rgba(97, 234, 182, 0.52) 0%,
+      rgba(56.26, 135.72, 105.56, 0.3) 58.5%,
+      rgba(17.62, 42.51, 33.07, 0.09) 90.5%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
 }
 
 .weapon-icon-wrapper {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    position: relative;
-    flex: 0 0 auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .weapon-icon {
-    position: relative;
-    height: 32px;
-    object-fit: cover;
-    transform: rotateY(180deg);
+  position: relative;
+  height: 32px;
+  object-fit: cover;
+  transform: rotateY(180deg);
 }
 
 .ultimate-tracker-container {
-    display: inline-flex;
-    height: 21.33px;
-    width: 67%;
-    align-items: center;
-    gap: 20px;
-    position: relative;
-    // justify-content: center;
+  display: inline-flex;
+  height: 21.33px;
+  width: 67%;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  // justify-content: center;
 }
 
 .spike-icon-wrapper {
-    position: relative;
-    align-items: center;
-    display: inline-flex;
-    justify-content: end;
-    flex: 0 0 auto;
-    justify-self: end;
+  position: relative;
+  align-items: center;
+  display: inline-flex;
+  justify-content: end;
+  flex: 0 0 auto;
+  justify-self: end;
 }
 
 .spike-icon {
-    position: relative;
-    width: 30px;
-    aspect-ratio: 1;
+  position: relative;
+  width: 30px;
+  aspect-ratio: 1;
 }
 
 .ultimate-tracker {
-    width: 60%;
-    display: inline-flex;
-    align-items: center;
-    gap: 1px;
-    position: relative;
-    flex: 0 0 auto;
-    justify-content: center;
+  width: 60%;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  position: relative;
+  flex: 0 0 auto;
+  justify-content: center;
 }
 
 .pip-ultimate {
-    position: relative;
-    width: 10px;
-    height: 10px;
-    margin-right: -2px;
-    background-image: url(/assets/misc/ultimate-pip.svg);
-    background-size: 100% 100%;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  margin-right: -2px;
+  background-image: url(/assets/misc/ultimate-pip.svg);
+  background-size: 100% 100%;
 
-    &-full {
-        @extend .pip-ultimate;
-        background-image: url(/assets/misc/ultimate-pip-full.svg);
-    }
+  &-full {
+    @extend .pip-ultimate;
+    background-image: url(/assets/misc/ultimate-pip-full.svg);
+  }
 }
 
 .ultimate-full-image {
-    width: 25px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 25px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .rank-icon-container {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    left: -48px;
-    bottom: 0px;
-    z-index: 2;
-    background-size: cover;
-    background-position: 50% 50%;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: -48px;
+  bottom: 0px;
+  z-index: 2;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .rank-icon {
-    height: 100%;
-    aspect-ratio: 1;
+  height: 100%;
+  aspect-ratio: 1;
 }
 
 .agent-icon-container {
-    left: -44px;
-    z-index: 1;
-    position: absolute;
-    height: 100%;
-    top: 0;
+  left: -44px;
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  top: 0;
 }
 
 .player-info {
-    display: flex;
-    flex-direction: column;
-    width: 160px;
-    height: 74px;
-    align-items: flex-start;
-    justify-content: flex-end;
-    gap: 4px;
-    padding: 0px 0px 2px 32px;
-    position: relative;
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  height: 74px;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 0px 0px 2px 32px;
+  position: relative;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  overflow: hidden;
 
-    &.green {
-        @extend .player-info;
-        border-color: #61eab6;
-        background: linear-gradient(90deg,
-                rgba(31, 122, 88, 0.40) 0%,
-                rgba(31, 122, 88, 0.00) 100%),
-            rgba(15, 25, 35, 0.60);
-    }
+  &.green {
+    @extend .player-info;
+    border-color: #61eab6;
+    background: linear-gradient(90deg, rgba(31, 122, 88, 0.4) 0%, rgba(31, 122, 88, 0) 100%),
+      rgba(15, 25, 35, 0.6);
+  }
 
-    &.red {
-        @extend .player-info;
-        border-color: #FF4557;
-        background: linear-gradient(90deg,
-                rgba(255, 69, 87, 0.30) 0%,
-                rgba(31, 122, 88, 0.00) 100%),
-            rgba(15, 25, 35, 0.60);
-    }
+  &.red {
+    @extend .player-info;
+    border-color: #ff4557;
+    background: linear-gradient(90deg, rgba(255, 69, 87, 0.3) 0%, rgba(31, 122, 88, 0) 100%),
+      rgba(15, 25, 35, 0.6);
+  }
 
-    &.observed {
-        @extend .player-info;
-        background: linear-gradient(90deg, 
-                rgba(225, 181, 22, 0.30) 0%,
-                rgba(225, 181, 22, 0.00) 100%),
-            rgba(15, 25, 35, 0.70);
-    }
+  &.observed {
+    @extend .player-info;
+    background: linear-gradient(90deg, rgba(225, 181, 22, 0.3) 0%, rgba(225, 181, 22, 0) 100%),
+      rgba(15, 25, 35, 0.7);
+  }
 
-    &.dead {
-        @extend .player-info;
-        background: rgba(15, 25, 35, 0.60);
-    }
+  &.dead {
+    @extend .player-info;
+    background: rgba(15, 25, 35, 0.6);
+  }
 }
 
 .spectator-icon-container {
-    width: 150px;
-    height: 100%;
-    padding-top: 8px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: 10px;
-    display: inline-flex;
+  width: 150px;
+  height: 100%;
+  padding-top: 8px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 10px;
+  display: inline-flex;
 }
 
 .spectator-icon {
-    width: 18px;
-    aspect-ratio: 1;
+  width: 18px;
+  aspect-ratio: 1;
 }
 
 .info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
-    gap: 4px;
-    position: relative;
-    align-self: stretch;
-    width: 100%;
-    flex: 0 0 auto;
-    top: -4px;
-    left: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 4px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  top: -4px;
+  left: 5px;
 }
 
 .shields-currency {
-    display: inline-flex;
-    height: 20px;
-    align-items: center;
-    gap: 6px;
-    position: relative;
+  display: inline-flex;
+  height: 20px;
+  align-items: center;
+  gap: 6px;
+  position: relative;
 }
 
 .shield-icon {
-    height: 22px;
-    width: 22px;
-    position: relative;
-    flex: 0 0 auto;
+  height: 22px;
+  width: 22px;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .captain-icon {
-    height: 17px;
-    width: 17px;
-    position: relative;
-    flex: 0 0 auto;
+  height: 17px;
+  width: 17px;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .currency-container {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    position: relative;
-    flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .valorant-credits {
-    position: relative;
-    width: 8px;
-    height: 8px;
+  position: relative;
+  width: 8px;
+  height: 8px;
 }
 
 .currency-title {
-    position: relative;
-    width: fit-content;
-    margin-top: -1px;
-    opacity: 0.8;
-    font-family: "Montserrat", Helvetica;
-    font-weight: 700;
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  opacity: 0.8;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
 
-    &.red {
-        @extend .currency-title;
-        color: #ff838f;
-    }
+  &.red {
+    @extend .currency-title;
+    color: #ff838f;
+  }
 
-    &.green {
-        @extend .currency-title;
-        color: #61eab6;
-    }
+  &.green {
+    @extend .currency-title;
+    color: #61eab6;
+  }
 }
 
 .username-container {
-    display: inline-flex;
-    height: 15px;
-    align-items: center;
-    gap: 4px;
-    position: relative;
+  display: inline-flex;
+  height: 15px;
+  align-items: center;
+  gap: 4px;
+  position: relative;
 }
 
 .username-title {
-    position: relative;
-    width: fit-content;
-    font-family: "Montserrat", Helvetica;
-    font-weight: 600;
-    color: #ffffff;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
+  position: relative;
+  width: fit-content;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
 }

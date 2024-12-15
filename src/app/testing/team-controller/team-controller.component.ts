@@ -1,23 +1,33 @@
-import { booleanAttribute, Component, ComponentRef, EventEmitter, Input, numberAttribute, Output, ViewChild, ViewContainerRef } from '@angular/core';
-import { PlayerControllerComponent } from '../player-controller/player-controller.component';
+import {
+  booleanAttribute,
+  Component,
+  ComponentRef,
+  EventEmitter,
+  Input,
+  numberAttribute,
+  Output,
+  ViewChild,
+  ViewContainerRef,
+} from "@angular/core";
+import { PlayerControllerComponent } from "../player-controller/player-controller.component";
 
 @Component({
-  selector: 'app-team-controller',
-  templateUrl: './team-controller.component.html',
-  styleUrl: './team-controller.component.scss'
+  selector: "app-team-controller",
+  templateUrl: "./team-controller.component.html",
+  styleUrl: "./team-controller.component.scss",
 })
 export class TeamControllerComponent {
-
-  @ViewChild("playerControllerSpace", {read: ViewContainerRef}) playerControllerSpace!: ViewContainerRef;
+  @ViewChild("playerControllerSpace", { read: ViewContainerRef })
+  playerControllerSpace!: ViewContainerRef;
   @Output() roundWinEvent = new EventEmitter<void>();
   @Output() spectateTakenEvent = new EventEmitter<void>();
-  @Input({transform: booleanAttribute}) flipInterface: boolean = false;
-  @Input({transform: numberAttribute}) teamId: number = 0;
+  @Input({ transform: booleanAttribute }) flipInterface = false;
+  @Input({ transform: numberAttribute }) teamId = 0;
   @Input() teamName!: string;
   @Input() teamCode!: string;
 
   _roundPhase: "shopping" | "combat" = "combat";
-  @Input() 
+  @Input()
   set roundPhase(s: "shopping" | "combat") {
     this._roundPhase = s;
     this.propagateRoundPhase(s);
@@ -26,8 +36,8 @@ export class TeamControllerComponent {
     return this._roundPhase;
   }
 
-  _showInterface: boolean = true;
-  @Input() 
+  _showInterface = true;
+  @Input()
   set showInterface(b: boolean) {
     this._showInterface = b;
     this.propagateInterfaceState(b);
@@ -57,7 +67,10 @@ export class TeamControllerComponent {
   }
 
   addPlayer(): void {
-    const newPlayerControllerRef = this.playerControllerSpace.createComponent<PlayerControllerComponent>(PlayerControllerComponent);
+    const newPlayerControllerRef =
+      this.playerControllerSpace.createComponent<PlayerControllerComponent>(
+        PlayerControllerComponent,
+      );
     this.playerControllers.push(newPlayerControllerRef);
 
     newPlayerControllerRef.instance.isAttacking = this.teamObject.isAttacking;
@@ -81,8 +94,8 @@ export class TeamControllerComponent {
   swapColor(): void {
     this.teamObject.isAttacking = !this.teamObject.isAttacking;
 
-    for (let i = 0; i < this.playerControllers.length; i++) {
-      const player = this.playerControllers[i].instance;
+    for (const playerController of this.playerControllers) {
+      const player = playerController.instance;
       player.isAttacking = this.teamObject.isAttacking;
       player.removeSpike();
     }
@@ -95,38 +108,37 @@ export class TeamControllerComponent {
   }
 
   spikeCleanse(): void {
-    for (let i = 0; i < this.playerControllers.length; i++) {
-      this.playerControllers[i].instance.removeSpike();
+    for (const playerController of this.playerControllers) {
+      playerController.instance.removeSpike();
     }
   }
 
   captainCleanse(): void {
-    for (let i = 0; i < this.playerControllers.length; i++) {
-      this.playerControllers[i].instance.removeLeader();
+    for (const playerController of this.playerControllers) {
+      playerController.instance.removeLeader();
     }
   }
-  
+
   private clearSpectate(): void {
     this.spectateCleanse();
     this.spectateTakenEvent.emit();
   }
 
   spectateCleanse(): void {
-    for (let i = 0; i < this.playerControllers.length; i++) {
-      this.playerControllers[i].instance.stopSpectate();
+    for (const playerController of this.playerControllers) {
+      playerController.instance.stopSpectate();
     }
   }
 
   propagateInterfaceState(state: boolean) {
-    for (let i = 0; i < this.playerControllers.length; i++) {
-      this.playerControllers[i].instance.showInterface = state;
+    for (const playerController of this.playerControllers) {
+      playerController.instance.showInterface = state;
     }
   }
 
   propagateRoundPhase(phase: "shopping" | "combat") {
-    for (let i = 0; i < this.playerControllers.length; i++) {
-      this.playerControllers[i].instance.gamePhase = phase;
+    for (const playerController of this.playerControllers) {
+      playerController.instance.gamePhase = phase;
     }
   }
-
 }

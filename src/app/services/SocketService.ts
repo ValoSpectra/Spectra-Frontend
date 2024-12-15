@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 import * as io from "socket.io-client";
 
 export class SocketService {
   socket!: io.Socket;
-  socketEndpoint: string = "https://localhost:5200";
-  groupCode: string = "UNKNOWN";
+  socketEndpoint = "https://localhost:5200";
+  groupCode = "UNKNOWN";
   subscribers: Function[] = [];
 
   constructor(socketEndpoint: string, groupCode: string) {
@@ -26,9 +27,7 @@ export class SocketService {
 
     //setting up reconnection attempt handler
     this.socket.io.on("reconnect_attempt", (attempt: number) => {
-      console.log(
-        `Connection lost, attempting to reconnect to server (Attempt: ${attempt})`,
-      );
+      console.log(`Connection lost, attempting to reconnect to server (Attempt: ${attempt})`);
     });
 
     //setting up reconnection handler

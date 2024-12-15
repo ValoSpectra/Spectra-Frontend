@@ -1,50 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { trigger, transition, style, animate } from "@angular/animations";
 
-enum Colors {
-  ATTACKER_REG = "rgba(232, 130, 125, 0.75)",
-  ATTACKER_FEINT = "rgba(232, 130, 125, 0.35)",
-  DEFENDER_REG = "rgba(125, 232, 187, 0.75)",
-  DEFENDER_FEINT = "rgba(125, 232, 187, 0.35)",
-}
+// enum Colors {
+//   ATTACKER_REG = 'rgba(232, 130, 125, 0.75)',
+//   ATTACKER_FEINT = 'rgba(232, 130, 125, 0.35)',
+//   DEFENDER_REG = 'rgba(125, 232, 187, 0.75)',
+//   DEFENDER_FEINT = 'rgba(125, 232, 187, 0.35)',
+// }
 
 @Component({
-  selector: 'app-tracker',
-  templateUrl: './tracker.component.html',
-  styleUrls: ['./tracker.component.scss'],
+  selector: "app-tracker",
+  templateUrl: "./tracker.component.html",
+  styleUrls: ["./tracker.component.scss"],
   animations: [
-    trigger('fade', [
-      transition(':enter', [
-        style({ 'opacity': '0' }),
-        animate('0.5s', style({ 'opacity': '1' }))
-      ]),
+    trigger("fade", [
+      transition(":enter", [style({ opacity: "0" }), animate("0.5s", style({ opacity: "1" }))]),
 
-      transition(':leave',
-        animate('0.5s', style({ 'opacity': '0' }))
-      )
-    ])
-  ]
+      transition(":leave", animate("0.5s", style({ opacity: "0" }))),
+    ]),
+  ],
 })
 export class TrackerComponent implements OnInit {
-
-  activelyTracking: boolean = false;
+  activelyTracking = false;
   currentTrackId: string | null = null;
   match: any = null;
   teamLeft: any = null;
   teamRight: any = null;
 
-  ranksEnabled: boolean = false;
+  ranksEnabled = false;
   ranksByName: any = {};
 
-  constructor() {
-  }
-
   async ngOnInit(): Promise<void> {
-
     //setting up with empty match state so certain ui parts dont complain
-    this.match = {"groupCode":"A","isRanked":false,"isRunning":true,"roundNumber":0,"roundPhase":"combat","teams":[{"players":[]},{"players":[]}],"spikeState": {"planted": false}};
-    
+    this.match = {
+      groupCode: "A",
+      isRanked: false,
+      isRunning: true,
+      roundNumber: 0,
+      roundPhase: "combat",
+      teams: [{ players: [] }, { players: [] }],
+      spikeState: { planted: false },
+    };
+
     if (this.ranksEnabled) {
       // this.ranksByName = this.inhouseTrackerService.getRanksFromSheet();
     }
@@ -67,7 +64,7 @@ export class TrackerComponent implements OnInit {
     this.currentTrackId = null;
   }
 
-  numSequence(n: number): Array<number> {
+  numSequence(n: number): number[] {
     return Array(n);
   }
 }

@@ -96,21 +96,13 @@
     &.red {
       @extend .top;
       border-color: #ff4557;
-      background: linear-gradient(
-        180deg,
-        rgba(255, 69, 87, 0.28) 0%,
-        rgba(255, 69, 87, 0) 100%
-      );
+      background: linear-gradient(180deg, rgba(255, 69, 87, 0.28) 0%, rgba(255, 69, 87, 0) 100%);
     }
 
     &.green {
       @extend .top;
       border-color: #61eab6;
-      background: linear-gradient(
-        180deg,
-        rgba(97, 234, 182, 0.28) 0%,
-        rgba(97, 234, 182, 0) 100%
-      );
+      background: linear-gradient(180deg, rgba(97, 234, 182, 0.28) 0%, rgba(97, 234, 182, 0) 100%);
     }
   }
 
@@ -122,21 +114,13 @@
     &.red {
       @extend .bottom;
       border-color: #ff4557;
-      background: linear-gradient(
-        180deg,
-        rgba(255, 69, 87, 0) 0%,
-        rgba(255, 69, 87, 0.28) 100%
-      );
+      background: linear-gradient(180deg, rgba(255, 69, 87, 0) 0%, rgba(255, 69, 87, 0.28) 100%);
     }
 
     &.green {
       @extend .bottom;
       border-color: #61eab6;
-      background: linear-gradient(
-        180deg,
-        rgba(97, 234, 182, 0) 0%,
-        rgba(97, 234, 182, 0.28) 100%
-      );
+      background: linear-gradient(180deg, rgba(97, 234, 182, 0) 0%, rgba(97, 234, 182, 0.28) 100%);
     }
   }
 }

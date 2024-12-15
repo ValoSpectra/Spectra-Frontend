@@ -1,34 +1,32 @@
-import { booleanAttribute, Component, EventEmitter, Input, Output } from '@angular/core';
+import { booleanAttribute, Component, EventEmitter, Input, Output, OnDestroy } from "@angular/core";
 
 @Component({
-  selector: 'app-player-controller',
-  templateUrl: './player-controller.component.html',
-  styleUrl: './player-controller.component.scss'
+  selector: "app-player-controller",
+  templateUrl: "./player-controller.component.html",
+  styleUrl: "./player-controller.component.scss",
 })
-export class PlayerControllerComponent {
+export class PlayerControllerComponent implements OnDestroy {
   @Output() spikeTakenEvent = new EventEmitter<void>();
   @Output() captainTakenEvent = new EventEmitter<void>();
   @Output() spectateTakenEvent = new EventEmitter<void>();
 
-  @Input() showInterface: boolean = true;
-  @Input({transform: booleanAttribute}) flipInterface: boolean = false;
+  @Input() showInterface = true;
+  @Input({ transform: booleanAttribute }) flipInterface = false;
 
-  @Input() teamId: number = 0;
+  @Input() teamId = 0;
 
   inCombat = true;
   inShopping = false;
-  @Input() 
-  set gamePhase(v : string) {
+  @Input()
+  set gamePhase(v: string) {
     if (v == "combat") {
       this.inCombat = true;
       this.inShopping = false;
-    }
-    else {
+    } else {
       this.inCombat = false;
       this.inShopping = true;
     }
   }
-  
 
   isAttacking = false;
   weaponOrder = ["Vandal", "Operator", "Classic", "Spectre"];
@@ -36,11 +34,16 @@ export class PlayerControllerComponent {
   armorOrder = ["Heavy", "Regen", "Light", "None"];
 
   static agentIndex = [0, 0];
-  static agentOrder = [["Vampire", "Killjoy", "Guide", "Stealth", "Rift"], ["Grenadier", "Deadeye", "Sprinter", "BountyHunter", "Mage"]];
+  static agentOrder = [
+    ["Vampire", "Killjoy", "Guide", "Stealth", "Rift"],
+    ["Grenadier", "Deadeye", "Sprinter", "BountyHunter", "Mage"],
+  ];
 
   static playerNameIndex = [0, 0];
-  static playerNameOrder = [["Voodoo One", "Twoperator", "ThreeOfLife", "Fourcefield", "FIVEbyFIVE"], ["AlpacaHoarder", "BeeSting", "CowTipper", "DodoDaniel", "Eeliminator"]];
-
+  static playerNameOrder = [
+    ["Voodoo One", "Twoperator", "ThreeOfLife", "Fourcefield", "FIVEbyFIVE"],
+    ["AlpacaHoarder", "BeeSting", "CowTipper", "DodoDaniel", "Eeliminator"],
+  ];
 
   playerObject = {
     name: "Test",
@@ -59,7 +62,7 @@ export class PlayerControllerComponent {
     hasSpike: false,
     kills: 0,
     deaths: 0,
-    assists: 0
+    assists: 0,
   };
 
   constructor() {
@@ -73,8 +76,14 @@ export class PlayerControllerComponent {
   }
 
   getData(): any {
-    this.playerObject.agentInternal = PlayerControllerComponent.agentOrder[this.teamId][PlayerControllerComponent.agentIndex[this.teamId]++];
-    this.playerObject.name = PlayerControllerComponent.playerNameOrder[this.teamId][PlayerControllerComponent.playerNameIndex[this.teamId]++];
+    this.playerObject.agentInternal =
+      PlayerControllerComponent.agentOrder[this.teamId][
+        PlayerControllerComponent.agentIndex[this.teamId]++
+      ];
+    this.playerObject.name =
+      PlayerControllerComponent.playerNameOrder[this.teamId][
+        PlayerControllerComponent.playerNameIndex[this.teamId]++
+      ];
     return this.playerObject;
   }
 
@@ -129,13 +138,13 @@ export class PlayerControllerComponent {
   }
 
   changeWeapon(): void {
-    var i = this.weaponOrder.findIndex(e => e == this.playerObject.highestWeapon);
+    let i = this.weaponOrder.findIndex((e) => e == this.playerObject.highestWeapon);
     i++;
     i %= this.weaponOrder.length;
     this.playerObject.highestWeapon = this.weaponOrder[i];
 
     //money change here
-    var j = this.moneyOrder.findIndex(e => e == this.playerObject.moneySpent);
+    let j = this.moneyOrder.findIndex((e) => e == this.playerObject.moneySpent);
     this.playerObject.money += this.playerObject.moneySpent;
     j++;
     j %= this.moneyOrder.length;
@@ -144,7 +153,7 @@ export class PlayerControllerComponent {
   }
 
   changeShield(): void {
-    var i = this.armorOrder.findIndex(e => e == this.playerObject.armorName);
+    let i = this.armorOrder.findIndex((e) => e == this.playerObject.armorName);
     i++;
     i %= this.armorOrder.length;
     this.playerObject.armorName = this.armorOrder[i];

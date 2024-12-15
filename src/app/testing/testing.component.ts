@@ -1,20 +1,19 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { TrackerComponent } from '../tracker/tracker.component';
-import { SocketService } from '../services/SocketService';
-import { ActivatedRoute } from '@angular/router';
-import { TeamControllerComponent } from './team-controller/team-controller.component';
+import { AfterViewInit, Component, ViewChild, ViewContainerRef } from "@angular/core";
+import { TrackerComponent } from "../tracker/tracker.component";
+import { SocketService } from "../services/SocketService";
+import { ActivatedRoute } from "@angular/router";
+import { TeamControllerComponent } from "./team-controller/team-controller.component";
 
 @Component({
-  selector: 'app-testing',
-  templateUrl: './testing.component.html',
-  styleUrls: ['./testing.component.scss']
+  selector: "app-testing",
+  templateUrl: "./testing.component.html",
+  styleUrls: ["./testing.component.scss"],
 })
-export class TestingComponent implements OnInit, AfterViewInit {
-
+export class TestingComponent implements AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   @ViewChild("team1") team1!: TeamControllerComponent;
   @ViewChild("team2") team2!: TeamControllerComponent;
-  groupCode: string = "UNKNOWN";
+  groupCode = "UNKNOWN";
   socketService!: SocketService;
 
   matchData: any;
@@ -26,17 +25,20 @@ export class TestingComponent implements OnInit, AfterViewInit {
   backgroundClass = "bg1";
   backgroundClassId = 1;
 
-  constructor(private route: ActivatedRoute, private viewContainerRef: ViewContainerRef) {
-    this.route.queryParams.subscribe(params => {
-      this.groupCode = params['groupCode']?.toUpperCase() || "UNKNOWN";
+  constructor(
+    private route: ActivatedRoute,
+    private viewContainerRef: ViewContainerRef,
+  ) {
+    this.route.queryParams.subscribe((params) => {
+      this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
       console.log(`Requested group code is ${this.groupCode}`);
     });
   }
 
-  ngOnInit(): void {
-    const siteUrl = window.location.hostname;
-    // this.socketService = new SocketService(`http://${siteUrl}:5200`, this.groupCode);
-  }
+  // ngOnInit(): void {
+  //   const siteUrl = window.location.hostname;
+  //   // this.socketService = new SocketService(`http://${siteUrl}:5200`, this.groupCode);
+  // }
 
   ngAfterViewInit(): void {
     // this.socketService.subscribe((data: any) => {this.trackerComponent.updateMatch(data)});
@@ -56,7 +58,7 @@ export class TestingComponent implements OnInit, AfterViewInit {
       { type: "lost", wasAttack: false, round: 7 },
       { type: "defused", wasAttack: false, round: 8 },
       { type: "lost", wasAttack: false, round: 9 },
-      { type: "lost", wasAttack: false, round: 10 }
+      { type: "lost", wasAttack: false, round: 10 },
     ];
 
     this.matchData.teams[1].roundRecord = [
@@ -69,7 +71,7 @@ export class TestingComponent implements OnInit, AfterViewInit {
       { type: "detonated", wasAttack: true, round: 7 },
       { type: "lost", wasAttack: true, round: 8 },
       { type: "kills", wasAttack: true, round: 9 },
-      { type: "timeout", wasAttack: true, round: 10 }
+      { type: "timeout", wasAttack: true, round: 10 },
     ];
 
     this.team2.swapColor();
@@ -85,8 +87,7 @@ export class TestingComponent implements OnInit, AfterViewInit {
   changeRoundPhase(): void {
     if (this.matchData.roundPhase == "shopping") {
       this.matchData.roundPhase = "combat";
-    }
-    else {
+    } else {
       this.matchData.roundPhase = "shopping";
     }
     this.roundPhase = this.matchData.roundPhase;
@@ -129,5 +130,4 @@ export class TestingComponent implements OnInit, AfterViewInit {
       this.switchBackground();
     }
   }
-
 }
