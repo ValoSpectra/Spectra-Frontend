@@ -19,6 +19,7 @@ import { InhouseTrackerPlayercardComponent } from "./combat/playercard/playercar
 import { OverlayComponent } from "./overlay/overlay.component";
 import { PlayerControllerComponent } from "./testing/player-controller/player-controller.component";
 import { TeamControllerComponent } from "./testing/team-controller/team-controller.component";
+import { EndroundComponent } from "./endround/endround.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { TeamControllerComponent } from "./testing/team-controller/team-controll
     OverlayComponent,
     PlayerControllerComponent,
     TeamControllerComponent,
+    EndroundComponent
   ],
   exports: [],
   bootstrap: [AppComponent],

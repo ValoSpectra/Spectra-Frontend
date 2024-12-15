@@ -1,0 +1,24 @@
+<div class="intro-box">
+    <div class="intro-box-content" style='background-image: url(../../assets/misc/endround-bg.png);'> 
+            <div class="info-box">
+                <img class="info-image" src="../../assets/misc/logo.webp"/>
+                <div class="round-number">ROUND WIN</div>
+            </div>
+    </div>
+</div>
+<div class="endround">
+    <div class="endround-box" style='background-image: url(../../assets/misc/endround-bg.png);'>
+        <div class="win-side">
+            <div class="win-side-image-box">
+                <img class="win-side-image" src="{{match.teams[teamWon].teamUrl}}" />
+            </div>
+            <div class= "win-side-text">{{match.attackersWon ? "ATTACKER" : "DEFENDER"}} WIN</div>
+        </div>
+        <div class="info-box">
+            <div class="info-image-box">
+                <img class="info-image" src="../../assets/misc/logo.webp"/>
+            </div>
+            <div class="round-number">ROUND {{match.roundNumber}}</div>
+        </div>
+    </div>
+</div>
