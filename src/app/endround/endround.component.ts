@@ -1,4 +1,3 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, Input, SimpleChanges } from '@angular/core';
 
 @Component({
