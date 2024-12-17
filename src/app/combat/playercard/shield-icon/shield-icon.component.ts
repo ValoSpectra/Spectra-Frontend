@@ -10,11 +10,9 @@ export class ShieldIconComponent {
   @Input({ required: true }) type!: "Heavy" | "Regen" | "Light" | "None";
   @Input({ required: true }) side!: "attacker" | "defender";
 
-  constructor(private config: Config) { }
+  constructor(private config: Config) {}
 
   get color() {
-    return this.side == "attacker"
-      ? this.config.attackerColor
-      : this.config.defenderColor;
+    return this.side == "attacker" ? this.config.attackerColor : this.config.defenderColor;
   }
 }

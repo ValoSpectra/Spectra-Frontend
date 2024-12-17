@@ -12,7 +12,10 @@
         </div>
       </div>
       <div class="teamcard">
-        <div class="scoreblock-right" [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'">
+        <div
+          class="scoreblock-right"
+          [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"
+        >
           <div class="score-text">{{ match.teams[1].roundsWon }}</div>
         </div>
         <div class="divider" [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"></div>
@@ -23,15 +26,20 @@
       </div>
     </div>
     <app-mapwins *ngIf="false" />
-    <div class="spike-indicator" *ngIf="
+    <div
+      class="spike-indicator"
+      *ngIf="
         match.roundPhase === 'combat' &&
         match.spikeState.planted &&
         !match.spikeState.detonated &&
         !match.spikeState.defused
-      " [@fade]>
-      <img class="spike-icon" src="../../assets/misc/Spike_top_{{
-          blinkState ? 'light' : 'dark'
-        }}.svg" />
+      "
+      [@fade]
+    >
+      <img
+        class="spike-icon"
+        src="../../assets/misc/Spike_top_{{ blinkState ? 'light' : 'dark' }}.svg"
+      />
     </div>
   </div>
   <div class="round-number">ROUND {{ match.roundNumber }}</div>

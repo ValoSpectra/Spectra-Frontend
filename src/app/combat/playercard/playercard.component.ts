@@ -1,13 +1,5 @@
 import { trigger, transition, style, animate } from "@angular/animations";
-import { HttpClient } from "@angular/common/http";
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from "@angular/core";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { Component, Input } from "@angular/core";
 import { Config } from "../../shared/config";
 
 @Component({
@@ -18,17 +10,11 @@ import { Config } from "../../shared/config";
     trigger("deathAnimation", [
       transition("true => false, true => void", [
         style({ filter: "grayscale(50%)" }),
-        animate(
-          "100ms ease-in",
-          style({ width: "0", opacity: 0.5, filter: "grayscale(100%)" }),
-        ),
+        animate("100ms ease-in", style({ width: "0", opacity: 0.5, filter: "grayscale(100%)" })),
       ]),
       transition("false => true, void => true", [
         style({ filter: "grayscale(50%)", width: "0", opacity: 0.5 }),
-        animate(
-          "250ms ease-out",
-          style({ width: "*", opacity: 1, filter: "grayscale(0%)" }),
-        ),
+        animate("250ms ease-out", style({ width: "*", opacity: 1, filter: "grayscale(0%)" })),
       ]),
     ]),
     trigger("ultPipAnimation", [
@@ -54,7 +40,7 @@ import { Config } from "../../shared/config";
   ],
 })
 export class InhouseTrackerPlayercardComponent {
-  public readonly assets: String = "../../../assets";
+  public readonly assets: string = "../../../assets";
 
   @Input() match!: any;
   @Input() color!: "attacker" | "defender";
@@ -74,12 +60,10 @@ export class InhouseTrackerPlayercardComponent {
   }
 
   get colorHex() {
-    return this.color == "attacker"
-      ? this.config.attackerColor
-      : this.config.defenderColor;
+    return this.color == "attacker" ? this.config.attackerColor : this.config.defenderColor;
   }
 
-  numSequence(n: number): Array<number> {
+  numSequence(n: number): number[] {
     return Array(n);
   }
 
@@ -87,4 +71,3 @@ export class InhouseTrackerPlayercardComponent {
     return s[0].toUpperCase() + s.substring(1);
   }
 }
-

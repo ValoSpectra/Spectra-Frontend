@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Config } from "../../shared/config";
 import { animate, style, transition, trigger } from "@angular/animations";
 
@@ -8,20 +8,17 @@ import { animate, style, transition, trigger } from "@angular/animations";
   styleUrls: ["./topinfo.component.scss"],
   animations: [
     trigger("fadeInOut", [
-      transition(":enter", [
-        style({ opacity: 0 }),
-        animate("1s", style({ opacity: 1 })),
-      ]),
+      transition(":enter", [style({ opacity: 0 }), animate("1s", style({ opacity: 1 }))]),
       transition(":leave", [animate("1s", style({ opacity: 0 }))]),
     ]),
   ],
 })
-export class TopinfoComponent {
+export class TopinfoComponent implements OnInit {
   sponsorsAvailable = false;
   sponsorImages: string[] = [];
   currentSponsorIndex = 0;
 
-  constructor(private config: Config) { }
+  constructor(private config: Config) {}
 
   ngOnInit() {
     this.sponsorsAvailable = this.config.sponsorImageUrls.length > 0;
@@ -29,16 +26,12 @@ export class TopinfoComponent {
       this.sponsorImages = this.config.sponsorImageUrls;
       this.currentSponsorIndex = 0;
       if (this.config.sponsorImageUrls.length > 1) {
-        setInterval(
-          () => this.nextSponsor(),
-          this.config.sponsorImageRotateSpeed,
-        );
+        setInterval(() => this.nextSponsor(), this.config.sponsorImageRotateSpeed);
       }
     }
   }
 
   nextSponsor() {
-    this.currentSponsorIndex =
-      (this.currentSponsorIndex + 1) % this.config.sponsorImageUrls.length;
+    this.currentSponsorIndex = (this.currentSponsorIndex + 1) % this.config.sponsorImageUrls.length;
   }
 }

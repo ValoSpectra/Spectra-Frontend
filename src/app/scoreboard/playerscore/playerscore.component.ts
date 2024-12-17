@@ -6,7 +6,7 @@ import { Component, Input } from "@angular/core";
   styleUrls: ["./playerscore.component.scss"],
 })
 export class PlayerscoreComponent {
-  public readonly assets: String = "../../../assets";
+  public readonly assets: string = "../../../assets";
 
   @Input() match!: any;
   @Input() player!: any;

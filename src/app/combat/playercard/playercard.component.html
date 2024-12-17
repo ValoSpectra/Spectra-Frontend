@@ -25,10 +25,7 @@
       </div>
       <div class="info-container">
         <div class="shields-currency">
-          <app-shield-icon
-            [type]="player.armorName"
-            [side]="color"
-          ></app-shield-icon>
+          <app-shield-icon [type]="player.armorName" [side]="color"></app-shield-icon>
           <div class="currency-container" [class]="side">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -70,40 +67,21 @@
         />
       </div>
       <div class="ultimate-tracker-container">
-        <div
-          class="ultimate-tracker"
-          [class]="side"
-          *ngIf="!player.ultReady"
-          [@ultPipAnimation]
-        >
-          <div
-            class="pip-ultimate-full"
-            *ngFor="let i of numSequence(player.currUltPoints)"
-          ></div>
+        <div class="ultimate-tracker" [class]="side" *ngIf="!player.ultReady" [@ultPipAnimation]>
+          <div class="pip-ultimate-full" *ngFor="let i of numSequence(player.currUltPoints)"></div>
           <div
             class="pip-ultimate"
-            *ngFor="
-              let i of numSequence(player.maxUltPoints - player.currUltPoints)
-            "
+            *ngFor="let i of numSequence(player.maxUltPoints - player.currUltPoints)"
           ></div>
         </div>
-        <div
-          class="ultimate-tracker"
-          [class]="side"
-          *ngIf="player.ultReady"
-          [@ultImageAnimation]
-        >
+        <div class="ultimate-tracker" [class]="side" *ngIf="player.ultReady" [@ultImageAnimation]>
           <img
             class="ultimate-full-image"
             src="{{ assets }}/ultimates/{{ player.agentInternal }}Ultimate.webp"
           />
         </div>
         <div class="spike-icon-wrapper">
-          <img
-            class="spike-icon"
-            *ngIf="player.hasSpike"
-            src="{{ assets }}/misc/Spike_Icon.svg"
-          />
+          <img class="spike-icon" *ngIf="player.hasSpike" src="{{ assets }}/misc/Spike_Icon.svg" />
         </div>
       </div>
     </div>
