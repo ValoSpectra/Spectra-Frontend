@@ -1,7 +1,7 @@
 <div>
   <app-topinfo *ngIf="true" />
   <app-topscore [match]="match" />
-  <app-endround *ngIf="match.roundPhase === 'end'" [match]="match" [@fade-endround] />
+  <app-endround [match]="match" />
   <app-combat *ngIf="match.roundPhase !== 'shopping'" [match]="match" [@fade] />
   <app-scoreboard *ngIf="match.roundPhase === 'shopping'" [match]="match" [@fade] />
 </div>
