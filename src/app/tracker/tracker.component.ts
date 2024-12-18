@@ -13,22 +13,13 @@ import { trigger, transition, style, animate } from "@angular/animations";
   templateUrl: "./tracker.component.html",
   styleUrls: ["./tracker.component.scss"],
   animations: [
-    trigger('fade', [
-      transition(':enter', [
-        style({ 'opacity': '0' }),
-        animate('0.5s', style({ 'opacity': '1' }))
-      ]),
+    trigger("fade", [
+      transition(":enter", [style({ opacity: "0" }), animate("0.5s", style({ opacity: "1" }))]),
 
-      transition(':leave',
-        animate('0.5s', style({ 'opacity': '0' }))
-      )
+      transition(":leave", animate("0.5s", style({ opacity: "0" }))),
     ]),
-    trigger('fade-endround', [
-      transition(':leave',
-        animate('0s', style({ 'opacity': '0' }))
-      )
-    ])
-  ]
+    trigger("fade-endround", [transition(":leave", animate("0s", style({ opacity: "0" })))]),
+  ],
 })
 export class TrackerComponent implements OnInit {
   activelyTracking = false;

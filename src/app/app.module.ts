@@ -37,7 +37,7 @@ import { EndroundComponent } from "./endround/endround.component";
     OverlayComponent,
     PlayerControllerComponent,
     TeamControllerComponent,
-    EndroundComponent
+    EndroundComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],
