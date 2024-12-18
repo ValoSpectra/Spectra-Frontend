@@ -130,4 +130,7 @@ export class TestingComponent implements AfterViewInit {
       this.switchBackground();
     }
   }
+  startEnd(): void {
+    this.matchData.roundPhase = "end";
+  }
 }
