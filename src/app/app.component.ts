@@ -33,8 +33,16 @@ export class AppComponent implements OnInit {
       this.config.defenderColorSecondary,
     );
     document.documentElement.style.setProperty(
+      "--defender-color-secondary-rgb",
+      this.hexToRgb(this.config.defenderColorSecondary).join(", "),
+    );
+    document.documentElement.style.setProperty(
       "--attacker-color-secondary",
       this.config.attackerColorSecondary,
+    );
+    document.documentElement.style.setProperty(
+      "--attacker-color-secondary-rgb",
+      this.hexToRgb(this.config.attackerColorSecondary).join(", "),
     );
     document.documentElement.style.setProperty(
       "--defender-color-shield-currency",

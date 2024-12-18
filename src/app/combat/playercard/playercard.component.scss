@@ -53,9 +53,9 @@
     background: linear-gradient(
       90deg,
       rgba(var(--attacker-color-rgb), 0.52) 0%,
-      rgba(var(--attacker-color-rgb), 0.3) 58.5%,
-      rgba(26.56, 7.42, 9.27, 0.09) 90.5%,
-      rgba(10.63, 3.05, 3.79, 0) 100%
+      rgba(var(--attacker-color-secondary-rgb), 0.3) 58.5%,
+      rgba(var(--attacker-color-rgb), 0.09) 90.5%,
+      rgba(0, 0, 0, 0) 100%
     );
   }
 
@@ -64,7 +64,7 @@
     background: linear-gradient(
       90deg,
       rgba(var(--defender-color-rgb), 0.52) 0%,
-      rgba(var(--defender-color-rgb), 0.3) 58.5%,
+      rgba(var(--defender-color-secondary-rgb), 0.3) 58.5%,
       rgba(var(--defender-color-rgb), 0.09) 90.5%,
       rgba(0, 0, 0, 0) 100%
     );
