@@ -186,7 +186,7 @@
     background: linear-gradient(
         90deg,
         rgba(var(--defender-color-rgb), 0.4) 0%,
-        rgba(31, 122, 88, 0) 100%
+        rgba(var(--defender-color-rgb), 0) 100%
       ),
       rgba(15, 25, 35, 0.6);
   }
@@ -197,7 +197,7 @@
     background: linear-gradient(
         90deg,
         rgba(var(--attacker-color-rgb), 0.3) 0%,
-        rgba(31, 122, 88, 0) 100%
+        rgba(var(--attacker-color-rgb), 0) 100%
       ),
       rgba(15, 25, 35, 0.6);
   }
@@ -274,12 +274,12 @@
 
   &.attacker {
     @extend .valorant-credits;
-    fill: var(--attacker-color);
+    fill: var(--attacker-color-shield-currency);
   }
 
   &.defender {
     @extend .valorant-credits;
-    fill: var(--defender-color);
+    fill: var(--defender-color-shield-currency);
   }
 }
 
@@ -298,12 +298,12 @@
 
   &.attacker {
     @extend .currency-title;
-    color: var(--attacker-color-light);
+    color: var(--attacker-color-shield-currency);
   }
 
   &.defender {
     @extend .currency-title;
-    color: var(--defender-color-light);
+    color: var(--defender-color-shield-currency);
   }
 }
 

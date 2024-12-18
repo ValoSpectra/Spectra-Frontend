@@ -12,23 +12,37 @@ export class AppComponent implements OnInit {
   constructor(private config: Config) {}
 
   ngOnInit(): void {
-    document.documentElement.style.setProperty("--defender-color", this.config.defenderColor);
+    document.documentElement.style.setProperty(
+      "--defender-color",
+      this.config.defenderColorPrimary,
+    );
     document.documentElement.style.setProperty(
       "--defender-color-rgb",
-      this.hexToRgb(this.config.defenderColor).join(", "),
+      this.hexToRgb(this.config.defenderColorPrimary).join(", "),
     );
-    document.documentElement.style.setProperty("--attacker-color", this.config.attackerColor);
+    document.documentElement.style.setProperty(
+      "--attacker-color",
+      this.config.attackerColorPrimary,
+    );
     document.documentElement.style.setProperty(
       "--attacker-color-rgb",
-      this.hexToRgb(this.config.attackerColor).join(", "),
+      this.hexToRgb(this.config.attackerColorPrimary).join(", "),
     );
     document.documentElement.style.setProperty(
-      "--defender-color-light",
-      this.config.defenderColorLight,
+      "--defender-color-secondary",
+      this.config.defenderColorSecondary,
     );
     document.documentElement.style.setProperty(
-      "--attacker-color-light",
-      this.config.attackerColorLight,
+      "--attacker-color-secondary",
+      this.config.attackerColorSecondary,
+    );
+    document.documentElement.style.setProperty(
+      "--defender-color-shield-currency",
+      this.config.defenderColorShieldCurrency,
+    );
+    document.documentElement.style.setProperty(
+      "--attacker-color-shield-currency",
+      this.config.attackerColorShieldCurrency,
     );
   }
 

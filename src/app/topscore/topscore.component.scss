@@ -70,11 +70,11 @@
   width: 3.62px;
   &.defender {
     @extend .divider;
-    background-color: var(--defender-color-light);
+    background-color: var(--defender-color-secondary);
   }
   &.attacker {
     @extend .divider;
-    background-color: var(--attacker-color-light);
+    background-color: var(--attacker-color-secondary);
   }
 }
 

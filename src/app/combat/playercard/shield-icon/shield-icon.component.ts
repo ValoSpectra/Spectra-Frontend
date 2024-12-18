@@ -13,6 +13,8 @@ export class ShieldIconComponent {
   constructor(private config: Config) {}
 
   get color() {
-    return this.side == "attacker" ? this.config.attackerColor : this.config.defenderColor;
+    return this.side == "attacker"
+      ? this.config.attackerColorShieldCurrency
+      : this.config.defenderColorShieldCurrency;
   }
 }

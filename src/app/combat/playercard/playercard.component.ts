@@ -60,7 +60,9 @@ export class InhouseTrackerPlayercardComponent {
   }
 
   get colorHex() {
-    return this.color == "attacker" ? this.config.attackerColor : this.config.defenderColor;
+    return this.color == "attacker"
+      ? this.config.attackerColorShieldCurrency
+      : this.config.defenderColorShieldCurrency;
   }
 
   numSequence(n: number): number[] {
