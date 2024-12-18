@@ -1,5 +1,6 @@
 import { trigger, transition, style, animate } from "@angular/animations";
 import { Component, Input } from "@angular/core";
+import { Config } from "../../shared/config";
 
 @Component({
   selector: "app-playercard",
@@ -42,10 +43,12 @@ export class InhouseTrackerPlayercardComponent {
   public readonly assets: string = "../../../assets";
 
   @Input() match!: any;
-  @Input() color!: "red" | "green";
+  @Input() color!: "attacker" | "defender";
   @Input() side!: "left" | "right";
 
   private _player: any;
+
+  constructor(private config: Config) {}
 
   @Input()
   set player(player: any) {
@@ -54,6 +57,12 @@ export class InhouseTrackerPlayercardComponent {
 
   get player() {
     return this._player;
+  }
+
+  get colorHex() {
+    return this.color == "attacker"
+      ? this.config.attackerColorShieldCurrency
+      : this.config.defenderColorShieldCurrency;
   }
 
   numSequence(n: number): number[] {

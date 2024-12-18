@@ -49,7 +49,7 @@
   white-space: nowrap;
 }
 
-.topinfo-ad-display {
+.sponsor-container {
   position: absolute;
   width: 240px;
   height: 88px;
@@ -58,13 +58,14 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.UP-onlylogo {
+.sponsor-logo {
   position: absolute;
   width: 156px;
   height: 71px;
   top: 11px;
   left: 42px;
-  object-fit: cover;
+  object-fit: contain;
+  transition: opacity 1s ease-in-out;
 }
 
 .spectra-logo {
