@@ -46,6 +46,7 @@
   background-size: cover;
   display: flex;
   flex-direction: row;
+  overflow: hidden;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: stretch;
@@ -112,6 +113,7 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   width: 50%;
 }
 .info-image {
@@ -145,7 +147,7 @@
   top: 40.5%;
   width: 875px;
   height: 200px;
-  overflow-x: hidden;
+  overflow: hidden;
   animation-name: changepos-1;
   animation-duration: 4s;
   animation-fill-mode: both;
