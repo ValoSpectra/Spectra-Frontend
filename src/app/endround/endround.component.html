@@ -1,19 +1,14 @@
-<link rel="preload" as="image" href="../../assets/misc/endround-bg.webp" />
-<link rel="preload" as="image" href="../../assets/misc/logo.webp" />
 <div *ngIf="match.roundPhase === 'end'">
   <div class="intro-box">
-    <div
-      class="intro-box-content"
-      [style.background-image]="'url(../../assets/misc/endround-bg.webp)'"
-    >
+    <div class="intro-box-content" [style.background-image]="setTournamentBackgroundImage()">
       <div class="info-box">
-        <img class="info-image" src="../../assets/misc/logo.webp" />
+        <img class="info-image" src="{{ tournamentUrl }}" />
         <div class="round-number">ROUND WIN</div>
       </div>
     </div>
   </div>
   <div class="endround">
-    <div class="endround-box" [style.background-image]="'url(../../assets/misc/endround-bg.webp)'">
+    <div class="endround-box" [style.background-image]="setTournamentBackgroundImage()">
       <div class="win-side">
         <div class="win-side-image-box">
           <img class="win-side-image" src="{{ match.teams[teamWon].teamUrl }}" />
@@ -22,7 +17,7 @@
       </div>
       <div class="info-box">
         <div class="info-image-box">
-          <img class="info-image" src="../../assets/misc/logo.webp" />
+          <img class="info-image" src="{{ tournamentUrl }}" />
         </div>
         <div class="round-number">ROUND {{ match.roundNumber }}</div>
       </div>
