@@ -18,7 +18,7 @@ export class TestingComponent implements AfterViewInit {
 
   matchData: any;
   isSpikePlanted = false;
-  roundPhase: "shopping" | "combat" = "combat";
+  roundPhase: "shopping" | "combat" | "end" = "combat";
 
   showInterface = true;
   showBackground = true;
@@ -87,6 +87,8 @@ export class TestingComponent implements AfterViewInit {
   changeRoundPhase(): void {
     if (this.matchData.roundPhase == "shopping") {
       this.matchData.roundPhase = "combat";
+    } else if (this.matchData.roundPhase == "combat") {
+      this.matchData.roundPhase = "end";
     } else {
       this.matchData.roundPhase = "shopping";
     }
@@ -129,8 +131,5 @@ export class TestingComponent implements AfterViewInit {
     if (this.isSpikePlanted && (this.backgroundClassId == 1 || this.backgroundClassId == 3)) {
       this.switchBackground();
     }
-  }
-  startEnd(): void {
-    this.matchData.roundPhase = "end";
   }
 }
