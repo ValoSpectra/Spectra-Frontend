@@ -182,7 +182,7 @@
 
   &.defender {
     @extend .player-info;
-    border-color: var(--defender-color);
+    border-color: var(--defender-color-shield-currency);
     background: linear-gradient(
         90deg,
         rgba(var(--defender-color-rgb), 0.4) 0%,
@@ -193,7 +193,7 @@
 
   &.attacker {
     @extend .player-info;
-    border-color: var(--attacker-color);
+    border-color: var(--attacker-color-shield-currency);
     background: linear-gradient(
         90deg,
         rgba(var(--attacker-color-rgb), 0.3) 0%,

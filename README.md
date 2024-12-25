@@ -38,19 +38,25 @@ services:
 
 You can change `3000` to a different port which you want the frontend accessible outside the container to.
 
-Inside ` config` folder, create a file named `config.json` with the following content:
+Inside `config` folder, create a file named `config.json` with the following content:
 
 ```
 {
   "serverEndpoint": "http://localhost:5200",
   "sponsorImageUrls": ["/assets/misc/logo.webp"],
   "sponsorImageRotateSpeed": 5000,
-  "attackerColor": "#b82e3c",
-  "defenderColor": "#3c82b8"
+  "attackerColorPrimary": "#932530",
+  "attackerColorSecondary": "#a30010",
+  "attackerColorShieldCurrency": "#ff838f",
+  "defenderColorPrimary": "#1e8a61",
+  "defenderColorSecondary": "#138c69",
+  "defenderColorShieldCurrency": "#61eab6"
 }
 ```
 
-Replace ` https://localhost:5200` with your Spectra Server address and outcoming port (default is 5200).
+For the most up to date version of the available configuration values, check out the `config.ts` file in the `src/app/shared/config.ts` file.
+
+Replace `https://localhost:5200` with your Spectra Server address and outcoming port (default is 5200).
 
 After that you can start the frontend by running `docker compose up -d` and the frontend are accessible at port `3000` by default.
 
