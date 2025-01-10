@@ -11,7 +11,6 @@ import { TrackerComponent } from "./tracker/tracker.component";
 import { TopscoreComponent } from "./topscore/topscore.component";
 import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
 import { CombatComponent } from "./combat/combat.component";
-import { MapwinComponent } from "./topscore/mapwins/mapwins.component";
 import { TopinfoComponent } from "./topscore/topinfo/topinfo.component";
 import { PlayerscoreComponent } from "./scoreboard/playerscore/playerscore.component";
 import { RoundreasonsComponent } from "./scoreboard/roundreasons/roundreasons.component";
@@ -28,7 +27,6 @@ import { TeamControllerComponent } from "./testing/team-controller/team-controll
     TopscoreComponent,
     ScoreboardComponent,
     CombatComponent,
-    MapwinComponent,
     TopinfoComponent,
     PlayerscoreComponent,
     RoundreasonsComponent,
