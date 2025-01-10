@@ -1,13 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { trigger, transition, style, animate } from "@angular/animations";
 
-// enum Colors {
-//   ATTACKER_REG = 'rgba(232, 130, 125, 0.75)',
-//   ATTACKER_FEINT = 'rgba(232, 130, 125, 0.35)',
-//   DEFENDER_REG = 'rgba(125, 232, 187, 0.75)',
-//   DEFENDER_FEINT = 'rgba(125, 232, 187, 0.35)',
-// }
-
 @Component({
   selector: "app-tracker",
   templateUrl: "./tracker.component.html",
