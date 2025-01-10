@@ -1,12 +1,12 @@
-<div class="topinfo-container" *ngIf="false">
+<div class="topinfo-container" *ngIf="match.mapInfo[0]">
   <div class="topinfo-pill">
-    <div class="topinfo-pill-text">INCREDIBLY</div>
+    <app-mapinfo [mapinfo]="match.mapInfo[0]"></app-mapinfo>
   </div>
   <div class="topinfo-pill">
-    <div class="topinfo-pill-text">INTERESTING</div>
+    <app-mapinfo [mapinfo]="match.mapInfo[1]"></app-mapinfo>
   </div>
   <div class="topinfo-pill">
-    <div class="topinfo-pill-text">INFORMATION</div>
+    <app-mapinfo [mapinfo]="match.mapInfo[2]"></app-mapinfo>
   </div>
 </div>
 <div class="topinfo-container-right">

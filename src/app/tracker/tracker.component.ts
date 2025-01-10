@@ -33,6 +33,33 @@ export class TrackerComponent implements OnInit {
       roundPhase: "combat",
       teams: [{ players: [] }, { players: [] }],
       spikeState: { planted: false },
+      map: "Ascent",
+      mapInfo: [
+        {
+          type: "past",
+          map: "Fracture",
+          left: {
+            logo: "assets/misc/icon.webp",
+            score: 13,
+          },
+          right: {
+            logo: "assets/misc/icon.webp",
+            score: 7,
+          },
+        },
+
+        {
+          type: "present",
+          map: "Ascent",
+          logo: "assets/misc/icon.webp",
+        },
+
+        {
+          type: "future",
+          map: "Bind",
+          logo: "assets/misc/icon.webp",
+        },
+      ],
     };
 
     if (this.ranksEnabled) {

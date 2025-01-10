@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Config } from "../../shared/config";
 import { animate, style, transition, trigger } from "@angular/animations";
 
@@ -14,6 +14,8 @@ import { animate, style, transition, trigger } from "@angular/animations";
   ],
 })
 export class TopinfoComponent implements OnInit {
+  @Input() match!: any;
+
   sponsorsAvailable = false;
   sponsorImages: string[] = [];
   currentSponsorIndex = 0;
