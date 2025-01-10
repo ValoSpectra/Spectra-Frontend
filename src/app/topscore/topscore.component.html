@@ -7,8 +7,11 @@
             <img class="team-image" src="{{ match.teams[0].teamUrl }}" />
             <div class="teamcode">{{ match.teams[0].teamTricode }}</div>
           </div>
-          <div class="divider" [class]="match.teams[0].isAttacking ? 'red' : 'green'"></div>
-          <div class="scoreblock-left" [class]="match.teams[0].isAttacking ? 'red' : 'green'">
+          <div class="divider" [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'"></div>
+          <div
+            class="scoreblock-left"
+            [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'"
+          >
             <div class="score-text">{{ match.teams[0].roundsWon }}</div>
           </div>
         </div>
@@ -20,10 +23,13 @@
 
       <div class="teamcard">
         <div class="teamcard-border">
-          <div class="scoreblock-right" [class]="match.teams[1].isAttacking ? 'red' : 'green'">
+          <div
+            class="scoreblock-right"
+            [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"
+          >
             <div class="score-text">{{ match.teams[1].roundsWon }}</div>
           </div>
-          <div class="divider" [class]="match.teams[1].isAttacking ? 'red' : 'green'"></div>
+          <div class="divider" [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"></div>
           <div class="teaminfo-container">
             <div class="teamcode">{{ match.teams[1].teamTricode }}</div>
             <img class="team-image" src="{{ match.teams[1].teamUrl }}" />

@@ -13,7 +13,7 @@
         </div>
 
         <div
-          [class]="'reason-color top ' + (record.wasAttack ? 'red' : 'green')"
+          [class]="'reason-color top ' + (record.wasAttack ? 'attacker' : 'defender')"
           *ngIf="record.type !== 'lost'"
         >
           <div class="image-container">
@@ -42,7 +42,7 @@
         </div>
 
         <div
-          [class]="'reason-color bottom ' + (record.wasAttack ? 'red' : 'green')"
+          [class]="'reason-color bottom ' + (record.wasAttack ? 'attacker' : 'defender')"
           *ngIf="record.type !== 'lost'"
         >
           <div class="image-container">
