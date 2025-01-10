@@ -95,21 +95,21 @@
     // Colors need to be in top and bottom because the gradient is shifts direction
     &.attacker {
       @extend .top;
-      border-color: var(--attacker-color);
+      border-color: var(--attacker-color-secondary);
       background: linear-gradient(
         180deg,
-        rgba(var(--attacker-color-rgb), 0.28) 0%,
-        rgba(var(--attacker-color-rgb), 0) 100%
+        rgba(var(--attacker-color-secondary-rgb), 0.28) 0%,
+        rgba(var(--attacker-color-secondary-rgb), 0) 100%
       );
     }
 
     &.defender {
       @extend .top;
-      border-color: var(--defender-color);
+      border-color: var(--defender-color-shield-currency);
       background: linear-gradient(
         180deg,
-        rgba(var(--defender-color-rgb), 0.28) 0%,
-        rgba(var(--defender-color-rgb), 0) 100%
+        rgba(var(--defender-color-shield-currency-rgb), 0.28) 0%,
+        rgba(var(--defender-color-shield-currency-rgb), 0) 100%
       );
     }
   }
@@ -121,21 +121,21 @@
 
     &.attacker {
       @extend .bottom;
-      border-color: var(--attacker-color);
+      border-color: var(--attacker-color-secondary);
       background: linear-gradient(
         180deg,
-        rgba(var(--attacker-color-rgb), 0) 0%,
-        rgba(var(--attacker-color-rgb), 0.28) 100%
+        rgba(var(--attacker-color-secondary-rgb), 0) 0%,
+        rgba(var(--attacker-color-secondary-rgb), 0.28) 100%
       );
     }
 
     &.defender {
       @extend .bottom;
-      border-color: var(--defender-color);
+      border-color: var(--defender-color-shield-currency);
       background: linear-gradient(
         180deg,
-        rgba(var(--defender-color-rgb), 0) 0%,
-        rgba(var(--defender-color-rgb), 0.28) 100%
+        rgba(var(--defender-color-shield-currency-rgb), 0) 0%,
+        rgba(var(--defender-color-shield-currency-rgb), 0.28) 100%
       );
     }
   }
