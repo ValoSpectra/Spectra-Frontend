@@ -8,4 +8,8 @@ export class Config {
   defenderColorPrimary = "#1e8a61";
   defenderColorSecondary = "#138c69";
   defenderColorShieldCurrency = "#61eab6";
+
+  public constructor(init?: Partial<Config>) {
+    Object.assign(this, init);
+  }
 }

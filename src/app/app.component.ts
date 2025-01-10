@@ -49,8 +49,16 @@ export class AppComponent implements OnInit {
       this.config.defenderColorShieldCurrency,
     );
     document.documentElement.style.setProperty(
+      "--defender-color-shield-currency-rgb",
+      this.hexToRgb(this.config.defenderColorShieldCurrency).join(", "),
+    );
+    document.documentElement.style.setProperty(
       "--attacker-color-shield-currency",
       this.config.attackerColorShieldCurrency,
+    );
+    document.documentElement.style.setProperty(
+      "--attacker-color-shield-currency-rgb",
+      this.hexToRgb(this.config.attackerColorShieldCurrency).join(", "),
     );
   }
 
