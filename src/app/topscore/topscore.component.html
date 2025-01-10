@@ -2,30 +2,45 @@
   <div class="topscore-container">
     <div class="scoreboard">
       <div class="teamcard">
-        <div class="teaminfo-container">
-          <img class="team-image" src="{{ match.teams[0].teamUrl }}" />
-          <div class="teamcode">{{ match.teams[0].teamTricode }}</div>
+        <div class="teamcard-border">
+          <div class="teaminfo-container">
+            <img class="team-image" src="{{ match.teams[0].teamUrl }}" />
+            <div class="teamcode">{{ match.teams[0].teamTricode }}</div>
+          </div>
+          <div class="divider" [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'"></div>
+          <div
+            class="scoreblock-left"
+            [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'"
+          >
+            <div class="score-text">{{ match.teams[0].roundsWon }}</div>
+          </div>
         </div>
-        <div class="divider" [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'"></div>
-        <div class="scoreblock-left" [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'">
-          <div class="score-text">{{ match.teams[0].roundsWon }}</div>
+        <div class="mapwin-line-left" *ngIf="mapsNeeded > 1">
+          <div class="mapwin-pip-full" *ngFor="let i of numSequence(mapsWonLeft)"></div>
+          <div class="mapwin-pip" *ngFor="let i of numSequence(mapsNeeded - mapsWonLeft)"></div>
         </div>
       </div>
+
       <div class="teamcard">
-        <div
-          class="scoreblock-right"
-          [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"
-        >
-          <div class="score-text">{{ match.teams[1].roundsWon }}</div>
+        <div class="teamcard-border">
+          <div
+            class="scoreblock-right"
+            [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"
+          >
+            <div class="score-text">{{ match.teams[1].roundsWon }}</div>
+          </div>
+          <div class="divider" [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"></div>
+          <div class="teaminfo-container">
+            <div class="teamcode">{{ match.teams[1].teamTricode }}</div>
+            <img class="team-image" src="{{ match.teams[1].teamUrl }}" />
+          </div>
         </div>
-        <div class="divider" [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"></div>
-        <div class="teaminfo-container">
-          <div class="teamcode">{{ match.teams[1].teamTricode }}</div>
-          <img class="team-image" src="{{ match.teams[1].teamUrl }}" />
+        <div class="mapwin-line-right" *ngIf="mapsNeeded > 1">
+          <div class="mapwin-pip-full" *ngFor="let i of numSequence(mapsWonRight)"></div>
+          <div class="mapwin-pip" *ngFor="let i of numSequence(mapsNeeded - mapsWonRight)"></div>
         </div>
       </div>
     </div>
-    <app-mapwins *ngIf="false" />
     <div
       class="spike-indicator"
       *ngIf="
@@ -44,5 +59,3 @@
   </div>
   <div class="round-number">ROUND {{ match.roundNumber }}</div>
 </div>
-
-<app-topinfo *ngIf="false" />

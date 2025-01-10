@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from "@angular/animations";
-import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
+import { Component, Input, SimpleChanges, OnChanges, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-topscore",
@@ -13,7 +14,7 @@ import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
     ]),
   ],
 })
-export class TopscoreComponent implements OnChanges {
+export class TopscoreComponent implements OnInit, OnChanges {
   @Input() match!: any;
 
   spikePlanted = false;
@@ -22,6 +23,26 @@ export class TopscoreComponent implements OnChanges {
   detonationTime = 0;
   lastActedTime = 9999;
   blinkInterval: any = undefined;
+
+  mapsNeeded = 1;
+  mapsWonLeft = 0;
+  mapsWonRight = 0;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      if (params["mapsNeeded"]) {
+        this.mapsNeeded = parseInt(params["mapsNeeded"]);
+      }
+      if (params["mapsWonLeft"]) {
+        this.mapsWonLeft = parseInt(params["mapsWonLeft"]);
+      }
+      if (params["mapsWonRight"]) {
+        this.mapsWonRight = parseInt(params["mapsWonRight"]);
+      }
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes["match"]) {
@@ -70,5 +91,9 @@ export class TopscoreComponent implements OnChanges {
         this.blinkState = true;
       }
     }, 25);
+  }
+
+  numSequence(n: number): number[] {
+    return Array(n);
   }
 }
