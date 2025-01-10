@@ -45,11 +45,11 @@ Inside `config` folder, create a file named `config.json` with the following con
   "serverEndpoint": "http://localhost:5200",
   "sponsorImageUrls": ["/assets/misc/logo.webp"],
   "sponsorImageRotateSpeed": 5000,
-  "attackerColorPrimary": "#932530",
-  "attackerColorSecondary": "#a30010",
+  "attackerColorPrimary": "#b82e3c",
+  "attackerColorSecondary": "#ff4557",
   "attackerColorShieldCurrency": "#ff838f",
-  "defenderColorPrimary": "#1e8a61",
-  "defenderColorSecondary": "#138c69",
+  "defenderColorPrimary": "#25ac79",
+  "defenderColorSecondary": "#61eab6",
   "defenderColorShieldCurrency": "#61eab6"
 }
 ```
