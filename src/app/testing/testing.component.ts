@@ -74,6 +74,10 @@ export class TestingComponent implements AfterViewInit {
       { type: "timeout", wasAttack: true, round: 10 },
     ];
 
+    this.matchData.mapsNeeded = 3;
+    this.matchData.mapsWonLeft = 2;
+    this.matchData.mapsWonRight = 1;
+
     this.team2.swapColor();
     this.trackerComponent.updateMatch(this.matchData);
     for (let i = 0; i < 5; i++) {
