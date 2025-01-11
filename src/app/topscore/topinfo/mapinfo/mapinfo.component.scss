@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.text {
+  position: relative;
+  width: fit-content;
+  font-family: Montserrat, Helvetica;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 15px;
+  font-style: normal;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  padding: 2px 4px;
+  max-width: 20px;
+  max-height: 20px;
+  vertical-align: middle;
+}

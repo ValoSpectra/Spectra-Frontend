@@ -18,13 +18,11 @@
 
 .scoreboard {
   display: inline-flex;
-  height: 62.76px;
+  height: 90px;
   align-items: flex-start;
   justify-content: center;
   gap: 168.97px;
   position: relative;
-  border-radius: 8px;
-  overflow: hidden;
   // box-shadow: -1px 1px 1px #0000001f; This currently creates a weird shadow between the two scoreblocks
 }
 
@@ -33,7 +31,13 @@
   width: 216px;
   align-items: center;
   position: relative;
-  align-self: stretch;
+}
+
+.teamcard-border {
+  @extend .teamcard;
+  height: 62.76px;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .teaminfo-container {
@@ -68,13 +72,13 @@
   position: relative;
   align-self: stretch;
   width: 3.62px;
-  &.green {
+  &.defender {
     @extend .divider;
-    background-color: #61eab6;
+    background-color: var(--defender-color-secondary);
   }
-  &.red {
+  &.attacker {
     @extend .divider;
-    background-color: #ff4557;
+    background-color: var(--attacker-color-secondary);
   }
 }
 
@@ -96,13 +100,13 @@
     @extend .scoreblock;
     border-radius: 4px 0px 0px 4px;
   }
-  &.green {
+  &.defender {
     @extend .scoreblock;
-    background-color: #25ac79;
+    background-color: var(--defender-color);
   }
-  &.red {
+  &.attacker {
     @extend .scoreblock;
-    background-color: #b82e3c;
+    background-color: var(--attacker-color);
   }
 }
 
@@ -153,4 +157,34 @@
   margin-bottom: -9px;
   margin-left: -8px;
   margin-right: -8px;
+}
+
+.mapwin-line {
+  display: inline-flex;
+  justify-content: center;
+  gap: 5px;
+  position: absolute;
+  top: 110%;
+  min-width: 32%;
+  &-left {
+    @extend .mapwin-line;
+    right: 0;
+  }
+  &-right {
+    @extend .mapwin-line;
+    left: 0;
+  }
+}
+
+.mapwin-pip {
+  position: relative;
+  width: 14px;
+  height: 7px;
+  border-radius: 3px;
+  border: 1.75px solid;
+  border-color: #ffffffaa;
+  &-full {
+    @extend .mapwin-pip;
+    background-color: #ffffff;
+  }
 }

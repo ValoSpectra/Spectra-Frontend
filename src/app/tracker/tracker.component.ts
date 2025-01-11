@@ -1,13 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { trigger, transition, style, animate } from "@angular/animations";
 
-// enum Colors {
-//   ATTACKER_REG = 'rgba(232, 130, 125, 0.75)',
-//   ATTACKER_FEINT = 'rgba(232, 130, 125, 0.35)',
-//   DEFENDER_REG = 'rgba(125, 232, 187, 0.75)',
-//   DEFENDER_FEINT = 'rgba(125, 232, 187, 0.35)',
-// }
-
 @Component({
   selector: "app-tracker",
   templateUrl: "./tracker.component.html",
@@ -41,6 +34,33 @@ export class TrackerComponent implements OnInit {
       roundPhase: "combat",
       teams: [{ players: [] }, { players: [] }],
       spikeState: { planted: false },
+      map: "Ascent",
+      mapInfo: [
+        {
+          type: "past",
+          map: "Fracture",
+          left: {
+            logo: "assets/misc/icon.webp",
+            score: 13,
+          },
+          right: {
+            logo: "assets/misc/icon.webp",
+            score: 7,
+          },
+        },
+
+        {
+          type: "present",
+          map: "Ascent",
+          logo: "assets/misc/icon.webp",
+        },
+
+        {
+          type: "future",
+          map: "Bind",
+          logo: "assets/misc/icon.webp",
+        },
+      ],
     };
 
     if (this.ranksEnabled) {

@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="text" *ngIf="type === 'past'">
+    <div class="text">
+      {{ mapinfo.map }} <img src="{{ mapinfo.left.logo }}" class="logo" />
+      {{ mapinfo.left.score }} - {{ mapinfo.right.score }}
+      <img src="{{ mapinfo.right.logo }}" class="logo" />
+    </div>
+  </div>
+  <div class="text" *ngIf="type === 'present'">
+    <div class="text">Live: {{ mapinfo.map }} <img src="{{ mapinfo.logo }}" class="logo" /></div>
+  </div>
+  <div class="text" *ngIf="type === 'future'">
+    <div class="text">Next: {{ mapinfo.map }} <img src="{{ mapinfo.logo }}" class="logo" /></div>
+  </div>
+</div>
