@@ -74,9 +74,36 @@ export class TestingComponent implements AfterViewInit {
       { type: "timeout", wasAttack: true, round: 10 },
     ];
 
-    this.matchData.mapsNeeded = 3;
-    this.matchData.mapsWonLeft = 2;
-    this.matchData.mapsWonRight = 1;
+    this.matchData.tools = {
+      seriesInfo: {
+        needed: 3,
+        wonLeft: 1,
+        wonRight: 2,
+        mapInfo: [
+          {
+            type: "past",
+            map: "Fracture",
+            left: {
+              score: 13,
+              logo: "assets/misc/icon.webp",
+            },
+            right: {
+              score: 9,
+              logo: "assets/misc/icon.webp",
+            },
+          },
+          {
+            type: "present",
+            logo: "assets/misc/icon.webp",
+          },
+          {
+            type: "future",
+            map: "Haven",
+            logo: "assets/misc/icon.webp",
+          },
+        ],
+      },
+    };
 
     this.team2.swapColor();
     this.trackerComponent.updateMatch(this.matchData);
