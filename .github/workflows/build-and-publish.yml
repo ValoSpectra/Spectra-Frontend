@@ -37,8 +37,8 @@ jobs:
           push: true
           platforms: linux/amd64, linux/arm64
           tags: |
-            ghcr.io/b4iterdev/overlay:latest
-            ghcr.io/b4iterdev/overlay:${{ env.RELEASE_TAG }}
+            ghcr.io/valospectra/overlay:latest
+            ghcr.io/valospectra/overlay:${{ env.RELEASE_TAG }}
 
 
             
