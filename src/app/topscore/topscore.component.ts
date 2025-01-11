@@ -28,7 +28,6 @@ export class TopscoreComponent implements OnChanges {
       const match = changes["match"].currentValue;
       if (match["spikeState"]["planted"] != this.spikePlanted) {
         this.spikePlanted = match["spikeState"]["planted"];
-
         if (this.spikePlanted) {
           this.detonationTime = match["spikeDetonationTime"];
           this.blinkState = false;
@@ -70,5 +69,9 @@ export class TopscoreComponent implements OnChanges {
         this.blinkState = true;
       }
     }, 25);
+  }
+
+  numSequence(n: number): number[] {
+    return Array(n);
   }
 }

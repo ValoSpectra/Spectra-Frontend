@@ -10,7 +10,7 @@ export class PlayerscoreComponent {
 
   @Input() match!: any;
   @Input() player!: any;
-  @Input() color!: "red" | "green";
+  @Input() color!: "attacker" | "defender";
   @Input() side!: "left" | "right";
 
   numSequence(n: number): number[] {

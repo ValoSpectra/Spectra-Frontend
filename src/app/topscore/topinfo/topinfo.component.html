@@ -1,12 +1,12 @@
-<div class="topinfo-container" *ngIf="false">
+<div class="topinfo-container" *ngIf="match.mapInfo[0]">
   <div class="topinfo-pill">
-    <div class="topinfo-pill-text">INCREDIBLY</div>
+    <app-mapinfo [mapinfo]="match.mapInfo[0]"></app-mapinfo>
   </div>
   <div class="topinfo-pill">
-    <div class="topinfo-pill-text">INTERESTING</div>
+    <app-mapinfo [mapinfo]="match.mapInfo[1]"></app-mapinfo>
   </div>
   <div class="topinfo-pill">
-    <div class="topinfo-pill-text">INFORMATION</div>
+    <app-mapinfo [mapinfo]="match.mapInfo[2]"></app-mapinfo>
   </div>
 </div>
 <div class="topinfo-container-right">
@@ -16,8 +16,16 @@
     <div class="topinfo-pill-text fadeLoopDelay">valospectra.com</div>
   </div>
 </div>
-<div class="topinfo-ad-display" *ngIf="false">
-  <img class="UP-onlylogo" src="assets/tie-ins/underpeel-icon.webp" />
+<div class="sponsor-container" *ngIf="sponsorsAvailable">
+  <ng-container *ngFor="let sponsor of sponsorImages; let i = index">
+    <img
+      *ngIf="i === currentSponsorIndex"
+      class="sponsor-logo"
+      [@fadeInOut]
+      [src]="sponsor"
+      alt="Sponsor Logo"
+    />
+  </ng-container>
 </div>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">

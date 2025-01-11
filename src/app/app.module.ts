@@ -11,7 +11,6 @@ import { TrackerComponent } from "./tracker/tracker.component";
 import { TopscoreComponent } from "./topscore/topscore.component";
 import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
 import { CombatComponent } from "./combat/combat.component";
-import { MapwinComponent } from "./topscore/mapwins/mapwins.component";
 import { TopinfoComponent } from "./topscore/topinfo/topinfo.component";
 import { PlayerscoreComponent } from "./scoreboard/playerscore/playerscore.component";
 import { RoundreasonsComponent } from "./scoreboard/roundreasons/roundreasons.component";
@@ -19,6 +18,8 @@ import { InhouseTrackerPlayercardComponent } from "./combat/playercard/playercar
 import { OverlayComponent } from "./overlay/overlay.component";
 import { PlayerControllerComponent } from "./testing/player-controller/player-controller.component";
 import { TeamControllerComponent } from "./testing/team-controller/team-controller.component";
+import { ShieldIconComponent } from "./combat/playercard/shield-icon/shield-icon.component";
+import { MapinfoComponent } from "./topscore/topinfo/mapinfo/mapinfo.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,6 @@ import { TeamControllerComponent } from "./testing/team-controller/team-controll
     TopscoreComponent,
     ScoreboardComponent,
     CombatComponent,
-    MapwinComponent,
     TopinfoComponent,
     PlayerscoreComponent,
     RoundreasonsComponent,
@@ -36,6 +36,8 @@ import { TeamControllerComponent } from "./testing/team-controller/team-controll
     OverlayComponent,
     PlayerControllerComponent,
     TeamControllerComponent,
+    ShieldIconComponent,
+    MapinfoComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],

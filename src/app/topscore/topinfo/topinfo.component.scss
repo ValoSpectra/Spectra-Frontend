@@ -4,7 +4,6 @@
   position: absolute;
   top: 0;
   left: 4px;
-  gap: 4px;
   border-radius: 0px 0px 8px 8px;
   overflow: hidden;
   &-right {
@@ -20,7 +19,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 0px 10px 2px;
+  padding: 0px 10px 0px;
   position: relative;
   z-index: 2;
   background: linear-gradient(
@@ -49,7 +48,7 @@
   white-space: nowrap;
 }
 
-.topinfo-ad-display {
+.sponsor-container {
   position: absolute;
   width: 240px;
   height: 88px;
@@ -58,13 +57,14 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.UP-onlylogo {
+.sponsor-logo {
   position: absolute;
   width: 156px;
   height: 71px;
   top: 11px;
   left: 42px;
-  object-fit: cover;
+  object-fit: contain;
+  transition: opacity 1s ease-in-out;
 }
 
 .spectra-logo {
