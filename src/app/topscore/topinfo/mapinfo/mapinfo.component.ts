@@ -6,8 +6,9 @@ import { Component, Input, OnChanges } from "@angular/core";
   styleUrls: ["./mapinfo.component.scss"],
 })
 export class MapinfoComponent implements OnChanges {
+  @Input() map!: string;
   @Input() mapinfo!: any;
-  type: "past" | "present" | "future" = "present";
+  type: "past" | "present" | "future" = "future";
 
   ngOnChanges(): void {
     this.type = this.mapinfo.type;
