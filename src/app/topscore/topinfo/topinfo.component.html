@@ -1,12 +1,12 @@
-<div class="topinfo-container" *ngIf="match.mapInfo[0]">
+<div class="topinfo-container" *ngIf="match.tools.seriesInfo.mapInfo.length > 0">
   <div class="topinfo-pill">
-    <app-mapinfo [mapinfo]="match.mapInfo[0]"></app-mapinfo>
+    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[0]"></app-mapinfo>
   </div>
   <div class="topinfo-pill">
-    <app-mapinfo [mapinfo]="match.mapInfo[1]"></app-mapinfo>
+    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[1]"></app-mapinfo>
   </div>
   <div class="topinfo-pill">
-    <app-mapinfo [mapinfo]="match.mapInfo[2]"></app-mapinfo>
+    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[2]"></app-mapinfo>
   </div>
 </div>
 <div class="topinfo-container-right">

@@ -15,11 +15,16 @@
             <div class="score-text">{{ match.teams[0].roundsWon }}</div>
           </div>
         </div>
-        <div class="mapwin-line-left" *ngIf="match.mapsNeeded > 1">
-          <div class="mapwin-pip-full" *ngFor="let i of numSequence(match.mapsWonLeft)"></div>
+        <div class="mapwin-line-left" *ngIf="match.tools.seriesInfo.needed > 1">
+          <div
+            class="mapwin-pip-full"
+            *ngFor="let i of numSequence(match.tools.seriesInfo.wonLeft)"
+          ></div>
           <div
             class="mapwin-pip"
-            *ngFor="let i of numSequence(match.mapsNeeded - match.mapsWonLeft)"
+            *ngFor="
+              let i of numSequence(match.tools.seriesInfo.needed - match.tools.seriesInfo.wonLeft)
+            "
           ></div>
         </div>
       </div>
@@ -38,11 +43,16 @@
             <img class="team-image" src="{{ match.teams[1].teamUrl }}" />
           </div>
         </div>
-        <div class="mapwin-line-right" *ngIf="match.mapsNeeded > 1">
-          <div class="mapwin-pip-full" *ngFor="let i of numSequence(match.mapsWonRight)"></div>
+        <div class="mapwin-line-right" *ngIf="match.tools.seriesInfo.needed > 1">
+          <div
+            class="mapwin-pip-full"
+            *ngFor="let i of numSequence(match.tools.seriesInfo.wonRight)"
+          ></div>
           <div
             class="mapwin-pip"
-            *ngFor="let i of numSequence(match.mapsNeeded - match.mapsWonRight)"
+            *ngFor="
+              let i of numSequence(match.tools.seriesInfo.needed - match.tools.seriesInfo.wonRight)
+            "
           ></div>
         </div>
       </div>
