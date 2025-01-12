@@ -18,6 +18,7 @@ import { InhouseTrackerPlayercardComponent } from "./combat/playercard/playercar
 import { OverlayComponent } from "./overlay/overlay.component";
 import { PlayerControllerComponent } from "./testing/player-controller/player-controller.component";
 import { TeamControllerComponent } from "./testing/team-controller/team-controller.component";
+import { EndroundComponent } from "./endround/endround.component";
 import { ShieldIconComponent } from "./combat/playercard/shield-icon/shield-icon.component";
 import { MapinfoComponent } from "./topscore/topinfo/mapinfo/mapinfo.component";
 
@@ -36,6 +37,7 @@ import { MapinfoComponent } from "./topscore/topinfo/mapinfo/mapinfo.component";
     OverlayComponent,
     PlayerControllerComponent,
     TeamControllerComponent,
+    EndroundComponent,
     ShieldIconComponent,
     MapinfoComponent,
   ],

@@ -17,14 +17,21 @@ export class PlayerControllerComponent implements OnDestroy {
 
   inCombat = true;
   inShopping = false;
+  inEnd = false;
   @Input()
   set gamePhase(v: string) {
     if (v == "combat") {
       this.inCombat = true;
       this.inShopping = false;
-    } else {
+      this.inEnd = false;
+    } else if (v == "shopping") {
       this.inCombat = false;
       this.inShopping = true;
+      this.inEnd = false;
+    } else {
+      this.inCombat = false;
+      this.inShopping = false;
+      this.inEnd = true;
     }
   }
 

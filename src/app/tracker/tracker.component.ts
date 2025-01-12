@@ -11,6 +11,7 @@ import { trigger, transition, style, animate } from "@angular/animations";
 
       transition(":leave", animate("0.5s", style({ opacity: "0" }))),
     ]),
+    trigger("fade-endround", [transition(":leave", animate("0s", style({ opacity: "0" })))]),
   ],
 })
 export class TrackerComponent implements OnInit {
