@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { TestingComponent } from "./testing/testing.component";
 import { OverlayComponent } from "./overlay/overlay.component";
+import { AgentSelectComponent } from "./agent-select/agent-select.component";
+import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
 
 const routes: Routes = [
   {
@@ -11,6 +13,14 @@ const routes: Routes = [
   {
     path: "testing",
     component: TestingComponent,
+  },
+  {
+    path: "agent-select",
+    component: AgentSelectComponent,
+  },
+  {
+    path: "autoswitch",
+    component: AutoswitchComponent,
   },
 ];
 

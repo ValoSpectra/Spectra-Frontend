@@ -1,0 +1,79 @@
+.body {
+  position: absolute;
+  width: 98%;
+  height: 40%;
+  bottom: 1%;
+  left: 1%;
+  background-color: #0f1923cc;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.left-team {
+  position: absolute;
+  left: 0;
+  width: 45%;
+  height: 100%;
+}
+
+.right-team {
+  position: absolute;
+  right: 0;
+  width: 45%;
+  height: 100%;
+}
+
+.team-info {
+  position: absolute;
+  left: 45%;
+  width: 10%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 25, 35, 0.65) 0%,
+    rgba(15, 25, 35, 0.53) 53%,
+    rgba(15, 25, 35, 0) 75%,
+    rgba(15, 25, 35, 0) 100%
+  );
+}
+
+.defender-team {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  top: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--defender-color-rgb), 0.9) 0%,
+    rgba(var(--defender-color-secondary-rgb), 0) 90%
+  );
+}
+
+.attacker-team {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(var(--attacker-color-rgb), 0.9) 0%,
+    rgba(var(--attacker-color-secondary-rgb), 0) 90%
+  );
+}
+
+.team-wrapper {
+  display: flex;
+  flex-direction: row;
+  &-left {
+    @extend .team-wrapper;
+  }
+
+  &-right {
+    @extend .team-wrapper;
+  }
+}
+
+app-select-player-info {
+  width: 20%;
+  height: 100%;
+}

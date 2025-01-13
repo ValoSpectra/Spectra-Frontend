@@ -20,6 +20,11 @@ import { PlayerControllerComponent } from "./testing/player-controller/player-co
 import { TeamControllerComponent } from "./testing/team-controller/team-controller.component";
 import { ShieldIconComponent } from "./combat/playercard/shield-icon/shield-icon.component";
 import { MapinfoComponent } from "./topscore/topinfo/mapinfo/mapinfo.component";
+import { JsonPipe } from "@angular/common";
+import { AgentSelectComponent } from "./agent-select/agent-select.component";
+import { SelectTeamInfoComponent } from "./agent-select/select-team-info/select-team-info.component";
+import { SelectPlayerInfoComponent } from "./agent-select/select-player-info/select-player-info.component";
+import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
 
 @NgModule({
   declarations: [
@@ -38,10 +43,14 @@ import { MapinfoComponent } from "./topscore/topinfo/mapinfo/mapinfo.component";
     TeamControllerComponent,
     ShieldIconComponent,
     MapinfoComponent,
+    AgentSelectComponent,
+    SelectTeamInfoComponent,
+    SelectPlayerInfoComponent,
+    AutoswitchComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, JsonPipe],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class AppModule {}

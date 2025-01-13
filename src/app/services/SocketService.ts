@@ -7,6 +7,14 @@ export class SocketService {
   groupCode = "UNKNOWN";
   subscribers: Function[] = [];
 
+  private static instance: SocketService;
+
+  public static getInstance(socketEndpoint: string, groupCode: string): SocketService {
+    if (SocketService.instance == null)
+      SocketService.instance = new SocketService(socketEndpoint, groupCode);
+    return SocketService.instance;
+  }
+
   constructor(socketEndpoint: string, groupCode: string) {
     this.groupCode = groupCode;
     this.socketEndpoint = socketEndpoint;

@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="defender-gradient" *ngIf="!isAttack"></div>
+  <div class="team-tricode" *ngIf="isAttack">{{ team.teamTricode }}</div>
+  <div class="team-logo">
+    <img class="logo" [src]="team.teamUrl" alt="" />
+  </div>
+  <div class="team-tricode" *ngIf="!isAttack">{{ team.teamTricode }}</div>
+  <div class="attacker-gradient" *ngIf="isAttack"></div>
+</div>
