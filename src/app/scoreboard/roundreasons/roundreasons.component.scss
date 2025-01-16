@@ -69,9 +69,24 @@
   line-height: 40px;
 
   text-align: center;
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
 
   font-size: 16px;
+  font-weight: 800;
+  font-family: "Unbounded", Helvetica;
+}
+
+.round-number-upcoming {
+  position: absolute;
+  left: 0;
+  top: 24px;
+  width: 40px;
+
+  line-height: 40px;
+  text-align: center;
+  color: white;
+
+  font-size: 20px;
   font-weight: 800;
   font-family: "Unbounded", Helvetica;
 }
