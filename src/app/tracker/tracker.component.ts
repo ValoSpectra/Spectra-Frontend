@@ -45,6 +45,10 @@ export class TrackerComponent implements OnInit {
           wonRight: 0,
           mapInfo: [],
         },
+        seedingInfo: {
+          left: "",
+          right: "",
+        },
       },
     };
 

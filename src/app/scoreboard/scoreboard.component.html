@@ -1,7 +1,9 @@
 <div class="scoreboard-container">
   <div class="scoreboard-header-container">
     <div class="team-container">
-      <img class="team-icon" src="{{ match.teams[0].teamUrl }}" />
+      <div class="team-icon-container">
+        <img class="team-icon" src="{{ match.teams[0].teamUrl }}" />
+      </div>
       <div class="teaminfo-wrapper-left">
         <div class="teamname-text">{{ match.teams[0].teamName }}</div>
         <div class="money-spent-container">
@@ -15,7 +17,9 @@
     </div>
     <app-roundreasons class="round-reasons" [match]="match" />
     <div class="team-container flip">
-      <img class="team-icon flip" src="{{ match.teams[1].teamUrl }}" />
+      <div class="team-icon-container">
+        <img class="team-icon flip" src="{{ match.teams[1].teamUrl }}" />
+      </div>
       <div class="teaminfo-wrapper-right flip">
         <div class="teamname-text">{{ match.teams[1].teamName }}</div>
         <div class="money-spent-container">

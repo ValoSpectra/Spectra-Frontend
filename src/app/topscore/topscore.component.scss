@@ -44,8 +44,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12.07px;
-  padding: 4.83px 0px 0px;
   position: relative;
   flex: 1;
   align-self: stretch;
@@ -53,17 +51,48 @@
   background-color: #0f1923d9;
 }
 
-.teamcode {
+.teamimage-container {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-image {
   position: relative;
-  width: fit-content;
-  margin-top: -1.21px;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.teamname-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 60%;
+  overflow: hidden;
+}
+
+.teamcode {
   font-family: Unbounded, Helvetica;
   font-weight: 800;
   color: #ffffff;
   font-size: 20px;
   font-style: normal;
   text-align: center;
+  text-transform: uppercase;
   letter-spacing: -0.48px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.teamseeding {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 800;
+  color: #ffffff99;
+  font-size: 10px;
+  font-style: normal;
+  text-align: center;
   line-height: normal;
   white-space: nowrap;
 }
@@ -122,12 +151,6 @@
   text-align: center;
   // letter-spacing: 1.2px;
   line-height: normal;
-}
-
-.team-image {
-  position: relative;
-  max-width: 38.34px;
-  max-height: 38.34px;
 }
 
 .round-number {

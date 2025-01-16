@@ -103,6 +103,10 @@ export class TestingComponent implements AfterViewInit {
           },
         ],
       },
+      seedingInfo: {
+        left: "Group A",
+        right: "Group B",
+      },
     };
 
     this.team2.swapColor();
