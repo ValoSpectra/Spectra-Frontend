@@ -13,6 +13,7 @@ import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
 
       transition(":leave", animate("0.5s", style({ opacity: "0" }))),
     ]),
+    trigger("fade-endround", [transition(":leave", animate("0s", style({ opacity: "0" })))]),
   ],
 })
 export class TrackerComponent implements OnInit {
