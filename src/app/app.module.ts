@@ -25,6 +25,7 @@ import { AgentSelectComponent } from "./agent-select/agent-select.component";
 import { SelectTeamInfoComponent } from "./agent-select/select-team-info/select-team-info.component";
 import { SelectPlayerInfoComponent } from "./agent-select/select-player-info/select-player-info.component";
 import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
+import { RedirectComponent } from "./redirect/redirect.component";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
     SelectTeamInfoComponent,
     SelectPlayerInfoComponent,
     AutoswitchComponent,
+    RedirectComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],
