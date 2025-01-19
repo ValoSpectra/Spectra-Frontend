@@ -70,7 +70,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
       tools: {
         timeout: {
           team: "tech",
-          time: 30,
+          time: 45,
           maxtimeout: 2,
           teamLeft: 0,
           teamRight: 0,
@@ -119,7 +119,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
     return `url(${this.tournamentBackgroundUrl})`;
   }
   getProgressWidth(): string {
-    return `${(this.timeLeft / 30) * 100}%`;
+    return `${(this.timeLeft / this.match.tools.timeout.time) * 100}%`;
   }
   ngOnDestroy() {
     if (this.interval) {
