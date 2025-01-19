@@ -26,6 +26,7 @@ import { SelectTeamInfoComponent } from "./agent-select/select-team-info/select-
 import { SelectPlayerInfoComponent } from "./agent-select/select-player-info/select-player-info.component";
 import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
 import { RedirectComponent } from "./redirect/redirect.component";
+import { TimeoutComponent } from "./timeout/timeout.component";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { RedirectComponent } from "./redirect/redirect.component";
     SelectPlayerInfoComponent,
     AutoswitchComponent,
     RedirectComponent,
+    TimeoutComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],
