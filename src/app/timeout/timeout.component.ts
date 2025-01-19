@@ -24,6 +24,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
   match: any;
   timeout: any;
   timeoutUrl!: string;
+  team!: string;;
   tournamentBackgroundUrl!: string;
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +32,9 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
   ) {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
+      this.team = params["team"] || "";
       console.log(`Requested group code is ${this.groupCode}`);
+      console.log(`Requested team is ${this.team}`);
     });
   }
   ngOnInit(): void {
