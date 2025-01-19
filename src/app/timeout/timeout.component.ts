@@ -11,9 +11,9 @@ import { trigger, transition, style, animate } from "@angular/animations";
   styleUrls: ["./timeout.component.scss"],
   animations: [
     trigger("fade", [
-      transition(":enter", [style({ opacity: "0" }), animate("0.5s", style({ opacity: "1" }))]),
+      transition(":enter", [style({ opacity: "0" }), animate("0.3s", style({ opacity: "1" }))]),
 
-      transition(":leave", animate("0.5s", style({ opacity: "0" }))),
+      transition(":leave", animate("0.3s", style({ opacity: "0" }))),
     ]),
   ],
 })
@@ -23,9 +23,11 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
   socketService!: SocketService;
   match: any;
   timeout: any;
-  timeoutUrl!: string;
-  team!: string;;
+  team!: string;
   tournamentBackgroundUrl!: string;
+  timeLeft!: number;
+  interval: any;
+  completed: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private config: Config,
@@ -34,7 +36,6 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
       this.team = params["team"] || "";
       console.log(`Requested group code is ${this.groupCode}`);
-      console.log(`Requested team is ${this.team}`);
     });
   }
   ngOnInit(): void {
@@ -44,7 +45,26 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
       isRunning: true,
       roundNumber: 0,
       roundPhase: "combat",
-      teams: [{ players: [] }, { players: [] }],
+      teams: [
+        {
+          isAttacking: true,
+          teamName: "Team Name",
+          teamTricode: "TEAM",
+          teamUrl: "assets/misc/icon.webp",
+          roundsWon: 0,
+          spentThisRound: 1000,
+          players: [],
+        },
+        {
+          isAttacking: false,
+          teamName: "Team Name",
+          teamTricode: "TEAM",
+          teamUrl: "assets/misc/icon.webp",
+          roundsWon: 0,
+          spentThisRound: 1000,
+          players: [],
+        },
+      ],
       spikeState: { planted: false },
       map: "Ascent",
       tools: {
@@ -66,9 +86,12 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
     this.preloadImage(this.tournamentBackgroundUrl);
   }
   ngAfterViewInit(): void {
+    this.match.tools.timeout.team = this.team;
+    this.timeLeft = this.match.tools.timeout.time;
     this.socketService.subscribe((data: any) => {
       this.updateTimeout(data);
     });
+    this.startTimer();
   }
   public updateTimeout(data: any) {
     delete data.eventNumber;
@@ -76,11 +99,31 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
     this.match = data;
     this.timeout = this.match.tools.timeout;
   }
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.completed = true;
+      }
+    }, 1000);
+  }
   private preloadImage(url: string): void {
     const img = new Image();
     img.src = url;
   }
+  convertInt(value: string): number {
+    return parseInt(value, 10);
+  }
   setTournamentBackgroundImage(): string {
     return `url(${this.tournamentBackgroundUrl})`;
+  }
+  getProgressWidth(): string {
+    return `${(this.timeLeft / 30) * 100}%`;
+  }
+  ngOnDestroy() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
 }
