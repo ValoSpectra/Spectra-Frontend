@@ -85,7 +85,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {
     this.match.tools.timeout.team = this.team;
-    this.timeLeft = this.match.tools.timeout.time;
+    this.timeLeft = this.match.tools.timeout?.time ?? 60;
     this.socketService.subscribe((data: any) => {
       this.updateTimeout(data);
     });
@@ -117,7 +117,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
     return `url(${this.tournamentBackgroundUrl})`;
   }
   getProgressWidth(): string {
-    return `${(this.timeLeft / this.match.tools.timeout.time) * 100}%`;
+    return `${(this.timeLeft / (this.match.tools.timeout?.time ?? 60)) * 100}%`;
   }
   ngOnDestroy() {
     if (this.interval) {
