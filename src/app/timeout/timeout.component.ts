@@ -22,6 +22,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
   groupCode = "UNKNOWN";
   socketService!: SocketService;
   match: any;
+  ready: boolean = false;
   timeout: any;
   team!: string;
   tournamentBackgroundUrl!: string;
@@ -88,8 +89,9 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
     this.timeLeft = this.match.tools.timeout?.time ?? 60;
     this.socketService.subscribe((data: any) => {
       this.updateTimeout(data);
+      this.ready = true;
+      this.startTimer();
     });
-    this.startTimer();
   }
   public updateTimeout(data: any) {
     delete data.eventNumber;
