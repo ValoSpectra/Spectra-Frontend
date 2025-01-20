@@ -80,6 +80,8 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
         ? this.match.tournamentBackgroundUrl
         : "../../assets/misc/endround-bg.webp";
     this.preloadImage(this.tournamentBackgroundUrl);
+    this.preloadImage(this.match.teams[0].teamUrl);
+    this.preloadImage(this.match.teams[1].teamUrl);
   }
   ngAfterViewInit(): void {
     this.match.tools.timeout.team = this.team;
