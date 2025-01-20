@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from "@angular/core";
 import { TrackerComponent } from "../tracker/tracker.component";
 import { SocketService } from "../services/SocketService";
 import { ActivatedRoute } from "@angular/router";
@@ -17,18 +17,18 @@ import { trigger, transition, style, animate } from "@angular/animations";
     ]),
   ],
 })
-export class TimeoutComponent implements OnInit, AfterViewInit {
+export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   groupCode = "UNKNOWN";
   socketService!: SocketService;
   match: any;
-  ready: boolean = false;
+  ready = false;
   timeout: any;
   team!: string;
   tournamentBackgroundUrl!: string;
   timeLeft!: number;
   interval: any;
-  completed: boolean = false;
+  completed = false;
   constructor(
     private route: ActivatedRoute,
     private config: Config,
@@ -101,7 +101,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
   }
   startTimer() {
     this.interval = setInterval(() => {
-      if(this.timeLeft > 0) {
+      if (this.timeLeft > 0) {
         this.timeLeft--;
       } else {
         this.completed = true;

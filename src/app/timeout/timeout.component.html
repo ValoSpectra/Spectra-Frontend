@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="ready == true && completed === false" [@fade]>
+<div class="wrapper" *ngIf="ready === true && completed === false" [@fade]>
   <div class="timeout-box" [style.background-image]="setTournamentBackgroundImage()">
     <div class="timeout-box-content">
       <div class="info-box">
@@ -15,7 +15,7 @@
     </div>
     <div class="progress-bar" *ngIf="team !== 'tech'">
       <div class="progress" [style.width]="getProgressWidth()"></div>
-      <div class="timer">{{timeLeft}}s</div>
+      <div class="timer">{{ timeLeft }}s</div>
     </div>
   </div>
 </div>
