@@ -41,10 +41,6 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.match = {
       groupCode: "A",
-      isRanked: false,
-      isRunning: true,
-      roundNumber: 0,
-      roundPhase: "combat",
       teams: [
         {
           isAttacking: true,
@@ -70,7 +66,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit {
       tools: {
         timeout: {
           team: "tech",
-          time: 45,
+          time: 60,
           maxtimeout: 2,
           teamLeft: 0,
           teamRight: 0,
