@@ -10,16 +10,23 @@ import { trigger, transition, style, animate } from "@angular/animations";
 })
 export class EndroundComponent implements OnChanges, OnInit {
   @Input() match!: any;
-  tournamentUrl: string =
-    this.match?.tournamentUrl && this.match.tournamentUrl !== ""
-      ? this.match.tournamentUrl
-      : "../../assets/misc/logo.webp";
-  tournamentBackgroundUrl: string =
-    this.match?.tournamentBackgroundUrl && this.match.tournamentBackgroundUrl !== ""
-      ? this.match.tournamentBackgroundUrl
-      : "../../assets/misc/backdrop.webp";
+  tournamentUrl = "../../assets/misc/logo.webp";
+
+  tournamentBackgroundUrl = "../../assets/misc/backdrop.webp";
+
   teamWon = 0;
   ngOnInit(): void {
+    this.tournamentUrl =
+      this.match?.tools?.tournamentInfo?.logoUrl && this.match.tools.tournamentInfo.logoUrl !== ""
+        ? this.match.tools.tournamentInfo.logoUrl
+        : "../../assets/misc/logo.webp";
+
+    this.tournamentBackgroundUrl =
+      this.match?.tools?.tournamentInfo?.backdropUrl &&
+      this.match.tools.tournamentInfo.backdropUrl !== ""
+        ? this.match.tools.tournamentInfo.backdropUrl
+        : "../../assets/misc/backdrop.webp";
+
     this.preloadImage(this.tournamentUrl);
     this.preloadImage(this.tournamentBackgroundUrl);
   }
