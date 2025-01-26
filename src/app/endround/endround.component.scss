@@ -5,7 +5,7 @@
   width: 875px;
   height: 200px;
   overflow: hidden;
-  animation-name: changepos-1;
+  animation-name: fly-down;
   animation-duration: 4s;
   animation-fill-mode: both;
 }
@@ -65,7 +65,7 @@
   width: 875px;
   height: 200px;
   overflow: hidden;
-  animation-name: changepos-2;
+  animation-name: slide-up;
   animation-duration: 3.95s;
   animation-fill-mode: both;
 }
@@ -165,7 +165,7 @@
   line-height: normal;
 }
 
-@keyframes changepos-1 {
+@keyframes fly-down {
   0% {
     top: 40.5%;
   }
@@ -177,7 +177,7 @@
   }
 }
 
-@keyframes changepos-2 {
+@keyframes slide-up {
   0% {
     top: 100%;
   }

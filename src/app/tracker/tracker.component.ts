@@ -10,10 +10,9 @@ import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
   animations: [
     trigger("fade", [
       transition(":enter", [style({ opacity: "0" }), animate("0.5s", style({ opacity: "1" }))]),
-
       transition(":leave", animate("0.5s", style({ opacity: "0" }))),
     ]),
-    trigger("fade-endround", [transition(":leave", animate("0s", style({ opacity: "0" })))]),
+    trigger("fadeFast", [transition(":leave", animate("0.25s ease-out", style({ opacity: "0" })))]),
   ],
 })
 export class TrackerComponent implements OnInit {

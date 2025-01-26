@@ -1,12 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges, OnInit } from "@angular/core";
-import { trigger, transition, style, animate } from "@angular/animations";
 @Component({
   selector: "app-endround",
   templateUrl: "./endround.component.html",
   styleUrls: ["./endround.component.scss"],
-  animations: [
-    trigger("fade-endround", [transition(":leave", animate("0s", style({ opacity: "0" })))]),
-  ],
 })
 export class EndroundComponent implements OnChanges, OnInit {
   @Input() match!: any;
