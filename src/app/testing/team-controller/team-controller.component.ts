@@ -26,9 +26,9 @@ export class TeamControllerComponent {
   @Input() teamName!: string;
   @Input() teamCode!: string;
 
-  _roundPhase: "shopping" | "combat" = "combat";
+  _roundPhase: "shopping" | "combat" | "end" = "combat";
   @Input()
-  set roundPhase(s: "shopping" | "combat") {
+  set roundPhase(s: "shopping" | "combat" | "end") {
     this._roundPhase = s;
     this.propagateRoundPhase(s);
   }
@@ -136,7 +136,7 @@ export class TeamControllerComponent {
     }
   }
 
-  propagateRoundPhase(phase: "shopping" | "combat") {
+  propagateRoundPhase(phase: "shopping" | "combat" | "end") {
     for (const playerController of this.playerControllers) {
       playerController.instance.gamePhase = phase;
     }
