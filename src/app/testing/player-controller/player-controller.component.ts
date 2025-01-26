@@ -67,6 +67,7 @@ export class PlayerControllerComponent implements OnDestroy {
     maxUltPoints: 7,
     ultReady: false,
     hasSpike: false,
+    scoreboardAvailable: true,
     kills: 0,
     deaths: 0,
     assists: 0,

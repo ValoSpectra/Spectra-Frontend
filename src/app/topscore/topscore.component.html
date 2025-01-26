@@ -4,8 +4,15 @@
       <div class="teamcard">
         <div class="teamcard-border">
           <div class="teaminfo-container">
-            <img class="team-image" src="{{ match.teams[0].teamUrl }}" />
-            <div class="teamcode">{{ match.teams[0].teamTricode }}</div>
+            <div class="teamimage-container">
+              <img class="team-image" src="{{ match.teams[0].teamUrl }}" />
+            </div>
+            <div class="teamname-container">
+              <div class="teamcode">{{ match.teams[0].teamTricode }}</div>
+              <div class="teamseeding">
+                {{ match.tools.seedingInfo.left }}
+              </div>
+            </div>
           </div>
           <div class="divider" [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'"></div>
           <div
@@ -39,8 +46,15 @@
           </div>
           <div class="divider" [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"></div>
           <div class="teaminfo-container">
-            <div class="teamcode">{{ match.teams[1].teamTricode }}</div>
-            <img class="team-image" src="{{ match.teams[1].teamUrl }}" />
+            <div class="teamname-container">
+              <div class="teamcode">{{ match.teams[1].teamTricode }}</div>
+              <div class="teamseeding">
+                {{ match.tools.seedingInfo.right }}
+              </div>
+            </div>
+            <div class="teamimage-container">
+              <img class="team-image" src="{{ match.teams[1].teamUrl }}" />
+            </div>
           </div>
         </div>
         <div class="mapwin-line-right" *ngIf="match.tools.seriesInfo.needed > 1">

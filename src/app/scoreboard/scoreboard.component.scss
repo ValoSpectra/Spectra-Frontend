@@ -2,10 +2,19 @@
   transform: rotateY(180deg);
 }
 
+.team-icon-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 11%;
+  height: 100%;
+}
+
 .team-icon {
   position: relative;
-  max-width: 38.34px;
-  max-height: 38.34px;
+  max-width: 80%;
+  max-height: 80%;
 }
 
 .scoreboard-container {
@@ -31,8 +40,6 @@
 .team-container {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 0px 16px;
   position: relative;
   flex: 1;
   align-self: stretch;

@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
+
+.container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.player-gradient {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  z-index: -200;
+
+  &.attacker {
+    @extend .player-gradient;
+    background: linear-gradient(
+      0deg,
+      rgba(var(--attacker-color-rgb), 1) 0%,
+      rgba(var(--attacker-color-rgb), 0.4) 75%,
+      rgba(var(--attacker-color-secondary-rgb), 0) 100%
+    );
+  }
+  &.defender {
+    @extend .player-gradient;
+    background: linear-gradient(
+      180deg,
+      rgba(var(--defender-color-rgb), 1) 0%,
+      rgba(var(--defender-color-rgb), 0.4) 75%,
+      rgba(var(--defender-color-secondary-rgb), 0) 100%
+    );
+  }
+}
+
+.agent-image {
+  display: block;
+  margin-top: -35%;
+  margin-left: -150%;
+  max-width: 400%;
+  z-index: 200;
+  filter: grayscale(1);
+
+  &.locked {
+    filter: grayscale(0);
+  }
+}
+
+.player-name {
+  position: absolute;
+  width: 20%;
+  bottom: 15%;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: white;
+  font-family: "Montserrat", Helvetica;
+  text-shadow: 2px 2px 5px black;
+  line-break: auto;
+  overflow: hidden;
+  line-height: 90%;
+}
+
+.player-role {
+  position: absolute;
+  width: 20%;
+  bottom: 3%;
+  z-index: 100;
+}
+
+.role-image {
+  display: block;
+  margin: auto;
+  max-width: 25%;
+}

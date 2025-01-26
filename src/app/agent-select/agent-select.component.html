@@ -1,0 +1,34 @@
+<div class="body" [@fade] *ngIf="shouldDisplay()">
+  <div class="left-team">
+    <div class="team-wrapper-left">
+      <app-select-player-info
+        *ngFor="let player of teamLeft.players; trackBy: trackByPlayerId"
+        [player]="player"
+        [color]="teamLeft.isAttacking ? 'attacker' : 'defender'"
+      />
+    </div>
+  </div>
+  <div class="team-info">
+    <div class="defender-team">
+      <app-select-team-info
+        [team]="teamLeft.isAttacking ? teamRight : teamLeft"
+        [isAttack]="false"
+      ></app-select-team-info>
+    </div>
+    <div class="attacker-team">
+      <app-select-team-info
+        [team]="teamLeft.isAttacking ? teamLeft : teamRight"
+        [isAttack]="true"
+      ></app-select-team-info>
+    </div>
+  </div>
+  <div class="right-team">
+    <div class="team-wrapper-right">
+      <app-select-player-info
+        *ngFor="let player of teamRight.players; trackBy: trackByPlayerId"
+        [player]="player"
+        [color]="teamRight.isAttacking ? 'attacker' : 'defender'"
+      />
+    </div>
+  </div>
+</div>

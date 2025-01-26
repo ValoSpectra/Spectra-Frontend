@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="player-agent">
+    <img
+      class="agent-image"
+      [ngClass]="player.locked ? 'locked' : ''"
+      [@lockAnimation]="player.locked"
+      [@characterSwitch]="player.agentInternal"
+      src="assets/agent-portraits/{{ player.agentInternal }}Portrait.webp"
+      alt=""
+    />
+    <div class="player-role">
+      <img
+        class="role-image"
+        [@characterSwitch]="player.agentInternal"
+        src="assets/roles/{{ getAgentRole(player.agentInternal) }}.webp"
+        alt=""
+      />
+    </div>
+    <div class="player-name">
+      {{ player.name }}
+    </div>
+    <div class="player-gradient" [ngClass]="color"></div>
+  </div>
+</div>

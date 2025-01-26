@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="shouldDisplay()">
   <app-topinfo [match]="match" />
   <app-topscore [match]="match" />
   <app-endround [match]="match" />

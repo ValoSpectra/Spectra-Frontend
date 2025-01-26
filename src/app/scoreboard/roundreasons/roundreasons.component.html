@@ -14,7 +14,7 @@
 
         <div
           [class]="'reason-color top ' + (record.wasAttack ? 'attacker' : 'defender')"
-          *ngIf="record.type !== 'lost'"
+          *ngIf="record.type !== 'lost' && record.type !== 'upcoming'"
         >
           <div class="image-container">
             <img class="image" src="{{ assets }}/roundWinReason/{{ record.type }}.webp" />
@@ -23,6 +23,10 @@
 
         <div class="reason-color lost" *ngIf="record.type === 'lost'">
           <div class="round-number">{{ record.round }}</div>
+        </div>
+
+        <div class="reason-color lost" *ngIf="record.type === 'upcoming'">
+          <div class="round-number-upcoming">{{ record.round }}</div>
         </div>
       </div>
     </div>
@@ -43,7 +47,7 @@
 
         <div
           [class]="'reason-color bottom ' + (record.wasAttack ? 'attacker' : 'defender')"
-          *ngIf="record.type !== 'lost'"
+          *ngIf="record.type !== 'lost' && record.type !== 'upcoming'"
         >
           <div class="image-container">
             <img class="image" src="{{ assets }}/roundWinReason/{{ record.type }}.webp" />
@@ -56,21 +60,4 @@
       </div>
     </div>
   </div>
-
-  <!-- <div class="reason-color top red">
-    <div class="image-container"><img class="image" src="../../assets/roundWinReason/kills.webp" /></div>
-  </div>
-  <div class="reason-color bottom green">
-    <div class="image-container"><img class="image" src="../../assets/roundWinReason/detonated.webp" /></div>
-  </div>
-  <div class="divider">
-    <img class="line" src="../../assets/roundWinReason/divider-line.svg" /> <img class="line"
-      src="../../assets/roundWinReason/divider-line.svg" />
-  </div>
-  <div class="reason-color bottom red">
-    <div class="image-container"><img class="image" src="../../assets/roundWinReason/defused.webp" /></div>
-  </div>
-  <div class="reason-color top green">
-    <div class="image-container"><img class="image" src="../../assets/roundWinReason/defused.webp" /></div>
-  </div> -->
 </div>

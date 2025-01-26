@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { trigger, transition, style, animate } from "@angular/animations";
+import { ActivatedRoute } from "@angular/router";
+import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
 
 @Component({
   selector: "app-tracker",
@@ -24,6 +26,8 @@ export class TrackerComponent implements OnInit {
   ranksEnabled = false;
   ranksByName: any = {};
 
+  constructor(private route: ActivatedRoute) {}
+
   async ngOnInit(): Promise<void> {
     //setting up with empty match state so certain ui parts dont complain
     this.match = {
@@ -31,7 +35,7 @@ export class TrackerComponent implements OnInit {
       isRanked: false,
       isRunning: true,
       roundNumber: 0,
-      roundPhase: "combat",
+      roundPhase: "LOBBY",
       teams: [{ players: [] }, { players: [] }],
       spikeState: { planted: false },
       map: "Ascent",
@@ -42,11 +46,33 @@ export class TrackerComponent implements OnInit {
           wonRight: 0,
           mapInfo: [],
         },
+        seedingInfo: {
+          left: "",
+          right: "",
+        },
       },
     };
 
     if (this.ranksEnabled) {
       // this.ranksByName = this.inhouseTrackerService.getRanksFromSheet();
+    }
+  }
+
+  isAutoswitch(): boolean {
+    return this.route.component === AutoswitchComponent;
+  }
+
+  autoDisplayPhases = ["shopping", "combat", "end", "game_start", "game_end"];
+
+  shouldDisplay(): boolean {
+    if (this.isAutoswitch()) {
+      if (this.autoDisplayPhases.includes(this.match.roundPhase)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
     }
   }
 
