@@ -17,7 +17,7 @@ export class EndroundComponent implements OnChanges, OnInit {
   tournamentBackgroundUrl: string =
     this.match?.tournamentBackgroundUrl && this.match.tournamentBackgroundUrl !== ""
       ? this.match.tournamentBackgroundUrl
-      : "../../assets/misc/endround-bg.webp";
+      : "../../assets/misc/backdrop.webp";
   teamWon = 0;
   ngOnInit(): void {
     this.preloadImage(this.tournamentUrl);
