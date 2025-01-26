@@ -124,6 +124,8 @@ export class TestingComponent implements AfterViewInit {
       this.matchData.roundPhase = "combat";
     } else if (this.matchData.roundPhase == "combat") {
       this.matchData.roundPhase = "end";
+    } else if (this.matchData.roundPhase == "LOBBY") {
+      this.matchData.roundPhase = "end";
     } else {
       this.matchData.roundPhase = "shopping";
     }
