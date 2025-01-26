@@ -79,7 +79,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.tournamentBackgroundUrl =
       this.match?.tournamentBackgroundUrl && this.match.tournamentBackgroundUrl !== ""
         ? this.match.tournamentBackgroundUrl
-        : "../../assets/misc/endround-bg.webp";
+        : "../../assets/misc/backdrop.webp";
     this.preloadImage(this.tournamentBackgroundUrl);
     this.preloadImage(this.match.teams[0].teamUrl);
     this.preloadImage(this.match.teams[1].teamUrl);
