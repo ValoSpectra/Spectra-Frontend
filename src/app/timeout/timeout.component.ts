@@ -62,8 +62,6 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
           players: [],
         },
       ],
-      spikeState: { planted: false },
-      map: "Ascent",
       tools: {
         timeout: {
           team: "tech",
