@@ -37,6 +37,12 @@ import { Config } from "../../shared/config";
         animate("150ms", style({ opacity: 0 })),
       ]),
     ]),
+    trigger("healthChange", [
+      transition("* <=> *", [
+        style({ opacity: "0", filter: "brightness(80%)" }),
+        animate("200ms", style({ opacity: "1" })),
+      ]),
+    ]),
   ],
 })
 export class InhouseTrackerPlayercardComponent {

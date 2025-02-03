@@ -170,19 +170,15 @@
   display: flex;
   flex-direction: column;
   width: 160px;
-  height: 74px;
+  height: 76px;
   align-items: flex-start;
   justify-content: flex-end;
   gap: 4px;
   padding: 0px 0px 2px 32px;
   position: relative;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  overflow: hidden;
 
   &.defender {
     @extend .player-info;
-    border-color: var(--defender-color-shield-currency);
     background: linear-gradient(
         90deg,
         rgba(var(--defender-color-rgb), 0.3) 0%,
@@ -193,7 +189,6 @@
 
   &.attacker {
     @extend .player-info;
-    border-color: var(--attacker-color-shield-currency);
     background: linear-gradient(
         90deg,
         rgba(var(--attacker-color-rgb), 0.5) 0%,
@@ -247,7 +242,7 @@
 .shields-currency {
   display: inline-flex;
   height: 20px;
-  align-items: center;
+  align-items: flex-end;
   gap: 6px;
   position: relative;
 }
@@ -290,7 +285,7 @@
   opacity: 0.8;
   font-family: "Montserrat", Helvetica;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 11px;
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
@@ -325,4 +320,67 @@
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+}
+
+app-shield-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+.health-container {
+  display: inline-flex;
+  height: 20px;
+  width: 62px;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+
+  &.right {
+    @extend .health-container;
+    justify-content: flex-end;
+  }
+}
+
+.health-amount {
+  position: relative;
+  width: fit-content;
+  opacity: 0.8;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+
+  &.attacker {
+    @extend .health-amount;
+    color: var(--attacker-color-shield-currency);
+  }
+
+  &.defender {
+    @extend .health-amount;
+    color: var(--defender-color-shield-currency);
+  }
+}
+
+.health-bar {
+  position: absolute;
+  height: 3px;
+  left: 0;
+  bottom: 0;
+  transition: width 0.2s ease-out;
+
+  &.attacker {
+    @extend .health-bar;
+    background-color: var(--attacker-color-shield-currency);
+  }
+
+  &.defender {
+    @extend .health-bar;
+    background-color: var(--defender-color-shield-currency);
+  }
 }
