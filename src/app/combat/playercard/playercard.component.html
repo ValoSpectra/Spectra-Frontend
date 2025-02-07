@@ -20,21 +20,22 @@
         (player.isObserved ? 'observed' : '')
       "
     >
-      <div class="spectator-icon-container" *ngIf="player.isObserved">
+      <div class="spectator-icon-container" [class]="side" *ngIf="player.isObserved">
         <img class="spectator-icon" src="{{ assets }}/misc/ObserverEye.svg" />
       </div>
       <div class="info-container">
+        <app-abilities class="abilities" [side]="side" [player]="player"></app-abilities>
         <div class="shields-currency">
           <app-shield-icon
             [type]="player.armorName"
             [side]="color"
             [@healthChange]="player.armorName"
-            *ngIf="player.isAlive && !player.auxiliaryAvailable"
+            *ngIf="player.isAlive && !player.auxiliaryAvailable.health"
           ></app-shield-icon>
           <div
             class="health-container"
             [class]="side"
-            *ngIf="player.isAlive && player.auxiliaryAvailable"
+            *ngIf="player.isAlive && player.auxiliaryAvailable.health"
             [@deathAnimation]="player.isAlive"
           >
             <app-shield-icon
@@ -53,7 +54,11 @@
               *ngIf="side === 'right'"
             ></app-shield-icon>
           </div>
-          <div class="currency-container" [class]="side">
+          <div
+            class="currency-container"
+            [class]="side"
+            *ngIf="player.scoreboardAvailable || player.auxiliaryAvailable.scoreboard"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="9"
@@ -71,7 +76,7 @@
             <div
               class="currency-title"
               [class]="color"
-              [style.font-size.px]="player.auxiliaryAvailable ? 11 : 14"
+              [style.font-size.px]="player.auxiliaryAvailable.health ? 11 : 14"
             >
               {{ player.money }}
             </div>

@@ -210,14 +210,20 @@
 }
 
 .spectator-icon-container {
-  width: 150px;
-  height: 100%;
-  padding-top: 8px;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-  gap: 10px;
-  display: inline-flex;
+  position: absolute;
+  top: 0;
+  width: 18px;
+  height: 20px;
+
+  &.left {
+    @extend .spectator-icon-container;
+    left: 3px;
+  }
+
+  &.right {
+    @extend .spectator-icon-container;
+    right: 3px;
+  }
 }
 
 .spectator-icon {
@@ -383,4 +389,10 @@ app-shield-icon {
     @extend .health-bar;
     background-color: var(--defender-color-shield-currency);
   }
+}
+
+.abilities {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }

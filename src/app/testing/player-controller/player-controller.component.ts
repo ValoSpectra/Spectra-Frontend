@@ -42,7 +42,7 @@ export class PlayerControllerComponent implements OnDestroy {
 
   static agentIndex = [0, 0];
   static agentOrder = [
-    ["Vampire", "Killjoy", "Guide", "Stealth", "Rift"],
+    ["Vampire", "Killjoy", "Guide", "Stealth", "Smonk"],
     ["Grenadier", "Deadeye", "Sprinter", "BountyHunter", "Mage"],
   ];
 
@@ -68,11 +68,20 @@ export class PlayerControllerComponent implements OnDestroy {
     ultReady: false,
     hasSpike: false,
     scoreboardAvailable: true,
-    auxiliaryAvailable: true,
+    auxiliaryAvailable: {
+      health: true,
+      abilities: true,
+      scoreboard: true,
+    },
     kills: 0,
     deaths: 0,
     assists: 0,
     health: 100,
+    abilities: {
+      grenade: 1,
+      ability1: 1,
+      ability2: 0,
+    },
   };
 
   constructor() {
