@@ -90,7 +90,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.preloadImage(this.match.teams[1].teamUrl);
   }
   isAutoswitch(): boolean {
-      return this.route.component === AutoswitchComponent;
+    return this.route.component === AutoswitchComponent;
   }
   shouldDisplay(): boolean {
     if (this.isAutoswitch()) {
