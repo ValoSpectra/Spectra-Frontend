@@ -28,6 +28,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   tournamentBackgroundUrl = "../../assets/misc/backdrop.webp";
   timeLeft!: number; //Store remaining time in seconds
   interval: any;
+  test = false;
   /* 
   Display state : 
   * ready will be true once the data is received from the server
@@ -40,6 +41,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     private config: Config,
   ) {
     this.route.queryParams.subscribe((params) => {
+      this.test = params["test"] === "true";
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
       this.team = params["team"] || "";
       console.log(`Requested group code is ${this.groupCode}`);
@@ -106,6 +108,10 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.match.tools.timeout.team = this.team;
     this.timeLeft = this.match.tools.timeout?.time ?? 60;
+    if(this.test) {
+      this.ready = true;
+      this.startTimer();
+    }
     this.socketService.subscribe((data: any) => {
       this.updateTimeout(data);
       this.ready = true;
