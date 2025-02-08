@@ -70,6 +70,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
       ],
       tools: {
         timeout: {
+          display: false,
           team: "tech",
           time: 60,
           maxtimeout: 2,
@@ -90,6 +91,17 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   isAutoswitch(): boolean {
       return this.route.component === AutoswitchComponent;
+  }
+  shouldDisplay(): boolean {
+    if (this.isAutoswitch()) {
+      if (this.match.tools.timeout.display) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
   }
   ngAfterViewInit(): void {
     this.match.tools.timeout.team = this.team;

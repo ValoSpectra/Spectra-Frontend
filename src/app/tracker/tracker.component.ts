@@ -40,8 +40,9 @@ export class TrackerComponent implements OnInit {
       map: "Ascent",
       tools: {
         timeout: {
+          display: false,
           team: "tech",
-          time: 30,
+          time: 60,
           maxtimeout: 2,
           teamLeft: 0,
           teamRight: 0,
