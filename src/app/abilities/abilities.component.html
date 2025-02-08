@@ -1,0 +1,35 @@
+<div
+  class="regular-container"
+  [class]="side"
+  *ngIf="player.isAlive && player.auxiliaryAvailable.abilities"
+  [@deathAnimation]="player.isAlive"
+>
+  <img
+    class="ability-icon"
+    src="{{ assets }}/grenades/{{ player.agentInternal }}Grenade.webp"
+    [class]="getAvailability(player.abilities?.grenade || 0)"
+  />
+  <img
+    class="ability-icon"
+    src="{{ assets }}/ability1/{{ player.agentInternal }}Ability1.webp"
+    [class]="getAvailability(player.abilities?.ability1 || 0)"
+  />
+  <img
+    class="ability-icon"
+    src="{{ assets }}/ability2/{{ player.agentInternal }}Ability2.webp"
+    [class]="getAvailability(player.abilities?.ability2 || 0)"
+  />
+</div>
+
+<div
+  class="regular-container"
+  [class]="side"
+  *ngIf="player.agentInternal === 'Smonk' && !player.isAlive && player.auxiliaryAvailable.abilities"
+  [@availableWhileDead]="!player.isAlive"
+>
+  <img
+    class="ability-icon available-while-dead"
+    src="{{ assets }}/ability2/{{ player.agentInternal }}Ability2.webp"
+    [class]="getAvailability(player.abilities?.ability2 || 0)"
+  />
+</div>

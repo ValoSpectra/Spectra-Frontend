@@ -42,7 +42,7 @@ export class PlayerControllerComponent implements OnDestroy {
 
   static agentIndex = [0, 0];
   static agentOrder = [
-    ["Vampire", "Killjoy", "Guide", "Stealth", "Rift"],
+    ["Vampire", "Killjoy", "Guide", "Stealth", "Smonk"],
     ["Grenadier", "Deadeye", "Sprinter", "BountyHunter", "Mage"],
   ];
 
@@ -68,9 +68,20 @@ export class PlayerControllerComponent implements OnDestroy {
     ultReady: false,
     hasSpike: false,
     scoreboardAvailable: true,
+    auxiliaryAvailable: {
+      health: true,
+      abilities: true,
+      scoreboard: true,
+    },
     kills: 0,
     deaths: 0,
     assists: 0,
+    health: 100,
+    abilities: {
+      grenade: 1,
+      ability1: 1,
+      ability2: 0,
+    },
   };
 
   constructor() {
@@ -99,11 +110,13 @@ export class PlayerControllerComponent implements OnDestroy {
     this.playerObject.isAlive = false;
     this.stopSpectate();
     this.playerObject.armorName = this.armorOrder[3];
+    this.playerObject.health = 0;
   }
 
   revive(): void {
     this.playerObject.isAlive = true;
     this.playerObject.armorName = this.armorOrder[0];
+    this.playerObject.health = 100;
   }
 
   giveUltPoint(): void {
@@ -165,6 +178,7 @@ export class PlayerControllerComponent implements OnDestroy {
     i++;
     i %= this.armorOrder.length;
     this.playerObject.armorName = this.armorOrder[i];
+    this.playerObject.health = Math.floor(Math.random() * 100) + 1;
   }
 
   changeStats(): void {

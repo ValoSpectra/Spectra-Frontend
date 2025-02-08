@@ -39,13 +39,14 @@
 
 .team-container {
   display: flex;
+  width: 400px;
   align-items: center;
   position: relative;
   flex: 1;
   align-self: stretch;
   flex-grow: 1;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: visible;
   background: linear-gradient(
     90deg,
     rgba(15, 25, 35, 0.65) 0%,

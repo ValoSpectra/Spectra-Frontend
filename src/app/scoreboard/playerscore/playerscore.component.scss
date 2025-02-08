@@ -106,10 +106,10 @@
 
 .resources-container {
   display: flex;
-  width: 634.6px;
+  width: 530px;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 12px;
   position: relative;
   align-self: stretch;
   margin-left: -85.6px;
@@ -132,11 +132,8 @@
 }
 
 .shield-icon-container {
-  position: absolute;
   width: 36px;
   height: 36px;
-  top: 19px;
-  left: 110px;
 }
 
 .shield-icon {
@@ -148,11 +145,10 @@
   display: flex;
   width: 120px;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   gap: 10px;
   position: relative;
   align-self: stretch;
-  left: 9px;
 }
 
 .KDA-tracker {
@@ -161,7 +157,7 @@
   font-family: "Unbounded", Helvetica;
   font-weight: 600;
   color: transparent;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
@@ -172,7 +168,7 @@
   color: #ffffff;
   font-family: "Unbounded", Helvetica;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0;
 
   &-delimiter {
@@ -183,13 +179,14 @@
 
 .weapon-icon-container {
   display: flex;
-  width: 216px;
+  min-width: 160px;
+  max-width: 200px;
+  flex-shrink: 1;
   align-items: center;
   justify-content: center;
   gap: 10px;
   position: relative;
   align-self: stretch;
-  transform: rotate(180deg);
 }
 
 .weapon-icon-wrapper {
@@ -198,21 +195,24 @@
   display: inline-flex;
   flex-direction: column;
   gap: 20px;
+  max-width: 190px;
   position: relative;
   flex: 0 0 auto;
 }
 
 .weapon-icon {
   position: relative;
-  height: 40px;
-  transform: rotate(-180deg);
+  max-height: 40px;
+  max-width: 160px;
   object-fit: cover;
 }
 
 .money-container {
   display: flex;
   flex-direction: column;
-  width: 120px;
+  min-width: 80px;
+  max-width: 100px;
+  flex: auto;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -255,4 +255,9 @@
     @extend .money-text;
     color: white;
   }
+}
+
+app-abilities {
+  min-width: 90px;
+  margin: 0 5px;
 }

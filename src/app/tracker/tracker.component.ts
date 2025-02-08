@@ -56,6 +56,11 @@ export class TrackerComponent implements OnInit {
           left: "",
           right: "",
         },
+        tournamentInfo: {
+          name: "",
+          logoUrl: "",
+          backdropUrl: "",
+        },
       },
     };
 

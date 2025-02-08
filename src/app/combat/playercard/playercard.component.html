@@ -20,13 +20,45 @@
         (player.isObserved ? 'observed' : '')
       "
     >
-      <div class="spectator-icon-container" *ngIf="player.isObserved">
+      <div class="spectator-icon-container" [class]="side" *ngIf="player.isObserved">
         <img class="spectator-icon" src="{{ assets }}/misc/ObserverEye.svg" />
       </div>
       <div class="info-container">
+        <app-abilities class="abilities" [side]="side" [player]="player"></app-abilities>
         <div class="shields-currency">
-          <app-shield-icon [type]="player.armorName" [side]="color"></app-shield-icon>
-          <div class="currency-container" [class]="side">
+          <app-shield-icon
+            [type]="player.armorName"
+            [side]="color"
+            [@healthChange]="player.armorName"
+            *ngIf="player.isAlive && !player.auxiliaryAvailable.health"
+          ></app-shield-icon>
+          <div
+            class="health-container"
+            [class]="side"
+            *ngIf="player.isAlive && player.auxiliaryAvailable.health"
+            [@deathAnimation]="player.isAlive"
+          >
+            <app-shield-icon
+              [type]="player.armorName"
+              [side]="color"
+              [@healthChange]="player.armorName"
+              *ngIf="side === 'left'"
+            ></app-shield-icon>
+            <div class="health-amount" [class]="color" [@healthChange]="player.health">
+              {{ player.health }}
+            </div>
+            <app-shield-icon
+              [type]="player.armorName"
+              [side]="color"
+              [@healthChange]="player.armorName"
+              *ngIf="side === 'right'"
+            ></app-shield-icon>
+          </div>
+          <div
+            class="currency-container"
+            [class]="side"
+            *ngIf="player.scoreboardAvailable || player.auxiliaryAvailable.scoreboard"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="9"
@@ -41,7 +73,13 @@
                 [attr.fill]="colorHex"
               />
             </svg>
-            <div class="currency-title" [class]="color">{{ player.money }}</div>
+            <div
+              class="currency-title"
+              [class]="color"
+              [style.font-size.px]="player.auxiliaryAvailable.health ? 11 : 14"
+            >
+              {{ player.money }}
+            </div>
           </div>
         </div>
         <div class="username-container">
@@ -53,6 +91,13 @@
           />
         </div>
       </div>
+      <div
+        class="health-bar"
+        [class]="color"
+        [style.width.%]="player.health * 0.88 + 12"
+        [@deathAnimation]="player.isAlive"
+        *ngIf="player.isAlive"
+      ></div>
     </div>
     <div
       class="utility-container"

@@ -1,0 +1,50 @@
+.container {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.regular-container {
+  display: inline-flex;
+  flex-direction: row;
+  flex: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  &.right {
+    @extend .regular-container;
+    transform: rotateY(180deg);
+  }
+}
+
+.ability-icon {
+  width: 22px;
+
+  &.available {
+    @extend .ability-icon;
+    filter: brightness(1);
+  }
+
+  &.unavailable {
+    @extend .ability-icon;
+    filter: brightness(0.35);
+  }
+}
+
+.ultimate-icon {
+  width: 30px;
+
+  &.available {
+    @extend .ultimate-icon;
+    filter: brightness(1);
+  }
+
+  &.unavailable {
+    @extend .ultimate-icon;
+    filter: brightness(0.35);
+  }
+}

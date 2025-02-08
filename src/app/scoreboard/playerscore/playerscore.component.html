@@ -33,14 +33,23 @@
         src="{{ assets }}/shields/{{ player.armorName }}.webp"
       />
     </div>
+    <app-abilities [side]="side" [player]="player" [phase]="'shopping'"></app-abilities>
     <div class="KDA-tracker-wrapper">
       <p class="KDA-tracker" [class]="side">
         <span class="KDA-text">{{ player.kills }}</span>
         <span class="KDA-text-delimiter"> / </span>
         <span class="KDA-text">{{ player.deaths }}</span>
         <span class="KDA-text-delimiter"> / </span>
-        <span class="KDA-text" *ngIf="player.scoreboardAvailable">{{ player.assists }}</span>
-        <span class="KDA-text" *ngIf="!player.scoreboardAvailable">?</span>
+        <span
+          class="KDA-text"
+          *ngIf="player.scoreboardAvailable || player.auxiliaryAvailable.scoreboard"
+          >{{ player.assists }}</span
+        >
+        <span
+          class="KDA-text"
+          *ngIf="!player.scoreboardAvailable && !player.auxiliaryAvailable.scoreboard"
+          >?</span
+        >
       </p>
     </div>
     <div class="weapon-icon-container">
@@ -55,15 +64,29 @@
       <p class="money-element" [class]="side">
         <span class="money-text-red">-</span>
         <img class="credits-icon" src="{{ assets }}/misc/ValorantCreditsSpent.svg" />
-        <span class="money-text-red" *ngIf="player.scoreboardAvailable">{{
-          player.moneySpent
-        }}</span>
-        <span class="money-text-red" *ngIf="!player.scoreboardAvailable">?</span>
+        <span
+          class="money-text-red"
+          *ngIf="player.scoreboardAvailable || player.auxiliaryAvailable.scoreboard"
+          >{{ player.moneySpent }}</span
+        >
+        <span
+          class="money-text-red"
+          *ngIf="!player.scoreboardAvailable && !player.auxiliaryAvailable.scoreboard"
+          >?</span
+        >
       </p>
       <p class="money-element" [class]="side">
         <img class="credits-icon" src="{{ assets }}/misc/ValorantCreditsWhite.svg" />
-        <span class="money-text-white" *ngIf="player.scoreboardAvailable">{{ player.money }}</span>
-        <span class="money-text-white" *ngIf="!player.scoreboardAvailable">?</span>
+        <span
+          class="money-text-white"
+          *ngIf="player.scoreboardAvailable || player.auxiliaryAvailable.scoreboard"
+          >{{ player.money }}</span
+        >
+        <span
+          class="money-text-white"
+          *ngIf="!player.scoreboardAvailable && !player.auxiliaryAvailable.scoreboard"
+          >?</span
+        >
       </p>
     </div>
   </div>

@@ -7,11 +7,15 @@ import { Component, Input, OnChanges, SimpleChanges, OnInit } from "@angular/cor
 export class EndroundComponent implements OnChanges, OnInit {
   @Input() match!: any;
   tournamentUrl = "../../assets/misc/logo.webp";
+  endRoundEnabled = false;
 
   tournamentBackgroundUrl = "../../assets/misc/backdrop.webp";
 
   teamWon = 0;
   ngOnInit(): void {
+    this.endRoundEnabled = this.match?.tools?.tournamentInfo?.enabled || false;
+    if (!this.endRoundEnabled) return;
+
     this.tournamentUrl =
       this.match?.tools?.tournamentInfo?.logoUrl && this.match.tools.tournamentInfo.logoUrl !== ""
         ? this.match.tools.tournamentInfo.logoUrl

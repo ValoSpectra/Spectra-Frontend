@@ -107,6 +107,12 @@ export class TestingComponent implements AfterViewInit {
         left: "Group A",
         right: "Group B",
       },
+      tournamentInfo: {
+        name: "",
+        logoUrl: "",
+        backdropUrl: "",
+        enabled: true,
+      },
     };
 
     this.team2.swapColor();

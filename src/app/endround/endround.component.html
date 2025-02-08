@@ -1,4 +1,4 @@
-<div *ngIf="match.roundPhase === 'end'">
+<div *ngIf="this.endRoundEnabled && match.roundPhase === 'end'">
   <div class="intro-box">
     <div class="intro-box-content" [style.background-image]="setTournamentBackgroundImage()">
       <div class="intro-info-box">
