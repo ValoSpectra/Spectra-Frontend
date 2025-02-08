@@ -4,6 +4,7 @@ import { SocketService } from "../services/SocketService";
 import { ActivatedRoute } from "@angular/router";
 import { Config } from "../shared/config";
 import { trigger, transition, style, animate } from "@angular/animations";
+import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
 
 @Component({
   selector: "app-timeout",
@@ -22,12 +23,17 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   groupCode = "UNKNOWN";
   socketService!: SocketService;
   match: any;
-  ready = false;
-  timeout: any;
+  timeout: any; //Store timeout data extracted from match object
   team!: string;
-  tournamentBackgroundUrl!: string;
-  timeLeft!: number;
+  tournamentBackgroundUrl = "../../assets/misc/backdrop.webp";
+  timeLeft!: number; //Store remaining time in seconds
   interval: any;
+  /* 
+  Display state : 
+  * ready will be true once the data is received from the server
+  * completed will be true once the timer is completed
+  */
+  ready = false;
   completed = false;
   constructor(
     private route: ActivatedRoute,
@@ -81,6 +87,9 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.preloadImage(this.tournamentBackgroundUrl);
     this.preloadImage(this.match.teams[0].teamUrl);
     this.preloadImage(this.match.teams[1].teamUrl);
+  }
+  isAutoswitch(): boolean {
+      return this.route.component === AutoswitchComponent;
   }
   ngAfterViewInit(): void {
     this.match.tools.timeout.team = this.team;
