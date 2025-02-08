@@ -108,7 +108,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.match.tools.timeout.team = this.team;
     this.timeLeft = this.match.tools.timeout?.time ?? 60;
-    if(this.test) {
+    if (this.test) {
       this.ready = true;
       this.startTimer();
     }
