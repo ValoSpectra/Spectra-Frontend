@@ -39,6 +39,14 @@ export class TrackerComponent implements OnInit {
       spikeState: { planted: false },
       map: "Ascent",
       tools: {
+        timeout: {
+          display: false,
+          team: "tech",
+          time: 60,
+          maxtimeout: 2,
+          teamLeft: 0,
+          teamRight: 0,
+        },
         seriesInfo: {
           needed: 1,
           wonLeft: 0,
