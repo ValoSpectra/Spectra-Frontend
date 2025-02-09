@@ -128,7 +128,6 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.team !== 'tech') {
     this.interval = setInterval(() => {
       if (this.timeLeft > 0) {
-        console.log(this.timeLeft);
         this.timeLeft--;
       } else {
           this.completed = true;
