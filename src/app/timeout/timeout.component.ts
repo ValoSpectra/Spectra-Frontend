@@ -125,13 +125,16 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.timeout = this.match.tools.timeout;
   }
   startTimer() {
+    if (this.team !== 'tech') {
     this.interval = setInterval(() => {
       if (this.timeLeft > 0) {
+        console.log(this.timeLeft);
         this.timeLeft--;
       } else {
-        this.completed = true;
+          this.completed = true;
       }
     }, 1000);
+  }
   }
   private preloadImage(url: string): void {
     const img = new Image();
