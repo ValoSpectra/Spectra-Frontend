@@ -73,6 +73,10 @@
   &.minimal {
     @extend .utility-container;
     width: 160px;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+    justify-content: flex-start;
   }
 }
 
@@ -339,15 +343,20 @@
   }
 }
 
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 41px;
+}
+
 .stats-title {
   @extend .currency-title;
   color: white;
-  bottom: 12px;
 }
 
 .stats-content {
   @extend .username-title;
-  bottom: 16px;
   font-size: 18px;
 }
 

@@ -34,8 +34,18 @@
         *ngIf="player.isAlive"></div>
     </div>
     <div class="utility-container minimal" [class]="color" *ngIf="player.isAlive" [@deathAnimation]="player.isAlive">
-      <div class="stats-title" [class]="side">Kills / Deaths</div>
-      <div class="stats-content" [class]="side">11 / 0</div>
+      <div class="stats-container" *ngIf="side == 'left'">
+        <div class="stats-title" [class]="side">Kills</div>
+        <div class="stats-content" [class]="side">{{ player.kills }}</div>
+      </div>
+      <div class="stats-container">
+        <div class="stats-title" [class]="side">Deaths</div>
+        <div class="stats-content" [class]="side">{{ player.deaths }}</div>
+      </div>
+      <div class="stats-container" *ngIf="side == 'right'">
+        <div class="stats-title" [class]="side">Kills</div>
+        <div class="stats-content" [class]="side">{{ player.kills }}</div>
+      </div>
     </div>
   </div>
 </div>
