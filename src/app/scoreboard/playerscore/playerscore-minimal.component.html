@@ -1,4 +1,4 @@
-<div class="playerscore-component" [class]="color">
+<div class="playerscore-component minimal" [class]="color">
   <div class="playerinfo-container">
     <img class="agent-icon" src="{{ assets }}/agents/{{ player.agentInternal }}Icon.webp" />
     <div class="rank-icon-container" *ngIf="match.ranksEnabled && match.ranksByName[player.name]">
@@ -9,24 +9,29 @@
       />
     </div>
     <div class="playername-container" [class]="side">
-      <div class="playername-text">{{ player.name }}</div>
-      <div class="ultimate-tracker"></div>
+      <div class="agentname-text" [class]="color">{{ getAgentName(player.agentInternal) }}</div>
+      <div class="playername-text minimal">{{ player.name }}</div>
     </div>
   </div>
-  <div class="resources-container">
-    <div class="shield-icon-container"></div>
+  <div class="resources-container minimal">
+    <div class="shield-icon-container">
+      <img
+        class="shield-icon"
+        src="assets/roles/{{ getAgentRole(player.agentInternal) }}.webp"
+        alt=""
+      />
+    </div>
     <div class="KDA-tracker-wrapper">
-      <p class="KDA-tracker" [class]="side">
-        <span class="KDA-text">{{ player.kills }}</span>
-        <span class="KDA-text-delimiter"> / </span>
-        <span class="KDA-text">{{ player.deaths }}</span>
-      </p>
-    </div>
-    <div class="weapon-icon-container">
-      <div class="weapon-icon-wrapper flip">
+      <div class="KDA-tracker minimal" [class]="side">
+        <div class="KDA-tracker-bundle minimal">
+          <div class="KDA-title minimal">Kills</div>
+          <div class="KDA-text minimal">{{ player.kills }}</div>
+        </div>
+        <div class="KDA-tracker-bundle minimal">
+          <div class="KDA-title minimal">Deaths</div>
+          <div class="KDA-text minimal">{{ player.deaths }}</div>
+        </div>
       </div>
-    </div>
-    <div class="money-container">
     </div>
   </div>
 </div>
