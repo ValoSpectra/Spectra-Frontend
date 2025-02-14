@@ -72,9 +72,9 @@
 
   &.minimal {
     @extend .utility-container;
-    width: 160px;
     flex-direction: row;
     gap: 6px;
+    padding-left: 12px;
     align-items: center;
     justify-content: flex-start;
   }

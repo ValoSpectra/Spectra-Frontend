@@ -68,6 +68,10 @@ export class InhouseTrackerPlayercardComponent {
     return this._player;
   }
 
+  get showAssistCounts() {
+    return this.match.teams.findIndex((e: any) => e.hasDuplicateAgents) == -1;
+  }
+
   get colorHex() {
     return this.color == "attacker"
       ? this.config.attackerColorShieldCurrency

@@ -15,6 +15,10 @@ export class PlayerscoreComponent {
   @Input() color!: "attacker" | "defender";
   @Input() side!: "left" | "right";
 
+  get showAssistCounts() {
+    return this.match.teams.findIndex((e: any) => e.hasDuplicateAgents) == -1;
+  }
+
   numSequence(n: number): number[] {
     return Array(n);
   }

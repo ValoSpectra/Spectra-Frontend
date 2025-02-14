@@ -164,7 +164,7 @@
 
   &.minimal {
     @extend .resources-container;
-    width: 350px;
+    width: 360px;
   }
 }
 
@@ -201,6 +201,11 @@
   gap: 10px;
   position: relative;
   align-self: stretch;
+
+  &.minimal {
+    @extend .KDA-tracker-wrapper;
+    width: 170px;
+  }
 }
 
 .KDA-tracker {
