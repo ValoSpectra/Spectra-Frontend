@@ -17,3 +17,10 @@ export class PlayerscoreComponent {
     return Array(n);
   }
 }
+
+@Component({
+  selector: "app-playerscore-minimal",
+  templateUrl: "./playerscore-minimal.component.html",
+  styleUrls: ["./playerscore.component.scss"],
+})
+export class PlayerscoreMinimalComponent extends PlayerscoreComponent {}

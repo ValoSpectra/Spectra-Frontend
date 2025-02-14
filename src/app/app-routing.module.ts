@@ -13,11 +13,35 @@ const routes: Routes = [
   },
   {
     path: "overlay",
-    component: OverlayComponent,
+    children: [
+      {
+        path: "",
+        component: OverlayComponent,
+      },
+      {
+        path: "minimal",
+        component: OverlayComponent,
+        data: {
+          minimal: true
+        }
+      }
+    ]
   },
   {
     path: "testing",
-    component: TestingComponent,
+    children: [
+      {
+        path: "",
+        component: TestingComponent,
+      },
+      {
+        path: "minimal",
+        component: TestingComponent,
+        data: {
+          minimal: true
+        }
+      }
+    ]
   },
   {
     path: "agent-select",
@@ -25,7 +49,19 @@ const routes: Routes = [
   },
   {
     path: "autoswitch",
-    component: AutoswitchComponent,
+    children: [
+      {
+        path: "",
+        component: AutoswitchComponent,
+      },
+      {
+        path: "minimal",
+        component: AutoswitchComponent,
+        data: {
+          minimal: true
+        }
+      }
+    ]
   },
 ];
 

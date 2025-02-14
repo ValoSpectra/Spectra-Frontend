@@ -66,6 +66,15 @@ export class TrackerComponent implements OnInit {
     return this.route.component === AutoswitchComponent;
   }
 
+  isMinimal(): boolean {
+    if (this.route.snapshot.data["minimal"]) {
+      return this.route.snapshot.data["minimal"];
+    }
+    else {
+      return false;
+    }
+  }
+
   autoDisplayPhases = ["shopping", "combat", "end", "game_start", "game_end"];
 
   shouldDisplay(): boolean {
