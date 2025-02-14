@@ -69,6 +69,11 @@
       rgba(0, 0, 0, 0) 100%
     );
   }
+
+  &.minimal {
+    @extend .utility-container;
+    width: 160px;
+  }
 }
 
 .weapon-icon-wrapper {
@@ -207,6 +212,11 @@
     @extend .player-info;
     background: rgba(15, 25, 35, 0.6);
   }
+
+  &.minimal {
+    @extend .player-info;
+    width: 180px;
+  }
 }
 
 .spectator-icon-container {
@@ -234,6 +244,11 @@
   flex: 0 0 auto;
   top: -4px;
   left: 5px;
+
+  &.minimal {
+    @extend .info-container;
+    top: -22px;
+  }
 }
 
 .shields-currency {
@@ -317,9 +332,26 @@
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+
+  &.minimal {
+    @extend .username-title;
+    font-size: 18px;
+  }
 }
 
-app-shield-icon {
+.stats-title {
+  @extend .currency-title;
+  color: white;
+  bottom: 12px;
+}
+
+.stats-content {
+  @extend .username-title;
+  bottom: 16px;
+  font-size: 18px;
+}
+
+.app-shield-icon {
   position: relative;
   width: 20px;
   height: 20px;

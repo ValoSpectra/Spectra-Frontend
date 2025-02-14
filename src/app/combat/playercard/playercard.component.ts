@@ -1,6 +1,7 @@
 import { trigger, transition, style, animate } from "@angular/animations";
 import { Component, Input } from "@angular/core";
 import { Config } from "../../shared/config";
+import { AgentNameService } from "../../services/agentName.service";
 
 const componentAnimations = [
   trigger("deathAnimation", [
@@ -79,6 +80,10 @@ export class InhouseTrackerPlayercardComponent {
 
   capitalizeColor(s: string) {
     return s[0].toUpperCase() + s.substring(1);
+  }
+
+  getAgentName(agent: string) {
+    return AgentNameService.getAgentName(agent);
   }
 }
 
