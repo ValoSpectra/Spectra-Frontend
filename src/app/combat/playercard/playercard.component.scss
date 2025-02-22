@@ -69,6 +69,15 @@
       rgba(0, 0, 0, 0) 100%
     );
   }
+
+  &.minimal {
+    @extend .utility-container;
+    flex-direction: row;
+    gap: 6px;
+    padding-left: 12px;
+    align-items: center;
+    justify-content: flex-start;
+  }
 }
 
 .weapon-icon-wrapper {
@@ -207,6 +216,11 @@
     @extend .player-info;
     background: rgba(15, 25, 35, 0.6);
   }
+
+  &.minimal {
+    @extend .player-info;
+    width: 180px;
+  }
 }
 
 .spectator-icon-container {
@@ -214,16 +228,7 @@
   top: 0;
   width: 18px;
   height: 20px;
-
-  &.left {
-    @extend .spectator-icon-container;
-    left: 3px;
-  }
-
-  &.right {
-    @extend .spectator-icon-container;
-    right: 3px;
-  }
+  right: 3px;
 }
 
 .spectator-icon {
@@ -243,6 +248,11 @@
   flex: 0 0 auto;
   top: -4px;
   left: 5px;
+
+  &.minimal {
+    @extend .info-container;
+    top: -22px;
+  }
 }
 
 .shields-currency {
@@ -326,9 +336,31 @@
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+
+  &.minimal {
+    @extend .username-title;
+    font-size: 18px;
+  }
 }
 
-app-shield-icon {
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 41px;
+}
+
+.stats-title {
+  @extend .currency-title;
+  color: white;
+}
+
+.stats-content {
+  @extend .username-title;
+  font-size: 18px;
+}
+
+.app-shield-icon {
   position: relative;
   width: 20px;
   height: 20px;

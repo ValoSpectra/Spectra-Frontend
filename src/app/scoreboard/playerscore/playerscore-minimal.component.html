@@ -1,0 +1,41 @@
+<div class="playerscore-component minimal" [class]="color">
+  <div class="playerinfo-container">
+    <img class="agent-icon" src="{{ assets }}/agents/{{ player.agentInternal }}Icon.webp" />
+    <div class="rank-icon-container" *ngIf="match.ranksEnabled && match.ranksByName[player.name]">
+      <img
+        class="rank-icon"
+        [class]="side"
+        src="{{ assets }}/ranks/{{ match.ranksByName[player.name] }}_Rank.webp"
+      />
+    </div>
+    <div class="playername-container" [class]="side">
+      <div class="agentname-text" [class]="color">{{ getAgentName(player.agentInternal) }}</div>
+      <div class="playername-text minimal">{{ player.name }}</div>
+    </div>
+  </div>
+  <div class="resources-container minimal">
+    <div class="shield-icon-container">
+      <img
+        class="shield-icon"
+        src="assets/roles/{{ getAgentRole(player.agentInternal) }}.webp"
+        alt=""
+      />
+    </div>
+    <div class="KDA-tracker-wrapper minimal">
+      <div class="KDA-tracker minimal" [class]="side">
+        <div class="KDA-tracker-bundle minimal">
+          <div class="KDA-title minimal">Kills</div>
+          <div class="KDA-text minimal">{{ player.kills }}</div>
+        </div>
+        <div class="KDA-tracker-bundle minimal">
+          <div class="KDA-title minimal">Deaths</div>
+          <div class="KDA-text minimal">{{ player.deaths }}</div>
+        </div>
+        <div class="KDA-tracker-bundle minimal" *ngIf="showAssistCounts">
+          <div class="KDA-title minimal">Assists</div>
+          <div class="KDA-text minimal">{{ player.assists }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
