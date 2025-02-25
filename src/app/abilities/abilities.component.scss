@@ -7,22 +7,17 @@
   gap: 2px;
 }
 
-.regular-container {
+.ability-container {
   display: inline-flex;
   flex-direction: row;
   flex: auto;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-
-  &.right {
-    @extend .regular-container;
-    transform: rotateY(180deg);
-  }
 }
 
 .ability-icon {
   width: 22px;
+  padding-right: 20px;
 
   &.available {
     @extend .ability-icon;

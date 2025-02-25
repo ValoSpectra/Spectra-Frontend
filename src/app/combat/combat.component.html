@@ -9,7 +9,7 @@
       side="left"
     />
   </div>
-  <div class="playercards">
+  <div class="playercards-rightteam">
     <app-playercard
       *ngFor="let player of match.teams[1].players; trackBy: trackByPlayerId"
       [match]="match"
@@ -31,7 +31,7 @@
       side="left"
     />
   </div>
-  <div class="playercards">
+  <div class="playercards-rightteam">
     <app-playercard-minimal
       *ngFor="let player of match.teams[1].players; trackBy: trackByPlayerId"
       [match]="match"

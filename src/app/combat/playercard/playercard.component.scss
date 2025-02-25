@@ -11,6 +11,7 @@
   align-items: flex-start;
   position: relative;
   flex: 0 0 auto;
+  outline: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .agent-icon {
@@ -32,30 +33,22 @@
   display: inline-flex;
   align-items: flex-start;
   position: relative;
-  flex: 0 0 auto;
-  z-index: 0;
 }
 
 .utility-container {
-  align-items: flex-start;
-  padding: 0px 0px 4px 18px;
+  padding-left: 15px;
   display: flex;
-  flex-direction: column;
-  width: 186px;
-  height: 74px;
-  justify-content: flex-end;
-  gap: 4px;
+  flex-direction: row;
+  height: 85px;
+  align-items: center;
   position: relative;
-  border: 0px none;
 
   &.attacker {
     @extend .utility-container;
     background: linear-gradient(
       90deg,
-      rgba(var(--attacker-color-secondary-rgb), 0.5) 0%,
-      rgba(var(--attacker-color-rgb), 0.3) 58.5%,
-      rgba(var(--attacker-color-rgb), 0.01) 90.5%,
-      rgba(0, 0, 0, 0) 100%
+      rgba(39, 39, 39, 0.75) 0%,
+      rgba(0, 0, 0, 0.5) 100%
     );
   }
 
@@ -63,10 +56,8 @@
     @extend .utility-container;
     background: linear-gradient(
       90deg,
-      rgba(var(--defender-color-shield-currency-rgb), 0.5) 0%,
-      rgba(var(--defender-color-rgb), 0.2) 58.5%,
-      rgba(var(--defender-color-rgb), 0.01) 90.5%,
-      rgba(0, 0, 0, 0) 100%
+      rgba(39, 39, 39, 0.75) 0%,
+      rgba(0, 0, 0, 0.5) 100%
     );
   }
 
@@ -84,9 +75,9 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
   position: relative;
   flex: 0 0 auto;
+  margin-right: 30px;
 }
 
 .weapon-icon {
@@ -99,7 +90,6 @@
 .ultimate-tracker-container {
   display: inline-flex;
   height: 21.33px;
-  width: 67%;
   align-items: center;
   gap: 20px;
   position: relative;
@@ -124,33 +114,32 @@
 .ultimate-tracker {
   width: 60%;
   display: inline-flex;
+  flex-direction: column-reverse;
   align-items: center;
-  gap: 1px;
+  gap: 2px;
   position: relative;
-  flex: 0 0 auto;
   justify-content: center;
 }
 
 .pip-ultimate {
   position: relative;
-  width: 10px;
-  height: 10px;
-  margin-right: -2px;
-  background-image: url(/assets/misc/ultimate-pip.svg);
-  background-size: 100% 100%;
+  height: 8px;
+  width: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
 
   &-full {
     @extend .pip-ultimate;
-    background-image: url(/assets/misc/ultimate-pip-full.svg);
+    background-color: rgb(255, 255, 255);
   }
 }
 
 .ultimate-full-image {
-  width: 25px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 35px;
+  margin-left: 2px;
 }
 
+/*
 .rank-icon-container {
   position: absolute;
   width: 30px;
@@ -166,9 +155,9 @@
   height: 100%;
   aspect-ratio: 1;
 }
+*/
 
 .agent-icon-container {
-  left: -44px;
   z-index: 1;
   position: absolute;
   height: 100%;
@@ -178,38 +167,37 @@
 .player-info {
   display: flex;
   flex-direction: column;
-  width: 160px;
-  height: 76px;
+  width: 135px;
+  height: 85px;
   align-items: flex-start;
-  justify-content: flex-end;
-  gap: 4px;
-  padding: 0px 0px 2px 32px;
+  justify-content: center;
   position: relative;
+  padding-left: 95px;
 
   &.defender {
     @extend .player-info;
     background: linear-gradient(
         90deg,
-        rgba(var(--defender-color-rgb), 0.3) 0%,
+        rgba(var(--defender-color-rgb), 0.25) 0%,
         rgba(var(--defender-color-rgb), 0) 100%
       ),
-      rgba(15, 25, 35, 0.6);
+      rgba(39, 39, 39, 0.75);
   }
 
   &.attacker {
     @extend .player-info;
     background: linear-gradient(
         90deg,
-        rgba(var(--attacker-color-rgb), 0.5) 0%,
+        rgba(var(--attacker-color-rgb), 0.4) 0%,
         rgba(var(--attacker-color-rgb), 0) 100%
       ),
-      rgba(15, 25, 35, 0.6);
+      rgba(39, 39, 39, 0.75);
   }
 
   &.observed {
     @extend .player-info;
     background: linear-gradient(90deg, rgba(225, 181, 22, 0.3) 0%, rgba(225, 181, 22, 0) 100%),
-      rgba(15, 25, 35, 0.7);
+      rgba(39, 39, 39, 0.75);
   }
 
   &.dead {
@@ -225,10 +213,11 @@
 
 .spectator-icon-container {
   position: absolute;
-  top: 0;
+  top: 2px;
   width: 18px;
   height: 20px;
-  right: 3px;
+  left: 7px;
+  z-index: 3;
 }
 
 .spectator-icon {
@@ -240,34 +229,22 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-end;
-  gap: 4px;
+  justify-content: center;
   position: relative;
-  align-self: stretch;
   width: 100%;
-  flex: 0 0 auto;
-  top: -4px;
-  left: 5px;
 
-  &.minimal {
+  /*&.minimal {
     @extend .info-container;
     top: -22px;
-  }
+  }*/
 }
 
 .shields-currency {
   display: inline-flex;
   height: 20px;
-  align-items: flex-end;
-  gap: 6px;
   position: relative;
-}
-
-.captain-icon {
-  height: 17px;
-  width: 17px;
-  position: relative;
-  flex: 0 0 auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .currency-container {
@@ -370,11 +347,11 @@
 .health-container {
   display: inline-flex;
   height: 20px;
-  width: 62px;
+  width: 80px;
   align-items: center;
-  gap: 4px;
   position: relative;
   overflow: hidden;
+  gap: 8px;
 
   &.right {
     @extend .health-container;
@@ -407,6 +384,7 @@
 
 .health-bar {
   position: absolute;
+  z-index: 2;
   height: 3px;
   left: 0;
   bottom: 0;
