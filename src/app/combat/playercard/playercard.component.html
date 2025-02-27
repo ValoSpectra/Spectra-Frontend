@@ -5,6 +5,9 @@
     <div class="spectator-icon-container" [class]="side" *ngIf="player.isObserved">
       <img class="spectator-icon" src="{{ assets }}/misc/ObserverEye.svg" />
     </div>
+    <div class="spike-icon-wrapper">
+      <img class="spike-icon" *ngIf="player.hasSpike" src="{{ assets }}/misc/Spike_Icon.svg" />
+    </div>
     <div class="agent-icon-container">
     <img
       class="agent-icon"
@@ -13,6 +16,13 @@
     />
   </div>
   <div class="player-card">
+    <div
+      class="health-bar"
+      [class]="color"
+      [style.width.%]="player.health * 0.88 + 12"
+      [@deathAnimation]="player.isAlive"
+      *ngIf="player.isAlive"
+    ></div>
     <div
       class="player-info"
       [class]="
@@ -23,15 +33,8 @@
         (player.isObserved ? 'observed' : '')
       "
     >
-      <div class="info-container">
         <app-abilities class="abilities" [side]="side" [player]="player"></app-abilities>
-        <div class="shields-currency">
-          <app-shield-icon
-            [type]="player.armorName"
-            [side]="color"
-            [@healthChange]="player.armorName"
-            *ngIf="player.isAlive && !player.auxiliaryAvailable.health"
-          ></app-shield-icon>
+        <div class="shields-currency-container">
           <div
             class="health-container"
             [class]="side"
@@ -42,17 +45,10 @@
               [type]="player.armorName"
               [side]="color"
               [@healthChange]="player.armorName"
-              *ngIf="side === 'left'"
             ></app-shield-icon>
             <div class="health-amount" [class]="color" [@healthChange]="player.health">
               {{ player.health }}
             </div>
-            <app-shield-icon
-              [type]="player.armorName"
-              [side]="color"
-              [@healthChange]="player.armorName"
-              *ngIf="side === 'right'"
-            ></app-shield-icon>
           </div>
           <div
             class="currency-container"
@@ -84,15 +80,7 @@
         </div>
         <div class="username-container">
           <div class="username-title" [class]="side">{{ player.name }}</div>
-        </div>
-      </div>
-      <div
-        class="health-bar"
-        [class]="color"
-        [style.width.%]="player.health * 0.88 + 12"
-        [@deathAnimation]="player.isAlive"
-        *ngIf="player.isAlive"
-      ></div>
+    </div>
     </div>
     <div
       class="utility-container"
@@ -106,22 +94,29 @@
           src="{{ assets }}/weapons/{{ player.highestWeapon }}Killfeed.webp"
         />
       </div>
-      <div class="ultimate-tracker-container">
-        <div class="ultimate-tracker" [class]="side" *ngIf="!player.ultReady" [@ultPipAnimation]>
-          <div class="pip-ultimate-full" *ngFor="let i of numSequence(player.currUltPoints)"></div>
+      <div
+      class="ultimate-tracker-container"
+      [class]="color"
+      >
+        <div class="ultimate-tracker">
+          <div class="pip-ultimate-full" 
+            [style.height]="85 / player.maxUltPoints"
+            [class]="color"
+            *ngFor="let i of numSequence(player.currUltPoints)"></div>
           <div
             class="pip-ultimate"
             *ngFor="let i of numSequence(player.maxUltPoints - player.currUltPoints)"
           ></div>
-        </div>
-        <div class="ultimate-tracker" [class]="side">
-          <img
-            class="ultimate-full-image"
-            src="{{ assets }}/ultimates/{{ player.agentInternal }}Ultimate.webp"
-          />
-        </div>
-        <div class="spike-icon-wrapper">
-          <img class="spike-icon" *ngIf="player.hasSpike" src="{{ assets }}/misc/Spike_Icon.svg" />
+          <div 
+          class="ultimate-icon"
+          [class]="getAvailability(player.ability?.ultimate || 0)"
+          >
+            <img
+              class="ultimate-full-image"
+              src="{{ assets }}/ultimates/{{ player.agentInternal }}Ultimate.webp"
+              [class]
+            />
+          </div>
         </div>
       </div>
     </div>

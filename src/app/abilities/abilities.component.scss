@@ -29,17 +29,3 @@
     filter: brightness(0.35);
   }
 }
-
-.ultimate-icon {
-  width: 30px;
-
-  &.available {
-    @extend .ultimate-icon;
-    filter: brightness(1);
-  }
-
-  &.unavailable {
-    @extend .ultimate-icon;
-    filter: brightness(0.35);
-  }
-}

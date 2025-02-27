@@ -6,12 +6,43 @@
   @extend .flip;
 }
 
+.spectator-icon-container {
+  position: absolute;
+  top: 2px;
+  left: 7px;
+  z-index: 3;
+}
+
+.spectator-icon {
+  width: 15px;
+  aspect-ratio: 1;
+}
+
+.spike-icon-wrapper {
+  position: absolute;
+  bottom: -1px;
+  left: 3px;
+  z-index: 3;
+}
+
+.spike-icon {
+  position: relative;
+  width: 30px;
+  aspect-ratio: 1;
+}
+
 .player-container {
   display: inline-flex;
   align-items: flex-start;
   position: relative;
   flex: 0 0 auto;
   outline: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.player-card {
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
 }
 
 .agent-icon {
@@ -29,14 +60,7 @@
   }
 }
 
-.player-card {
-  display: inline-flex;
-  align-items: flex-start;
-  position: relative;
-}
-
 .utility-container {
-  padding-left: 15px;
   display: flex;
   flex-direction: row;
   height: 85px;
@@ -73,47 +97,32 @@
 
 .weapon-icon-wrapper {
   display: inline-flex;
+  width: 125px;
   flex-direction: column;
   align-items: center;
   position: relative;
-  flex: 0 0 auto;
-  margin-right: 30px;
 }
 
 .weapon-icon {
   position: relative;
-  height: 32px;
+  height: 24px;
   object-fit: cover;
   transform: rotateY(180deg);
 }
 
 .ultimate-tracker-container {
   display: inline-flex;
-  height: 21.33px;
+  height: 24px;
   align-items: center;
-  gap: 20px;
   position: relative;
   // justify-content: center;
-}
-
-.spike-icon-wrapper {
-  position: relative;
-  align-items: center;
-  display: inline-flex;
-  justify-content: end;
-  flex: 0 0 auto;
-  justify-self: end;
-}
-
-.spike-icon {
-  position: relative;
-  width: 30px;
-  aspect-ratio: 1;
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 .ultimate-tracker {
-  width: 60%;
-  display: inline-flex;
+  width: 40px;
+  display: flex;
   flex-direction: column-reverse;
   align-items: center;
   gap: 2px;
@@ -121,22 +130,46 @@
   justify-content: center;
 }
 
+.ultimate-icon {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  position: absolute;
+  justify-content: center;
+}
+
 .pip-ultimate {
   position: relative;
   height: 8px;
-  width: 16px;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 2px;
 
   &-full {
     @extend .pip-ultimate;
-    background-color: rgb(255, 255, 255);
+    &.defender {
+      background-color: var(--defender-color-shield-currency);
+    }
+
+    &.attacker {
+      background-color: var(--attacker-color-shield-currency);
+    }
   }
 }
 
 .ultimate-full-image {
   width: 35px;
-  margin-left: 2px;
+
+  &.available {
+    @extend .ultimate-full-image;
+    filter: brightness(1);
+  }
+
+  &.unavailable {
+    @extend .ultimate-full-image;
+    filter: brightness(0.35);
+  }
 }
 
 /*
@@ -168,11 +201,14 @@
   display: flex;
   flex-direction: column;
   width: 135px;
-  height: 85px;
+  height: 71px; //85 px - top and bottom padding
+  flex: 1 1 1;
+  justify-content: space-between;
   align-items: flex-start;
-  justify-content: center;
   position: relative;
   padding-left: 95px;
+  padding-top: 7px;
+  padding-bottom: 7px;
 
   &.defender {
     @extend .player-info;
@@ -211,40 +247,36 @@
   }
 }
 
-.spectator-icon-container {
-  position: absolute;
-  top: 2px;
-  width: 18px;
-  height: 20px;
-  left: 7px;
-  z-index: 3;
-}
-
-.spectator-icon {
-  width: 18px;
-  aspect-ratio: 1;
-}
-
-.info-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  position: relative;
+.username-container {
+  display: inline-flex;
   width: 100%;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.username-title {
+  position: relative;
+  width: fit-content;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
 
   /*&.minimal {
-    @extend .info-container;
-    top: -22px;
+    @extend .username-title;
+    font-size: 18px;
   }*/
 }
 
-.shields-currency {
+.shields-currency-container {
   display: inline-flex;
-  height: 20px;
+  width: 100%;
   position: relative;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  gap: 10px;
 }
 
 .currency-container {
@@ -252,7 +284,6 @@
   align-items: center;
   gap: 2px;
   position: relative;
-  flex: 0 0 auto;
 }
 
 .valorant-credits {
@@ -295,31 +326,6 @@
   }
 }
 
-.username-container {
-  display: inline-flex;
-  height: 15px;
-  align-items: center;
-  gap: 4px;
-  position: relative;
-}
-
-.username-title {
-  position: relative;
-  width: fit-content;
-  font-family: "Montserrat", Helvetica;
-  font-weight: 600;
-  color: #ffffff;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-
-  &.minimal {
-    @extend .username-title;
-    font-size: 18px;
-  }
-}
-
 .stats-container {
   display: flex;
   flex-direction: column;
@@ -341,14 +347,13 @@
   position: relative;
   width: 20px;
   height: 20px;
-  flex: 0 0 auto;
 }
 
 .health-container {
-  display: inline-flex;
-  height: 20px;
-  width: 80px;
+  display: flex;
+  height: 25px;
   align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
   gap: 8px;

@@ -1,7 +1,7 @@
-<div class="player-container" [class]="side">
-  <!-- <div class="rank-icon-container" *ngIf="match.ranksEnabled && match.ranksByName[player.name]">
+<!--<div class="player-container" [class]="side">
+  <div class="rank-icon-container" *ngIf="match.ranksEnabled && match.ranksByName[player.name]">
         <img class="rank-icon" [class]="side" src="{{assets}}/ranks/{{match.ranksByName[player.name]}}_Rank.webp" />
-    </div> -->
+    </div>
   <div class="agent-icon-container">
     <img class="agent-icon" [class.dead]="!player.isAlive"
       src="{{ assets }}/agents/{{ player.agentInternal }}Icon.webp" />
@@ -18,7 +18,7 @@
         <img class="spectator-icon" src="{{ assets }}/misc/ObserverEye.svg" />
       </div>
       <div class="info-container minimal">
-        <div class="shields-currency">
+        <div class="shields-currency-container">
           <div class="currency-container" [class]="side">
             <div class="currency-title" [class]="color">
               {{ getAgentName(player.agentInternal) }}
@@ -56,4 +56,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->

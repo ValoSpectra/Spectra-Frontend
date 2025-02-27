@@ -89,6 +89,15 @@ export class InhouseTrackerPlayercardComponent {
   getAgentName(agent: string) {
     return AgentNameService.getAgentName(agent);
   }
+
+  getAvailability(availablility: number): string {
+    availablility = this.clamp(availablility, 0, 1);
+    return availablility == 1 ? "available" : "unavailable";
+  }
+
+  clamp(value: number, min: number, max: number): number {
+    return Math.min(Math.max(value, min), max);
+  }
 }
 
 @Component({
