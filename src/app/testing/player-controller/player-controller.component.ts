@@ -82,6 +82,7 @@ export class PlayerControllerComponent implements OnDestroy {
       ability1: 1,
       ability2: 0,
     },
+    iconNameSuffix: "",
   };
 
   constructor() {

@@ -6,7 +6,7 @@
     <img
       class="agent-icon"
       [class]="player.isAlive ? '' : 'dead'"
-      src="{{ assets }}/agents/{{ player.agentInternal }}Icon.webp"
+      src="{{ assets }}/agents/{{ player.agentInternal }}{{ player.iconNameSuffix }}Icon.webp"
     />
   </div>
   <div class="player-card">
