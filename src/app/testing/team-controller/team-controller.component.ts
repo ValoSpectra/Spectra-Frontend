@@ -58,7 +58,7 @@ export class TeamControllerComponent {
     roundsWon: 0,
     spentThisRound: 1000,
     roundRecord: [],
-    hasDuplicateAgents: false
+    hasDuplicateAgents: false,
   };
 
   getData(): any {

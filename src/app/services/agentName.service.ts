@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-duplicate-enum-values */
 import { Injectable } from "@angular/core";
 
 @Injectable({

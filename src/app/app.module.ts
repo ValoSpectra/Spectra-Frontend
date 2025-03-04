@@ -12,9 +12,15 @@ import { TopscoreComponent } from "./topscore/topscore.component";
 import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
 import { CombatComponent } from "./combat/combat.component";
 import { TopinfoComponent } from "./topscore/topinfo/topinfo.component";
-import { PlayerscoreComponent, PlayerscoreMinimalComponent } from "./scoreboard/playerscore/playerscore.component";
+import {
+  PlayerscoreComponent,
+  PlayerscoreMinimalComponent,
+} from "./scoreboard/playerscore/playerscore.component";
 import { RoundreasonsComponent } from "./scoreboard/roundreasons/roundreasons.component";
-import { InhouseTrackerPlayercardComponent, InhouseTrackerPlayercardMinimalComponent } from "./combat/playercard/playercard.component";
+import {
+  InhouseTrackerPlayercardComponent,
+  InhouseTrackerPlayercardMinimalComponent,
+} from "./combat/playercard/playercard.component";
 import { OverlayComponent } from "./overlay/overlay.component";
 import { PlayerControllerComponent } from "./testing/player-controller/player-controller.component";
 import { TeamControllerComponent } from "./testing/team-controller/team-controller.component";
@@ -54,7 +60,7 @@ import { AbilitiesComponent } from "./abilities/abilities.component";
     RedirectComponent,
     AbilitiesComponent,
     InhouseTrackerPlayercardMinimalComponent,
-    PlayerscoreMinimalComponent
+    PlayerscoreMinimalComponent,
   ],
   exports: [],
   bootstrap: [AppComponent],

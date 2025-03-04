@@ -22,10 +22,10 @@ const routes: Routes = [
         path: "minimal",
         component: OverlayComponent,
         data: {
-          minimal: true
-        }
-      }
-    ]
+          minimal: true,
+        },
+      },
+    ],
   },
   {
     path: "testing",
@@ -38,10 +38,10 @@ const routes: Routes = [
         path: "minimal",
         component: TestingComponent,
         data: {
-          minimal: true
-        }
-      }
-    ]
+          minimal: true,
+        },
+      },
+    ],
   },
   {
     path: "agent-select",
@@ -58,10 +58,10 @@ const routes: Routes = [
         path: "minimal",
         component: AutoswitchComponent,
         data: {
-          minimal: true
-        }
-      }
-    ]
+          minimal: true,
+        },
+      },
+    ],
   },
 ];
 
