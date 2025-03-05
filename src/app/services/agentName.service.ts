@@ -32,6 +32,7 @@ enum AgentName {
   "Smonk" = "Clove",
   "Sprinter" = "Neon",
   "Stealth" = "Yoru",
+  "Terra" = "Waylay",
   "Thorne" = "Sage",
   "Vampire" = "Reyna",
   "Wraith" = "Omen",
