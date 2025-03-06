@@ -6,7 +6,7 @@ import { Config } from "../shared/config";
   template: ``,
 })
 export class RedirectComponent implements OnInit {
-  constructor(private config: Config) { }
+  constructor(private config: Config) {}
 
   ngOnInit() {
     window.location.href = this.config.redirectUrl;
