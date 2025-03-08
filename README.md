@@ -14,9 +14,9 @@ It is comprised of three parts:
 
 Further updates for new features, as well as a detailed setup guide and an easy to host docker container are in the pipeline!
 
-# Docker Compose tutorial:
+# Docker Compose tutorial
 
-First, create a seperate folder in your working directory and create a folder ` config` inside it:
+First, create a seperate folder in your working directory and create a folder `config` inside it:
 
 ```
 mkdir -p spectra-frontend/config
@@ -43,6 +43,7 @@ Inside `config` folder, create a file named `config.json` with the following con
 ```
 {
   "serverEndpoint": "http://localhost:5200",
+  "redirectUrl": "https://valospectra.com",
   "sponsorImageUrls": ["/assets/misc/logo.webp"],
   "sponsorImageRotateSpeed": 5000,
   "attackerColorPrimary": "#b82e3c",
