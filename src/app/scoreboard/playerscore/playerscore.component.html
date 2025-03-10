@@ -1,6 +1,9 @@
 <div class="playerscore-component" [class]="color">
   <div class="playerinfo-container">
-    <img class="agent-icon" src="{{ assets }}/agents/{{ player.agentInternal }}Icon.webp" />
+    <img
+      class="agent-icon"
+      src="{{ assets }}/agents/{{ player.agentInternal }}{{ player.iconNameSuffix }}Icon.webp"
+    />
     <div class="rank-icon-container" *ngIf="match.ranksEnabled && match.ranksByName[player.name]">
       <img
         class="rank-icon"
