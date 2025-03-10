@@ -54,6 +54,14 @@ export class TrackerComponent implements OnInit {
           logoUrl: "",
           backdropUrl: "",
         },
+        timeoutDuration: 60,
+      },
+      timeoutState: {
+        techPause: false,
+        leftTeam: false,
+        leftTeamStartTime: 0,
+        rightTeam: false,
+        rightTeamStartTime: 0,
       },
     };
 
