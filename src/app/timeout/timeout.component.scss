@@ -69,6 +69,12 @@
   line-height: normal;
 }
 
+.info-text-tech-pause {
+  @extend .info-text;
+  font-size: 40px;
+  font-family: "Unbounded", Helvetica;
+}
+
 .add-margin {
   margin-bottom: 10px;
 }

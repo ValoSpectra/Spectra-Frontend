@@ -39,14 +39,6 @@ export class TrackerComponent implements OnInit {
       spikeState: { planted: false },
       map: "Ascent",
       tools: {
-        timeout: {
-          display: false,
-          team: "tech",
-          time: 60,
-          maxtimeout: 2,
-          teamLeft: 0,
-          teamRight: 0,
-        },
         seriesInfo: {
           needed: 1,
           wonLeft: 0,
@@ -62,6 +54,14 @@ export class TrackerComponent implements OnInit {
           logoUrl: "",
           backdropUrl: "",
         },
+        timeoutDuration: 60,
+      },
+      timeoutState: {
+        techPause: false,
+        leftTeam: false,
+        leftTeamStartTime: 0,
+        rightTeam: false,
+        rightTeamStartTime: 0,
       },
     };
 

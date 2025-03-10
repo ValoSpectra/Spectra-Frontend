@@ -4,7 +4,6 @@ import { SocketService } from "../services/SocketService";
 import { ActivatedRoute } from "@angular/router";
 import { Config } from "../shared/config";
 import { trigger, transition, style, animate } from "@angular/animations";
-import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
 
 @Component({
   selector: "app-timeout",
@@ -24,29 +23,21 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   socketService!: SocketService;
   match: any;
   timeout: any; //Store timeout data extracted from match object
-  team!: string;
   tournamentBackgroundUrl = "../../assets/misc/backdrop.webp";
   timeLeft!: number; //Store remaining time in seconds
   interval: any;
-  test = false;
-  /* 
-  Display state : 
-  * ready will be true once the data is received from the server
-  * completed will be true once the timer is completed
-  */
-  ready = false;
-  completed = false;
+  anyTimeout = false;
+
   constructor(
     private route: ActivatedRoute,
     private config: Config,
   ) {
     this.route.queryParams.subscribe((params) => {
-      this.test = params["test"] === "true";
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
-      this.team = params["team"] || "";
       console.log(`Requested group code is ${this.groupCode}`);
     });
   }
+
   ngOnInit(): void {
     this.match = {
       groupCode: "A",
@@ -71,17 +62,18 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
         },
       ],
       tools: {
-        timeout: {
-          display: false,
-          team: "tech",
-          time: 60,
-          maxtimeout: 2,
-          teamLeft: 0,
-          teamRight: 0,
-        },
+        timeoutDuration: 60,
+      },
+      timeoutState: {
+        techPause: false,
+        leftTeam: false,
+        leftTeamStartTime: 0,
+        rightTeam: false,
+        rightTeamStartTime: 0,
       },
     };
-    this.timeout = this.match.tools.timeout;
+
+    this.timeout = this.match.timeoutState;
     this.socketService = SocketService.getInstance(this.config.serverEndpoint, this.groupCode);
     this.tournamentBackgroundUrl =
       this.match?.tournamentBackgroundUrl && this.match.tournamentBackgroundUrl !== ""
@@ -91,63 +83,52 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.preloadImage(this.match.teams[0].teamUrl);
     this.preloadImage(this.match.teams[1].teamUrl);
   }
-  isAutoswitch(): boolean {
-    return this.route.component === AutoswitchComponent;
-  }
-  shouldDisplay(): boolean {
-    if (this.isAutoswitch()) {
-      if (this.match.tools.timeout.display) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return true;
-    }
-  }
+
   ngAfterViewInit(): void {
-    this.match.tools.timeout.team = this.team;
-    this.timeLeft = this.match.tools.timeout?.time ?? 60;
-    if (this.test) {
-      this.ready = true;
-      this.startTimer();
-    }
+    this.timeLeft = this.match.tools.timeoutDuration || 60;
     this.socketService.subscribe((data: any) => {
       this.updateTimeout(data);
-      this.ready = true;
-      this.startTimer();
     });
   }
+
   public updateTimeout(data: any) {
-    delete data.eventNumber;
-    delete data.replayLog;
     this.match = data;
-    this.timeout = this.match.tools.timeout;
+
+    const newTimeout = this.match.timeoutState;
+    if (newTimeout.techPause && newTimeout.techPause !== this.timeout.techPause) {
+      this.anyTimeout = true;
+    }
+
+    if (newTimeout.leftTeam && newTimeout.leftTeam !== this.timeout.leftTeam) {
+      this.anyTimeout = true;
+    }
+
+    if (newTimeout.rightTeam && newTimeout.rightTeam !== this.timeout.rightTeam) {
+      this.anyTimeout = true;
+    }
+
+    if (this.anyTimeout && !newTimeout.techPause && !newTimeout.leftTeam && !newTimeout.rightTeam) {
+      this.anyTimeout = false;
+      this.timeLeft = this.match.tools.timeoutDuration || 60;
+    }
+
+    this.timeLeft = newTimeout.timeRemaining;
+    this.timeout = this.match.timeoutState;
   }
-  startTimer() {
-    if (this.team !== 'tech') {
-    this.interval = setInterval(() => {
-      if (this.timeLeft > 0) {
-        this.timeLeft--;
-      } else {
-          this.completed = true;
-      }
-    }, 1000);
-  }
-  }
+
   private preloadImage(url: string): void {
     const img = new Image();
     img.src = url;
   }
-  convertInt(value: string): number {
-    return parseInt(value, 10);
-  }
+
   setTournamentBackgroundImage(): string {
     return `url(${this.tournamentBackgroundUrl})`;
   }
+
   getProgressWidth(): string {
-    return `${(this.timeLeft / (this.match.tools.timeout?.time ?? 60)) * 100}%`;
+    return `${(this.timeLeft / (this.match.tools.timeoutDuration || 60)) * 100}%`;
   }
+
   ngOnDestroy() {
     if (this.interval) {
       clearInterval(this.interval);
