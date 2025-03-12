@@ -3,33 +3,40 @@
   align-items: flex-start;
   position: absolute;
   top: 0;
-  left: 4px;
-  border-radius: 0px 0px 8px 8px;
+  left: 25px;
   overflow: hidden;
   &-right {
     @extend .topinfo-container;
-    left: 1363px;
+    left: 1300px;
   }
 }
 
 .topinfo-pill {
   display: flex;
-  width: 180px;
   height: 24px;
+  min-width: 100px;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 0px 10px 0px;
   position: relative;
   z-index: 2;
+  padding-left: 12px;
+  padding-right: 7px;
   background: linear-gradient(
     90deg,
-    rgba(15, 25, 35, 0.85) 0%,
-    rgba(31.14, 37.75, 40.58, 0.85) 100%
+    rgba(15, 25, 35, 0.9) 0%,
+    rgba(19, 31, 43, 0.7) 100%,
   );
-  &-flex {
-    @extend .topinfo-pill;
-    width: 240px;
+
+    &-flex {
+      @extend .topinfo-pill;
+      width: 350px;
+      background: linear-gradient(
+      90deg,
+      rgba(15, 25, 35, 0) 0%,
+      rgba(15, 25, 35, 0.85) 25%,
+      rgba(31.14, 37.75, 40.58, 0.85) 75%,
+      rgba(31.14, 37.75, 40.58, 0) 100%
+    );
   }
 }
 
@@ -37,7 +44,7 @@
   position: relative;
   width: fit-content;
   font-family: Montserrat, Helvetica;
-  font-weight: 800;
+  font-weight: 700;
   color: #ffffff;
   font-size: 14px;
   font-style: normal;
@@ -67,21 +74,15 @@
   transition: opacity 1s ease-in-out;
 }
 
-.spectra-logo {
-  max-width: 24px;
-  max-height: 100%;
-  position: absolute;
-  left: 5%;
-}
-
-@keyframes fadeLoop {
+/*
+@keyframes fadeLoop1 {
   0% {
     opacity: 1;
   }
-  47% {
+  90% {
     opacity: 1;
   }
-  48% {
+  91% {
     opacity: 0;
   }
   99% {
@@ -92,17 +93,33 @@
   }
 }
 
+@keyframes fadeLoop2 {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  91% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .fadeLoopStart {
-  animation: fadeLoop 60s normal infinite;
+  animation: fadeLoop1 60s normal infinite;
   animation-delay: 0s;
   position: absolute;
-  left: 20%;
 }
 
 .fadeLoopDelay {
-  animation: fadeLoop 60s normal infinite;
-  animation-delay: -30s;
+  animation: fadeLoop2 60s normal infinite;
+  animation-delay: 0s;
   position: absolute;
-  left: 25%;
   opacity: 0;
-}
+}*/

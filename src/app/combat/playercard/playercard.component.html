@@ -96,27 +96,38 @@
       </div>
       <div
       class="ultimate-tracker-container"
-      [class]="color"
+      [class]="getAvailability(player.currUltPoints - player.maxUltPoints + 1)"
       >
         <div class="ultimate-tracker">
           <div class="pip-ultimate-full" 
-            [style.height]="85 / player.maxUltPoints"
-            [class]="color"
+            [ngClass]="[getAvailability(player.currUltPoints - player.maxUltPoints + 1), color]"
             *ngFor="let i of numSequence(player.currUltPoints)"></div>
           <div
             class="pip-ultimate"
             *ngFor="let i of numSequence(player.maxUltPoints - player.currUltPoints)"
           ></div>
-          <div 
+          </div>
+        <div 
           class="ultimate-icon"
-          [class]="getAvailability(player.ability?.ultimate || 0)"
-          >
+          [class]="getAvailability(player.currUltPoints - player.maxUltPoints + 1)">
             <img
               class="ultimate-full-image"
-              src="{{ assets }}/ultimates/{{ player.agentInternal }}Ultimate.webp"
-              [class]
-            />
-          </div>
+              [class]="getAvailability(player.currUltPoints - player.maxUltPoints + 1)"
+              src="{{ assets }}/ultimates/{{ player.agentInternal }}Ultimate.webp"/>
+        </div>
+        <div 
+          class="ultimate-icon-2"
+          [class]="getAvailability(player.currUltPoints - player.maxUltPoints + 1)">
+            <img
+              class="ultimate-full-image-2"
+              [class]="getAvailability(player.currUltPoints - player.maxUltPoints + 1)"
+              src="{{ assets }}/ultimates/{{ player.agentInternal }}Ultimate.webp"/>
+        </div>
+        <div 
+        class="ultimate-counter"
+        *ngIf="getAvailability(player.currUltPoints - player.maxUltPoints + 1) == 'unavailable'"
+        [class]="side">
+          {{ player.currUltPoints }} / {{ player.maxUltPoints }}
         </div>
       </div>
     </div>

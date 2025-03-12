@@ -1,24 +1,26 @@
 .topscore {
   position: absolute;
+  display: flex;
   width: 601px;
   height: 143px;
-  top: 4px;
   left: 660px;
+  top: 0px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .topscore-container {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
+  top: 0px;
   position: absolute;
-  top: 5px;
-  left: 0;
 }
 
 .scoreboard {
   display: inline-flex;
-  height: 62.76px;
+  height: 60px;
   align-items: flex-start;
   justify-content: center;
   gap: 168.97px;
@@ -28,7 +30,7 @@
 
 .teamcard {
   display: flex;
-  width: 216px;
+  width: 180px;
   align-items: center;
   position: relative;
 }
@@ -37,7 +39,6 @@
   @extend .teamcard;
   height: 62.76px;
   overflow: hidden;
-  border-radius: 8px;
 }
 
 .teaminfo-container {
@@ -52,7 +53,8 @@
 }
 
 .teamimage-container {
-  width: 40%;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,17 +62,22 @@
 
 .team-image {
   position: relative;
-  max-width: 80%;
-  max-height: 80%;
+  position: absolute;
+  height: 125%;
+  left: -15px;
+  z-index: 0;
+  filter: brightness(0.5)
 }
 
 .teamname-container {
   display: flex;
+  position: absolute;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 60%;
+  max-width: 75%;
   overflow: hidden;
+  z-index: 2;
 }
 
 .teamcode {
@@ -109,6 +116,7 @@
     @extend .divider;
     background-color: var(--attacker-color-secondary);
   }
+  z-index: 1;
 }
 
 .scoreblock {
@@ -123,11 +131,9 @@
   border: 0px none;
   &-left {
     @extend .scoreblock;
-    border-radius: 0px 4px 4px 0px;
   }
   &-right {
     @extend .scoreblock;
-    border-radius: 4px 0px 0px 4px;
   }
   &.defender {
     @extend .scoreblock;
@@ -137,6 +143,7 @@
     @extend .scoreblock;
     background-color: var(--attacker-color);
   }
+  z-index: 1;
 }
 
 .score-text {
@@ -154,6 +161,7 @@
 }
 
 .round-number {
+  position: absolute;
   font-family: "Unbounded-Bold", Helvetica;
   font-weight: 700;
   color: #fefeff99;
@@ -161,6 +169,7 @@
   text-align: center;
   letter-spacing: 0.39px;
   line-height: normal;
+  top: 0px;
 }
 
 .spike-indicator {
