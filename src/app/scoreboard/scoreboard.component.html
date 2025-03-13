@@ -40,6 +40,7 @@
         [match]="match"
         [player]="player"
         [color]="match.teams[0].isAttacking ? 'attacker' : 'defender'"
+        [hideAuxiliary]="hideAuxiliary"
         side="left"
       />
     </div>
@@ -49,6 +50,7 @@
         [match]="match"
         [player]="player"
         [color]="match.teams[1].isAttacking ? 'attacker' : 'defender'"
+        [hideAuxiliary]="hideAuxiliary"
         side="right"
       />
     </div>

@@ -1,5 +1,5 @@
 <div #backgroundContainer class="testing-body" [class]="backgroundClass">
-  <app-tracker></app-tracker>
+  <app-tracker [hideAuxiliary]="hideAuxiliary"></app-tracker>
 
   <div class="matchControlsSpace controlBlock">
     <button class="test-button" (click)="changeRoundPhase()">Change Round Phase</button>

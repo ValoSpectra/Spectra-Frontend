@@ -54,6 +54,7 @@ export class InhouseTrackerPlayercardComponent {
   @Input() match!: any;
   @Input() color!: "attacker" | "defender";
   @Input() side!: "left" | "right";
+  @Input() hideAuxiliary = false;
 
   private _player: any;
 

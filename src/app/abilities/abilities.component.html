@@ -1,7 +1,7 @@
 <div
   class="regular-container"
   [class]="side"
-  *ngIf="player.isAlive && player.auxiliaryAvailable.abilities"
+  *ngIf="player.isAlive && player.auxiliaryAvailable.abilities && !hideAuxiliary"
   [@deathAnimation]="player.isAlive"
 >
   <img
@@ -24,7 +24,12 @@
 <div
   class="regular-container"
   [class]="side"
-  *ngIf="player.agentInternal === 'Smonk' && !player.isAlive && player.auxiliaryAvailable.abilities"
+  *ngIf="
+    player.agentInternal === 'Smonk' &&
+    !player.isAlive &&
+    player.auxiliaryAvailable.abilities &&
+    !hideAuxiliary
+  "
   [@availableWhileDead]="!player.isAlive"
 >
   <img

@@ -24,18 +24,23 @@
         <img class="spectator-icon" src="{{ assets }}/misc/ObserverEye.svg" />
       </div>
       <div class="info-container">
-        <app-abilities class="abilities" [side]="side" [player]="player"></app-abilities>
+        <app-abilities
+          class="abilities"
+          [side]="side"
+          [player]="player"
+          [hideAuxiliary]="hideAuxiliary"
+        ></app-abilities>
         <div class="shields-currency">
           <app-shield-icon
             [type]="player.armorName"
             [side]="color"
             [@healthChange]="player.armorName"
-            *ngIf="player.isAlive && !player.auxiliaryAvailable.health"
+            *ngIf="player.isAlive && (!player.auxiliaryAvailable.health || hideAuxiliary)"
           ></app-shield-icon>
           <div
             class="health-container"
             [class]="side"
-            *ngIf="player.isAlive && player.auxiliaryAvailable.health"
+            *ngIf="player.isAlive && player.auxiliaryAvailable.health && !hideAuxiliary"
             [@deathAnimation]="player.isAlive"
           >
             <app-shield-icon

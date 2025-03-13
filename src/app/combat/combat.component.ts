@@ -8,6 +8,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class CombatComponent {
   @Input() match!: any;
+  @Input() hideAuxiliary = false;
 
   constructor(private route: ActivatedRoute) {}
 

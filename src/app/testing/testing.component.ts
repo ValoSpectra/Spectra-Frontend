@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ViewChild, ViewContainerRef } from "@angular/core";
+import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { TrackerComponent } from "../tracker/tracker.component";
-import { SocketService } from "../services/SocketService";
 import { ActivatedRoute } from "@angular/router";
 import { TeamControllerComponent } from "./team-controller/team-controller.component";
 
@@ -13,35 +12,25 @@ export class TestingComponent implements AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   @ViewChild("team1") team1!: TeamControllerComponent;
   @ViewChild("team2") team2!: TeamControllerComponent;
-  groupCode = "UNKNOWN";
-  socketService!: SocketService;
 
   matchData: any;
   isSpikePlanted = false;
   roundPhase: "shopping" | "combat" | "end" = "combat";
+  hideAuxiliary = false;
 
   showInterface = true;
   showBackground = true;
   backgroundClass = "bg1";
   backgroundClassId = 1;
 
-  constructor(
-    private route: ActivatedRoute,
-    private viewContainerRef: ViewContainerRef,
-  ) {
+  constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params) => {
-      this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
-      console.log(`Requested group code is ${this.groupCode}`);
+      this.hideAuxiliary = params["hideAuxiliary"] != undefined;
+      console.log(`hideAuxiliary is ${this.hideAuxiliary}`);
     });
   }
 
-  // ngOnInit(): void {
-  //   const siteUrl = window.location.hostname;
-  //   // this.socketService = new SocketService(`http://${siteUrl}:5200`, this.groupCode);
-  // }
-
   ngAfterViewInit(): void {
-    // this.socketService.subscribe((data: any) => {this.trackerComponent.updateMatch(data)});
     this.matchData = this.trackerComponent.match;
     this.matchData.teams[0] = this.team1.getData();
     this.matchData.teams[1] = this.team2.getData();

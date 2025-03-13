@@ -36,23 +36,19 @@
         src="{{ assets }}/shields/{{ player.armorName }}.webp"
       />
     </div>
-    <app-abilities [side]="side" [player]="player" [phase]="'shopping'"></app-abilities>
+    <app-abilities
+      [side]="side"
+      [player]="player"
+      [phase]="'shopping'"
+      [hideAuxiliary]="hideAuxiliary"
+    ></app-abilities>
     <div class="KDA-tracker-wrapper">
       <p class="KDA-tracker" [class]="side">
         <span class="KDA-text">{{ player.kills }}</span>
         <span class="KDA-text-delimiter"> / </span>
         <span class="KDA-text">{{ player.deaths }}</span>
-        <span class="KDA-text-delimiter"> / </span>
-        <span
-          class="KDA-text"
-          *ngIf="player.scoreboardAvailable || player.auxiliaryAvailable.scoreboard"
-          >{{ player.assists }}</span
-        >
-        <span
-          class="KDA-text"
-          *ngIf="!player.scoreboardAvailable && !player.auxiliaryAvailable.scoreboard"
-          >?</span
-        >
+        <span class="KDA-text-delimiter" *ngIf="showAssistCounts"> / </span>
+        <span class="KDA-text" *ngIf="showAssistCounts">{{ player.assists }}</span>
       </p>
     </div>
     <div class="weapon-icon-container">
