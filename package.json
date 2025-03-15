@@ -1,6 +1,6 @@
 {
   "name": "spectra-frontend",
-  "version": "0.2.18",
+  "version": "0.2.19",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration development",
@@ -45,5 +45,5 @@
     "typescript": "~5.5.4",
     "typescript-eslint": "8.18.0"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.7.0"
 }

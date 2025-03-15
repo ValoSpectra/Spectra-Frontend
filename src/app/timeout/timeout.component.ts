@@ -34,7 +34,6 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
-      console.log(`Requested group code is ${this.groupCode}`);
     });
   }
 

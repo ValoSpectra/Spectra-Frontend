@@ -26,7 +26,6 @@ export class TestingComponent implements AfterViewInit {
   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params) => {
       this.hideAuxiliary = params["hideAuxiliary"] != undefined;
-      console.log(`hideAuxiliary is ${this.hideAuxiliary}`);
     });
   }
 
