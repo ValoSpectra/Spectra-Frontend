@@ -76,8 +76,9 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.timeout = this.match.timeoutState;
     this.socketService = SocketService.getInstance(this.config.serverEndpoint, this.groupCode);
     this.tournamentBackgroundUrl =
-      this.match?.tournamentBackgroundUrl && this.match.tournamentBackgroundUrl !== ""
-        ? this.match.tournamentBackgroundUrl
+      this.match?.tools?.tournamentInfo?.backdropUrl &&
+      this.match.tools.tournamentInfo.backdropUrl !== ""
+        ? this.match.tools.tournamentInfo.backdropUrl
         : "../../assets/misc/backdrop.webp";
     this.preloadImage(this.tournamentBackgroundUrl);
     this.preloadImage(this.match.teams[0].teamUrl);
