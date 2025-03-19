@@ -10,6 +10,9 @@
     <div class="text">Live: {{ map }} <img src="{{ mapinfo.logo }}" class="logo" /></div>
   </div>
   <div class="text" *ngIf="type === 'future'">
-    <div class="text">Next: {{ mapinfo.map }} <img src="{{ mapinfo.logo }}" class="logo" /></div>
+    <div class="text" *ngIf="mapinfo.logo !== ''">
+      Next: {{ mapinfo.map }} <img src="{{ mapinfo.logo }}" class="logo" />
+    </div>
+    <div class="text" *ngIf="mapinfo.logo === ''">Decider: {{ mapinfo.map }}</div>
   </div>
 </div>
