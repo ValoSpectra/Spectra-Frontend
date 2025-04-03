@@ -188,7 +188,8 @@
 
   &.defender {
     @extend .player-info;
-    background: linear-gradient(
+    background:
+      linear-gradient(
         90deg,
         rgba(var(--defender-color-rgb), 0.3) 0%,
         rgba(var(--defender-color-rgb), 0) 100%
@@ -198,7 +199,8 @@
 
   &.attacker {
     @extend .player-info;
-    background: linear-gradient(
+    background:
+      linear-gradient(
         90deg,
         rgba(var(--attacker-color-rgb), 0.5) 0%,
         rgba(var(--attacker-color-rgb), 0) 100%
@@ -208,7 +210,8 @@
 
   &.observed {
     @extend .player-info;
-    background: linear-gradient(90deg, rgba(225, 181, 22, 0.3) 0%, rgba(225, 181, 22, 0) 100%),
+    background:
+      linear-gradient(90deg, rgba(225, 181, 22, 0.3) 0%, rgba(225, 181, 22, 0) 100%),
       rgba(15, 25, 35, 0.7);
   }
 
