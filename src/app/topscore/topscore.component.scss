@@ -211,3 +211,17 @@
     background-color: #ffffff;
   }
 }
+
+.timer-rounder {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 23%;
+  height: 50%;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom: 3px solid #0f1923;
+  border-left: 3px solid #0f1923;
+  border-right: 3px solid #0f1923;
+}
