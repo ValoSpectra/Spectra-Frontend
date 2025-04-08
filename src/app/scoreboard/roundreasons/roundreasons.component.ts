@@ -9,6 +9,7 @@ interface recordType {
 interface matchType {
   switchRound: number;
   firstOtRound: number;
+  roundNumber: number;
   teams: [
     {
       teamTricode: string;
@@ -29,4 +30,12 @@ interface matchType {
 export class RoundreasonsComponent {
   @Input() match!: matchType;
   public readonly assets: string = "../../../assets";
+
+  public readonly roundRecordLength: number = 10;
+
+  getReasonStartIndex(): number {
+    return this.match.roundNumber < this.roundRecordLength
+      ? 0
+      : this.match.roundNumber - this.roundRecordLength;
+  }
 }
