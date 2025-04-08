@@ -9,10 +9,10 @@ import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
     trigger("spike", [
       transition(":enter", [
         style({ transform: "translateY(-150%)" }),
-        animate("1s", style({ transform: "translateY(0%)" })),
+        animate("0.3s ease-out", style({ transform: "translateY(0%)" })),
       ]),
 
-      transition(":leave", animate("0.5s", style({ transform: "translateY(-150%)" }))),
+      transition(":leave", animate("0.3s", style({ transform: "translateY(-150%)" }))),
     ]),
   ],
 })

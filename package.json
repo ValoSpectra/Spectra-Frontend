@@ -1,6 +1,6 @@
 {
   "name": "spectra-frontend",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration development",
