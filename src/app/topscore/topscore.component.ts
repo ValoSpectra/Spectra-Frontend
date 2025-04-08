@@ -6,10 +6,13 @@ import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
   templateUrl: "./topscore.component.html",
   styleUrls: ["./topscore.component.scss"],
   animations: [
-    trigger("fade", [
-      transition(":enter", [style({ opacity: "0" }), animate("0.5s", style({ opacity: "1" }))]),
+    trigger("spike", [
+      transition(":enter", [
+        style({ transform: "translateY(-150%)" }),
+        animate("1s", style({ transform: "translateY(0%)" })),
+      ]),
 
-      transition(":leave", animate("0.5s", style({ opacity: "0" }))),
+      transition(":leave", animate("0.5s", style({ transform: "translateY(-150%)" }))),
     ]),
   ],
 })

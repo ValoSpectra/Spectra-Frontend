@@ -164,22 +164,22 @@
 }
 
 .spike-indicator {
+  width: 23%;
+  height: 120%;
+  top: -20%;
+  position: absolute;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  position: relative;
-  top: -58px;
-  flex: 0 0 auto;
+  justify-content: center;
+  background-color: #0f1923;
+  z-index: -5;
 }
 
 .spike-icon {
   position: relative;
-  width: 67.24px;
-  height: 61.99px;
-  margin-top: -7px;
-  margin-bottom: -9px;
-  margin-left: -8px;
-  margin-right: -8px;
+  top: 20%;
+  width: 70px;
+  height: 70px;
 }
 
 .mapwin-line {
@@ -224,4 +224,5 @@
   border-bottom: 3px solid #0f1923;
   border-left: 3px solid #0f1923;
   border-right: 3px solid #0f1923;
+  z-index: -10;
 }
