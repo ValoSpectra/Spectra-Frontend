@@ -33,7 +33,7 @@
         (player.isObserved ? 'observed' : '')
       "
     >
-        <app-abilities class="abilities" [side]="side" [player]="player"></app-abilities>
+        <app-abilities class="abilities" [side]="side" [player]="player" *ngIf="player.isAlive" [@deathAnimation]="player.isAlive"></app-abilities>
         <div class="shields-currency-container">
           <div
             class="health-container"
@@ -82,7 +82,7 @@
           <div class="username-title" [class]="side">{{ player.name }}</div>
     </div>
     </div>
-    <div
+    <!--<div
       class="utility-container"
       [class]="color"
       *ngIf="player.isAlive"
@@ -96,20 +96,30 @@
       </div>
       <div
       class="ultimate-tracker-container"
-      [class]="getAvailability(player.currUltPoints - player.maxUltPoints + 1)"
-      >
+      [class]="
+        getAvailability(player.currUltPoints - player.maxUltPoints + 1) +
+        ' ' +
+        color
+        "
+        >
         <div class="ultimate-tracker">
           <div class="pip-ultimate-full" 
             [ngClass]="[getAvailability(player.currUltPoints - player.maxUltPoints + 1), color]"
             *ngFor="let i of numSequence(player.currUltPoints)"></div>
           <div
             class="pip-ultimate"
+            [class]="getAvailability(player.currUltPoints - player.maxUltPoints + 1)"
             *ngFor="let i of numSequence(player.maxUltPoints - player.currUltPoints)"
           ></div>
           </div>
         <div 
           class="ultimate-icon"
-          [class]="getAvailability(player.currUltPoints - player.maxUltPoints + 1)">
+          [class]="
+          getAvailability(player.currUltPoints - player.maxUltPoints + 1) +
+          ' ' +
+          color
+          "
+          >
             <img
               class="ultimate-full-image"
               [class]="getAvailability(player.currUltPoints - player.maxUltPoints + 1)"
@@ -130,6 +140,6 @@
           {{ player.currUltPoints }} / {{ player.maxUltPoints }}
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </div>
