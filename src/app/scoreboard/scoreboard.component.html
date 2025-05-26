@@ -1,6 +1,6 @@
 <div class="scoreboard-container">
   <div class="scoreboard-header-container">
-    <div class="team-container">
+    <div class="team-container left">
       <div class="team-icon-container">
         <img class="team-icon" src="{{ match.teams[0].teamUrl }}" />
       </div>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <app-roundreasons class="round-reasons" [match]="match" />
-    <div class="team-container flip">
+    <div class="team-container right flip">
       <div class="team-icon-container">
         <img class="team-icon flip" src="{{ match.teams[1].teamUrl }}" />
       </div>
@@ -34,21 +34,23 @@
   </div>
   <!-- loading full info playerscores -->
   <div class="scoreboard-content-container" *ngIf="!isMinimal()">
-    <div class="playerscore-wrapper">
+    <div class="playerscore-wrapper-leftteam">
       <app-playerscore
-        *ngFor="let player of match.teams[0].players; trackBy: trackByPlayerId"
+        *ngFor="let player of match.teams[0].players | scoreboardOrder; trackBy: trackByPlayerId"
         [match]="match"
         [player]="player"
         [color]="match.teams[0].isAttacking ? 'attacker' : 'defender'"
+        [hideAuxiliary]="hideAuxiliary"
         side="left"
       />
     </div>
-    <div class="playerscore-wrapper flip">
+    <div class="playerscore-wrapper-rightteam flip">
       <app-playerscore
-        *ngFor="let player of match.teams[1].players; trackBy: trackByPlayerId"
+        *ngFor="let player of match.teams[1].players | scoreboardOrder; trackBy: trackByPlayerId"
         [match]="match"
         [player]="player"
         [color]="match.teams[1].isAttacking ? 'attacker' : 'defender'"
+        [hideAuxiliary]="hideAuxiliary"
         side="right"
       />
     </div>
@@ -57,7 +59,7 @@
   <div class="scoreboard-content-container" *ngIf="isMinimal()">
     <div class="playerscore-wrapper">
       <app-playerscore-minimal
-        *ngFor="let player of match.teams[0].players; trackBy: trackByPlayerId"
+        *ngFor="let player of match.teams[0].players | scoreboardOrder; trackBy: trackByPlayerId"
         [match]="match"
         [player]="player"
         [color]="match.teams[0].isAttacking ? 'attacker' : 'defender'"
@@ -66,7 +68,7 @@
     </div>
     <div class="playerscore-wrapper flip">
       <app-playerscore-minimal
-        *ngFor="let player of match.teams[1].players; trackBy: trackByPlayerId"
+        *ngFor="let player of match.teams[1].players | scoreboardOrder; trackBy: trackByPlayerId"
         [match]="match"
         [player]="player"
         [color]="match.teams[1].isAttacking ? 'attacker' : 'defender'"

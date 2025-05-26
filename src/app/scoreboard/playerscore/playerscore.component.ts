@@ -14,6 +14,7 @@ export class PlayerscoreComponent {
   @Input() player!: any;
   @Input() color!: "attacker" | "defender";
   @Input() side!: "left" | "right";
+  @Input() hideAuxiliary = false;
 
   get showAssistCounts() {
     return this.match.teams.findIndex((e: any) => e.hasDuplicateAgents) == -1;

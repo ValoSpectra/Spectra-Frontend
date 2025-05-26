@@ -46,7 +46,7 @@ const componentAnimations = [
   selector: "app-playercard",
   templateUrl: "./playercard.component.html",
   styleUrls: ["./playercard.component.scss"],
-  animations: componentAnimations
+  animations: componentAnimations,
 })
 export class InhouseTrackerPlayercardComponent {
   public readonly assets: string = "../../../assets";
@@ -54,6 +54,7 @@ export class InhouseTrackerPlayercardComponent {
   @Input() match!: any;
   @Input() color!: "attacker" | "defender";
   @Input() side!: "left" | "right";
+  @Input() hideAuxiliary = false;
 
   private _player: any;
 
@@ -89,12 +90,21 @@ export class InhouseTrackerPlayercardComponent {
   getAgentName(agent: string) {
     return AgentNameService.getAgentName(agent);
   }
+
+  getAvailability(availablility: number): string {
+    availablility = this.clamp(availablility, 0, 1);
+    return availablility == 1 ? "available" : "unavailable";
+  }
+
+  clamp(value: number, min: number, max: number): number {
+    return Math.min(Math.max(value, min), max);
+  }
 }
 
 @Component({
   selector: "app-playercard-minimal",
   templateUrl: "./playercard-minimal.component.html",
   styleUrls: ["./playercard.component.scss"],
-  animations: componentAnimations
+  animations: componentAnimations,
 })
 export class InhouseTrackerPlayercardMinimalComponent extends InhouseTrackerPlayercardComponent {}

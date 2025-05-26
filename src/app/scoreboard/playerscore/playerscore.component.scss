@@ -8,8 +8,7 @@
 
 .playerscore-component {
   display: flex;
-  height: 74px;
-  width: 760px;
+  height: 80px;
   align-items: center;
   justify-content: space-between;
   position: relative;
@@ -18,23 +17,21 @@
   &.defender {
     background: linear-gradient(
       90deg,
-      rgba(var(--defender-color-rgb), 0) 3.74%,
-      rgba(var(--defender-color-rgb), 0.65) 5.57%,
-      rgba(var(--defender-color-rgb), 0.3) 22.42%,
-      rgba(var(--defender-color-rgb), 0) 37.11%
+      rgba(var(--defender-color-rgb), 0.5) 0%,
+      rgba(var(--defender-color-rgb), 0.5) 5%,
+      rgba(var(--defender-color-rgb), 0) 35%
     );
   }
 
   &.attacker {
     background: linear-gradient(
       90deg,
-      rgba(var(--attacker-color-rgb), 0) 4.69%,
-      rgba(var(--attacker-color-rgb), 0.65) 6.5%,
-      rgba(var(--attacker-color-rgb), 0.3) 23.1%,
-      rgba(var(--attacker-color-rgb), 0) 37.57%
+      rgba(var(--attacker-color-rgb), 0.5) 0%,
+      rgba(var(--attacker-color-rgb), 0.5) 5%,
+      rgba(var(--attacker-color-rgb), 0) 35%
     );
   }
-
+/*
   &.minimal {
     @extend .playerscore-component;
     width: auto;
@@ -58,14 +55,14 @@
         rgba(var(--attacker-color-rgb), 0) 74.57%
       );
     }
-  }
+  }*/
 }
 
 .playerinfo-container {
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  position: relative;
+  position: flex;
   align-self: stretch;
   flex: 0 0 auto;
 }
@@ -74,8 +71,7 @@
   background-size: cover;
   background-position: 50% 50%;
   position: relative;
-  width: 74px;
-  height: 74px;
+  height: 100%;
 }
 
 .playername-container {
@@ -153,14 +149,12 @@
 
 .resources-container {
   display: flex;
-  width: 530px;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 25px;
   position: relative;
   align-self: stretch;
-  margin-left: -85.6px;
-  left: 7px;
+  left: 10px;
 
   &.minimal {
     @extend .resources-container;
@@ -168,7 +162,7 @@
   }
 }
 
-.rank-icon-container {
+/*.rank-icon-container {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -181,21 +175,16 @@
 .rank-icon {
   height: 100%;
   aspect-ratio: 1;
-}
+}*/
 
-.shield-icon-container {
+.shield-icon {
   width: 36px;
   height: 36px;
 }
 
-.shield-icon {
-  height: 100%;
-  aspect-ratio: 1;
-}
-
 .KDA-tracker-wrapper {
   display: flex;
-  width: 120px;
+  width: 100px;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -214,7 +203,6 @@
   font-family: "Unbounded", Helvetica;
   font-weight: 600;
   color: transparent;
-  font-size: 16px;
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
@@ -247,38 +235,25 @@
 
   &-delimiter {
     @extend .KDA-text;
-    color: #ffffff80;
+    color: #ffffffab;
   }
 }
 
-.weapon-icon-container {
-  display: flex;
-  min-width: 160px;
-  max-width: 200px;
-  flex-shrink: 1;
+.weapon-icon-wrapper {
+  display: inline-flex;
+  width: 125px;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   position: relative;
-  align-self: stretch;
-}
-
-.weapon-icon-wrapper {
-  align-items: flex-start;
-  justify-content: center;
-  display: inline-flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 190px;
-  position: relative;
-  flex: 0 0 auto;
 }
 
 .weapon-icon {
   position: relative;
-  max-height: 40px;
-  max-width: 160px;
+  max-width: 85%;
+  max-height: 36px;
   object-fit: cover;
+  transform: rotateY(180deg);
 }
 
 .money-container {
@@ -297,7 +272,6 @@
 .money-element {
   position: relative;
   width: fit-content;
-  opacity: 0.8;
   font-family: "Montserrat", Helvetica;
   font-weight: 700;
   font-size: 18px;
@@ -322,16 +296,11 @@
 
   &-red {
     @extend .money-text;
-    color: #ff4557;
+    color: #ff4558;
   }
 
   &-white {
     @extend .money-text;
     color: white;
   }
-}
-
-app-abilities {
-  min-width: 90px;
-  margin: 0 5px;
 }

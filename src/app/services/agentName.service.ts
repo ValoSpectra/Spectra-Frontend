@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-duplicate-enum-values */
 import { Injectable } from "@angular/core";
 
 @Injectable({
@@ -33,6 +32,7 @@ enum AgentName {
   "Smonk" = "Clove",
   "Sprinter" = "Neon",
   "Stealth" = "Yoru",
+  "Terra" = "Waylay",
   "Thorne" = "Sage",
   "Vampire" = "Reyna",
   "Wraith" = "Omen",

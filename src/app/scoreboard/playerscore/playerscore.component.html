@@ -1,6 +1,9 @@
 <div class="playerscore-component" [class]="color">
   <div class="playerinfo-container">
-    <img class="agent-icon" src="{{ assets }}/agents/{{ player.agentInternal }}Icon.webp" />
+    <img
+      class="agent-icon"
+      src="{{ assets }}/agents/{{ player.agentInternal }}{{ player.iconNameSuffix }}Icon.webp"
+    />
     <div class="rank-icon-container" *ngIf="match.ranksEnabled && match.ranksByName[player.name]">
       <img
         class="rank-icon"
@@ -33,33 +36,27 @@
         src="{{ assets }}/shields/{{ player.armorName }}.webp"
       />
     </div>
-    <app-abilities [side]="side" [player]="player" [phase]="'shopping'"></app-abilities>
+    <app-abilities
+      [side]="side"
+      [player]="player"
+      [phase]="'shopping'"
+      [hideAuxiliary]="hideAuxiliary"
+    ></app-abilities>
     <div class="KDA-tracker-wrapper">
       <p class="KDA-tracker" [class]="side">
         <span class="KDA-text">{{ player.kills }}</span>
         <span class="KDA-text-delimiter"> / </span>
         <span class="KDA-text">{{ player.deaths }}</span>
-        <span class="KDA-text-delimiter"> / </span>
-        <span
-          class="KDA-text"
-          *ngIf="player.scoreboardAvailable || player.auxiliaryAvailable.scoreboard"
-          >{{ player.assists }}</span
-        >
-        <span
-          class="KDA-text"
-          *ngIf="!player.scoreboardAvailable && !player.auxiliaryAvailable.scoreboard"
-          >?</span
-        >
+        <span class="KDA-text-delimiter" *ngIf="showAssistCounts"> / </span>
+        <span class="KDA-text" *ngIf="showAssistCounts">{{ player.assists }}</span>
       </p>
     </div>
-    <div class="weapon-icon-container">
-      <div class="weapon-icon-wrapper flip">
+    <!--<div class="weapon-icon-wrapper">
         <img
           class="weapon-icon"
           src="{{ assets }}/weapons/{{ player.highestWeapon }}Killfeed.webp"
         />
       </div>
-    </div>
     <div class="money-container">
       <p class="money-element" [class]="side">
         <span class="money-text-red">-</span>
@@ -88,6 +85,6 @@
           >?</span
         >
       </p>
-    </div>
+    </div>-->
   </div>
 </div>

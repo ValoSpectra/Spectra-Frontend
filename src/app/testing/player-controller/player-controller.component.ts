@@ -42,14 +42,14 @@ export class PlayerControllerComponent implements OnDestroy {
 
   static agentIndex = [0, 0];
   static agentOrder = [
-    ["Vampire", "Killjoy", "Guide", "Stealth", "Smonk"],
-    ["Grenadier", "Deadeye", "Sprinter", "BountyHunter", "Mage"],
+    ["Wraith", "Gumshoe", "Breach", "Wushu", "Hunter"],
+    ["Vampire", "Sarge", "Phoenix", "Killjoy", "Clay"],
   ];
 
   static playerNameIndex = [0, 0];
   static playerNameOrder = [
-    ["Voodoo One", "Twoperator", "ThreeOfLife", "Fourcefield", "FIVEbyFIVE"],
-    ["AlpacaHoarder", "BeeSting", "CowTipper", "DodoDaniel", "Eeliminator"],
+    ["Ender", "dilly", "Rainb7w", "Hyoon Bin", "zek"],
+    ["Xenic", "Midnight", "lews", "Prior", "Lyra"],
   ];
 
   playerObject = {
@@ -82,6 +82,7 @@ export class PlayerControllerComponent implements OnDestroy {
       ability1: 1,
       ability2: 0,
     },
+    iconNameSuffix: "",
   };
 
   constructor() {

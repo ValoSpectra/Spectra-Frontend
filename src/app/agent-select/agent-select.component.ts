@@ -33,7 +33,6 @@ export class AgentSelectComponent implements OnInit, AfterViewInit {
   ) {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
-      console.log(`Requested group code is ${this.groupCode}`);
     });
   }
 

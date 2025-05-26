@@ -14,13 +14,16 @@ export class OverlayComponent implements OnInit, AfterViewInit {
   groupCode = "UNKNOWN";
   socketService!: SocketService;
 
+  hideAuxiliary = false;
+
   constructor(
     private route: ActivatedRoute,
     private config: Config,
   ) {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
-      console.log(`Requested group code is ${this.groupCode}`);
+
+      this.hideAuxiliary = params["hideAuxiliary"] != undefined;
     });
   }
 

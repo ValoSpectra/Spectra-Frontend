@@ -33,6 +33,7 @@ enum AgentRole {
   "Smonk" = "Controller",
   "Sprinter" = "Duelist",
   "Stealth" = "Duelist",
+  "Terra" = "Duelist",
   "Thorne" = "Sentinel",
   "Vampire" = "Duelist",
   "Wraith" = "Controller",

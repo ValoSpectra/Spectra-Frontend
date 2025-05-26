@@ -1,9 +1,11 @@
 ---
 services:
   valo-spectra-frontend:
-    image: valospectra/overlay
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: node:22-alpine
+    entrypoint: sh -c 'corepack enable && yarn run start-docker'
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /var/www/.angular
     ports:
       - "3000:80"
