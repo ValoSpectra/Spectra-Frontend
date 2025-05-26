@@ -181,6 +181,10 @@
 }
 
 .spike-indicator {
+  width: 23%;
+  height: 120%;
+  top: -20%;
+  position: absolute;
   display: inline-flex;
   align-items: center;
   position: relative;
@@ -222,4 +226,19 @@
   @extend .mapwin-pip;
     background-color: rgb(255, 255, 255);
   }
+}
+
+.timer-rounder {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 23%;
+  height: 50%;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom: 3px solid #0f1923;
+  border-left: 3px solid #0f1923;
+  border-right: 3px solid #0f1923;
+  z-index: -10;
 }

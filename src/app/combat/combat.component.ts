@@ -8,14 +8,14 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class CombatComponent {
   @Input() match!: any;
+  @Input() hideAuxiliary = false;
 
   constructor(private route: ActivatedRoute) {}
 
   isMinimal(): boolean {
     if (this.route.snapshot.data["minimal"]) {
       return this.route.snapshot.data["minimal"];
-    }
-    else {
+    } else {
       return false;
     }
   }

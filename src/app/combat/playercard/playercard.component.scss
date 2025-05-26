@@ -327,7 +327,8 @@
 
   &.defender {
     @extend .player-info;
-    background: linear-gradient(
+    background:
+      linear-gradient(
         90deg,
         rgba(var(--defender-color-rgb), 0.25) 0%,
         rgba(var(--defender-color-rgb), 0) 100%
@@ -337,7 +338,8 @@
 
   &.attacker {
     @extend .player-info;
-    background: linear-gradient(
+    background:
+      linear-gradient(
         90deg,
         rgba(var(--attacker-color-rgb), 0.4) 0%,
         rgba(var(--attacker-color-rgb), 0) 100%
@@ -458,7 +460,7 @@
   font-size: 18px;
 }
 
-.app-shield-icon {
+app-shield-icon {
   position: relative;
   width: 20px;
   height: 20px;

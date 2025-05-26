@@ -30,6 +30,7 @@ export class AbilitiesComponent {
   @Input({ required: true }) player!: any;
   @Input({ required: true }) side!: "left" | "right";
   @Input({ required: false }) phase: "combat" | "shopping" = "combat";
+  @Input() hideAuxiliary = false;
 
   constructor(private config: Config) {}
 

@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="iner-wrapper" *ngIf="anyTimeout" [@fade]>
+    <div class="timeout-box" [style.background-image]="setTournamentBackgroundImage()">
+      <div class="timeout-box-content">
+        <div class="info-box">
+          <img
+            *ngIf="timeout.techPause === false"
+            class="info-image"
+            [src]="match.teams[timeout.leftTeam ? 0 : 1].teamUrl"
+          />
+          <div *ngIf="timeout.techPause === true" class="info-text-tech-pause">TECHNICAL PAUSE</div>
+          <div *ngIf="timeout.techPause === false" class="info-text add-margin">
+            {{ match.teams[timeout.leftTeam ? 0 : 1].teamName }} Tactical Timeout
+          </div>
+        </div>
+      </div>
+      <div class="progress-bar" *ngIf="timeout.techPause === false">
+        <div class="progress" [style.width]="getProgressWidth()"></div>
+        <div class="timer">{{ timeLeft }}s</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { OverlayComponent } from "./overlay/overlay.component";
 import { AgentSelectComponent } from "./agent-select/agent-select.component";
 import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
 import { RedirectComponent } from "./redirect/redirect.component";
+import { TimeoutComponent } from "./timeout/timeout.component";
 
 const routes: Routes = [
   {
@@ -22,10 +23,10 @@ const routes: Routes = [
         path: "minimal",
         component: OverlayComponent,
         data: {
-          minimal: true
-        }
-      }
-    ]
+          minimal: true,
+        },
+      },
+    ],
   },
   {
     path: "testing",
@@ -38,10 +39,10 @@ const routes: Routes = [
         path: "minimal",
         component: TestingComponent,
         data: {
-          minimal: true
-        }
-      }
-    ]
+          minimal: true,
+        },
+      },
+    ],
   },
   {
     path: "agent-select",
@@ -58,10 +59,14 @@ const routes: Routes = [
         path: "minimal",
         component: AutoswitchComponent,
         data: {
-          minimal: true
-        }
-      }
-    ]
+          minimal: true,
+        },
+      },
+    ],
+  },
+  {
+    path: "timeout",
+    component: TimeoutComponent,
   },
 ];
 
