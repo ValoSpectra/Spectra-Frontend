@@ -7,7 +7,7 @@
   top: 0px;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .topscore-container {
@@ -20,7 +20,6 @@
 
 .scoreboard {
   display: inline-flex;
-  height: 60px;
   align-items: flex-start;
   justify-content: center;
   gap: 168.97px;
@@ -30,14 +29,14 @@
 
 .teamcard {
   display: flex;
-  width: 180px;
+  width: 175px;
   align-items: center;
   position: relative;
 }
 
 .teamcard-border {
   @extend .teamcard;
-  height: 62.76px;
+  height: 66.5px;
   overflow: hidden;
 }
 
@@ -64,9 +63,16 @@
   position: relative;
   position: absolute;
   height: 125%;
-  left: -15px;
   z-index: 0;
-  filter: brightness(0.5)
+  &-left {
+    @extend .team-image;
+    left: -5px;
+  }
+  &-right {
+    @extend .team-image;
+    right: -5px;
+  }
+  filter: brightness(0.75)
 }
 
 .teamname-container {
@@ -75,7 +81,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 75%;
+  max-width: 85%;
   overflow: hidden;
   z-index: 2;
 }
@@ -91,17 +97,19 @@
   letter-spacing: -0.48px;
   line-height: normal;
   white-space: nowrap;
+  text-shadow: 0px 2px 4px black;
 }
 
 .teamseeding {
   font-family: "Montserrat", Helvetica;
   font-weight: 800;
-  color: #ffffff99;
-  font-size: 10px;
+  color: #ffffff;
+  font-size: 14px;
   font-style: normal;
   text-align: center;
   line-height: normal;
   white-space: nowrap;
+  text-shadow: 0px 3px 3px black;
 }
 
 .divider {
@@ -149,7 +157,7 @@
 .score-text {
   position: relative;
   width: fit-content;
-  text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.12);
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.12);
   font-family: "Montserrat", Helvetica;
   font-weight: 700;
   color: #ffffff;
@@ -162,61 +170,56 @@
 
 .round-number {
   position: absolute;
-  font-family: "Unbounded-Bold", Helvetica;
-  font-weight: 700;
+  font-family: Unbounded, Helvetica;
+  font-weight: 800;
   color: #fefeff99;
-  font-size: 15px;
+  font-size: 12px;
   text-align: center;
   letter-spacing: 0.39px;
   line-height: normal;
-  top: 0px;
+  top: 2px;
 }
 
 .spike-indicator {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
   position: relative;
-  top: -58px;
-  flex: 0 0 auto;
+  top: -48px
 }
 
 .spike-icon {
   position: relative;
-  width: 67.24px;
-  height: 61.99px;
-  margin-top: -7px;
-  margin-bottom: -9px;
-  margin-left: -8px;
-  margin-right: -8px;
+  width: 64px;
 }
 
 .mapwin-line {
   display: inline-flex;
+  flex-direction: column-reverse;
   justify-content: center;
-  gap: 5px;
+  gap: 1px;
   position: absolute;
-  top: 110%;
-  min-width: 32%;
+  width: 10px;
+  height: 100%;
+  flex: 1 1 1;
   &-left {
     @extend .mapwin-line;
-    right: 0;
+    right: -10px;
   }
   &-right {
     @extend .mapwin-line;
-    left: 0;
+    left: -10px;
   }
+  z-index: 100;
 }
 
 .mapwin-pip {
   position: relative;
-  width: 14px;
-  height: 7px;
-  border-radius: 3px;
-  border: 1.75px solid;
-  border-color: #ffffffaa;
+  width: 10px;
+  height: 100%;
+  background-color: #0000007e;
+
   &-full {
-    @extend .mapwin-pip;
-    background-color: #ffffff;
+  @extend .mapwin-pip;
+    background-color: rgb(255, 255, 255);
   }
 }

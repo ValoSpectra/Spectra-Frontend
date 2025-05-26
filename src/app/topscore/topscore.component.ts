@@ -15,6 +15,8 @@ import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
 })
 export class TopscoreComponent implements OnChanges {
   @Input() match!: any;
+  @Input() color!: "attacker" | "defender";
+  @Input() side!: "left" | "right";
 
   spikePlanted = false;
   blinkState = false;

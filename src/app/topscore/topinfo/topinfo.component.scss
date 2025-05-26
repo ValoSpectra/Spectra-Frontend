@@ -19,8 +19,8 @@
   justify-content: center;
   position: relative;
   z-index: 2;
-  padding-left: 12px;
-  padding-right: 7px;
+  padding-left: 25px;
+  padding-right: 25px;
   background: linear-gradient(
     90deg,
     rgba(15, 25, 35, 0.9) 0%,
@@ -29,7 +29,7 @@
 
     &-flex {
       @extend .topinfo-pill;
-      width: 350px;
+      min-width: 250px;
       background: linear-gradient(
       90deg,
       rgba(15, 25, 35, 0) 0%,
@@ -112,14 +112,15 @@
 }
 
 .fadeLoopStart {
-  animation: fadeLoop1 60s normal infinite;
+  animation: fadeLoop1 2s normal infinite;
   animation-delay: 0s;
   position: absolute;
 }
 
 .fadeLoopDelay {
-  animation: fadeLoop2 60s normal infinite;
+  animation: fadeLoop2 2s normal infinite;
   animation-delay: 0s;
   position: absolute;
   opacity: 0;
-}*/
+}
+*/
