@@ -1,5 +1,6 @@
 export class Config {
   serverEndpoint = "https://na.valospectra.com:5200";
+  redirectUrl = "https://valospectra.com";
   sponsorImageUrls: string[] = [];
   sponsorImageRotateSpeed = 5000; // in milliseconds
 
