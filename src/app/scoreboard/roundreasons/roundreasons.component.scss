@@ -1,37 +1,32 @@
 .round-reasons-container {
   display: block;
-  max-width: 600px;
+  max-width: 500px;
+  height: 100%;
   align-items: center;
   gap: 4px;
-  padding: 0px 4px;
+  padding: 0px 60px 0px 40px;
   position: relative;
   align-self: stretch;
-  background-color: #0f1923cc;
-  border-radius: 6px;
-  box-shadow: inset 34px 0px 24.7px -8px #0f1923;
-  top: -400px;
+  justify-content: space-between;
+  background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.5) 10%,
+        rgba(0, 0, 0, 0.5) 90%,
+        rgba(0, 0, 0, 0) 100%,
+      );
 }
 
 .left-team {
   display: flex;
-  padding-top: 2px;
+  height: 50%;
+  align-items: stretch;
 }
 
 .right-team {
   display: flex;
-  padding-bottom: 2px;
-}
-
-.team-info {
-  max-width: 75px;
-  min-width: 75px;
-  color: white;
-
-  text-align: center;
-  line-height: 40px;
-  font-size: 14px;
-  font-weight: 800;
-  font-family: "Unbounded", Helvetica;
+  height: 50%;
+  align-items: stretch;
 }
 
 .reason-container {
@@ -42,6 +37,17 @@
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
+}
+
+.team-info {
+  display: flex;
+  width: 77px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: "Unbounded", Helvetica;
 }
 
 .image-container {
@@ -79,7 +85,7 @@
 .round-number-upcoming {
   position: absolute;
   left: 0;
-  top: 24px;
+  top: 30px;
   width: 40px;
 
   line-height: 40px;
@@ -94,9 +100,9 @@
 .reason-color {
   display: inline-flex;
   flex-direction: column;
-  height: 40px;
+  height: 46px;
   width: 25px;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
   padding: 0px 6px;
   margin: 0px 1px;
@@ -105,7 +111,7 @@
 
   &.top {
     @extend .reason-color;
-    border-top-width: 2px;
+    border-top-width: 4px;
     border-top-style: solid;
 
     // Colors need to be in top and bottom because the gradient is shifts direction
@@ -132,7 +138,7 @@
 
   &.bottom {
     @extend .reason-color;
-    border-bottom-width: 2px;
+    border-bottom-width: 4px;
     border-bottom-style: solid;
 
     &.attacker {
