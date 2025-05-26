@@ -1,5 +1,5 @@
 export class Config {
-  serverEndpoint = "http://localhost:5200";
+  serverEndpoint = "https://na.valospectra.com:5200";
   sponsorImageUrls: string[] = [];
   sponsorImageRotateSpeed = 5000; // in milliseconds
 
