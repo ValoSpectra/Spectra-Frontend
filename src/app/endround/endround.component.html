@@ -1,6 +1,6 @@
 <div *ngIf="this.endRoundEnabled && match.roundPhase === 'end'">
   <div class="intro-box">
-    <div class="intro-box-content" [style.background-image]="setTournamentBackgroundImage()">
+    <div class="intro-box-content" [style.background-image]="setTournamentBackgroundImage()"> <!--[style.background-image]="setTournamentBackgroundImage()"-->
       <div class="intro-info-box">
         <img class="intro-info-image" src="{{ tournamentUrl }}" />
         <div class="intro-round-text">ROUND WIN</div>
@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="endround">
-    <div class="endround-box" [style.background-image]="setTournamentBackgroundImage()">
+    <div class="endround-box" [style.background-image]="setTournamentBackgroundImage()"> <!--[style.background-image]="setTournamentBackgroundImage()"-->
       <div class="win-side">
         <div class="win-side-image-box">
           <img class="win-side-image" src="{{ match.teams[teamWon].teamUrl }}" />

@@ -8,6 +8,12 @@
   animation-name: fly-down;
   animation-duration: 4s;
   animation-fill-mode: both;
+  /*background: linear-gradient(
+      30deg,
+      rgba(20, 27, 77, 1) 0%,
+      rgba(29, 66, 138, 1) 50%,
+      rgba(20, 27, 77, 1) 100%
+    );*/
 }
 
 .intro-box-content {
@@ -48,7 +54,7 @@
 .intro-round-text {
   position: relative;
   width: fit-content;
-  text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.12);
+  text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.25);
   font-family: "Unbounded", Helvetica;
   font-weight: 700;
   color: #ffffff;
@@ -83,6 +89,12 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: stretch;
+  /*background: linear-gradient(
+      30deg,
+      rgba(20, 27, 77, 1) 0%,
+      rgba(29, 66, 138, 1) 50%,
+      rgba(20, 27, 77, 1) 100%
+    );*/
 }
 
 .win-side {
@@ -94,7 +106,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  width: 30%;
+  width: 50%;
   height: 100%;
 }
 
@@ -115,7 +127,7 @@
 .win-side-text {
   position: relative;
   width: fit-content;
-  text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.12);
+  text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.25);
   font-family: "Montserrat", Helvetica;
   font-weight: 700;
   color: #ffffff;
@@ -155,7 +167,7 @@
 .round-number {
   position: relative;
   width: fit-content;
-  text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.12);
+  text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.25);
   font-family: "Montserrat", Helvetica;
   font-weight: 700;
   color: #ffffff;
