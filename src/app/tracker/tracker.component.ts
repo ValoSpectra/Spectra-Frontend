@@ -57,6 +57,11 @@ export class TrackerComponent implements OnInit {
           backdropUrl: "",
         },
         timeoutDuration: 60,
+        sponsorInfo: {
+          enabled: false,
+          duration: 5000,
+          sponsors: [],
+        },
       },
       timeoutState: {
         techPause: false,
