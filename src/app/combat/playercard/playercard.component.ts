@@ -90,6 +90,10 @@ export class InhouseTrackerPlayercardComponent {
   getAgentName(agent: string) {
     return AgentNameService.getAgentName(agent);
   }
+
+  clamp(value: number, min: number, max: number): number {
+    return Math.max(min, Math.min(max, value));
+  }
 }
 
 @Component({
