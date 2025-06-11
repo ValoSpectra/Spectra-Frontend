@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { TrackerComponent } from "../tracker/tracker.component";
 import { ActivatedRoute } from "@angular/router";
 import { TeamControllerComponent } from "./team-controller/team-controller.component";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-testing",
@@ -18,99 +19,133 @@ export class TestingComponent implements AfterViewInit {
   roundPhase: "shopping" | "combat" | "end" = "combat";
   hideAuxiliary = false;
 
+  loadingPreview = false;
+  loadingPreviewText = "Loading preview match data...";
+  previewCode = "";
+  previewMatch = undefined;
+
   showInterface = true;
   showBackground = true;
   backgroundClass = "bg1";
   backgroundClassId = 1;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+  ) {
     this.route.queryParams.subscribe((params) => {
       this.hideAuxiliary = params["hideAuxiliary"] != undefined;
+      this.previewCode = params["previewCode"] || "";
     });
   }
 
-  ngAfterViewInit(): void {
-    this.matchData = this.trackerComponent.match;
-    this.matchData.teams[0] = this.team1.getData();
-    this.matchData.teams[1] = this.team2.getData();
+  async ngAfterViewInit() {
+    if (this.previewCode !== "") {
+      this.loadingPreview = true;
+      this.http.get(`http://localhost:5101/preview/${this.previewCode}`).subscribe({
+        next: (data: any) => {
+          this.previewMatch = data;
+          this.matchData = this.previewMatch;
+          console.log("Preview match data loaded:", this.matchData);
+          this.team2.swapColor();
+          this.trackerComponent.updateMatch(this.matchData);
+          for (let i = 0; i < 5; i++) {
+            this.team1.addPlayer();
+            this.team2.addPlayer();
+          }
 
-    this.matchData.switchRound = 6;
+          this.roundPhase = this.matchData.roundPhase;
 
-    this.matchData.teams[0].roundRecord = [
-      { type: "detonated", wasAttack: true, round: 1 },
-      { type: "lost", wasAttack: true, round: 2 },
-      { type: "kills", wasAttack: true, round: 3 },
-      { type: "timeout", wasAttack: true, round: 4 },
-      { type: "lost", wasAttack: true, round: 5 },
-      { type: "kills", wasAttack: false, round: 6 },
-      { type: "lost", wasAttack: false, round: 7 },
-      { type: "defused", wasAttack: false, round: 8 },
-      { type: "lost", wasAttack: false, round: 9 },
-      { type: "lost", wasAttack: false, round: 10 },
-    ];
+          this.loadingPreview = false;
+        },
+        error: (err) => {
+          console.error("Error fetching preview match data:", err);
+          this.previewCode = "";
+          this.ngAfterViewInit();
+        },
+      });
+    } else {
+      this.matchData = this.trackerComponent.match;
+      this.matchData.teams[0] = this.team1.getData();
+      this.matchData.teams[1] = this.team2.getData();
 
-    this.matchData.teams[1].roundRecord = [
-      { type: "lost", wasAttack: false, round: 1 },
-      { type: "defused", wasAttack: false, round: 2 },
-      { type: "lost", wasAttack: false, round: 3 },
-      { type: "lost", wasAttack: false, round: 4 },
-      { type: "kills", wasAttack: false, round: 5 },
-      { type: "lost", wasAttack: true, round: 6 },
-      { type: "detonated", wasAttack: true, round: 7 },
-      { type: "lost", wasAttack: true, round: 8 },
-      { type: "kills", wasAttack: true, round: 9 },
-      { type: "timeout", wasAttack: true, round: 10 },
-    ];
+      this.matchData.switchRound = 6;
 
-    this.matchData.tools = {
-      seriesInfo: {
-        needed: 3,
-        wonLeft: 1,
-        wonRight: 2,
-        mapInfo: [
-          {
-            type: "past",
-            map: "Fracture",
-            left: {
-              score: 13,
+      this.matchData.teams[0].roundRecord = [
+        { type: "detonated", wasAttack: true, round: 1 },
+        { type: "lost", wasAttack: true, round: 2 },
+        { type: "kills", wasAttack: true, round: 3 },
+        { type: "timeout", wasAttack: true, round: 4 },
+        { type: "lost", wasAttack: true, round: 5 },
+        { type: "kills", wasAttack: false, round: 6 },
+        { type: "lost", wasAttack: false, round: 7 },
+        { type: "defused", wasAttack: false, round: 8 },
+        { type: "lost", wasAttack: false, round: 9 },
+        { type: "lost", wasAttack: false, round: 10 },
+      ];
+
+      this.matchData.teams[1].roundRecord = [
+        { type: "lost", wasAttack: false, round: 1 },
+        { type: "defused", wasAttack: false, round: 2 },
+        { type: "lost", wasAttack: false, round: 3 },
+        { type: "lost", wasAttack: false, round: 4 },
+        { type: "kills", wasAttack: false, round: 5 },
+        { type: "lost", wasAttack: true, round: 6 },
+        { type: "detonated", wasAttack: true, round: 7 },
+        { type: "lost", wasAttack: true, round: 8 },
+        { type: "kills", wasAttack: true, round: 9 },
+        { type: "timeout", wasAttack: true, round: 10 },
+      ];
+
+      this.matchData.tools = {
+        seriesInfo: {
+          needed: 3,
+          wonLeft: 1,
+          wonRight: 2,
+          mapInfo: [
+            {
+              type: "past",
+              map: "Fracture",
+              left: {
+                score: 13,
+                logo: "assets/misc/icon.webp",
+              },
+              right: {
+                score: 9,
+                logo: "assets/misc/icon.webp",
+              },
+            },
+            {
+              type: "present",
               logo: "assets/misc/icon.webp",
             },
-            right: {
-              score: 9,
+            {
+              type: "future",
+              map: "Haven",
               logo: "assets/misc/icon.webp",
             },
-          },
-          {
-            type: "present",
-            logo: "assets/misc/icon.webp",
-          },
-          {
-            type: "future",
-            map: "Haven",
-            logo: "assets/misc/icon.webp",
-          },
-        ],
-      },
-      seedingInfo: {
-        left: "Group A",
-        right: "Group B",
-      },
-      tournamentInfo: {
-        name: "",
-        logoUrl: "",
-        backdropUrl: "",
-        enabled: true,
-      },
-    };
+          ],
+        },
+        seedingInfo: {
+          left: "Group A",
+          right: "Group B",
+        },
+        tournamentInfo: {
+          name: "",
+          logoUrl: "",
+          backdropUrl: "",
+          enabled: true,
+        },
+      };
+      this.team2.swapColor();
+      this.trackerComponent.updateMatch(this.matchData);
+      for (let i = 0; i < 5; i++) {
+        this.team1.addPlayer();
+        this.team2.addPlayer();
+      }
 
-    this.team2.swapColor();
-    this.trackerComponent.updateMatch(this.matchData);
-    for (let i = 0; i < 5; i++) {
-      this.team1.addPlayer();
-      this.team2.addPlayer();
+      this.roundPhase = this.matchData.roundPhase;
     }
-
-    this.roundPhase = this.matchData.roundPhase;
   }
 
   changeRoundPhase(): void {
