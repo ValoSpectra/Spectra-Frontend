@@ -42,7 +42,7 @@ export class TestingComponent implements AfterViewInit {
   async ngAfterViewInit() {
     if (this.previewCode !== "") {
       this.loadingPreview = true;
-      this.http.get(`http://localhost:5101/preview/${this.previewCode}`).subscribe({
+      this.http.get(`https://eu.valospectra.com:5101/preview/${this.previewCode}`).subscribe({
         next: (data: any) => {
           this.previewMatch = data;
           this.matchData = this.previewMatch;
