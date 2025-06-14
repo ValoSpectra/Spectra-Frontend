@@ -21,9 +21,9 @@ export class MapbanUiComponent implements OnInit, AfterViewInit {
   socketService!: SocketService;
 
   data!: ISessionData;
-  availableMaps: SessionMap[] = [];
+  availableMapNames: string[] = [];
   selectedMaps: SessionMap[] = [];
-  totalMapAmount = 0;
+  selectedAmount = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -51,13 +51,16 @@ export class MapbanUiComponent implements OnInit, AfterViewInit {
 
   public updateMapbanData(data: { data: ISessionData }) {
     this.data = data.data;
-    this.availableMaps = this.data.availableMaps;
+    this.availableMapNames = this.data.availableMaps.map((map) => map.name);
     this.selectedMaps = this.data.selectedMaps;
-    this.totalMapAmount = this.availableMaps.length + this.selectedMaps.length;
-  }
-
-  numSequence(n: number): number[] {
-    return Array(n);
+    this.selectedAmount = this.selectedMaps.length;
+    for (let i = 0; i < this.availableMapNames.length; i++) {
+      if (i == 1) {
+        this.selectedMaps.push(new SessionMap("upcoming"));
+      } else {
+        this.selectedMaps.push(new SessionMap(""));
+      }
+    }
   }
 }
 

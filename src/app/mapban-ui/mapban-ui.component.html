@@ -1,7 +1,7 @@
 <div class="body" [@fade]>
   <div class="flex-horizontal">
-    @for (item of numSequence(totalMapAmount); track $index) {
-      <app-mapban-map [map]="selectedMaps[$index]"></app-mapban-map>
+    @for (map of selectedMaps; track $index) {
+      <app-mapban-map [map]="map" [availableMapNames]="availableMapNames"></app-mapban-map>
     }
   </div>
 </div>
