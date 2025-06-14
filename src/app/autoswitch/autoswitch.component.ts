@@ -7,6 +7,5 @@ import { OverlayComponent } from "../overlay/overlay.component";
   templateUrl: "./autoswitch.component.html",
   styleUrl: "./autoswitch.component.scss",
   imports: [AgentSelectComponent, OverlayComponent],
-  standalone: false,
 })
 export class AutoswitchComponent {}

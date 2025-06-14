@@ -7,7 +7,6 @@ import { NgIf } from "@angular/common";
   templateUrl: "./shield-icon.component.html",
   styleUrl: "./shield-icon.component.scss",
   imports: [NgIf],
-  standalone: false,
 })
 export class ShieldIconComponent {
   private config = inject(Config);

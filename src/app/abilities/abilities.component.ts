@@ -26,7 +26,6 @@ import { NgIf } from "@angular/common";
     ]),
   ],
   imports: [NgIf],
-  standalone: false,
 })
 export class AbilitiesComponent {
   private config = inject(Config);

@@ -1,4 +1,4 @@
-import { Component, Input, Pipe, PipeTransform, forwardRef, inject } from "@angular/core";
+import { Component, Input, Pipe, PipeTransform, forwardRef } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NgIf, NgFor } from "@angular/common";
 import { RoundreasonsComponent } from "./roundreasons/roundreasons.component";
@@ -21,7 +21,6 @@ import { TranslateModule } from "@ngx-translate/core";
     PlayerscoreMinimalComponent,
     forwardRef(() => ScoreboardOrderPipe),
   ],
-  standalone: false,
 })
 export class ScoreboardComponent {
   private route = inject(ActivatedRoute);
@@ -47,10 +46,6 @@ export class ScoreboardComponent {
 }
 
 @Pipe({ name: "scoreboardOrder" })
-@Pipe({
-  name: "scoreboardOrder",
-  standalone: false,
-})
 export class ScoreboardOrderPipe implements PipeTransform {
   transform(players: any): MinPlayer[] {
     if (!Array.isArray(players)) return [];

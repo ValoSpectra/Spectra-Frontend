@@ -12,7 +12,6 @@ import { LanguageAliasService } from "../services/languageAlias.service";
   templateUrl: "./testing.component.html",
   styleUrls: ["./testing.component.scss"],
   imports: [TrackerComponent, NgIf, TeamControllerComponent],
-  standalone: false,
 })
 export class TestingComponent implements AfterViewInit {
   private route = inject(ActivatedRoute);

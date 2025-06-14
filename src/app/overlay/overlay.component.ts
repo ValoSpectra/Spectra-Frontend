@@ -12,7 +12,6 @@ import { LanguageAliasService } from "../services/languageAlias.service";
   templateUrl: "./overlay.component.html",
   styleUrls: ["./overlay.component.scss"],
   imports: [TrackerComponent, TimeoutComponent],
-  standalone: false,
 })
 export class OverlayComponent implements OnInit, AfterViewInit {
   private route = inject(ActivatedRoute);
