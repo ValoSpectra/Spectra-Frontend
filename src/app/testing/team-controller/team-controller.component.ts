@@ -17,6 +17,7 @@ import { NgIf } from "@angular/common";
   templateUrl: "./team-controller.component.html",
   styleUrl: "./team-controller.component.scss",
   imports: [NgIf],
+  standalone: false,
 })
 export class TeamControllerComponent {
   @ViewChild("playerControllerSpace", { read: ViewContainerRef })

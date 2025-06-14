@@ -21,6 +21,7 @@ import { LanguageAliasService } from "../services/languageAlias.service";
     ]),
   ],
   imports: [NgIf, NgFor, SelectPlayerInfoComponent, SelectTeamInfoComponent],
+  standalone: false,
 })
 export class AgentSelectComponent implements OnInit, AfterViewInit {
   private route = inject(ActivatedRoute);

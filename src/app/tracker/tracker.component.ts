@@ -29,6 +29,7 @@ import { PlayercamsComponent } from "../playercams/playercams.component";
     ScoreboardComponent,
     PlayercamsComponent,
   ],
+  standalone: false,
 })
 export class TrackerComponent implements OnInit {
   private route = inject(ActivatedRoute);

@@ -6,6 +6,7 @@ import { NgIf } from "@angular/common";
   templateUrl: "./player-controller.component.html",
   styleUrl: "./player-controller.component.scss",
   imports: [NgIf],
+  standalone: false,
 })
 export class PlayerControllerComponent implements OnDestroy {
   @Output() spikeTakenEvent = new EventEmitter<void>();

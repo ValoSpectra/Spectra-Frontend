@@ -28,6 +28,7 @@ interface matchType {
   templateUrl: "./roundreasons.component.html",
   styleUrls: ["./roundreasons.component.scss"],
   imports: [NgIf, NgFor, SlicePipe],
+  standalone: false,
 })
 export class RoundreasonsComponent {
   @Input() match!: matchType;

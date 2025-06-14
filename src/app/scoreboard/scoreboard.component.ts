@@ -21,6 +21,7 @@ import { TranslateModule } from "@ngx-translate/core";
     PlayerscoreMinimalComponent,
     forwardRef(() => ScoreboardOrderPipe),
   ],
+  standalone: false,
 })
 export class ScoreboardComponent {
   private route = inject(ActivatedRoute);
@@ -46,6 +47,10 @@ export class ScoreboardComponent {
 }
 
 @Pipe({ name: "scoreboardOrder" })
+@Pipe({
+  name: "scoreboardOrder",
+  standalone: false,
+})
 export class ScoreboardOrderPipe implements PipeTransform {
   transform(players: any): MinPlayer[] {
     if (!Array.isArray(players)) return [];

@@ -16,6 +16,7 @@ import {
     InhouseTrackerPlayercardComponent,
     InhouseTrackerPlayercardMinimalComponent,
   ],
+  standalone: false,
 })
 export class CombatComponent {
   private route = inject(ActivatedRoute);
