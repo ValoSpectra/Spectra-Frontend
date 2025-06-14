@@ -1,12 +1,7 @@
 <div class="body" [@fade]>
-  <div class="left-team">
-    <div class="team-wrapper-left"></div>
-  </div>
-  <div class="team-info">
-    <div class="defender-team"></div>
-    <div class="attacker-team"></div>
-  </div>
-  <div class="right-team">
-    <div class="team-wrapper-right"></div>
+  <div class="flex-horizontal">
+    @for (item of numSequence(totalMapAmount); track $index) {
+      <app-mapban-map [map]="selectedMaps[$index]"></app-mapban-map>
+    }
   </div>
 </div>

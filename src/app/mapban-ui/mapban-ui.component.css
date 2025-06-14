@@ -1,0 +1,10 @@
+.body {
+  position: absolute;
+  width: 60%;
+  height: 20%;
+  bottom: 1%;
+  left: 1%;
+  background-color: #0f1923cc;
+  border-radius: 10px;
+  overflow: hidden;
+}

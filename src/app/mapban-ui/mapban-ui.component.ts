@@ -49,11 +49,15 @@ export class MapbanUiComponent implements OnInit, AfterViewInit {
     });
   }
 
-  public updateMapbanData(data: ISessionData) {
-    this.data = data;
-    this.availableMaps = data.availableMaps;
-    this.selectedMaps = data.selectedMaps;
+  public updateMapbanData(data: { data: ISessionData }) {
+    this.data = data.data;
+    this.availableMaps = this.data.availableMaps;
+    this.selectedMaps = this.data.selectedMaps;
     this.totalMapAmount = this.availableMaps.length + this.selectedMaps.length;
+  }
+
+  numSequence(n: number): number[] {
+    return Array(n);
   }
 }
 
