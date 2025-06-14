@@ -12,26 +12,11 @@
     <button class="test-button" (click)="switchBackground()">Switch background</button>
   </div>
   <div class="teamControllerContainer" [class.shop]="roundPhase === 'shopping'">
-    <app-team-controller
-      #team1
-      teamId="0"
-      (roundWinEvent)="updateRoundNumber()"
-      (spectateTakenEvent)="team2.spectateCleanse()"
-      [showInterface]="showInterface"
-      [roundPhase]="roundPhase"
-      teamName="The Naturals"
-      teamCode="INT"
-    ></app-team-controller>
-    <app-team-controller
-      #team2
-      teamId="1"
-      (roundWinEvent)="updateRoundNumber()"
-      (spectateTakenEvent)="team1.spectateCleanse()"
-      [showInterface]="showInterface"
-      [roundPhase]="roundPhase"
-      teamName="The Zoologists"
-      teamCode="ZOO"
-      flipInterface
-    ></app-team-controller>
+    <app-team-controller #team1 teamId="0" (roundWinEvent)="updateRoundNumber()"
+      (spectateTakenEvent)="team2.spectateCleanse()" [showInterface]="showInterface" [roundPhase]="roundPhase"
+      teamName="The Naturals" teamCode="INT"></app-team-controller>
+    <app-team-controller #team2 teamId="1" (roundWinEvent)="updateRoundNumber()"
+      (spectateTakenEvent)="team1.spectateCleanse()" [showInterface]="showInterface" [roundPhase]="roundPhase"
+      teamName="The Zoologists" teamCode="ZOO" flipInterface></app-team-controller>
   </div>
 </div>

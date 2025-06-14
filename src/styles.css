@@ -4,9 +4,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@800&family=Roboto+Mono:wght@600&family=Roboto:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat:wght@400;700;900&display=swap");
 
+@import "tailwindcss";
+
 * {
   font-family: "Inter", sans-serif;
   color: #1e1e1e;
+  box-sizing: unset;
+}
+
+img {
+  max-width: unset;
+  vertical-align: unset;
 }
 
 html {
@@ -28,7 +36,6 @@ body {
   --chat-msg: #dbdee1;
   --cerise: #e52e5e;
   --slate: #262626;
-  --accent: #ffc700;
   --blue-dodger: #24affe;
   --tile-dark: #ffc700;
   --tile-light: #fffbd3;
@@ -39,11 +46,3 @@ body {
   fill: yellow !important;
   opacity: 0.5 !important;
 }
-
-// rect.black {
-//   fill: var(--tile-dark) !important;
-// }
-
-// rect.white {
-//   fill: var(--tile-light) !important;
-// }
