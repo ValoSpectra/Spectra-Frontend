@@ -4,6 +4,7 @@ import { SocketService } from "../services/SocketService";
 import { ActivatedRoute } from "@angular/router";
 import { Config } from "../shared/config";
 import { trigger, transition, style, animate } from "@angular/animations";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: "app-timeout",
@@ -15,7 +16,7 @@ import { trigger, transition, style, animate } from "@angular/animations";
       transition(":leave", animate("0.3s", style({ opacity: "0" }))),
     ]),
   ],
-  standalone: false,
+  imports: [NgIf],
 })
 export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;

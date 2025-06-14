@@ -1,6 +1,8 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
 import { Config } from "../../shared/config";
 import { animate, style, transition, trigger } from "@angular/animations";
+import { NgIf, NgFor } from "@angular/common";
+import { MapinfoComponent } from "./mapinfo/mapinfo.component";
 
 @Component({
   selector: "app-topinfo",
@@ -12,7 +14,7 @@ import { animate, style, transition, trigger } from "@angular/animations";
       transition(":leave", [animate("1s", style({ opacity: 0 }))]),
     ]),
   ],
-  standalone: false,
+  imports: [NgIf, MapinfoComponent, NgFor],
 })
 export class TopinfoComponent implements OnInit, OnChanges {
   @Input() tools!: any;

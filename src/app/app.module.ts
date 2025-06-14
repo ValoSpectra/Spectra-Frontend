@@ -37,8 +37,15 @@ import { TimeoutComponent } from "./timeout/timeout.component";
 import { AbilitiesComponent } from "./abilities/abilities.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
+  declarations: [AppComponent],
+  exports: [],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    JsonPipe,
     TestingComponent,
     TrackerComponent,
     TopscoreComponent,
@@ -65,9 +72,6 @@ import { AbilitiesComponent } from "./abilities/abilities.component";
     PlayerscoreMinimalComponent,
     ScoreboardOrderPipe,
   ],
-  exports: [],
-  bootstrap: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, JsonPipe],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class AppModule {}

@@ -2,6 +2,9 @@ import { trigger, transition, style, animate } from "@angular/animations";
 import { Component, Input } from "@angular/core";
 import { Config } from "../../shared/config";
 import { AgentNameService } from "../../services/agentName.service";
+import { NgIf, NgFor } from "@angular/common";
+import { AbilitiesComponent } from "../../abilities/abilities.component";
+import { ShieldIconComponent } from "./shield-icon/shield-icon.component";
 
 const componentAnimations = [
   trigger("deathAnimation", [
@@ -47,7 +50,7 @@ const componentAnimations = [
   templateUrl: "./playercard.component.html",
   styleUrls: ["./playercard.component.scss"],
   animations: componentAnimations,
-  standalone: false,
+  imports: [NgIf, AbilitiesComponent, ShieldIconComponent, NgFor],
 })
 export class InhouseTrackerPlayercardComponent {
   public readonly assets: string = "../../../assets";
@@ -102,6 +105,6 @@ export class InhouseTrackerPlayercardComponent {
   templateUrl: "./playercard-minimal.component.html",
   styleUrls: ["./playercard.component.scss"],
   animations: componentAnimations,
-  standalone: false,
+  imports: [NgIf],
 })
 export class InhouseTrackerPlayercardMinimalComponent extends InhouseTrackerPlayercardComponent {}

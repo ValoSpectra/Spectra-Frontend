@@ -10,12 +10,13 @@ import {
   ViewContainerRef,
 } from "@angular/core";
 import { PlayerControllerComponent } from "../player-controller/player-controller.component";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: "app-team-controller",
   templateUrl: "./team-controller.component.html",
   styleUrl: "./team-controller.component.scss",
-  standalone: false,
+  imports: [NgIf],
 })
 export class TeamControllerComponent {
   @ViewChild("playerControllerSpace", { read: ViewContainerRef })

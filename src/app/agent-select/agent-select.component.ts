@@ -5,6 +5,9 @@ import { SocketService } from "../services/SocketService";
 import { Config } from "../shared/config";
 import { trigger, transition, style, animate } from "@angular/animations";
 import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
+import { NgIf, NgFor } from "@angular/common";
+import { SelectPlayerInfoComponent } from "./select-player-info/select-player-info.component";
+import { SelectTeamInfoComponent } from "./select-team-info/select-team-info.component";
 
 @Component({
   selector: "app-agent-select",
@@ -16,7 +19,7 @@ import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
       transition(":leave", animate("0.5s", style({ opacity: "0" }))),
     ]),
   ],
-  standalone: false,
+  imports: [NgIf, NgFor, SelectPlayerInfoComponent, SelectTeamInfoComponent],
 })
 export class AgentSelectComponent implements OnInit, AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;

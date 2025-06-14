@@ -1,11 +1,21 @@
 import { Component, Input } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { NgIf, NgFor } from "@angular/common";
+import {
+  InhouseTrackerPlayercardComponent,
+  InhouseTrackerPlayercardMinimalComponent,
+} from "./playercard/playercard.component";
 
 @Component({
   selector: "app-combat",
   templateUrl: "./combat.component.html",
   styleUrls: ["./combat.component.scss"],
-  standalone: false,
+  imports: [
+    NgIf,
+    NgFor,
+    InhouseTrackerPlayercardComponent,
+    InhouseTrackerPlayercardMinimalComponent,
+  ],
 })
 export class CombatComponent {
   @Input() match!: any;

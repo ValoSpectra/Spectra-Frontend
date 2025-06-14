@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { NgIf, NgFor, SlicePipe } from "@angular/common";
 
 interface recordType {
   type: string;
@@ -26,7 +27,7 @@ interface matchType {
   selector: "app-roundreasons",
   templateUrl: "./roundreasons.component.html",
   styleUrls: ["./roundreasons.component.scss"],
-  standalone: false,
+  imports: [NgIf, NgFor, SlicePipe],
 })
 export class RoundreasonsComponent {
   @Input() match!: matchType;

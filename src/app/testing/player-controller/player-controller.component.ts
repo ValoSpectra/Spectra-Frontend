@@ -1,10 +1,11 @@
 import { booleanAttribute, Component, EventEmitter, Input, Output, OnDestroy } from "@angular/core";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: "app-player-controller",
   templateUrl: "./player-controller.component.html",
   styleUrl: "./player-controller.component.scss",
-  standalone: false,
+  imports: [NgIf],
 })
 export class PlayerControllerComponent implements OnDestroy {
   @Output() spikeTakenEvent = new EventEmitter<void>();

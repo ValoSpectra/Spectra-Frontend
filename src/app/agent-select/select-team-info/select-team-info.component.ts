@@ -1,10 +1,11 @@
 import { Component, Input } from "@angular/core";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: "app-select-team-info",
   templateUrl: "./select-team-info.component.html",
   styleUrl: "./select-team-info.component.scss",
-  standalone: false,
+  imports: [NgIf],
 })
 export class SelectTeamInfoComponent {
   @Input() team: any;

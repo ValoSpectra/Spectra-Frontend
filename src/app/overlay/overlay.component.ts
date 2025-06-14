@@ -3,12 +3,13 @@ import { TrackerComponent } from "../tracker/tracker.component";
 import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../services/SocketService";
 import { Config } from "../shared/config";
+import { TimeoutComponent } from "../timeout/timeout.component";
 
 @Component({
   selector: "app-overlay",
   templateUrl: "./overlay.component.html",
   styleUrls: ["./overlay.component.scss"],
-  standalone: false,
+  imports: [TrackerComponent, TimeoutComponent],
 })
 export class OverlayComponent implements OnInit, AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
