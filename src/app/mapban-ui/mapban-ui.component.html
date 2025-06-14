@@ -1,7 +1,5 @@
 <div class="body" [@fade]>
   <div class="flex-horizontal">
-    @for (map of selectedMaps; track $index) {
-      <app-mapban-map [map]="map" [availableMapNames]="availableMapNames"></app-mapban-map>
-    }
+    @for (map of selectedMaps; track $index) {}
   </div>
 </div>

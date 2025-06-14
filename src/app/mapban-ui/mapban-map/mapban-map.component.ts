@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, inject, Input } from "@angular/core";
+import { AfterViewInit, Component, Input } from "@angular/core";
 import { SessionMap } from "../mapban-ui.component";
 
 @Component({
