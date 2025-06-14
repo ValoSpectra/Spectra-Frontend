@@ -4,5 +4,6 @@ import { Component } from "@angular/core";
   selector: "app-autoswitch",
   templateUrl: "./autoswitch.component.html",
   styleUrl: "./autoswitch.component.scss",
+  standalone: false,
 })
 export class AutoswitchComponent {}

@@ -24,6 +24,7 @@ import { trigger, transition, style, animate } from "@angular/animations";
       ]),
     ]),
   ],
+  standalone: false,
 })
 export class AbilitiesComponent {
   public readonly assets: string = "../../../assets";

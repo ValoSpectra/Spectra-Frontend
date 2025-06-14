@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
   selector: "app-combat",
   templateUrl: "./combat.component.html",
   styleUrls: ["./combat.component.scss"],
+  standalone: false,
 })
 export class CombatComponent {
   @Input() match!: any;

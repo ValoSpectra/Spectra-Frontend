@@ -12,6 +12,7 @@ import { animate, style, transition, trigger } from "@angular/animations";
       transition(":leave", [animate("1s", style({ opacity: 0 }))]),
     ]),
   ],
+  standalone: false,
 })
 export class TopinfoComponent implements OnInit, OnChanges {
   @Input() tools!: any;

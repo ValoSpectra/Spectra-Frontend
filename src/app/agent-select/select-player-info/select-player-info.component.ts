@@ -17,6 +17,7 @@ import { trigger, transition, style, animate } from "@angular/animations";
       transition("* <=> *", [style({ opacity: "0" }), animate("100ms", style({ opacity: "1" }))]),
     ]),
   ],
+  standalone: false,
 })
 export class SelectPlayerInfoComponent {
   @Input() player: any;

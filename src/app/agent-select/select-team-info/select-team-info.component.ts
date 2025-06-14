@@ -4,6 +4,7 @@ import { Component, Input } from "@angular/core";
   selector: "app-select-team-info",
   templateUrl: "./select-team-info.component.html",
   styleUrl: "./select-team-info.component.scss",
+  standalone: false,
 })
 export class SelectTeamInfoComponent {
   @Input() team: any;

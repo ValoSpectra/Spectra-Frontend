@@ -26,6 +26,7 @@ interface matchType {
   selector: "app-roundreasons",
   templateUrl: "./roundreasons.component.html",
   styleUrls: ["./roundreasons.component.scss"],
+  standalone: false,
 })
 export class RoundreasonsComponent {
   @Input() match!: matchType;

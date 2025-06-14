@@ -3,6 +3,7 @@ import { Component, Input, OnChanges, SimpleChanges, OnInit } from "@angular/cor
   selector: "app-endround",
   templateUrl: "./endround.component.html",
   styleUrls: ["./endround.component.scss"],
+  standalone: false,
 })
 export class EndroundComponent implements OnChanges, OnInit {
   @Input() match!: any;

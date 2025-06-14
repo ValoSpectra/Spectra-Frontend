@@ -14,6 +14,7 @@ import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
     ]),
     trigger("fadeFast", [transition(":leave", animate("0.25s ease-out", style({ opacity: "0" })))]),
   ],
+  standalone: false,
 })
 export class TrackerComponent implements OnInit {
   @Input() hideAuxiliary = false;

@@ -4,6 +4,7 @@ import { Component, Input, OnChanges } from "@angular/core";
   selector: "app-mapinfo",
   templateUrl: "./mapinfo.component.html",
   styleUrls: ["./mapinfo.component.scss"],
+  standalone: false,
 })
 export class MapinfoComponent implements OnChanges {
   @Input() map!: string;

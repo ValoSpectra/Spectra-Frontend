@@ -47,6 +47,7 @@ const componentAnimations = [
   templateUrl: "./playercard.component.html",
   styleUrls: ["./playercard.component.scss"],
   animations: componentAnimations,
+  standalone: false,
 })
 export class InhouseTrackerPlayercardComponent {
   public readonly assets: string = "../../../assets";
@@ -101,5 +102,6 @@ export class InhouseTrackerPlayercardComponent {
   templateUrl: "./playercard-minimal.component.html",
   styleUrls: ["./playercard.component.scss"],
   animations: componentAnimations,
+  standalone: false,
 })
 export class InhouseTrackerPlayercardMinimalComponent extends InhouseTrackerPlayercardComponent {}

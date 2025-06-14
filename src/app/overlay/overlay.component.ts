@@ -8,6 +8,7 @@ import { Config } from "../shared/config";
   selector: "app-overlay",
   templateUrl: "./overlay.component.html",
   styleUrls: ["./overlay.component.scss"],
+  standalone: false,
 })
 export class OverlayComponent implements OnInit, AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;

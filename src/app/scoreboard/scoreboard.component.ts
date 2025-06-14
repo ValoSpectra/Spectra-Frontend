@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
   selector: "app-scoreboard",
   templateUrl: "./scoreboard.component.html",
   styleUrls: ["./scoreboard.component.scss"],
+  standalone: false,
 })
 export class ScoreboardComponent {
   @Input() match!: any;
@@ -31,6 +32,7 @@ export class ScoreboardComponent {
 
 @Pipe({
   name: "scoreboardOrder",
+  standalone: false,
 })
 export class ScoreboardOrderPipe implements PipeTransform {
   transform(players: any): MinPlayer[] {

@@ -4,6 +4,7 @@ import { booleanAttribute, Component, EventEmitter, Input, Output, OnDestroy } f
   selector: "app-player-controller",
   templateUrl: "./player-controller.component.html",
   styleUrl: "./player-controller.component.scss",
+  standalone: false,
 })
 export class PlayerControllerComponent implements OnDestroy {
   @Output() spikeTakenEvent = new EventEmitter<void>();

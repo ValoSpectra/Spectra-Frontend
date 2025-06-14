@@ -5,6 +5,7 @@ import { Config } from "../../../shared/config";
   selector: "app-shield-icon",
   templateUrl: "./shield-icon.component.html",
   styleUrl: "./shield-icon.component.scss",
+  standalone: false,
 })
 export class ShieldIconComponent {
   @Input({ required: true }) type!: "Heavy" | "Regen" | "Light" | "None";
