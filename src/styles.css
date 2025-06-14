@@ -4,6 +4,12 @@
 
 @import "tailwindcss";
 
+* {
+  font-family: "Inter", sans-serif;
+  color: #1e1e1e;
+  box-sizing: unset;
+}
+
 img {
   max-width: unset;
   vertical-align: unset;
