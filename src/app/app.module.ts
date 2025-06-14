@@ -35,6 +35,7 @@ import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
 import { RedirectComponent } from "./redirect/redirect.component";
 import { TimeoutComponent } from "./timeout/timeout.component";
 import { AbilitiesComponent } from "./abilities/abilities.component";
+import { MapbanUiComponent } from './mapban-ui/mapban-ui.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -71,6 +72,7 @@ import { AbilitiesComponent } from "./abilities/abilities.component";
     InhouseTrackerPlayercardMinimalComponent,
     PlayerscoreMinimalComponent,
     ScoreboardOrderPipe,
+    MapbanUiComponent,
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })

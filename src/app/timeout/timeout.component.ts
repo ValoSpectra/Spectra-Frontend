@@ -74,7 +74,10 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     };
 
     this.timeout = this.match.timeoutState;
-    this.socketService = SocketService.getInstance(this.config.serverEndpoint, this.groupCode);
+    this.socketService = SocketService.getInstance().connectMatch(
+      this.config.serverEndpoint,
+      this.groupCode,
+    );
     this.getTournamentBackdropUrl();
     this.preloadImage(this.tournamentBackgroundUrl);
     this.preloadImage(this.match.teams[0].teamUrl);
@@ -83,7 +86,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.timeLeft = this.match.tools.timeoutDuration || 60;
-    this.socketService.subscribe((data: any) => {
+    this.socketService.subscribeMatch((data: any) => {
       this.updateTimeout(data);
     });
   }

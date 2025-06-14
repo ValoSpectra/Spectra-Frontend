@@ -62,11 +62,14 @@ export class AgentSelectComponent implements OnInit, AfterViewInit {
     this.teamLeft = this.match.teams[0];
     this.teamRight = this.match.teams[1];
 
-    this.socketService = SocketService.getInstance(this.config.serverEndpoint, this.groupCode);
+    this.socketService = SocketService.getInstance().connectMatch(
+      this.config.serverEndpoint,
+      this.groupCode,
+    );
   }
 
   ngAfterViewInit(): void {
-    this.socketService.subscribe((data: any) => {
+    this.socketService.subscribeMatch((data: any) => {
       this.updateMatch(data);
     });
   }
