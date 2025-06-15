@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { ISessionTeam, SessionMap, Stage } from "../mapban-ui.component";
 import { MapbanBanIconComponent } from "./mapban-ban-icon/mapban-ban-icon.component";
-import { createTimeline, JSAnimation } from "animejs";
+import { createTimeline, JSAnimation, Timeline } from "animejs";
 
 @Component({
   standalone: true,
@@ -25,6 +25,7 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
 
   roateMapNames = ["", ""];
   currentMapNameIndex = 0;
+  rotateMapTimeline!: Timeline;
 
   showLogo = this.index === this.logoIndex;
 
@@ -38,11 +39,9 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
     this.setupAnimations();
     this.rotateNameCurrent = this.map.name;
     if (this.rotateNameCurrent === "upcoming") {
-      this.isRotating = true;
-      this.rotateMapName(0);
-      this.rotateMapName(1);
+      this.startRotateAnimation();
     } else {
-      this.isRotating = false;
+      this.stopRotateAnimation();
     }
   }
 
@@ -50,7 +49,7 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
 
   private setupAnimations() {
     //#region Map Rotate Animation
-    const timeline = createTimeline({
+    this.rotateMapTimeline = createTimeline({
       defaults: {
         duration: 400,
         ease: "outCubic",
@@ -60,6 +59,7 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
       loopDelay: 0,
     });
 
+    const timeline = this.rotateMapTimeline;
     const img1 = "#rotateImage1";
     const img2 = "#rotateImage2";
     const timelineDelay = "+=3000";
@@ -137,7 +137,7 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
         if (this.isRotating == false) this.startedRotating();
         this.isRotating = true;
       } else {
-        this.isRotating = false;
+        this.stopRotateAnimation();
       }
 
       if (newMap.pickedBy !== undefined) {
@@ -205,5 +205,19 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
     this.rotateMap = (this.rotateMap + 1) % this.availableMapNames.length;
     this.roateMapNames[index] = this.availableMapNames[this.rotateMap];
     this.rotateNameCurrent = this.roateMapNames[(index + 1) % 2];
+  }
+
+  private startRotateAnimation() {
+    this.isRotating = true;
+    this.rotateMapName(0);
+    this.rotateMapName(1);
+    this.rotateMapTimeline.play();
+  }
+
+  private stopRotateAnimation() {
+    this.isRotating = false;
+    this.rotateMap = 0;
+    this.roateMapNames = ["", ""];
+    this.rotateMapTimeline.revert();
   }
 }
