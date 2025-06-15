@@ -8,7 +8,6 @@ import { Config } from "../shared/config";
 export class RedirectComponent implements OnInit {
   private config = inject(Config);
 
-
   ngOnInit() {
     window.location.href = this.config.redirectUrl;
   }
