@@ -2,11 +2,15 @@
 
 @keyframes mapPicked {
   0% {
-    filter: brightness(130%) saturate(50%) blur(10px);
+    filter: brightness(100%) saturate(50%) blur(10px);
   }
 
   20% {
-    filter: brightness(100%) saturate(100%);
+    filter: brightness(150%) saturate(100%);
+  }
+
+  50% {
+    filter: brightness(115%) saturate(100%);
   }
 
   100% {
@@ -27,7 +31,7 @@
   }
 
   20% {
-    filter: saturate(75%) brightness(100%);
+    filter: saturate(85%) brightness(100%);
   }
 
   100% {
