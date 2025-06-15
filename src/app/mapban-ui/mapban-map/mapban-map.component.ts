@@ -35,34 +35,34 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
   sideIsPicked = false;
   isDecider = false;
 
+  isInitialized = false;
+
   ngAfterViewInit(): void {
-    this.setupAnimations();
+    this.isInitialized = true;
     this.rotateNameCurrent = this.map.name;
-    if (this.rotateNameCurrent === "upcoming") {
-      this.startRotateAnimation();
-    } else {
-      this.stopRotateAnimation();
+    if (this.isRotating) {
+      this.startedRotating();
     }
   }
 
   slideRotateAnimation!: JSAnimation;
 
-  private setupAnimations() {
+  private setupRotateAnimation() {
     //#region Map Rotate Animation
     this.rotateMapTimeline = createTimeline({
       defaults: {
         duration: 400,
         ease: "outCubic",
       },
-      autoplay: true,
+      autoplay: false,
       loop: true,
       loopDelay: 0,
     });
 
     const timeline = this.rotateMapTimeline;
-    const img1 = "#rotateImage1";
-    const img2 = "#rotateImage2";
-    const timelineDelay = "+=3000";
+    const img1 = "#rotateImage1Index" + this.index;
+    const img2 = "#rotateImage2Index" + this.index;
+    const timelineDelay = "+=1000";
 
     timeline.set(img1, { x: 0 });
     timeline.set(img2, { zIndex: -1, x: "-100%" });
@@ -136,8 +136,6 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
       if (this.rotateNameCurrent === "upcoming") {
         if (this.isRotating == false) this.startedRotating();
         this.isRotating = true;
-      } else {
-        this.stopRotateAnimation();
       }
 
       if (newMap.pickedBy !== undefined) {
@@ -178,15 +176,15 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
   }
 
   private startedRotating() {
-    //
+    this.startRotateAnimation();
   }
 
   private gotPicked() {
-    //
+    this.stopRotateAnimation();
   }
 
   private gotBanned() {
-    //
+    this.stopRotateAnimation();
   }
 
   private enteredSidePick() {
@@ -208,9 +206,12 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
   }
 
   private startRotateAnimation() {
-    this.isRotating = true;
+    if (!this.isInitialized) return;
     this.rotateMapName(0);
     this.rotateMapName(1);
+    if (!this.rotateMapTimeline) {
+      this.setupRotateAnimation();
+    }
     this.rotateMapTimeline.play();
   }
 
@@ -218,6 +219,8 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
     this.isRotating = false;
     this.rotateMap = 0;
     this.roateMapNames = ["", ""];
-    this.rotateMapTimeline.revert();
+    if (this.rotateMapTimeline) {
+      this.rotateMapTimeline.revert();
+    }
   }
 }
