@@ -31,7 +31,7 @@
       <img
         src="/assets/maps/wide/{{ map.name }}.webp"
         class="object-cover h-full w-full"
-        [style.filter]="isBanned ? 'saturate(15%)' : 'saturate(85%)'"
+        [style.filter]="isBanned ? 'saturate(15%)' : 'brightness(115%) saturate(115%)'"
         [style.opacity]="isBanned ? '0.6' : '1'"
         [class]="isBanned ? 'animate-banned' : isPicked || isDecider ? 'animate-picked' : ''"
         id="mapImage-{{ index }}"
