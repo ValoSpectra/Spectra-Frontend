@@ -4,6 +4,7 @@ import { SocketService } from "../services/SocketService";
 import { ActivatedRoute } from "@angular/router";
 import { Config } from "../shared/config";
 import { trigger, transition, style, animate } from "@angular/animations";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: "app-timeout",
@@ -12,10 +13,10 @@ import { trigger, transition, style, animate } from "@angular/animations";
   animations: [
     trigger("fade", [
       transition(":enter", [style({ opacity: "0" }), animate("0.3s", style({ opacity: "1" }))]),
-
       transition(":leave", animate("0.3s", style({ opacity: "0" }))),
     ]),
   ],
+  imports: [NgIf],
 })
 export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
@@ -73,7 +74,10 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     };
 
     this.timeout = this.match.timeoutState;
-    this.socketService = SocketService.getInstance(this.config.serverEndpoint, this.groupCode);
+    this.socketService = SocketService.getInstance().connectMatch(
+      this.config.serverEndpoint,
+      this.groupCode,
+    );
     this.getTournamentBackdropUrl();
     this.preloadImage(this.tournamentBackgroundUrl);
     this.preloadImage(this.match.teams[0].teamUrl);
@@ -82,7 +86,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.timeLeft = this.match.tools.timeoutDuration || 60;
-    this.socketService.subscribe((data: any) => {
+    this.socketService.subscribeMatch((data: any) => {
       this.updateTimeout(data);
     });
   }

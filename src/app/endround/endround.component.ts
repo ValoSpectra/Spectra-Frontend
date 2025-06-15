@@ -1,8 +1,10 @@
 import { Component, Input, OnChanges, SimpleChanges, OnInit } from "@angular/core";
+import { NgIf } from "@angular/common";
 @Component({
   selector: "app-endround",
   templateUrl: "./endround.component.html",
   styleUrls: ["./endround.component.scss"],
+  imports: [NgIf],
 })
 export class EndroundComponent implements OnChanges, OnInit {
   @Input() match!: any;

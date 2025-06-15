@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { AgentRoleService } from "../../services/agentRole.service";
 import { trigger, transition, style, animate } from "@angular/animations";
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: "app-select-player-info",
@@ -17,6 +18,7 @@ import { trigger, transition, style, animate } from "@angular/animations";
       transition("* <=> *", [style({ opacity: "0" }), animate("100ms", style({ opacity: "1" }))]),
     ]),
   ],
+  imports: [NgClass],
 })
 export class SelectPlayerInfoComponent {
   @Input() player: any;

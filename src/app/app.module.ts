@@ -35,10 +35,19 @@ import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
 import { RedirectComponent } from "./redirect/redirect.component";
 import { TimeoutComponent } from "./timeout/timeout.component";
 import { AbilitiesComponent } from "./abilities/abilities.component";
+import { MapbanUiComponent } from "./mapban-ui/mapban-ui.component";
+import { MapbanMapComponent } from "./mapban-ui/mapban-map/mapban-map.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
+  declarations: [AppComponent],
+  exports: [],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    JsonPipe,
     TestingComponent,
     TrackerComponent,
     TopscoreComponent,
@@ -64,10 +73,9 @@ import { AbilitiesComponent } from "./abilities/abilities.component";
     InhouseTrackerPlayercardMinimalComponent,
     PlayerscoreMinimalComponent,
     ScoreboardOrderPipe,
+    MapbanUiComponent,
+    MapbanMapComponent,
   ],
-  exports: [],
-  bootstrap: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, JsonPipe],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class AppModule {}

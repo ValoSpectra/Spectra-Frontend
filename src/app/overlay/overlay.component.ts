@@ -3,11 +3,13 @@ import { TrackerComponent } from "../tracker/tracker.component";
 import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../services/SocketService";
 import { Config } from "../shared/config";
+import { TimeoutComponent } from "../timeout/timeout.component";
 
 @Component({
   selector: "app-overlay",
   templateUrl: "./overlay.component.html",
   styleUrls: ["./overlay.component.scss"],
+  imports: [TrackerComponent, TimeoutComponent],
 })
 export class OverlayComponent implements OnInit, AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
@@ -28,11 +30,14 @@ export class OverlayComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.socketService = SocketService.getInstance(this.config.serverEndpoint, this.groupCode);
+    this.socketService = SocketService.getInstance().connectMatch(
+      this.config.serverEndpoint,
+      this.groupCode,
+    );
   }
 
   ngAfterViewInit(): void {
-    this.socketService.subscribe((data: any) => {
+    this.socketService.subscribeMatch((data: any) => {
       this.trackerComponent.updateMatch(data);
     });
   }

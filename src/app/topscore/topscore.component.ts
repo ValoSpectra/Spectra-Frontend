@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from "@angular/animations";
 import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
+import { NgIf, NgFor } from "@angular/common";
 
 @Component({
   selector: "app-topscore",
@@ -11,10 +12,10 @@ import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
         style({ transform: "translateY(-150%)" }),
         animate("0.3s ease-out", style({ transform: "translateY(0%)" })),
       ]),
-
       transition(":leave", animate("0.3s", style({ transform: "translateY(-150%)" }))),
     ]),
   ],
+  imports: [NgIf, NgFor],
 })
 export class TopscoreComponent implements OnChanges {
   @Input() match!: any;

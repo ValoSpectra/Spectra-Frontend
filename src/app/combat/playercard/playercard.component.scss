@@ -21,6 +21,7 @@
   aspect-ratio: 1;
   height: 100%;
   top: 0;
+  max-width: unset;
 
   &.dead {
     @extend .agent-icon;

@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
+
+@keyframes mapPicked {
+    0% {
+        filter: brightness(130%) saturate(50%) blur(10px);
+        ;
+    }
+
+    20% {
+        filter: brightness(100%) saturate(100%);
+    }
+
+    100% {
+        filter: brightness(115%) saturate(115%);
+    }
+}
+
+.animate-picked {
+    animation-name: mapPicked;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+}
+
+@keyframes mapBanned {
+
+    0% {
+        filter: saturate(85%) brightness(130%) blur(10px);
+    }
+
+    20% {
+        filter: saturate(75%) brightness(100%);
+    }
+
+    100% {
+        filter: saturate(15%);
+    }
+}
+
+.animate-banned {
+    animation-name: mapBanned;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}

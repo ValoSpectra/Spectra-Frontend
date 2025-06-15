@@ -1,0 +1,101 @@
+<div class="h-full w-full bg-[#0f1923cc] overflow-clip">
+  <div class="w-full h-11/14 flex items-center justify-center">
+    <div class="relative h-full w-full" [class.invisible]="!isRotating" [class.w-0!]="!isRotating">
+      <img
+        id="rotateImage1Index{{ index }}"
+        src="/assets/maps/wide/{{ roateMapNames[0] }}.webp"
+        class="aboslute top-0 left-0 object-cover h-full w-full"
+        [style.filter]="isRotating ? 'saturate(50%) brightness(0.5) blur(.5px)' : 'none'"
+        [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'"
+      />
+      <img
+        id="rotateImage2Index{{ index }}"
+        src="/assets/maps/wide/{{ roateMapNames[1] }}.webp"
+        class="absolute top-0 left-0 object-cover h-full w-full"
+        [style.filter]="isRotating ? 'saturate(50%) brightness(0.5) blur(.5px)' : 'none'"
+        [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'"
+      />
+    </div>
+
+    <div
+      class="absolute flex flex-col items-center justify-center w-full h-full animate-[pulse_3s_infinite] z-3"
+      [class.invisible]="!isRotating || stage === 'side'"
+    >
+      <img class="w-15 max-h-15 rounded-xs" [src]="teams[actingTeam!].url" />
+      <p class="text-white text-center text-3xl font-bold font-[Unbounded]">
+        {{ stage === "ban" ? "Banning" : "Picking" }}<br />
+      </p>
+    </div>
+
+    @if (map.name !== "" && !isRotating) {
+      <img
+        src="/assets/maps/wide/{{ map.name }}.webp"
+        class="object-cover h-full w-full"
+        [style.filter]="isBanned ? 'saturate(15%)' : 'brightness(115%) saturate(115%)'"
+        [style.opacity]="isBanned ? '0.6' : '1'"
+        [class]="isBanned ? 'animate-banned' : isPicked || isDecider ? 'animate-picked' : ''"
+        id="mapImage-{{ index }}"
+      />
+      @if (map.bannedBy !== undefined) {
+        <p class="absolute text-white/80 text-center text-3xl font-bold font-[Unbounded]">
+          {{ map.name }}
+        </p>
+        <app-mapban-ban-icon class="absolute w-fit h-fit" [index]="index"></app-mapban-ban-icon>
+      } @else if (map.pickedBy !== undefined) {
+        <div class="absolute flex flex-col items-center justify-center w-full h-full">
+          <img class="w-15 max-h-15 rounded-xs" [src]="teams[map.pickedBy].url" />
+          <p class="text-white text-center text-3xl font-bold font-[Unbounded] text-shadow-lg/55">
+            {{ map.name }}
+          </p>
+        </div>
+      } @else {
+        <p
+          class="absolute text-white text-center text-3xl font-bold font-[Unbounded] text-shadow-lg/55"
+        >
+          Decider:<br />{{ map.name }}
+        </p>
+      }
+    }
+  </div>
+  <div
+    class="w-full h-3/14 font-[Unbounded] text-white text-xl text-center flex justify-center items-center"
+  >
+    @if (map.bannedBy !== undefined) {
+      <p class="">
+        Banned by<br />
+        {{ teams[map.bannedBy].tricode }}
+      </p>
+    } @else if (map.pickedBy !== undefined) {
+      @if (map.pickedAttack !== undefined) {
+        <p class="">
+          {{ teams[map.sidePickedBy!].tricode }} chose<br />
+          {{ map.pickedAttack ? "Attack" : "Defense" }}
+        </p>
+      } @else {
+        <p class="animate-pulse">
+          {{ teams[map.sidePickedBy!].tricode }} choosing<br />
+          side...
+        </p>
+      }
+    } @else if (map.bannedBy === undefined && map.pickedBy === undefined) {
+      @if (map.pickedAttack !== undefined) {
+        <p class="">
+          {{ teams[map.sidePickedBy!].tricode }} chose<br />
+          {{ map.pickedAttack ? "Attack" : "Defense" }}
+        </p>
+      } @else if (isRotating) {
+        <p class="text-white/50 text-center">
+          Still in pool:<br />
+          {{ rotateNameCurrent }}
+        </p>
+      } @else if (availableMapNames.length === 0) {
+        <p class="animate-pulse">
+          {{ teams[map.sidePickedBy!].tricode }} choosing<br />
+          side...
+        </p>
+      } @else if (showLogo) {
+        <img class="inline-block h-3/4 opacity-40" src="http://localhost:11200/assets/logo.webp" />
+      }
+    }
+  </div>
+</div>

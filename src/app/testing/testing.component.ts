@@ -3,11 +3,13 @@ import { TrackerComponent } from "../tracker/tracker.component";
 import { ActivatedRoute } from "@angular/router";
 import { TeamControllerComponent } from "./team-controller/team-controller.component";
 import { HttpClient } from "@angular/common/http";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: "app-testing",
   templateUrl: "./testing.component.html",
   styleUrls: ["./testing.component.scss"],
+  imports: [TrackerComponent, NgIf, TeamControllerComponent],
 })
 export class TestingComponent implements AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;

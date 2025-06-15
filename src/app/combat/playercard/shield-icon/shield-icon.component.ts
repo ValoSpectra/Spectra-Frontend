@@ -1,10 +1,12 @@
 import { Component, Input } from "@angular/core";
 import { Config } from "../../../shared/config";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: "app-shield-icon",
   templateUrl: "./shield-icon.component.html",
   styleUrl: "./shield-icon.component.scss",
+  imports: [NgIf],
 })
 export class ShieldIconComponent {
   @Input({ required: true }) type!: "Heavy" | "Regen" | "Light" | "None";
