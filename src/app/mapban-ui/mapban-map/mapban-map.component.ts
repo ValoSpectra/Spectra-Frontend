@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from "@angular/core";
 import { ISessionTeam, SessionMap, Stage } from "../mapban-ui.component";
 import { MapbanBanIconComponent } from "./mapban-ban-icon/mapban-ban-icon.component";
 import { createTimeline, Timeline } from "animejs";
@@ -18,6 +26,8 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
   @Input({ required: true }) stage!: Stage;
   @Input({ required: true }) index!: number;
   @Input({ required: true }) logoIndex!: number;
+
+  changeDetectorRef = inject(ChangeDetectorRef);
 
   isRotating = false;
   rotateNameCurrent = "";
@@ -198,6 +208,7 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
     this.rotateMap = (this.rotateMap + 1) % this.availableMapNames.length;
     this.roateMapNames[index] = this.availableMapNames[this.rotateMap];
     this.rotateNameCurrent = this.roateMapNames[(index + 1) % 2];
+    this.changeDetectorRef.detectChanges();
   }
 
   private startRotateAnimation() {
@@ -215,6 +226,7 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
     this.rotateMap = 0;
     this.roateMapNames = ["", ""];
     if (this.rotateMapTimeline) {
+      this.rotateMapTimeline.cancel();
       this.rotateMapTimeline.revert();
     }
   }

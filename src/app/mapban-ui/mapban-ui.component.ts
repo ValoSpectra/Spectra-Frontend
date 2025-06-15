@@ -57,8 +57,6 @@ export class MapbanUiComponent implements OnInit, AfterViewInit {
     this.availableMapNames = this.data.availableMaps.map((map) => map.name);
     this.selectedMaps = this.data.selectedMaps;
     this.logoIndex = this.selectedMaps.length > 0 ? this.selectedMaps.length + 1 : 1;
-    console.log(this.availableMapNames);
-    console.log(this.selectedMaps);
     for (let i = 0; i < this.availableMapNames.length; i++) {
       if (i == 0) {
         this.selectedMaps.push(new SessionMap("upcoming"));
