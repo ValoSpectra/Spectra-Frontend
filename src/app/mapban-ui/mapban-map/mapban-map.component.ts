@@ -134,41 +134,71 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
       this.showLogo = this.index === this.logoIndex;
 
       if (this.rotateNameCurrent === "upcoming") {
+        if (this.isRotating == false) this.startedRotating();
         this.isRotating = true;
       } else {
         this.isRotating = false;
       }
 
       if (newMap.pickedBy !== undefined) {
+        if (this.isPicked == false) this.gotPicked();
         this.isPicked = true;
       } else {
         this.isPicked = false;
       }
 
       if (newMap.bannedBy !== undefined) {
+        if (this.isBanned == false) this.gotBanned();
         this.isBanned = true;
       } else {
         this.isBanned = false;
       }
 
       if (newMap.sidePickedBy !== undefined && newMap.pickedAttack === undefined) {
+        if (this.isInSidePick == false) this.enteredSidePick();
         this.isInSidePick = true;
       } else {
         this.isInSidePick = false;
       }
 
       if (newMap.pickedAttack !== undefined) {
+        if (this.sideIsPicked == false) this.gotSidePicked();
         this.sideIsPicked = true;
       } else {
         this.sideIsPicked = false;
       }
 
       if (!this.isBanned && !this.isPicked && (this.isInSidePick || this.sideIsPicked)) {
+        if (this.isDecider == false) this.gotMadeDecider();
         this.isDecider = true;
       } else {
         this.isDecider = false;
       }
     }
+  }
+
+  private startedRotating() {
+    //
+  }
+
+  private gotPicked() {
+    //
+  }
+
+  private gotBanned() {
+    //
+  }
+
+  private enteredSidePick() {
+    //
+  }
+
+  private gotSidePicked() {
+    //
+  }
+
+  private gotMadeDecider() {
+    //
   }
 
   private rotateMapName(index: 0 | 1) {
