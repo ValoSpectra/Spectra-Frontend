@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, inject, Input, OnInit } from "@angular/core";
 import { trigger, transition, style, animate } from "@angular/animations";
 import { ActivatedRoute } from "@angular/router";
 import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
@@ -30,6 +30,8 @@ import { ScoreboardComponent } from "../scoreboard/scoreboard.component";
   ],
 })
 export class TrackerComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+
   @Input() hideAuxiliary = false;
 
   activelyTracking = false;
@@ -40,8 +42,6 @@ export class TrackerComponent implements OnInit {
 
   ranksEnabled = false;
   ranksByName: any = {};
-
-  constructor(private route: ActivatedRoute) {}
 
   async ngOnInit(): Promise<void> {
     //setting up with empty match state so certain ui parts dont complain

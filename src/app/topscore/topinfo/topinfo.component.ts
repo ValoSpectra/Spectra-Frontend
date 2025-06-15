@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from "@angular/core";
 import { Config } from "../../shared/config";
 import { animate, style, transition, trigger } from "@angular/animations";
 import { NgIf, NgFor } from "@angular/common";
@@ -17,6 +17,8 @@ import { MapinfoComponent } from "./mapinfo/mapinfo.component";
   imports: [NgIf, MapinfoComponent, NgFor],
 })
 export class TopinfoComponent implements OnInit, OnChanges {
+  private config = inject(Config);
+
   @Input() tools!: any;
   @Input() map!: any;
 
@@ -25,8 +27,6 @@ export class TopinfoComponent implements OnInit, OnChanges {
   currentSponsorIndex = 0;
 
   sponsorInterval: any;
-
-  constructor(private config: Config) {}
 
   ngOnInit() {
     this.sponsorsAvailable = this.config.sponsorImageUrls.length > 0;

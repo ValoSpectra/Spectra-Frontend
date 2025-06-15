@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from "@angular/core";
 import { TrackerComponent } from "../tracker/tracker.component";
 import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../services/SocketService";
@@ -22,6 +22,8 @@ import { SelectTeamInfoComponent } from "./select-team-info/select-team-info.com
   imports: [NgIf, NgFor, SelectPlayerInfoComponent, SelectTeamInfoComponent],
 })
 export class AgentSelectComponent implements OnInit, AfterViewInit {
+  private route = inject(ActivatedRoute);
+  private config = inject(Config);
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   groupCode = "UNKNOWN";
   socketService!: SocketService;
@@ -30,10 +32,7 @@ export class AgentSelectComponent implements OnInit, AfterViewInit {
   teamLeft: any;
   teamRight: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private config: Config,
-  ) {
+  constructor() {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
     });

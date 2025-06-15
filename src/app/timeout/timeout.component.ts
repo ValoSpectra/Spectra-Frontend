@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, inject } from "@angular/core";
 import { TrackerComponent } from "../tracker/tracker.component";
 import { SocketService } from "../services/SocketService";
 import { ActivatedRoute } from "@angular/router";
@@ -19,6 +19,9 @@ import { NgIf } from "@angular/common";
   imports: [NgIf],
 })
 export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+  private config = inject(Config);
+
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   groupCode = "UNKNOWN";
   socketService!: SocketService;
@@ -29,10 +32,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   interval: any;
   anyTimeout = false;
 
-  constructor(
-    private route: ActivatedRoute,
-    private config: Config,
-  ) {
+  constructor() {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
     });

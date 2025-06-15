@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild, inject } from "@angular/core";
 import { TrackerComponent } from "../tracker/tracker.component";
 import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../services/SocketService";
@@ -12,16 +12,16 @@ import { TimeoutComponent } from "../timeout/timeout.component";
   imports: [TrackerComponent, TimeoutComponent],
 })
 export class OverlayComponent implements OnInit, AfterViewInit {
+  private route = inject(ActivatedRoute);
+  private config = inject(Config);
+
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   groupCode = "UNKNOWN";
   socketService!: SocketService;
 
   hideAuxiliary = false;
 
-  constructor(
-    private route: ActivatedRoute,
-    private config: Config,
-  ) {
+  constructor() {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
 

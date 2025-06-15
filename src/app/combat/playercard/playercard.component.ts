@@ -1,5 +1,5 @@
 import { trigger, transition, style, animate } from "@angular/animations";
-import { Component, Input } from "@angular/core";
+import { Component, Input, inject } from "@angular/core";
 import { Config } from "../../shared/config";
 import { AgentNameService } from "../../services/agentName.service";
 import { NgIf, NgFor } from "@angular/common";
@@ -53,6 +53,8 @@ const componentAnimations = [
   imports: [NgIf, AbilitiesComponent, ShieldIconComponent, NgFor],
 })
 export class InhouseTrackerPlayercardComponent {
+  private config = inject(Config);
+
   public readonly assets: string = "../../../assets";
 
   @Input() match!: any;
@@ -61,8 +63,6 @@ export class InhouseTrackerPlayercardComponent {
   @Input() hideAuxiliary = false;
 
   private _player: any;
-
-  constructor(private config: Config) {}
 
   @Input()
   set player(player: any) {

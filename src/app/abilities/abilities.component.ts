@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, inject, Input } from "@angular/core";
 import { Config } from "../shared/config";
 import { trigger, transition, style, animate } from "@angular/animations";
 import { NgIf } from "@angular/common";
@@ -28,13 +28,13 @@ import { NgIf } from "@angular/common";
   imports: [NgIf],
 })
 export class AbilitiesComponent {
+  private config = inject(Config);
+
   public readonly assets: string = "../../../assets";
   @Input({ required: true }) player!: any;
   @Input({ required: true }) side!: "left" | "right";
   @Input({ required: false }) phase: "combat" | "shopping" = "combat";
   @Input() hideAuxiliary = false;
-
-  constructor(private config: Config) {}
 
   getAvailability(availablility: number): string {
     availablility = this.clamp(availablility, 0, 1);

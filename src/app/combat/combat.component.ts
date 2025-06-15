@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NgIf, NgFor } from "@angular/common";
 import {
@@ -18,10 +18,10 @@ import {
   ],
 })
 export class CombatComponent {
+  private route = inject(ActivatedRoute);
+
   @Input() match!: any;
   @Input() hideAuxiliary = false;
-
-  constructor(private route: ActivatedRoute) {}
 
   isMinimal(): boolean {
     if (this.route.snapshot.data["minimal"]) {

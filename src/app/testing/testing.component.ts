@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ViewChild, inject } from "@angular/core";
 import { TrackerComponent } from "../tracker/tracker.component";
 import { ActivatedRoute } from "@angular/router";
 import { TeamControllerComponent } from "./team-controller/team-controller.component";
@@ -12,6 +12,9 @@ import { NgIf } from "@angular/common";
   imports: [TrackerComponent, NgIf, TeamControllerComponent],
 })
 export class TestingComponent implements AfterViewInit {
+  private route = inject(ActivatedRoute);
+  private http = inject(HttpClient);
+
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   @ViewChild("team1") team1!: TeamControllerComponent;
   @ViewChild("team2") team2!: TeamControllerComponent;
@@ -31,10 +34,7 @@ export class TestingComponent implements AfterViewInit {
   backgroundClass = "bg1";
   backgroundClassId = 1;
 
-  constructor(
-    private route: ActivatedRoute,
-    private http: HttpClient,
-  ) {
+  constructor() {
     this.route.queryParams.subscribe((params) => {
       this.hideAuxiliary = params["hideAuxiliary"] != undefined;
       this.previewCode = params["previewCode"] || "";
