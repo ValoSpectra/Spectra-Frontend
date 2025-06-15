@@ -26,7 +26,7 @@
           {{ stage === "ban" ? "Banning" : "Picking" }}<br />
         </p>
       </div>
-    } @else if (map.name !== "" && map.name !== "upcoming") {
+    } @else if (map.name !== "") {
       <img
         src="/assets/maps/wide/{{ map.name }}.webp"
         class="object-cover h-full w-full"
