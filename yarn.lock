@@ -2982,6 +2982,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"animejs@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "animejs@npm:4.0.2"
+  checksum: 10c0/1889e145d61104a7531852ab7111e9077389047de9d5761288bb7ee4bdacd36184166a718279acd3fe8d1a3c3b45ebda681a505e2162a6c18d468d5103ba8a13
+  languageName: node
+  linkType: hard
+
 "ansi-escapes@npm:^4.3.2":
   version: 4.3.2
   resolution: "ansi-escapes@npm:4.3.2"
@@ -7129,6 +7136,7 @@ __metadata:
     "@tailwindcss/postcss": "npm:^4.1.10"
     "@types/jasmine": "npm:~5.1.7"
     angular-eslint: "npm:20.0.0"
+    animejs: "npm:^4.0.2"
     eslint: "npm:^9.28.0"
     eslint-config-prettier: "npm:^9.1.0"
     express: "npm:^4.21.2"

@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^20.0.3",
     "@angular/router": "^20.0.3",
     "@tailwindcss/postcss": "^4.1.10",
+    "animejs": "^4.0.2",
     "express": "^4.21.2",
     "rxjs": "~7.8.2",
     "socket.io-client": "4.8.1",

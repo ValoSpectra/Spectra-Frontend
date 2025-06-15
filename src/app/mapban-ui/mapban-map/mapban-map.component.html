@@ -1,86 +1,89 @@
 <div class="h-full w-full bg-[#0f1923cc] overflow-clip">
   <div class="w-full h-11/14 flex items-center justify-center">
+
     @if (isRotating) {
-      <img
-        src="/assets/maps/wide/{{ rotateName }}.webp"
-        class="object-cover h-full w-full"
+    <div class="relative h-full w-full">
+      <img id="rotateImage1" src="/assets/maps/wide/{{ roateMapNames[0] }}.webp"
+        class="aboslute top-0 left-0 object-cover h-full w-full"
         [style.filter]="isRotating ? 'saturate(50%) brightness(0.5) blur(.5px)' : 'none'"
-        [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'"
-      />
-      <div
-        class="absolute flex flex-col items-center justify-center w-full h-full animate-[pulse_3s_infinite]"
-      >
-        <img class="w-15 max-h-15 rounded-xs" [src]="teams[actingTeam!].url" />
-        <p class="text-white text-center text-3xl font-bold font-[Unbounded]">
-          {{ stage === "ban" ? "Banning" : "Picking" }}<br />
-        </p>
-      </div>
-    } @else if (map.name !== "" && map.name !== "upcoming") {
-      <img
-        src="/assets/maps/wide/{{ map.name }}.webp"
-        class="object-cover h-full w-full"
-        [style.filter]="map.bannedBy !== undefined ? 'saturate(15%)' : 'saturate(85%)'"
-        [style.opacity]="map.bannedBy !== undefined ? '0.6' : '1'"
-        [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'"
-      />
-      @if (map.bannedBy !== undefined) {
-        <p class="absolute text-white/80 text-center text-3xl font-bold font-[Unbounded]">
-          {{ map.name }}
-        </p>
-        <app-mapban-ban-icon class="absolute w-fit h-fit"></app-mapban-ban-icon>
-      } @else if (map.pickedBy !== undefined) {
-        <div class="absolute flex flex-col items-center justify-center w-full h-full">
-          <img class="w-15 max-h-15 rounded-xs" [src]="teams[map.pickedBy].url" />
-          <p class="text-white text-center text-3xl font-bold font-[Unbounded] text-shadow-lg/55">
-            {{ map.name }}
-          </p>
-        </div>
-      } @else {
-        <p
-          class="absolute text-white text-center text-3xl font-bold font-[Unbounded] text-shadow-lg/55"
-        >
-          Decider:<br />{{ map.name }}
-        </p>
-      }
-    }
-  </div>
-  <div class="w-full h-3/14 font-[Unbounded] text-white text-xl text-center">
-    @if (map.bannedBy !== undefined) {
-      <p class="">
-        Banned by<br />
-        {{ teams[map.bannedBy].tricode }}
+        [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'" />
+      <img id="rotateImage2" src="/assets/maps/wide/{{ roateMapNames[1] }}.webp"
+        class="absolute top-0 left-0 object-cover h-full w-full"
+        [style.filter]="isRotating ? 'saturate(50%) brightness(0.5) blur(.5px)' : 'none'"
+        [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'" />
+    </div>
+
+    <div class="absolute flex flex-col items-center justify-center w-full h-full animate-[pulse_3s_infinite] z-3">
+      <img class="w-15 max-h-15 rounded-xs" [src]="teams[actingTeam!].url" />
+      <p class="text-white text-center text-3xl font-bold font-[Unbounded]">
+        {{ stage === "ban" ? "Banning" : "Picking" }}<br />
       </p>
+    </div>
+    }
+
+    @else if (map.name !== "" && map.name !== "upcoming") {
+    <img src="/assets/maps/wide/{{ map.name }}.webp" class="object-cover h-full w-full"
+      [style.filter]="map.bannedBy !== undefined ? 'saturate(15%)' : 'saturate(85%)'"
+      [style.opacity]="map.bannedBy !== undefined ? '0.6' : '1'"
+      [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'" />
+    @if (map.bannedBy !== undefined) {
+    <p class="absolute text-white/80 text-center text-3xl font-bold font-[Unbounded]">
+      {{ map.name }}
+    </p>
+    <app-mapban-ban-icon class="absolute w-fit h-fit"></app-mapban-ban-icon>
     } @else if (map.pickedBy !== undefined) {
-      @if (map.pickedAttack !== undefined) {
-        <p class="">
-          {{ teams[map.sidePickedBy!].tricode }} chose<br />
-          {{ map.pickedAttack ? "Attack" : "Defense" }}
-        </p>
-      } @else {
-        <p class="animate-pulse">
-          {{ teams[map.sidePickedBy!].tricode }} choosing<br />
-          side...
-        </p>
-      }
+    <div class="absolute flex flex-col items-center justify-center w-full h-full">
+      <img class="w-15 max-h-15 rounded-xs" [src]="teams[map.pickedBy].url" />
+      <p class="text-white text-center text-3xl font-bold font-[Unbounded] text-shadow-lg/55">
+        {{ map.name }}
+      </p>
+    </div>
+    } @else {
+    <p class="absolute text-white text-center text-3xl font-bold font-[Unbounded] text-shadow-lg/55">
+      Decider:<br />{{ map.name }}
+    </p>
+    }
+    }
+
+  </div>
+  <div class="w-full h-3/14 font-[Unbounded] text-white text-xl text-center flex justify-center items-center">
+
+    @if (map.bannedBy !== undefined) {
+    <p class="">
+      Banned by<br />
+      {{ teams[map.bannedBy].tricode }}
+    </p>
+    } @else if (map.pickedBy !== undefined) {
+    @if (map.pickedAttack !== undefined) {
+    <p class="">
+      {{ teams[map.sidePickedBy!].tricode }} chose<br />
+      {{ map.pickedAttack ? "Attack" : "Defense" }}
+    </p>
+    } @else {
+    <p class="animate-pulse">
+      {{ teams[map.sidePickedBy!].tricode }} choosing<br />
+      side...
+    </p>
+    }
     } @else if (map.bannedBy === undefined && map.pickedBy === undefined) {
-      @if (map.pickedAttack !== undefined) {
-        <p class="">
-          {{ teams[map.sidePickedBy!].tricode }} chose<br />
-          {{ map.pickedAttack ? "Attack" : "Defense" }}
-        </p>
-      } @else if (isRotating) {
-        <p class="text-white/50 text-center">
-          Still in pool:<br />
-          {{ rotateName }}
-        </p>
-      } @else if (availableMapNames.length === 0) {
-        <p class="animate-pulse">
-          {{ teams[map.sidePickedBy!].tricode }} choosing<br />
-          side...
-        </p>
-      } @else if (showLogo) {
-        <img class="inline-block h-3/4 opacity-40" src="http://localhost:11200/assets/logo.webp" />
-      }
+    @if (map.pickedAttack !== undefined) {
+    <p class="">
+      {{ teams[map.sidePickedBy!].tricode }} chose<br />
+      {{ map.pickedAttack ? "Attack" : "Defense" }}
+    </p>
+    } @else if (isRotating) {
+    <p class="text-white/50 text-center">
+      Still in pool:<br />
+      {{ rotateNameCurrent }}
+    </p>
+    } @else if (availableMapNames.length === 0) {
+    <p class="animate-pulse">
+      {{ teams[map.sidePickedBy!].tricode }} choosing<br />
+      side...
+    </p>
+    } @else if (showLogo) {
+    <img class="inline-block h-3/4 opacity-40" src="http://localhost:11200/assets/logo.webp" />
+    }
     }
   </div>
 </div>

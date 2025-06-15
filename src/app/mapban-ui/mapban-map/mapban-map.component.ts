@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { ISessionTeam, SessionMap, Stage } from "../mapban-ui.component";
 import { MapbanBanIconComponent } from "./mapban-ban-icon/mapban-ban-icon.component";
+import { createTimeline, eases, JSAnimation } from "animejs";
 
 @Component({
   standalone: true,
@@ -18,44 +19,119 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
   @Input({ required: true }) showLogo!: boolean;
 
   isRotating = false;
-  rotateName = "";
+  rotateNameCurrent = "";
   rotateMap = 0;
-  rotateInterval: any;
+
+  roateMapNames = ["", ""];
+  currentMapNameIndex = 0;
 
   ngAfterViewInit(): void {
-    this.rotateName = this.map.name;
-    if (this.rotateName === "upcoming") {
+    this.setupAnimations();
+    this.rotateNameCurrent = this.map.name;
+    if (this.rotateNameCurrent === "upcoming") {
       this.isRotating = true;
-      this.rotateMapName();
-      clearInterval(this.rotateInterval);
-      setInterval(() => {
-        this.rotateMapName();
-      }, 3000);
+      this.rotateMapName(0);
+      this.rotateMapName(1);
     } else {
-      clearInterval(this.rotateInterval);
       this.isRotating = false;
     }
   }
 
+  slideRotateAnimation!: JSAnimation;
+
+  private setupAnimations() {
+    //#region Map Rotate Animation
+    const timeline = createTimeline({
+      defaults: {
+        duration: 400,
+        ease: "outCubic",
+      },
+      autoplay: true,
+      loop: true,
+      loopDelay: 0,
+    });
+
+    const img1 = "#rotateImage1";
+    const img2 = "#rotateImage2";
+    const timelineDelay = "+=3000";
+
+    timeline.set(img1, { x: 0 });
+    timeline.set(img2, { zIndex: -1, x: "-100%" });
+
+    //slide 1
+    timeline.set(img2, { zIndex: 1 }, timelineDelay);
+    timeline.add(
+      img2,
+      {
+        x: 0,
+        zIndex: 1,
+      },
+      "<",
+    );
+    timeline.add(
+      img1,
+      {
+        x: "+100%",
+      },
+      "<<",
+    );
+    timeline.set(
+      img1,
+      {
+        x: "-100%",
+      },
+      "+=50",
+    );
+    timeline.call(() => {
+      this.rotateMapName(0);
+      this.currentMapNameIndex = 0;
+    }, "<<");
+
+    //slide 2
+    timeline.set(img2, { zIndex: 1 }, timelineDelay);
+    timeline.add(
+      img1,
+      {
+        x: 0,
+        zIndex: 1,
+      },
+      "<",
+    );
+    timeline.add(
+      img2,
+      {
+        x: "+100%",
+      },
+      "<<",
+    );
+    timeline.set(
+      img2,
+      {
+        x: "-100%",
+      },
+      "+=50",
+    );
+    timeline.call(() => {
+      this.rotateMapName(1);
+      this.currentMapNameIndex = 1;
+    }, "<<");
+    //#endregion
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes["map"] && changes["map"].currentValue) {
-      this.rotateName = changes["map"].currentValue.name;
-      if (this.rotateName === "upcoming") {
-        clearInterval(this.rotateInterval);
+      this.rotateNameCurrent = changes["map"].currentValue.name;
+      if (this.rotateNameCurrent === "upcoming") {
         this.isRotating = true;
-        this.rotateMapName();
-        this.rotateInterval = setInterval(() => {
-          this.rotateMapName();
-        }, 3000);
       } else {
-        clearInterval(this.rotateInterval);
         this.isRotating = false;
       }
     }
   }
 
-  private rotateMapName() {
+  private rotateMapName(index: 0 | 1) {
     this.rotateMap = (this.rotateMap + 1) % this.availableMapNames.length;
-    this.rotateName = this.availableMapNames[this.rotateMap];
+    this.roateMapNames[index] = this.availableMapNames[this.rotateMap];
+    this.rotateNameCurrent = this.roateMapNames[(index + 1) % 2];
   }
 }
