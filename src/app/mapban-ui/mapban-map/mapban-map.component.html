@@ -4,7 +4,7 @@
       <img
         id="rotateImage1Index{{ index }}"
         src="/assets/maps/wide/{{ roateMapNames[0] }}.webp"
-        class="aboslute top-0 left-0 object-cover h-full w-full"
+        class="aboslute top-0 left-0 object-cover h-full w-full z-1"
         [style.filter]="isRotating ? 'saturate(50%) brightness(0.5) blur(.5px)' : 'none'"
         [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'"
       />

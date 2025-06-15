@@ -70,7 +70,6 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
       img2,
       {
         x: 0,
-        zIndex: 1,
       },
       "<",
     );
@@ -99,7 +98,6 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
       img1,
       {
         x: 0,
-        zIndex: 1,
       },
       "<",
     );
@@ -110,12 +108,13 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
       },
       "<<",
     );
+    timeline.set(img2, { zIndex: -1 }, "+=50");
     timeline.set(
       img2,
       {
         x: "-100%",
       },
-      "+=50",
+      "<",
     );
     timeline.call(() => {
       this.rotateMapName(1);
