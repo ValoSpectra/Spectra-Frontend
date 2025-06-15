@@ -1,4 +1,7 @@
-<div class="absolute bottom-2 left-2 w-99/100 h-5/20 rounded-md bg-[#0f1923cc]" [@fade]>
+<div
+  class="absolute bottom-2 left-2 w-99/100 h-5/20 rounded-md bg-[#0f1923cc] overflow-clip"
+  [@fade]
+>
   <div class="flex flex-row h-full gap-1">
     @for (map of selectedMaps; track $index) {
       <app-mapban-map

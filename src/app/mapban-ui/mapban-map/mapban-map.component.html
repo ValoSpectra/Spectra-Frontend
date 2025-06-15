@@ -31,9 +31,9 @@
       <img
         src="/assets/maps/wide/{{ map.name }}.webp"
         class="object-cover h-full w-full"
-        [style.filter]="map.bannedBy !== undefined ? 'saturate(15%)' : 'saturate(85%)'"
-        [style.opacity]="map.bannedBy !== undefined ? '0.6' : '1'"
-        [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'"
+        [style.filter]="isBanned ? 'saturate(15%)' : 'saturate(85%)'"
+        [style.opacity]="isBanned ? '0.6' : '1'"
+        [class]="isBanned ? 'animate-banned' : isPicked || isDecider ? 'animate-picked' : ''"
         id="mapImage-{{ index }}"
       />
       @if (map.bannedBy !== undefined) {
