@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from "@angular/core";
+import { AfterViewInit, Component, Input } from "@angular/core";
 import { animate, svg, eases } from "animejs";
 
 @Component({
@@ -9,9 +9,11 @@ import { animate, svg, eases } from "animejs";
   styleUrl: "./mapban-ban-icon.component.css",
 })
 export class MapbanBanIconComponent implements AfterViewInit {
+  @Input({ required: true }) index!: number;
+
   ngAfterViewInit(): void {
     //#region Ban SVG
-    animate(svg.createDrawable("#banIcon"), {
+    animate(svg.createDrawable("#banIcon-" + this.index), {
       draw: ["0 0", "0 1"],
       ease: eases.inOutQuad,
       duration: 1500,

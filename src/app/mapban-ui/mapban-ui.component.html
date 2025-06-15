@@ -7,7 +7,8 @@
         [teams]="data.teams"
         [actingTeam]="data.actingTeam"
         [stage]="data.stage"
-        [showLogo]="$index === logoIndex"
+        [index]="$index"
+        [logoIndex]="logoIndex"
         class="col-span-1 w-full h-full"
       ></app-mapban-map>
     }

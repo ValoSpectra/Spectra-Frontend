@@ -1,5 +1,5 @@
 import { trigger, transition, style, animate } from "@angular/animations";
-import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, inject, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../services/SocketService";
 import { Config } from "../shared/config";
@@ -20,6 +20,9 @@ import { MapbanMapComponent } from "./mapban-map/mapban-map.component";
   ],
 })
 export class MapbanUiComponent implements OnInit, AfterViewInit {
+  private route = inject(ActivatedRoute);
+  private config = inject(Config);
+
   sessionCode = "UNKNOWN";
   socketService!: SocketService;
 
@@ -28,10 +31,7 @@ export class MapbanUiComponent implements OnInit, AfterViewInit {
   selectedMaps: SessionMap[] = [];
   logoIndex = 1;
 
-  constructor(
-    private route: ActivatedRoute,
-    private config: Config,
-  ) {
+  constructor() {
     const params = this.route.snapshot.queryParams;
     this.sessionCode = params["sessionId"] || "UNKNOWN";
   }

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { ISessionTeam, SessionMap, Stage } from "../mapban-ui.component";
 import { MapbanBanIconComponent } from "./mapban-ban-icon/mapban-ban-icon.component";
-import { createTimeline, eases, JSAnimation } from "animejs";
+import { createTimeline, JSAnimation } from "animejs";
 
 @Component({
   standalone: true,
@@ -16,7 +16,8 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
   @Input({ required: true }) teams!: ISessionTeam[];
   @Input({ required: true }) actingTeam!: 0 | 1 | undefined;
   @Input({ required: true }) stage!: Stage;
-  @Input({ required: true }) showLogo!: boolean;
+  @Input({ required: true }) index!: number;
+  @Input({ required: true }) logoIndex!: number;
 
   isRotating = false;
   rotateNameCurrent = "";
@@ -24,6 +25,8 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
 
   roateMapNames = ["", ""];
   currentMapNameIndex = 0;
+
+  showLogo = this.index === this.logoIndex;
 
   ngAfterViewInit(): void {
     this.setupAnimations();
@@ -121,6 +124,7 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes["map"] && changes["map"].currentValue) {
       this.rotateNameCurrent = changes["map"].currentValue.name;
+      this.showLogo = this.index === this.logoIndex;
       if (this.rotateNameCurrent === "upcoming") {
         this.isRotating = true;
       } else {
