@@ -3,11 +3,14 @@ import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../services/SocketService";
 import { Config } from "../shared/config";
+import { MapbanMapComponent } from "./mapban-map/mapban-map.component";
 
 @Component({
+  standalone: true,
+  imports: [MapbanMapComponent],
   selector: "app-mapban-ui",
   templateUrl: "./mapban-ui.component.html",
-  styleUrl: "./mapban-ui.component.scss",
+  styleUrl: "./mapban-ui.component.css",
   animations: [
     trigger("fade", [
       transition(":enter", [style({ opacity: "0" }), animate("0.5s", style({ opacity: "1" }))]),
@@ -23,7 +26,7 @@ export class MapbanUiComponent implements OnInit, AfterViewInit {
   data!: ISessionData;
   availableMapNames: string[] = [];
   selectedMaps: SessionMap[] = [];
-  selectedAmount = 0;
+  logoIndex = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -53,9 +56,11 @@ export class MapbanUiComponent implements OnInit, AfterViewInit {
     this.data = data.data;
     this.availableMapNames = this.data.availableMaps.map((map) => map.name);
     this.selectedMaps = this.data.selectedMaps;
-    this.selectedAmount = this.selectedMaps.length;
+    this.logoIndex = this.selectedMaps.length > 0 ? this.selectedMaps.length + 1 : 1;
+    console.log(this.availableMapNames);
+    console.log(this.selectedMaps);
     for (let i = 0; i < this.availableMapNames.length; i++) {
-      if (i == 1) {
+      if (i == 0) {
         this.selectedMaps.push(new SessionMap("upcoming"));
       } else {
         this.selectedMaps.push(new SessionMap(""));
@@ -72,7 +77,8 @@ export interface ISessionData {
   availableMaps: SessionMap[];
   selectedMaps: SessionMap[];
   stage: Stage;
-  actingTeam: string;
+  actingTeamCode: string;
+  actingTeam: 0 | 1;
 }
 
 export interface ISessionTeam {
