@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { ISessionTeam, SessionMap, Stage } from "../mapban-ui.component";
 import { MapbanBanIconComponent } from "./mapban-ban-icon/mapban-ban-icon.component";
-import { createTimeline, JSAnimation, Timeline } from "animejs";
+import { createTimeline, Timeline } from "animejs";
 
 @Component({
   standalone: true,
