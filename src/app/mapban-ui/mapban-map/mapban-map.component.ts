@@ -39,13 +39,10 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
 
   ngAfterViewInit(): void {
     this.isInitialized = true;
-    this.rotateNameCurrent = this.map.name;
     if (this.isRotating) {
       this.startedRotating();
     }
   }
-
-  slideRotateAnimation!: JSAnimation;
 
   private setupRotateAnimation() {
     //#region Map Rotate Animation
@@ -130,10 +127,9 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes["map"] && changes["map"].currentValue) {
       const newMap: SessionMap = changes["map"] && changes["map"].currentValue;
-      this.rotateNameCurrent = newMap.name;
       this.showLogo = this.index === this.logoIndex;
 
-      if (this.rotateNameCurrent === "upcoming") {
+      if (newMap.name === "upcoming") {
         if (this.isRotating == false) this.startedRotating();
         this.isRotating = true;
       }

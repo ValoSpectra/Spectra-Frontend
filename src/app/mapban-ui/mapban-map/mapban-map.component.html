@@ -19,7 +19,7 @@
 
     <div
       class="absolute flex flex-col items-center justify-center w-full h-full animate-[pulse_3s_infinite] z-3"
-      [class.invisible]="!isRotating"
+      [class.invisible]="!isRotating || stage === 'side'"
     >
       <img class="w-15 max-h-15 rounded-xs" [src]="teams[actingTeam!].url" />
       <p class="text-white text-center text-3xl font-bold font-[Unbounded]">
