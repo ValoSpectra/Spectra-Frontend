@@ -28,6 +28,12 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
 
   showLogo = this.index === this.logoIndex;
 
+  isPicked = false;
+  isBanned = false;
+  isInSidePick = false;
+  sideIsPicked = false;
+  isDecider = false;
+
   ngAfterViewInit(): void {
     this.setupAnimations();
     this.rotateNameCurrent = this.map.name;
@@ -123,12 +129,44 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes["map"] && changes["map"].currentValue) {
-      this.rotateNameCurrent = changes["map"].currentValue.name;
+      const newMap: SessionMap = changes["map"] && changes["map"].currentValue;
+      this.rotateNameCurrent = newMap.name;
       this.showLogo = this.index === this.logoIndex;
+
       if (this.rotateNameCurrent === "upcoming") {
         this.isRotating = true;
       } else {
         this.isRotating = false;
+      }
+
+      if (newMap.pickedBy !== undefined) {
+        this.isPicked = true;
+      } else {
+        this.isPicked = false;
+      }
+
+      if (newMap.bannedBy !== undefined) {
+        this.isBanned = true;
+      } else {
+        this.isBanned = false;
+      }
+
+      if (newMap.sidePickedBy !== undefined && newMap.pickedAttack === undefined) {
+        this.isInSidePick = true;
+      } else {
+        this.isInSidePick = false;
+      }
+
+      if (newMap.pickedAttack !== undefined) {
+        this.sideIsPicked = true;
+      } else {
+        this.sideIsPicked = false;
+      }
+
+      if (!this.isBanned && !this.isPicked && (this.isInSidePick || this.sideIsPicked)) {
+        this.isDecider = true;
+      } else {
+        this.isDecider = false;
       }
     }
   }
