@@ -1,7 +1,8 @@
 <div #backgroundContainer class="testing-body" [class]="backgroundClass">
-  <app-tracker [hideAuxiliary]="hideAuxiliary"></app-tracker>
+  <!-- <app-tracker [hideAuxiliary]="hideAuxiliary"></app-tracker> -->
+  <app-match-overlay></app-match-overlay>
 
-  <div class="matchControlsSpace controlBlock">
+  <!-- <div class="matchControlsSpace controlBlock">
     <button class="test-button" (click)="changeRoundPhase()">Change Round Phase</button>
     <button class="test-button" (click)="swapTeamColors()">Swap team colors</button>
     <button class="test-button" *ngIf="!isSpikePlanted" (click)="plantSpike()">Plant Spike</button>
@@ -18,5 +19,5 @@
     <app-team-controller #team2 teamId="1" (roundWinEvent)="updateRoundNumber()"
       (spectateTakenEvent)="team1.spectateCleanse()" [showInterface]="showInterface" [roundPhase]="roundPhase"
       teamName="The Zoologists" teamCode="ZOO" flipInterface></app-team-controller>
-  </div>
+  </div> -->
 </div>

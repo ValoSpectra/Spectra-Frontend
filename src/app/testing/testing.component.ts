@@ -6,12 +6,13 @@ import { HttpClient } from "@angular/common/http";
 import { NgIf } from "@angular/common";
 import { TranslateService } from "@ngx-translate/core";
 import { LanguageAliasService } from "../services/languageAlias.service";
+import { MatchOverlayComponent } from "../z_overlays/match-overlay/match-overlay.component";
 
 @Component({
   selector: "app-testing",
   templateUrl: "./testing.component.html",
   styleUrls: ["./testing.component.scss"],
-  imports: [TrackerComponent, NgIf, TeamControllerComponent],
+  imports: [TrackerComponent, NgIf, TeamControllerComponent, MatchOverlayComponent],
 })
 export class TestingComponent implements AfterViewInit {
   private route = inject(ActivatedRoute);
@@ -48,6 +49,7 @@ export class TestingComponent implements AfterViewInit {
   }
 
   async ngAfterViewInit() {
+    return;
     if (this.previewCode !== "") {
       this.loadingPreview = true;
       this.http.get(`https://eu.valospectra.com:5101/preview/${this.previewCode}`).subscribe({
@@ -56,7 +58,7 @@ export class TestingComponent implements AfterViewInit {
           this.matchData = this.previewMatch;
           console.log("Preview match data loaded:", this.matchData);
           this.team2.swapColor();
-          this.trackerComponent.updateMatch(this.matchData);
+          // this.trackerComponent.updateMatch(this.matchData);
           for (let i = 0; i < 5; i++) {
             this.team1.addPlayer();
             this.team2.addPlayer();
@@ -162,7 +164,7 @@ export class TestingComponent implements AfterViewInit {
         },
       };
       this.team2.swapColor();
-      this.trackerComponent.updateMatch(this.matchData);
+      // this.trackerComponent.updateMatch(this.matchData);
       for (let i = 0; i < 5; i++) {
         this.team1.addPlayer();
         this.team2.addPlayer();
