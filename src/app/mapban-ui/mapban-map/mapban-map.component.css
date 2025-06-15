@@ -2,7 +2,7 @@
 
 @keyframes mapPicked {
     0% {
-        filter: brightness(130%) saturate(50%) blur(5px);
+        filter: brightness(130%) saturate(50%) blur(10px);
         ;
     }
 
@@ -25,7 +25,7 @@
 @keyframes mapBanned {
 
     0% {
-        filter: saturate(85%) brightness(130%) blur(5px);
+        filter: saturate(85%) brightness(130%) blur(10px);
     }
 
     20% {
