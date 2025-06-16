@@ -4,7 +4,6 @@ import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../services/SocketService";
 import { Config } from "../shared/config";
 import { trigger, transition, style, animate } from "@angular/animations";
-import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
 import { NgIf, NgFor } from "@angular/common";
 import { SelectPlayerInfoComponent } from "./select-player-info/select-player-info.component";
 import { SelectTeamInfoComponent } from "./select-team-info/select-team-info.component";
@@ -74,7 +73,7 @@ export class AgentSelectComponent implements OnInit, AfterViewInit {
   }
 
   isAutoswitch(): boolean {
-    return this.route.component === AutoswitchComponent;
+    return this.route.snapshot.parent?.routeConfig?.path == "autoswitch";
   }
 
   shouldDisplay(): boolean {
