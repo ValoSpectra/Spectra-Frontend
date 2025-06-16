@@ -21,6 +21,12 @@ body {
   overflow: hidden;
 }
 
+* {
+  font-family: "Inter", sans-serif;
+  color: #1e1e1e;
+  box-sizing: unset;
+}
+
 :root {
   --light: #ffffff;
   --dark: #000000;
