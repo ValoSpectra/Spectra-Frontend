@@ -138,6 +138,11 @@ export class TestingComponent implements AfterViewInit {
           backdropUrl: "",
           enabled: true,
         },
+        watermarkInfo: {
+          spectraWatermark: false,
+          customTextEnabled: true,
+          customText: "This is a tournament",
+        },
       };
       this.team2.swapColor();
       this.trackerComponent.updateMatch(this.matchData);
