@@ -54,8 +54,8 @@ export class MapbanUiComponent implements OnInit, AfterViewInit {
 
   public updateMapbanData(data: { data: ISessionData }) {
     this.data = data.data;
-    this.availableMapNames = this.data.availableMaps.map((map) => map.name);
-    this.selectedMaps = this.data.selectedMaps;
+    this.availableMapNames = this.data.availableMaps?.map((map) => map.name) || [];
+    this.selectedMaps = this.data.selectedMaps || [];
     this.logoIndex = this.selectedMaps.length > 0 ? this.selectedMaps.length + 1 : 1;
     for (let i = 0; i < this.availableMapNames.length; i++) {
       if (i == 0) {

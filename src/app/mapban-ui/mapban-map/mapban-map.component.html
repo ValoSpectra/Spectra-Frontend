@@ -116,7 +116,7 @@
             </div>
             <div class="flex flex-col items-center">
               <p class="text-white/75">{{ teams[map.sidePickedBy!].tricode }}</p>
-              <p class="text-white/75 -mt-1">Attack</p>
+              <p class="text-white/75 -mt-1">{{ map.pickedAttack ? "Attack" : "Defense" }}</p>
             </div>
           </div>
         } @else {
@@ -141,7 +141,7 @@
             </div>
             <div class="flex flex-col items-center">
               <p class="text-white/75">{{ teams[map.sidePickedBy!].tricode }}</p>
-              <p class="text-white/75 -mt-1">Attack</p>
+              <p class="text-white/75 -mt-1">{{ map.pickedAttack ? "Attack" : "Defense" }}</p>
             </div>
           </div>
         } @else {
