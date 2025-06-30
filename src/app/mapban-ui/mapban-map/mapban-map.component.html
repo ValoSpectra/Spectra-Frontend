@@ -1,3 +1,4 @@
+<!-- eslint-disable @angular-eslint/template/eqeqeq -->
 <div class="h-full w-full bg-[#0f1923cc] overflow-clip">
   <div class="w-full h-11/14 flex items-center justify-center">
     <div class="relative h-full w-full" [class.invisible]="!isRotating" [class.w-0!]="!isRotating">
@@ -42,7 +43,7 @@
         </p>
         <app-mapban-ban-icon class="absolute w-fit h-fit" [index]="index"></app-mapban-ban-icon>
       } @else if (map.pickedBy !== undefined) {
-        @if (typeof map.score[0] === "number" && typeof map.score[1] === "number") {
+        @if (map.score[0] != undefined && map.score[1] != undefined) {
           <div class="absolute flex flex-col items-center justify-center w-full h-full">
             @if (map.score[0] > map.score[1]) {
               <img class="w-15 max-h-15 rounded-xs" [src]="teams[0].url" />
@@ -69,7 +70,7 @@
           </div>
         }
       } @else {
-        @if (typeof map.score[0] === "number" && typeof map.score[1] === "number") {
+        @if (map.score[0] != undefined && map.score[1] != undefined) {
           <div class="absolute flex flex-col items-center justify-center w-full h-full">
             @if (map.score[0] > map.score[1] && map.score[0] >= 13) {
               <img class="w-15 max-h-15 rounded-xs" [src]="teams[0].url" />
@@ -107,7 +108,7 @@
       </p>
     } @else if (map.pickedBy !== undefined) {
       @if (map.pickedAttack !== undefined) {
-        @if (map.score[0] !== undefined && map.score[1] !== undefined) {
+        @if (map.score[0] != undefined && map.score[1] != undefined) {
           <div class="flex flex-row w-full justify-around font-light">
             <div class="flex flex-col items-center">
               <p class="text-white/75">{{ teams[map.pickedBy].tricode }}</p>
@@ -132,7 +133,7 @@
       }
     } @else if (map.bannedBy === undefined && map.pickedBy === undefined) {
       @if (map.pickedAttack !== undefined) {
-        @if (map.score[0] !== undefined && map.score[1] !== undefined) {
+        @if (map.score[0] != undefined && map.score[1] != undefined) {
           <div class="flex flex-row w-full justify-around gap-2 font-light">
             <div class="flex flex-col items-center">
               <p class="text-white/75">Decider</p>
