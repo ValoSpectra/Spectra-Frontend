@@ -1,4 +1,4 @@
-import { Component, Input, Pipe, PipeTransform, forwardRef } from "@angular/core";
+import { Component, Input, Pipe, PipeTransform, forwardRef, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NgIf, NgFor } from "@angular/common";
 import { RoundreasonsComponent } from "./roundreasons/roundreasons.component";

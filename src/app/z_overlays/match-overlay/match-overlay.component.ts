@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { MapinfoComponent } from "../../z_components/mapinfo/mapinfo.component";
+import { TimerRounderComponent } from "../../z_components/timer-rounder/timer-rounder.component";
 
 @Component({
   selector: "app-match-overlay",
-  imports: [MapinfoComponent],
+  imports: [MapinfoComponent, TimerRounderComponent],
   templateUrl: "./match-overlay.component.html",
   styleUrl: "./match-overlay.component.css",
 })
