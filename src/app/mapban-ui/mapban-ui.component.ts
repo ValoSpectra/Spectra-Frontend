@@ -91,6 +91,7 @@ export class SessionMap {
   pickedBy?: 0 | 1 = undefined;
   sidePickedBy?: 0 | 1 = undefined;
   pickedAttack: boolean | undefined = undefined;
+  score: (number | undefined)[] = [undefined, undefined];
 
   constructor(name: string) {
     this.name = name;
