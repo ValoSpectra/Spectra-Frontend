@@ -1,6 +1,10 @@
 {
   "name": "spectra-frontend",
-  "version": "0.2.40",
+  "version": "0.2.41",
+  "author": {
+    "name": "Purple Shark UG (haftungsbeschränkt)",
+    "url": "https://valospectra.com"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration development",

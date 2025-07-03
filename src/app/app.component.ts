@@ -62,6 +62,7 @@ export class AppComponent implements OnInit {
       "--attacker-color-shield-currency-rgb",
       this.hexToRgb(this.config.attackerColorShieldCurrency).join(", "),
     );
+    console.log("SpectraFrontend initialized, version 0.2.41");
   }
 
   hexToRgb(hex: string): number[] {

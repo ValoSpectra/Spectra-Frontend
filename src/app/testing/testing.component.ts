@@ -139,8 +139,8 @@ export class TestingComponent implements AfterViewInit {
           enabled: true,
         },
         watermarkInfo: {
-          spectraWatermark: false,
-          customTextEnabled: true,
+          spectraWatermark: true,
+          customTextEnabled: false,
           customText: "This is a tournament",
         },
       };
