@@ -26,6 +26,7 @@ export class MapbanMapComponent implements AfterViewInit, OnChanges {
   @Input({ required: true }) stage!: Stage;
   @Input({ required: true }) index!: number;
   @Input({ required: true }) logoIndex!: number;
+  @Input() isSupporter = false;
 
   changeDetectorRef = inject(ChangeDetectorRef);
 

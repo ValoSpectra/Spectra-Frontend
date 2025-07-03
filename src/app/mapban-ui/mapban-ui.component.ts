@@ -70,6 +70,7 @@ export class MapbanUiComponent implements OnInit, AfterViewInit {
 export interface ISessionData {
   sessionIdentifier: string;
   organizationName: string;
+  isSupporter: boolean;
   teams: ISessionTeam[];
   format: "bo1" | "bo3" | "bo5" | undefined;
   availableMaps: SessionMap[];
