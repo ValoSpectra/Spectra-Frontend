@@ -3,6 +3,7 @@ import { AgentNameService } from "../../services/agentName.service";
 import { AgentRoleService } from "../../services/agentRole.service";
 import { NgIf, NgFor } from "@angular/common";
 import { AbilitiesComponent } from "../../abilities/abilities.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: "app-playerscore",
@@ -40,6 +41,6 @@ export class PlayerscoreComponent {
   selector: "app-playerscore-minimal",
   templateUrl: "./playerscore-minimal.component.html",
   styleUrls: ["./playerscore.component.scss"],
-  imports: [NgIf],
+  imports: [TranslateModule, NgIf],
 })
 export class PlayerscoreMinimalComponent extends PlayerscoreComponent {}

@@ -6,12 +6,14 @@ import {
   PlayerscoreComponent,
   PlayerscoreMinimalComponent,
 } from "./playerscore/playerscore.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: "app-scoreboard",
   templateUrl: "./scoreboard.component.html",
   styleUrls: ["./scoreboard.component.scss"],
   imports: [
+    TranslateModule,
     NgIf,
     RoundreasonsComponent,
     NgFor,

@@ -1,0 +1,17 @@
+{
+  "kills": "Kills",
+  "deaths": "Deaths",
+  "assists": "Assists",
+  "endround.round_win": "ROUND WIN",
+  "endround.win": "WIN",
+  "mapinfo.live": "Live:",
+  "mapinfo.decider": "Decider:",
+  "mapinfo.next": "Next:",
+  "topinfo.watermark": "Overlay by Spectra",
+  "topscore.rounds": "ROUNDS",
+  "team.attacker": "ATTACKER",
+  "team.defender": "DEFENDER",
+  "scoreboard.spent": "SPENT THIS ROUND",
+  "timeout.technical_pause": "TECHNICAL PAUSE",
+  "timeout.tactical_timeout": "Tactical Timeout"
+}

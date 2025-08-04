@@ -3,6 +3,7 @@ import { Config } from "../../shared/config";
 import { animate, style, transition, trigger } from "@angular/animations";
 import { NgIf, NgFor } from "@angular/common";
 import { MapinfoComponent } from "./mapinfo/mapinfo.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: "app-topinfo",
@@ -14,7 +15,7 @@ import { MapinfoComponent } from "./mapinfo/mapinfo.component";
       transition(":leave", [animate("1s", style({ opacity: 0 }))]),
     ]),
   ],
-  imports: [NgIf, MapinfoComponent, NgFor],
+  imports: [TranslateModule, NgIf, MapinfoComponent, NgFor],
 })
 export class TopinfoComponent implements OnInit, OnChanges {
   private config = inject(Config);

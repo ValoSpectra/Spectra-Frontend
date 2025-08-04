@@ -11,7 +11,7 @@
             <img class="credits-icon" src="../../assets/misc/ValorantCreditsWhite.svg" />
             {{ match.teams[0].spentThisRound }}
           </div>
-          <div class="money-spent-label-text">SPENT THIS ROUND</div>
+          <div class="money-spent-label-text">{{ 'scoreboard.spent' | translate }}</div>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div class="teaminfo-wrapper-right flip">
         <div class="teamname-text">{{ match.teams[1].teamName }}</div>
         <div class="money-spent-container" *ngIf="!isMinimal()">
-          <div class="money-spent-label-text">SPENT THIS ROUND</div>
+          <div class="money-spent-label-text">{{ 'scoreboard.spent' | translate }}</div>
           <div class="money-spent-wrapper">
             <img class="credits-icon" src="../../assets/misc/ValorantCreditsWhite.svg" />
             {{ match.teams[1].spentThisRound }}

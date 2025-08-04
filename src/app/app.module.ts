@@ -37,6 +37,8 @@ import { TimeoutComponent } from "./timeout/timeout.component";
 import { AbilitiesComponent } from "./abilities/abilities.component";
 import { MapbanUiComponent } from "./mapban-ui/mapban-ui.component";
 import { MapbanMapComponent } from "./mapban-ui/mapban-map/mapban-map.component";
+import { provideTranslateHttpLoader  } from '@ngx-translate/http-loader'
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [AppComponent],
@@ -75,6 +77,11 @@ import { MapbanMapComponent } from "./mapban-ui/mapban-map/mapban-map.component"
     ScoreboardOrderPipe,
     MapbanUiComponent,
     MapbanMapComponent,
+    TranslateModule.forRoot({
+      loader: provideTranslateHttpLoader({prefix:"./langs/", suffix:".json"}),
+      fallbackLang: 'en',
+      lang: 'en',
+    })
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })

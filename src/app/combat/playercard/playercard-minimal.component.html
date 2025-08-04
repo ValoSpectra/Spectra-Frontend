@@ -55,23 +55,23 @@
       [@deathAnimation]="player.isAlive"
     >
       <div class="stats-container" *ngIf="side === 'left'">
-        <div class="stats-title" [class]="side">Kills</div>
+        <div class="stats-title" [class]="side">{{ 'kills' | translate }}</div>
         <div class="stats-content" [class]="side">{{ player.kills }}</div>
       </div>
       <div class="stats-container" *ngIf="side === 'left'">
-        <div class="stats-title" [class]="side">Deaths</div>
+        <div class="stats-title" [class]="side">{{ 'deaths' | translate }}</div>
         <div class="stats-content" [class]="side">{{ player.deaths }}</div>
       </div>
       <div class="stats-container" *ngIf="showAssistCounts">
-        <div class="stats-title" [class]="side">Assists</div>
+        <div class="stats-title" [class]="side">{{ 'assists' | translate }}</div>
         <div class="stats-content" [class]="side">{{ player.assists }}</div>
       </div>
       <div class="stats-container" *ngIf="side === 'right'">
-        <div class="stats-title" [class]="side">Deaths</div>
+        <div class="stats-title" [class]="side">{{ 'deaths' | translate }}</div>
         <div class="stats-content" [class]="side">{{ player.deaths }}</div>
       </div>
       <div class="stats-container" *ngIf="side === 'right'">
-        <div class="stats-title" [class]="side">Kills</div>
+        <div class="stats-title" [class]="side">{{ 'kills' | translate }}</div>
         <div class="stats-content" [class]="side">{{ player.kills }}</div>
       </div>
     </div>

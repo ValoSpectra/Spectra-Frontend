@@ -5,6 +5,7 @@ import { AgentNameService } from "../../services/agentName.service";
 import { NgIf, NgFor } from "@angular/common";
 import { AbilitiesComponent } from "../../abilities/abilities.component";
 import { ShieldIconComponent } from "./shield-icon/shield-icon.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 const componentAnimations = [
   trigger("deathAnimation", [
@@ -105,6 +106,6 @@ export class InhouseTrackerPlayercardComponent {
   templateUrl: "./playercard-minimal.component.html",
   styleUrls: ["./playercard.component.scss"],
   animations: componentAnimations,
-  imports: [NgIf],
+  imports: [TranslateModule, NgIf],
 })
 export class InhouseTrackerPlayercardMinimalComponent extends InhouseTrackerPlayercardComponent {}
