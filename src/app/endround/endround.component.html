@@ -13,13 +13,13 @@
         <div class="win-side-image-box">
           <img class="win-side-image" src="{{ match.teams[teamWon].teamUrl }}" />
         </div>
-        <div class="win-side-text">{{ match.attackersWon ? "{{ 'endround.team.attacker' | translate }}" : "{{ 'endround.team.defender' | translate }}" }} {{ 'endround.win' | translate }}</div>
+        <div class="win-side-text">{{ 'endround.win' | translate:{team : match.attackersWon ? ('endround.attacker' | translate) : ('endround.defender' | translate)} }}</div>
       </div>
       <div class="info-box">
         <div class="info-image-box">
           <img class="info-image" src="{{ tournamentUrl }}" />
         </div>
-        <div class="round-number">ROUND {{ match.roundNumber }}</div>
+        <div class="round-number">{{ 'endround.round' | translate }} {{ match.roundNumber }}</div>
       </div>
     </div>
   </div>
