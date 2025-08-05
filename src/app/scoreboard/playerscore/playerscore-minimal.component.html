@@ -25,15 +25,15 @@
       <div class="KDA-tracker minimal" [class]="side">
         <div class="KDA-tracker-bundle minimal">
           <div class="KDA-title minimal">{{ 'kills' | translate }}</div>
-          <div class="KDA-text minimal">{{ player.kills }}</div>
+          <div class="KDA-text minimal">{{ scoreboard.player.kills }}</div>
         </div>
         <div class="KDA-tracker-bundle minimal">
           <div class="KDA-title minimal">{{ 'deaths' | translate }}</div>
-          <div class="KDA-text minimal">{{ player.deaths }}</div>
+          <div class="KDA-text minimal">{{ scoreboard.player.deaths }}</div>
         </div>
         <div class="KDA-tracker-bundle minimal" *ngIf="showAssistCounts">
           <div class="KDA-title minimal">{{ 'assists' | translate }}</div>
-          <div class="KDA-text minimal">{{ player.assists }}</div>
+          <div class="KDA-text minimal">{{ scoreboard.player.assists }}</div>
         </div>
       </div>
     </div>
