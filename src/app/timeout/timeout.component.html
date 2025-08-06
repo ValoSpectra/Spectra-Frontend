@@ -8,9 +8,12 @@
             class="info-image"
             [src]="match.teams[timeout.leftTeam ? 0 : 1].teamUrl"
           />
-          <div *ngIf="timeout.techPause === true" class="info-text-tech-pause">{{ 'timeout.technical_pause' | translate }}</div>
+          <div *ngIf="timeout.techPause === true" class="info-text-tech-pause">
+            {{ "timeout.technical_pause" | translate }}
+          </div>
           <div *ngIf="timeout.techPause === false" class="info-text add-margin">
-            {{ match.teams[timeout.leftTeam ? 0 : 1].teamName }}{{ 'timeout.tactical_timeout' | translate }}
+            {{ match.teams[timeout.leftTeam ? 0 : 1].teamName
+            }}{{ "timeout.tactical_timeout" | translate }}
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ import { TimeoutComponent } from "./timeout/timeout.component";
 import { AbilitiesComponent } from "./abilities/abilities.component";
 import { MapbanUiComponent } from "./mapban-ui/mapban-ui.component";
 import { MapbanMapComponent } from "./mapban-ui/mapban-map/mapban-map.component";
-import { provideTranslateHttpLoader  } from '@ngx-translate/http-loader'
+import { provideTranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
@@ -78,10 +78,10 @@ import { TranslateModule } from "@ngx-translate/core";
     MapbanUiComponent,
     MapbanMapComponent,
     TranslateModule.forRoot({
-      loader: provideTranslateHttpLoader({prefix:"./langs/", suffix:".json"}),
-      fallbackLang: 'en',
-      lang: 'en',
-    })
+      loader: provideTranslateHttpLoader({ prefix: "./langs/", suffix: ".json" }),
+      fallbackLang: "en",
+      lang: "en",
+    }),
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })

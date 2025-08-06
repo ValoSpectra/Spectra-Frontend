@@ -80,7 +80,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.timeout = this.match.timeoutState;
     this.socketService = SocketService.getInstance().connectMatch(
       this.config.serverEndpoint,
-      this.groupCode
+      this.groupCode,
     );
     this.getTournamentBackdropUrl();
     this.preloadImage(this.tournamentBackgroundUrl);

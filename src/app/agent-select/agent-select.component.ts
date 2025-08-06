@@ -67,7 +67,7 @@ export class AgentSelectComponent implements OnInit, AfterViewInit {
 
     this.socketService = SocketService.getInstance().connectMatch(
       this.config.serverEndpoint,
-      this.groupCode
+      this.groupCode,
     );
 
     this.translate.use(this.lang);

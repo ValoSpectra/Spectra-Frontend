@@ -36,7 +36,7 @@ export class OverlayComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.socketService = SocketService.getInstance().connectMatch(
       this.config.serverEndpoint,
-      this.groupCode
+      this.groupCode,
     );
 
     this.translate.use(this.lang);
