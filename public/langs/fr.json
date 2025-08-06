@@ -1,7 +1,7 @@
 {
-  "playercard.kills": "Éliminations",
+  "playercard.kills": "Tués",
   "playercard.deaths": "Morts",
-  "playercard.assists": "Assistances",
+  "playercard.assists": "Aides",
   "endround.round_win": "Manche gagnée",
   "endround.win": "Victoire {{team}}",
   "endround.attacker": "défenseurs",
@@ -15,9 +15,9 @@
   "team.attacker": "Attaquant",
   "team.defender": "Défenseur",
   "scoreboard.spent": "DEPENSÉE CETTE MANCHE",
-  "scoreboard.kills": "Éliminations",
+  "scoreboard.kills": "Tués",
   "scoreboard.deaths": "Morts",
-  "scoreboard.assists": "Assistances",
+  "scoreboard.assists": "Aides",
   "timeout.technical_pause": "PAUSE TECHNIQUE",
   "timeout.tactical_timeout": "Pause tactique"
 }
