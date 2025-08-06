@@ -1,11 +1,12 @@
 import { Component, Input, OnChanges } from "@angular/core";
 import { NgIf } from "@angular/common";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: "app-mapinfo",
   templateUrl: "./mapinfo.component.html",
   styleUrls: ["./mapinfo.component.scss"],
-  imports: [NgIf],
+  imports: [TranslateModule, NgIf],
 })
 export class MapinfoComponent implements OnChanges {
   @Input() map!: string;

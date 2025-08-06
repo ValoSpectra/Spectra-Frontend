@@ -1,0 +1,23 @@
+{
+  "playercard.kills": "Tués",
+  "playercard.deaths": "Morts",
+  "playercard.assists": "Aides",
+  "endround.round_win": "Manche gagnée",
+  "endround.win": "Victoire {{team}}",
+  "endround.attacker": "défenseurs",
+  "endround.defender": "attaquants",
+  "endround.round": "MANCHE",
+  "mapinfo.live": "En cours:",
+  "mapinfo.decider": "Décisive:",
+  "mapinfo.next": "Prochain:",
+  "topinfo.watermark": "Overlay par Spectra",
+  "topscore.rounds": "Manches",
+  "team.attacker": "Attaquant",
+  "team.defender": "Défenseur",
+  "scoreboard.spent": "DEPENSÉE CETTE MANCHE",
+  "scoreboard.kills": "Tués",
+  "scoreboard.deaths": "Morts",
+  "scoreboard.assists": "Aides",
+  "timeout.technical_pause": "PAUSE TECHNIQUE",
+  "timeout.tactical_timeout": "Pause tactique"
+}

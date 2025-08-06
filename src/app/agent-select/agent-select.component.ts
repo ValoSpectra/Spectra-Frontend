@@ -7,6 +7,7 @@ import { trigger, transition, style, animate } from "@angular/animations";
 import { NgIf, NgFor } from "@angular/common";
 import { SelectPlayerInfoComponent } from "./select-player-info/select-player-info.component";
 import { SelectTeamInfoComponent } from "./select-team-info/select-team-info.component";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-agent-select",
@@ -23,8 +24,11 @@ import { SelectTeamInfoComponent } from "./select-team-info/select-team-info.com
 export class AgentSelectComponent implements OnInit, AfterViewInit {
   private route = inject(ActivatedRoute);
   private config = inject(Config);
+  private translate = inject(TranslateService);
+
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   groupCode = "UNKNOWN";
+  lang = "en";
   socketService!: SocketService;
 
   match: any;
@@ -34,6 +38,7 @@ export class AgentSelectComponent implements OnInit, AfterViewInit {
   constructor() {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
+      this.lang = params["lang"]?.toLowerCase() || "en";
     });
   }
 
@@ -64,6 +69,8 @@ export class AgentSelectComponent implements OnInit, AfterViewInit {
       this.config.serverEndpoint,
       this.groupCode,
     );
+
+    this.translate.use(this.lang);
   }
 
   ngAfterViewInit(): void {

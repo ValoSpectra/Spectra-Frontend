@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Config } from "../shared/config";
 import { trigger, transition, style, animate } from "@angular/animations";
 import { NgIf } from "@angular/common";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-timeout",
@@ -16,14 +17,16 @@ import { NgIf } from "@angular/common";
       transition(":leave", animate("0.3s", style({ opacity: "0" }))),
     ]),
   ],
-  imports: [NgIf],
+  imports: [TranslateModule, NgIf],
 })
 export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private config = inject(Config);
+  private translate = inject(TranslateService);
 
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   groupCode = "UNKNOWN";
+  lang = "en";
   socketService!: SocketService;
   match: any;
   timeout: any; //Store timeout data extracted from match object
@@ -35,6 +38,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor() {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
+      this.lang = params["lang"]?.toLowerCase() || "en";
     });
   }
 
@@ -82,6 +86,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.preloadImage(this.tournamentBackgroundUrl);
     this.preloadImage(this.match.teams[0].teamUrl);
     this.preloadImage(this.match.teams[1].teamUrl);
+    this.translate.use(this.lang);
   }
 
   ngAfterViewInit(): void {

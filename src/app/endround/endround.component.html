@@ -3,7 +3,7 @@
     <div class="intro-box-content" [style.background-image]="setTournamentBackgroundImage()">
       <div class="intro-info-box">
         <img class="intro-info-image" src="{{ tournamentUrl }}" />
-        <div class="intro-round-text">ROUND WIN</div>
+        <div class="intro-round-text">{{ "endround.round_win" | translate }}</div>
       </div>
     </div>
   </div>
@@ -13,13 +13,23 @@
         <div class="win-side-image-box">
           <img class="win-side-image" src="{{ match.teams[teamWon].teamUrl }}" />
         </div>
-        <div class="win-side-text">{{ match.attackersWon ? "ATTACKER" : "DEFENDER" }} WIN</div>
+        <div class="win-side-text">
+          {{
+            "endround.win"
+              | translate
+                : {
+                    team: match.attackersWon
+                      ? ("endround.attacker" | translate)
+                      : ("endround.defender" | translate),
+                  }
+          }}
+        </div>
       </div>
       <div class="info-box">
         <div class="info-image-box">
           <img class="info-image" src="{{ tournamentUrl }}" />
         </div>
-        <div class="round-number">ROUND {{ match.roundNumber }}</div>
+        <div class="round-number">{{ "endround.round" | translate }} {{ match.roundNumber }}</div>
       </div>
     </div>
   </div>

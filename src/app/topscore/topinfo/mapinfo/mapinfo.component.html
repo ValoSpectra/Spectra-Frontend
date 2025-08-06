@@ -7,12 +7,17 @@
     </div>
   </div>
   <div class="text" *ngIf="type === 'present'">
-    <div class="text">Live: {{ map }} <img src="{{ mapinfo.logo }}" class="logo" /></div>
+    <div class="text">
+      {{ "mapinfo.live" | translate }} {{ map }} <img src="{{ mapinfo.logo }}" class="logo" />
+    </div>
   </div>
   <div class="text" *ngIf="type === 'future'">
     <div class="text" *ngIf="mapinfo.logo !== ''">
-      Next: {{ mapinfo.map }} <img src="{{ mapinfo.logo }}" class="logo" />
+      {{ "mapinfo.next" | translate }} {{ mapinfo.map }}
+      <img src="{{ mapinfo.logo }}" class="logo" />
     </div>
-    <div class="text" *ngIf="mapinfo.logo === ''">Decider: {{ mapinfo.map }}</div>
+    <div class="text" *ngIf="mapinfo.logo === ''">
+      {{ "mapinfo.decider" | translate }} {{ mapinfo.map }}
+    </div>
   </div>
 </div>

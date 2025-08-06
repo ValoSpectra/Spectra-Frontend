@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { TeamControllerComponent } from "./team-controller/team-controller.component";
 import { HttpClient } from "@angular/common/http";
 import { NgIf } from "@angular/common";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-testing",
@@ -14,6 +15,7 @@ import { NgIf } from "@angular/common";
 export class TestingComponent implements AfterViewInit {
   private route = inject(ActivatedRoute);
   private http = inject(HttpClient);
+  private translate = inject(TranslateService);
 
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   @ViewChild("team1") team1!: TeamControllerComponent;
@@ -28,6 +30,7 @@ export class TestingComponent implements AfterViewInit {
   loadingPreviewText = "Loading preview match data...";
   previewCode = "";
   previewMatch = undefined;
+  lang = "en";
 
   showInterface = true;
   showBackground = true;
@@ -38,6 +41,7 @@ export class TestingComponent implements AfterViewInit {
     this.route.queryParams.subscribe((params) => {
       this.hideAuxiliary = params["hideAuxiliary"] != undefined;
       this.previewCode = params["previewCode"] || "";
+      this.lang = params["lang"]?.toLowerCase() || "en";
     });
   }
 
@@ -152,6 +156,7 @@ export class TestingComponent implements AfterViewInit {
       }
 
       this.roundPhase = this.matchData.roundPhase;
+      this.translate.use(this.lang);
     }
   }
 

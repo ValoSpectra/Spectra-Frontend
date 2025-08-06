@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../services/SocketService";
 import { Config } from "../shared/config";
 import { TimeoutComponent } from "../timeout/timeout.component";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-overlay",
@@ -14,9 +15,11 @@ import { TimeoutComponent } from "../timeout/timeout.component";
 export class OverlayComponent implements OnInit, AfterViewInit {
   private route = inject(ActivatedRoute);
   private config = inject(Config);
+  private translate = inject(TranslateService);
 
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   groupCode = "UNKNOWN";
+  lang = "en";
   socketService!: SocketService;
 
   hideAuxiliary = false;
@@ -24,6 +27,7 @@ export class OverlayComponent implements OnInit, AfterViewInit {
   constructor() {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
+      this.lang = params["lang"]?.toLowerCase() || "en";
 
       this.hideAuxiliary = params["hideAuxiliary"] != undefined;
     });
@@ -34,6 +38,8 @@ export class OverlayComponent implements OnInit, AfterViewInit {
       this.config.serverEndpoint,
       this.groupCode,
     );
+
+    this.translate.use(this.lang);
   }
 
   ngAfterViewInit(): void {
