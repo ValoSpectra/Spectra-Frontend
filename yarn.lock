@@ -1731,6 +1731,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ngx-translate/core@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "@ngx-translate/core@npm:17.0.0"
+  dependencies:
+    tslib: "npm:^2.3.0"
+  peerDependencies:
+    "@angular/common": ">=16"
+    "@angular/core": ">=16"
+  checksum: 10c0/c1f51c788c76081c5e13d7b504fe2e9a868d965e2f67d60b45260104f45096984f2a21bab62136754f51b70d41a01f30dced6f8518393a8d1f910ab7082923e3
+  languageName: node
+  linkType: hard
+
+"@ngx-translate/http-loader@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "@ngx-translate/http-loader@npm:17.0.0"
+  dependencies:
+    tslib: "npm:^2.3.0"
+  peerDependencies:
+    "@angular/common": ">=16"
+    "@angular/core": ">=16"
+  checksum: 10c0/88bfc4c965a990c807d730082619a7ea6ab01673feb16b6edd1a9ae2b3155d325677cb1f14bbc55979fd703d5b9932db62f2338295486a80150503d299e0d364
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -7133,6 +7157,8 @@ __metadata:
     "@angular/platform-browser": "npm:^20.0.3"
     "@angular/platform-browser-dynamic": "npm:^20.0.3"
     "@angular/router": "npm:^20.0.3"
+    "@ngx-translate/core": "npm:^17.0.0"
+    "@ngx-translate/http-loader": "npm:^17.0.0"
     "@tailwindcss/postcss": "npm:^4.1.10"
     "@types/jasmine": "npm:~5.1.7"
     angular-eslint: "npm:20.0.0"
