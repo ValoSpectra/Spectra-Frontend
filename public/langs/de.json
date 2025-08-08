@@ -1,0 +1,20 @@
+{
+  "kills": "Elims",
+  "deaths": "Tode",
+  "assists": "Assists",
+  "endround.round_win": "RUNDE GEWONNEN",
+  "endround.win": "{{team}} GEWINNT",
+  "endround.attacker": "ANGREIFER",
+  "endround.defender": "VERTEIDIGER",
+  "endround.round": "RUNDE",
+  "mapinfo.live": "Jetzt:",
+  "mapinfo.decider": "Entscheider:",
+  "mapinfo.next": "Nächste:",
+  "topinfo.watermark": "Overlay von Spectra",
+  "topscore.rounds": "RUNDEN",
+  "team.attacker": "ANGREIFER",
+  "team.defender": "VERTEIDIGER",
+  "scoreboard.spent": "DIESE RUNDE AUSGEGEBEN",
+  "timeout.technical_pause": "TECHNISCHE PAUSE",
+  "timeout.tactical_timeout": "TAKTISCHE PAUSE"
+}
