@@ -88,6 +88,7 @@ export class TrackerComponent implements OnInit {
         rightTeam: false,
         rightTeamStartTime: 0,
       },
+      showAliveKDA: false,
     };
 
     if (this.ranksEnabled) {
