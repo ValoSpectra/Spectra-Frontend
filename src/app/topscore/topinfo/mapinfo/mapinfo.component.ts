@@ -11,7 +11,7 @@ import { TranslateModule } from "@ngx-translate/core";
 export class MapinfoComponent implements OnChanges {
   @Input() map!: string;
   @Input() mapinfo!: any;
-  type: "past" | "present" | "future" = "future";
+  type: "past" | "present" | "disabled" | "future" = "future";
 
   ngOnChanges(): void {
     this.type = this.mapinfo.type;
