@@ -1,0 +1,19 @@
+.bg-header-fade-left {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 25, 35, 0.65) 0%,
+    rgba(15, 25, 35, 0.53) 53%,
+    rgba(15, 25, 35, 0) 75%,
+    rgba(15, 25, 35, 0) 100%
+  );
+}
+
+.bg-header-fade-right {
+  background: linear-gradient(
+    270deg,
+    rgba(15, 25, 35, 0.65) 0%,
+    rgba(15, 25, 35, 0.53) 53%,
+    rgba(15, 25, 35, 0) 75%,
+    rgba(15, 25, 35, 0) 100%
+  );
+}

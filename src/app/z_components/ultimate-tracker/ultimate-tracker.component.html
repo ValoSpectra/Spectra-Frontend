@@ -1,0 +1,12 @@
+<div class="flex flex-row gap-0.5 justify-center items-center">
+  @if (full != max) {
+    @for (i of numSequence(full); track $index) {
+      <img class="vw-10 vh-10" src="assets/misc/ultimate-pip-full.svg" />
+    }
+    @for (i of numSequence(max - full); track $index) {
+      <img class="vw-10 vh-10" src="assets/misc/ultimate-pip.svg" />
+    }
+  } @else {
+    <img class="vw-25" [src]="image" />
+  }
+</div>

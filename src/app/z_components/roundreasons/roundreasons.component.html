@@ -1,0 +1,34 @@
+<div class="flex flex-col vw-600 vh-100 items-center pb-1 bg-background rounded-md py-0">
+  @for (team of match.teams; track $index) {
+    <div
+      class="flex flex-row font-unbounded font-extrabold text-white items-center w-full h-1/2 justify-start py-0.5"
+    >
+      <p class="grow-0 m-5">{{ team.teamTricode }}</p>
+      <div class="h-full flex-row flex">
+        @for (record of team.roundRecord; track $index) {
+          @if (record.round === match.switchRound || record.round === match.firstOtRound) {
+            <img src="assets/roundWinReason/divider-line.svg" />
+          }
+
+          <div
+            class="vw-25 h-full mr-0.5 px-1.5 border-t-2"
+            [class]="
+              record.type !== 'lost'
+                ? 'border-attacker-secondary border-solid bg-linear-to-b from-attacker-secondary/28 to-attacker-secondary/0'
+                : 'border-transparent'
+            "
+          >
+            @if (record.type === "lost") {
+              <p class="p-0 m-0 vw-24 vh-24 text-center leading-10">{{ record.round }}</p>
+            } @else {
+              <img
+                class="vw-24 vh-24 object-cover my-2"
+                src="assets/roundWinReason/{{ record.type }}.webp"
+              />
+            }
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,43 @@
+.bg-fade-defender-left {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--defender-color-rgb), 0) 3.74%,
+    rgba(var(--defender-color-rgb), 0.65) 5.57%,
+    rgba(var(--defender-color-rgb), 0.3) 22.42%,
+    rgba(var(--defender-color-rgb), 0) 37.11%
+  );
+}
+
+.bg-fade-attacker-left {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--attacker-color-rgb), 0) 4.69%,
+    rgba(var(--attacker-color-rgb), 0.65) 6.5%,
+    rgba(var(--attacker-color-rgb), 0.3) 23.1%,
+    rgba(var(--attacker-color-rgb), 0) 37.57%
+  );
+}
+
+.bg-fade-defender-right {
+  background: linear-gradient(
+    270deg,
+    rgba(var(--defender-color-rgb), 0) 3.74%,
+    rgba(var(--defender-color-rgb), 0.65) 5.57%,
+    rgba(var(--defender-color-rgb), 0.3) 22.42%,
+    rgba(var(--defender-color-rgb), 0) 37.11%
+  );
+}
+
+.bg-fade-attacker-right {
+  background: linear-gradient(
+    270deg,
+    rgba(var(--attacker-color-rgb), 0) 4.69%,
+    rgba(var(--attacker-color-rgb), 0.65) 6.5%,
+    rgba(var(--attacker-color-rgb), 0.3) 23.1%,
+    rgba(var(--attacker-color-rgb), 0) 37.57%
+  );
+}
+
+.flip {
+  transform: rotateY(180deg);
+}

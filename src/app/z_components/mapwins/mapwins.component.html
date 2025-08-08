@@ -1,0 +1,9 @@
+<div class="flex flex-row gap-1">
+  @for (i of numSequence(3); track $index) {
+    <div class="mapwin-pip" [class.full]="$index < 1"></div>
+  }
+  <div class="vw-175"></div>
+  @for (i of numSequence(3); track $index) {
+    <div class="mapwin-pip" [class.full]="$index < 2"></div>
+  }
+</div>

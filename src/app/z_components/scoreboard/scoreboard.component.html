@@ -1,0 +1,42 @@
+<div class="vw-1920 flex flex-row justify-between">
+  <!-- team headers -->
+  @for (team of dataModel.teams(); track $index) {
+    <div
+      class="vh-64 vw-600 bg-header-fade-left mx-5 rounded-lg flex flex-row items-center"
+      [class.bg-header-fade-right]="$index > 0"
+      [class.flex-row-reverse!]="$index > 0"
+    >
+      <img class="max-w-4/5 max-h-4/5 mx-2" [src]="team.teamUrl" />
+      <div class="flex flex-col font-unbounded text-white mx-2">
+        <p class="font-extrabold text-4xl">{{ team.teamName }}</p>
+        <div class="font-bold text-xs flex flex-row gap-1" [class.flex-row-reverse!]="$index > 0">
+          <img class="vw-12 vh-12 mt-0.5" src="assets/misc/ValorantCreditsWhite.svg" />
+          <p class="">{{ team.spentThisRound }}</p>
+          <p class="uppercase text-white/60">spent this round</p>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+<div class="vw-1920 flex flex-row justify-between mt-2">
+  <!-- Score blocks -->
+  <div class="flex flex-col bg-background rounded-lg px-5 py-4 gap-2.5 mx-5">
+    @for (player of dataModel.teams()[0].players; track $index) {
+      <app-playerscore-new
+        [player]="player"
+        [right]="false"
+        [color]="dataModel.teams()[0].isAttacking ? 'attacker' : 'defender'"
+      ></app-playerscore-new>
+    }
+  </div>
+  <div class="flex flex-col bg-background rounded-lg px-5 py-4 gap-2.5 mx-5">
+    @for (player of dataModel.teams()[1].players; track $index) {
+      <app-playerscore-new
+        [player]="player"
+        [right]="true"
+        [color]="dataModel.teams()[1].isAttacking ? 'attacker' : 'defender'"
+      ></app-playerscore-new>
+    }
+  </div>
+</div>

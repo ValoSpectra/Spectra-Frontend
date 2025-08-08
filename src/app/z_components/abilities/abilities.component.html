@@ -1,0 +1,28 @@
+@if (player.auxiliaryAvailable.abilities) {
+  <div class="flex flex-row gap-4">
+    @if (player.isAlive) {
+      <img
+        class="vw-22"
+        [class.brightness-35]="!isAvailable(player.abilities?.grenade || 0)"
+        src="assets/grenades/{{ player.agentInternal }}Grenade.webp"
+      />
+      <img
+        class="vw-22"
+        [class.brightness-35]="!isAvailable(player.abilities?.ability1 || 0)"
+        src="assets/ability1/{{ player.agentInternal }}Ability1.webp"
+      />
+      <img
+        class="vw-22"
+        [class.brightness-35]="!isAvailable(player.abilities?.ability2 || 0)"
+        src="assets/ability2/{{ player.agentInternal }}Ability2.webp"
+      />
+    } @else if (player.agentInternal === "Smonk") {
+      <!-- Clove ability when dead -->
+      <img
+        class="vw-22"
+        [class.brightness-35]="!isAvailable(player.abilities?.ability2 || 0)"
+        src="assets/ability2/{{ player.agentInternal }}Ability2.webp"
+      />
+    }
+  </div>
+}

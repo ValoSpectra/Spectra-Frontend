@@ -1,3 +1,18 @@
-<app-mapinfo-new class="absolute left-1" [map]="match.map" [tools]="match.tools"></app-mapinfo-new>
+<app-mapinfo-new class="absolute pos-x-4" [map]="match.map" [tools]="match.tools"></app-mapinfo-new>
 
-<app-timer-rounder class="absolute left-[50vw] -translate-x-1/2"></app-timer-rounder>
+<app-timer-rounder class="pos-x-center"></app-timer-rounder>
+<app-round-number class="pos-x-center"></app-round-number>
+
+<app-topscore-new class="pos-x-center pos-y-10"></app-topscore-new>
+<app-mapwins class="pos-x-center pos-y-80"></app-mapwins>
+
+<app-watermark class="absolute pos-x-1360"></app-watermark>
+<!-- TODO -->
+<!-- <app-sponsor-box></app-sponsor-box> -->
+
+<app-roundreasons-new
+  class="absolute pos-x-center pos-y-110 hidden"
+  [match]="match"
+></app-roundreasons-new>
+
+<app-scoreboard-new class="absolute pos-x-center pos-y-550"></app-scoreboard-new>

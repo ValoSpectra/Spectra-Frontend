@@ -13,6 +13,16 @@
     rgba(31.14, 37.75, 40.58, 0.85) 100%
   );
   --color-timer: #0f1923;
+  --color-background: #0f1923cc;
+  --color-credits-negative: #ff4557;
+
+  --color-defender-primary: #25ac79;
+  --color-defender-secondary: #61eab6;
+  --color-defender-shield: #61eab6;
+
+  --color-attacker-primary: #b82e3c;
+  --color-attacker-secondary: #ff4557;
+  --color-attacker-shield: #ff838f;
 }
 
 @utility font-montserrat {
@@ -30,7 +40,20 @@
   height: calc((--value(integer) / 1080) * 100vh);
 }
 
-
+/* Custom classes to position components on an overlay screen */
+@utility pos-x-center {
+  position: absolute;
+  left: 50vw;
+  translate: -50%;
+}
+@utility pos-x-* {
+  position: absolute;
+  left: calc((--value(integer) / 1920) * 100vw);
+}
+@utility pos-y-* {
+  position: absolute;
+  top: calc((--value(integer) / 1080) * 100vh);
+}
 
 @utility pill-background {
   background: linear-gradient(
