@@ -5,6 +5,7 @@ import { TeamControllerComponent } from "./team-controller/team-controller.compo
 import { HttpClient } from "@angular/common/http";
 import { NgIf } from "@angular/common";
 import { TranslateService } from "@ngx-translate/core";
+import { LanguageAliasService } from "../services/languageAlias.service";
 
 @Component({
   selector: "app-testing",
@@ -41,7 +42,8 @@ export class TestingComponent implements AfterViewInit {
     this.route.queryParams.subscribe((params) => {
       this.hideAuxiliary = params["hideAuxiliary"] != undefined;
       this.previewCode = params["previewCode"] || "";
-      this.lang = params["lang"]?.toLowerCase() || "en";
+      const paramLang = params["lang"]?.toLowerCase() || "en";
+      this.lang = LanguageAliasService.resolveLanguageAlias(paramLang);
     });
   }
 

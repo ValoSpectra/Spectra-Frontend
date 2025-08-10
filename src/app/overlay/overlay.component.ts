@@ -5,6 +5,7 @@ import { SocketService } from "../services/SocketService";
 import { Config } from "../shared/config";
 import { TimeoutComponent } from "../timeout/timeout.component";
 import { TranslateService } from "@ngx-translate/core";
+import { LanguageAliasService } from "../services/languageAlias.service";
 
 @Component({
   selector: "app-overlay",
@@ -27,7 +28,8 @@ export class OverlayComponent implements OnInit, AfterViewInit {
   constructor() {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
-      this.lang = params["lang"]?.toLowerCase() || "en";
+      const paramLang = params["lang"]?.toLowerCase() || "en";
+      this.lang = LanguageAliasService.resolveLanguageAlias(paramLang);
 
       this.hideAuxiliary = params["hideAuxiliary"] != undefined;
     });
