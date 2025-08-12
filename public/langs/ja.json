@@ -7,9 +7,9 @@
   "endround.attacker": "アタッカー",
   "endround.defender": "ディフェンダー",
   "endround.round": "ラウンド",
-  "mapinfo.live": "Now:",
-  "mapinfo.decider": "Decider:",
-  "mapinfo.next": "Next:",
+  "mapinfo.live": "Now: {{map}}",
+  "mapinfo.decider": "Decider: {{map}}",
+  "mapinfo.next": "Next: {{map}}",
   "topinfo.watermark": "Spectra Overlay",
   "topscore.rounds": "ラウンド",
   "team.attacker": "アタッカー",
@@ -19,5 +19,5 @@
   "scoreboard.deaths": "Death",
   "scoreboard.assists": "Assist",
   "timeout.technical_pause": "TECH PAUSE",
-  "timeout.tactical_timeout": "タイムアウト"
+  "timeout.tactical_timeout": "{{teamName}} タイムアウト"
 }

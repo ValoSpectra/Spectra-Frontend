@@ -12,8 +12,10 @@
             {{ "timeout.technical_pause" | translate }}
           </div>
           <div *ngIf="timeout.techPause === false" class="info-text add-margin">
-            {{ match.teams[timeout.leftTeam ? 0 : 1].teamName
-            }}{{ "timeout.tactical_timeout" | translate }}
+            {{
+              "timeout.tactical_timeout"
+                | translate: { teamName: match.teams[timeout.leftTeam ? 0 : 1].teamName }
+            }}
           </div>
         </div>
       </div>

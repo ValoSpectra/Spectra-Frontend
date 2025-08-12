@@ -7,9 +7,9 @@
   "endround.attacker": "défenseurs",
   "endround.defender": "attaquants",
   "endround.round": "MANCHE",
-  "mapinfo.live": "En cours:",
-  "mapinfo.decider": "Décisive:",
-  "mapinfo.next": "Prochain:",
+  "mapinfo.live": "En cours: {{map}}",
+  "mapinfo.decider": "Décisive: {{map}}",
+  "mapinfo.next": "Prochaine: {{map}}",
   "topinfo.watermark": "Overlay par Spectra",
   "topscore.rounds": "Manches",
   "team.attacker": "Attaquant",
@@ -19,5 +19,5 @@
   "scoreboard.deaths": "Morts",
   "scoreboard.assists": "Aides",
   "timeout.technical_pause": "PAUSE TECHNIQUE",
-  "timeout.tactical_timeout": "Pause tactique"
+  "timeout.tactical_timeout": "{{teamName}} Pause tactique"
 }
