@@ -75,6 +75,7 @@ export class TrackerComponent implements OnInit {
           duration: 5000,
           sponsors: [],
         },
+        // Disabling the watermark/setting a custom text without Spectra Plus is against the License terms and strictly forbidden
         watermarkInfo: {
           spectraWatermark: true,
           customTextEnabled: false,
