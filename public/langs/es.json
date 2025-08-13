@@ -1,7 +1,7 @@
 {
-  "playercard.kills": "Eliminaciones",
+  "playercard.kills": "Elim.",
   "playercard.deaths": "Muertes",
-  "playercard.assists": "Asistencias",
+  "playercard.assists": "Asist.",
   "endround.round_win": "RONDA GANADA",
   "endround.win": "GANAN LOS {{team}}",
   "endround.attacker": "ATACANTES",
@@ -15,9 +15,9 @@
   "team.attacker": "ATACANTES",
   "team.defender": "DEFENSORES",
   "scoreboard.spent": "GASTADO ESTA RONDA",
-  "scoreboard.kills": "Eliminaciones",
+  "scoreboard.kills": "Elim.",
   "scoreboard.deaths": "Muertes",
-  "scoreboard.assists": "Asistencias",
+  "scoreboard.assists": "Asist.",
   "timeout.technical_pause": "PAUSA TÉCNICA",
   "timeout.tactical_timeout": "Pausa táctica"
 }
