@@ -1,7 +1,7 @@
 export class LanguageAliasService {
   static LanguageAliases: Record<string, string> = {
     jp: "ja",
-    zh_HANS: "zh_CN",
+    zh_CN: "zh_HANS",
   };
 
   public static resolveLanguageAlias(alias: string) {
