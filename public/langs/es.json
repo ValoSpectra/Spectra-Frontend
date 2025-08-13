@@ -1,0 +1,23 @@
+{
+  "playercard.kills": "Eliminaciones",
+  "playercard.deaths": "Muertes",
+  "playercard.assists": "Asistencias",
+  "endround.round_win": "RONDA GANADA",
+  "endround.win": "GANAN LOS {{team}}",
+  "endround.attacker": "ATACANTES",
+  "endround.defender": "DEFENSORES",
+  "endround.round": "RONDA",
+  "mapinfo.live": "En vivo:",
+  "mapinfo.decider": "Desempate:",
+  "mapinfo.next": "Siguiente:",
+  "topinfo.watermark": "Overlay por Spectra",
+  "topscore.rounds": "RONDAS",
+  "team.attacker": "ATACANTES",
+  "team.defender": "DEFENSORES",
+  "scoreboard.spent": "GASTADO ESTA RONDA",
+  "scoreboard.kills": "Eliminaciones",
+  "scoreboard.deaths": "Muertes",
+  "scoreboard.assists": "Asistencias",
+  "timeout.technical_pause": "PAUSA TÉCNICA",
+  "timeout.tactical_timeout": "Pausa táctica"
+}
