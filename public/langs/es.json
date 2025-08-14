@@ -6,12 +6,12 @@
   "endround.win": "GANAN LOS {{team}}",
   "endround.attacker": "ATACANTES",
   "endround.defender": "DEFENSORES",
-  "endround.round": "RONDA",
-  "mapinfo.live": "En vivo:",
-  "mapinfo.decider": "Desempate:",
-  "mapinfo.next": "Siguiente:",
+  "endround.round": "RONDA {{rounds}}",
+  "mapinfo.live": "En vivo: {{map}}",
+  "mapinfo.decider": "Desempate: {{map}}",
+  "mapinfo.next": "Siguiente: {{map}}",
   "topinfo.watermark": "Overlay por Spectra",
-  "topscore.rounds": "RONDAS",
+  "topscore.rounds": "RONDAS {{rounds}}",
   "team.attacker": "ATACANTES",
   "team.defender": "DEFENSORES",
   "scoreboard.spent": "GASTADO ESTA RONDA",
@@ -19,5 +19,5 @@
   "scoreboard.deaths": "Muertes",
   "scoreboard.assists": "Asist.",
   "timeout.technical_pause": "PAUSA TÉCNICA",
-  "timeout.tactical_timeout": "Pausa táctica"
+  "timeout.tactical_timeout": "Pausa táctica de {{teamName}}"
 }
