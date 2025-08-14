@@ -6,12 +6,12 @@
   "endround.win": "{{team}} WIN",
   "endround.attacker": "アタッカー",
   "endround.defender": "ディフェンダー",
-  "endround.round": "ラウンド",
-  "mapinfo.live": "Now:",
-  "mapinfo.decider": "Decider:",
-  "mapinfo.next": "Next:",
+  "endround.round": "ラウンド {{rounds}}",
+  "mapinfo.live": "Now: {{map}}",
+  "mapinfo.decider": "Decider: {{map}}",
+  "mapinfo.next": "Next: {{map}}",
   "topinfo.watermark": "Spectra Overlay",
-  "topscore.rounds": "ラウンド",
+  "topscore.rounds": "ラウンド {{rounds}}",
   "team.attacker": "アタッカー",
   "team.defender": "ディフェンダー",
   "scoreboard.spent": "クレジット消費",
@@ -19,5 +19,5 @@
   "scoreboard.deaths": "Death",
   "scoreboard.assists": "Assist",
   "timeout.technical_pause": "TECH PAUSE",
-  "timeout.tactical_timeout": "タイムアウト"
+  "timeout.tactical_timeout": "{{teamName}} タイムアウト"
 }

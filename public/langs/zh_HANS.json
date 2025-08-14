@@ -1,0 +1,23 @@
+{
+  "playercard.kills": "击败",
+  "playercard.deaths": "败阵",
+  "playercard.assists": "助攻",
+  "endround.round_win": "回合胜利",
+  "endround.win": "{{team}} 获胜",
+  "endround.attacker": "攻方",
+  "endround.defender": "守方",
+  "endround.round": "第 {{rounds}} 回合",
+  "mapinfo.live": "当前场次: {{map}}",
+  "mapinfo.decider": "决胜场次: {{map}}",
+  "mapinfo.next": "下一场: {{map}}",
+  "topinfo.watermark": "由 Spectra 提供技术支持",
+  "topscore.rounds": "第 {{rounds}} 回合",
+  "team.attacker": "攻方",
+  "team.defender": "守方",
+  "scoreboard.spent": "已花费",
+  "scoreboard.kills": "击败",
+  "scoreboard.deaths": "败阵",
+  "scoreboard.assists": "助攻",
+  "timeout.technical_pause": "技术暂停",
+  "timeout.tactical_timeout": "{{teamName}} 战术暂停"
+}

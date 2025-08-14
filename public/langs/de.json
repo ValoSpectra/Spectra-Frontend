@@ -6,15 +6,15 @@
   "endround.win": "{{team}} GEWINNEN",
   "endround.attacker": "ANGREIFER",
   "endround.defender": "VERTEIDIGER",
-  "endround.round": "RUNDE",
-  "mapinfo.live": "Jetzt:",
-  "mapinfo.decider": "Entscheider:",
-  "mapinfo.next": "Nächste:",
+  "endround.round": "RUNDE {{rounds}}",
+  "mapinfo.live": "Jetzt: {{map}}",
+  "mapinfo.decider": "Entscheider: {{map}}",
+  "mapinfo.next": "Nächste: {{map}}",
   "topinfo.watermark": "Overlay von Spectra",
-  "topscore.rounds": "RUNDE",
+  "topscore.rounds": "RUNDE {{rounds}}",
   "team.attacker": "ANGREIFER",
   "team.defender": "VERTEIDIGER",
   "scoreboard.spent": "DIESE RUNDE AUSGEGEBEN",
   "timeout.technical_pause": "TECHNISCHE PAUSE",
-  "timeout.tactical_timeout": "TAKTISCHE PAUSE"
+  "timeout.tactical_timeout": "{{teamName}} TAKTISCHE PAUSE"
 }

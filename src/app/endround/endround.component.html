@@ -29,7 +29,9 @@
         <div class="info-image-box">
           <img class="info-image" src="{{ tournamentUrl }}" />
         </div>
-        <div class="round-number">{{ "endround.round" | translate }} {{ match.roundNumber }}</div>
+        <div class="round-number">
+          {{ "endround.round" | translate: { rounds: match.roundNumber } }}
+        </div>
       </div>
     </div>
   </div>

@@ -6,12 +6,12 @@
   "endround.win": "{{team}} WIN",
   "endround.attacker": "ATTACKER",
   "endround.defender": "DEFENDER",
-  "endround.round": "ROUND",
-  "mapinfo.live": "Live:",
-  "mapinfo.decider": "Decider:",
-  "mapinfo.next": "Next:",
+  "endround.round": "ROUND {{rounds}}",
+  "mapinfo.live": "Live: {{map}}",
+  "mapinfo.decider": "Decider: {{map}}",
+  "mapinfo.next": "Next: {{map}}",
   "topinfo.watermark": "Overlay by Spectra",
-  "topscore.rounds": "ROUNDS",
+  "topscore.rounds": "ROUNDS {{rounds}}",
   "team.attacker": "ATTACKER",
   "team.defender": "DEFENDER",
   "scoreboard.spent": "SPENT THIS ROUND",
@@ -19,5 +19,5 @@
   "scoreboard.deaths": "Deaths",
   "scoreboard.assists": "Assists",
   "timeout.technical_pause": "TECHNICAL PAUSE",
-  "timeout.tactical_timeout": "Tactical Timeout"
+  "timeout.tactical_timeout": "{{teamName}} Tactical Timeout"
 }
