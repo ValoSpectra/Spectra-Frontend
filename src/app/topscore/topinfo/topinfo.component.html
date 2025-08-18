@@ -1,12 +1,12 @@
-<div class="topinfo-container" *ngIf="match.tools.seriesInfo.mapInfo.length > 0">
+<div class="topinfo-container" *ngIf="tools.seriesInfo.mapInfo.length > 0">
   <div class="topinfo-pill">
-    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[0]"></app-mapinfo>
+    <app-mapinfo [map]="map" [mapinfo]="tools.seriesInfo.mapInfo[0]"></app-mapinfo>
   </div>
-  <div class="topinfo-pill">
-    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[1]"></app-mapinfo>
+  <div class="topinfo-pill" *ngIf="tools.seriesInfo.mapInfo[1].type !== 'disabled'">
+    <app-mapinfo [map]="map" [mapinfo]="tools.seriesInfo.mapInfo[1]"></app-mapinfo>
   </div>
-  <div class="topinfo-pill">
-    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[2]"></app-mapinfo>
+  <div class="topinfo-pill" *ngIf="tools.seriesInfo.mapInfo[2].type !== 'disabled'">
+    <app-mapinfo [map]="map" [mapinfo]="tools.seriesInfo.mapInfo[2]"></app-mapinfo>
   </div>
 </div>
 <div class="topinfo-container-right">
@@ -14,7 +14,8 @@
     <!--<div class="topinfo-pill-text fadeLoopStart">Nerve Esports Circuit: Season 2</div>-->
     <div class="topinfo-pill-text fadeLoopDelay">NEC - Playoffs - Grand Finals</div>
   </div>
-</div>
+}
+
 <div class="sponsor-container" *ngIf="sponsorsAvailable">
   <ng-container *ngFor="let sponsor of sponsorImages; let i = index">
     <img

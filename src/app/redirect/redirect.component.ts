@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { Config } from "../shared/config";
 
 @Component({
@@ -6,7 +6,7 @@ import { Config } from "../shared/config";
   template: ``,
 })
 export class RedirectComponent implements OnInit {
-  constructor(private config: Config) {}
+  private config = inject(Config);
 
   ngOnInit() {
     window.location.href = this.config.redirectUrl;

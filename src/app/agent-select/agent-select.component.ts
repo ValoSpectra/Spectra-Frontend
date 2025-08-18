@@ -1,10 +1,14 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from "@angular/core";
 import { TrackerComponent } from "../tracker/tracker.component";
 import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../services/SocketService";
 import { Config } from "../shared/config";
 import { trigger, transition, style, animate } from "@angular/animations";
-import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
+import { NgIf, NgFor } from "@angular/common";
+import { SelectPlayerInfoComponent } from "./select-player-info/select-player-info.component";
+import { SelectTeamInfoComponent } from "./select-team-info/select-team-info.component";
+import { TranslateService } from "@ngx-translate/core";
+import { LanguageAliasService } from "../services/languageAlias.service";
 
 @Component({
   selector: "app-agent-select",
@@ -13,26 +17,30 @@ import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
   animations: [
     trigger("fade", [
       transition(":enter", [style({ opacity: "0" }), animate("0.5s", style({ opacity: "1" }))]),
-
       transition(":leave", animate("0.5s", style({ opacity: "0" }))),
     ]),
   ],
+  imports: [NgIf, NgFor, SelectPlayerInfoComponent, SelectTeamInfoComponent],
 })
 export class AgentSelectComponent implements OnInit, AfterViewInit {
+  private route = inject(ActivatedRoute);
+  private config = inject(Config);
+  private translate = inject(TranslateService);
+
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   groupCode = "UNKNOWN";
+  lang = "en";
   socketService!: SocketService;
 
   match: any;
   teamLeft: any;
   teamRight: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private config: Config,
-  ) {
+  constructor() {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
+      const paramLang = params["lang"]?.toLowerCase() || "en";
+      this.lang = LanguageAliasService.resolveLanguageAlias(paramLang);
     });
   }
 
@@ -59,17 +67,22 @@ export class AgentSelectComponent implements OnInit, AfterViewInit {
     this.teamLeft = this.match.teams[0];
     this.teamRight = this.match.teams[1];
 
-    this.socketService = SocketService.getInstance(this.config.serverEndpoint, this.groupCode);
+    this.socketService = SocketService.getInstance().connectMatch(
+      this.config.serverEndpoint,
+      this.groupCode,
+    );
+
+    this.translate.use(this.lang);
   }
 
   ngAfterViewInit(): void {
-    this.socketService.subscribe((data: any) => {
+    this.socketService.subscribeMatch((data: any) => {
       this.updateMatch(data);
     });
   }
 
   isAutoswitch(): boolean {
-    return this.route.component === AutoswitchComponent;
+    return this.route.snapshot.parent?.routeConfig?.path == "autoswitch";
   }
 
   shouldDisplay(): boolean {

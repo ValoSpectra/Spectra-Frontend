@@ -1,5 +1,5 @@
 <div *ngIf="shouldDisplay()">
-  <app-topinfo [match]="match" />
+  <app-topinfo [tools]="match.tools" [map]="match.map" />
   <app-topscore [match]="match" />
   <app-endround *ngIf="match.roundPhase !== 'shopping'" [match]="match" [@fadeFast] />
   <app-combat

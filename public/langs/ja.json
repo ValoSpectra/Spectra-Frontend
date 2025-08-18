@@ -1,0 +1,23 @@
+{
+  "playercard.kills": "Kill",
+  "playercard.deaths": "Death",
+  "playercard.assists": "Assist",
+  "endround.round_win": "ROUND WIN",
+  "endround.win": "{{team}} WIN",
+  "endround.attacker": "アタッカー",
+  "endround.defender": "ディフェンダー",
+  "endround.round": "ラウンド {{rounds}}",
+  "mapinfo.live": "Now: {{map}}",
+  "mapinfo.decider": "Decider: {{map}}",
+  "mapinfo.next": "Next: {{map}}",
+  "topinfo.watermark": "Spectra Overlay",
+  "topscore.rounds": "ラウンド {{rounds}}",
+  "team.attacker": "アタッカー",
+  "team.defender": "ディフェンダー",
+  "scoreboard.spent": "クレジット消費",
+  "scoreboard.kills": "Kill",
+  "scoreboard.deaths": "Death",
+  "scoreboard.assists": "Assist",
+  "timeout.technical_pause": "TECH PAUSE",
+  "timeout.tactical_timeout": "{{teamName}} タイムアウト"
+}

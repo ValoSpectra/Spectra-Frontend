@@ -6,6 +6,7 @@ import { AgentSelectComponent } from "./agent-select/agent-select.component";
 import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
 import { RedirectComponent } from "./redirect/redirect.component";
 import { TimeoutComponent } from "./timeout/timeout.component";
+import { MapbanUiComponent } from "./mapban-ui/mapban-ui.component";
 
 const routes: Routes = [
   {
@@ -67,6 +68,10 @@ const routes: Routes = [
   {
     path: "timeout",
     component: TimeoutComponent,
+  },
+  {
+    path: "mapban",
+    component: MapbanUiComponent,
   },
 ];
 

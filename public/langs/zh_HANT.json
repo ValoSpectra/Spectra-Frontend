@@ -1,0 +1,23 @@
+{
+  "playercard.kills": "擊殺",
+  "playercard.deaths": "死亡",
+  "playercard.assists": "助攻",
+  "endround.round_win": "回合勝利",
+  "endround.win": "{{team}} 勝利",
+  "endround.attacker": "進攻方",
+  "endround.defender": "防守方",
+  "endround.round": "第 {{rounds}} 回合",
+  "mapinfo.live": "進行中: {{map}}",
+  "mapinfo.decider": "決勝圖: {{map}}",
+  "mapinfo.next": "下張地圖: {{map}}",
+  "topinfo.watermark": "由 Spectra 提供技術支援",
+  "topscore.rounds": "第 {{rounds}} 回合",
+  "team.attacker": "進攻方",
+  "team.defender": "防守方",
+  "scoreboard.spent": "已花費",
+  "scoreboard.kills": "擊殺",
+  "scoreboard.deaths": "死亡",
+  "scoreboard.assists": "助攻",
+  "timeout.technical_pause": "技術暫停",
+  "timeout.tactical_timeout": "{{teamName}} 戰術暫停"
+}

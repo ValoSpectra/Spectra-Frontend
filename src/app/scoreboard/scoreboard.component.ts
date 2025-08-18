@@ -1,16 +1,32 @@
-import { Component, Input, Pipe, PipeTransform } from "@angular/core";
+import { Component, Input, Pipe, PipeTransform, forwardRef, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { NgIf, NgFor } from "@angular/common";
+import { RoundreasonsComponent } from "./roundreasons/roundreasons.component";
+import {
+  PlayerscoreComponent,
+  PlayerscoreMinimalComponent,
+} from "./playerscore/playerscore.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: "app-scoreboard",
   templateUrl: "./scoreboard.component.html",
   styleUrls: ["./scoreboard.component.scss"],
+  imports: [
+    TranslateModule,
+    NgIf,
+    RoundreasonsComponent,
+    NgFor,
+    PlayerscoreComponent,
+    PlayerscoreMinimalComponent,
+    forwardRef(() => ScoreboardOrderPipe),
+  ],
 })
 export class ScoreboardComponent {
+  private route = inject(ActivatedRoute);
+
   @Input() match!: any;
   @Input() hideAuxiliary = false;
-
-  constructor(private route: ActivatedRoute) {}
 
   isMinimal(): boolean {
     if (this.route.snapshot.data["minimal"]) {
@@ -29,9 +45,7 @@ export class ScoreboardComponent {
   }
 }
 
-@Pipe({
-  name: "scoreboardOrder",
-})
+@Pipe({ name: "scoreboardOrder" })
 export class ScoreboardOrderPipe implements PipeTransform {
   transform(players: any): MinPlayer[] {
     if (!Array.isArray(players)) return [];

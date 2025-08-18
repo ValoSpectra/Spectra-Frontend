@@ -1,8 +1,11 @@
 import { Component, Input, OnChanges, SimpleChanges, OnInit } from "@angular/core";
+import { NgIf } from "@angular/common";
+import { TranslateModule } from "@ngx-translate/core";
 @Component({
   selector: "app-endround",
   templateUrl: "./endround.component.html",
   styleUrls: ["./endround.component.scss"],
+  imports: [TranslateModule, NgIf],
 })
 export class EndroundComponent implements OnChanges, OnInit {
   @Input() match!: any;

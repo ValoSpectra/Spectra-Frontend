@@ -1,7 +1,12 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, inject, Input, OnInit } from "@angular/core";
 import { trigger, transition, style, animate } from "@angular/animations";
 import { ActivatedRoute } from "@angular/router";
-import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
+import { NgIf } from "@angular/common";
+import { TopinfoComponent } from "../topscore/topinfo/topinfo.component";
+import { TopscoreComponent } from "../topscore/topscore.component";
+import { EndroundComponent } from "../endround/endround.component";
+import { CombatComponent } from "../combat/combat.component";
+import { ScoreboardComponent } from "../scoreboard/scoreboard.component";
 
 @Component({
   selector: "app-tracker",
@@ -14,8 +19,18 @@ import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
     ]),
     trigger("fadeFast", [transition(":leave", animate("0.25s ease-out", style({ opacity: "0" })))]),
   ],
+  imports: [
+    NgIf,
+    TopinfoComponent,
+    TopscoreComponent,
+    EndroundComponent,
+    CombatComponent,
+    ScoreboardComponent,
+  ],
 })
 export class TrackerComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+
   @Input() hideAuxiliary = false;
 
   activelyTracking = false;
@@ -26,8 +41,6 @@ export class TrackerComponent implements OnInit {
 
   ranksEnabled = false;
   ranksByName: any = {};
-
-  constructor(private route: ActivatedRoute) {}
 
   async ngOnInit(): Promise<void> {
     //setting up with empty match state so certain ui parts dont complain
@@ -57,6 +70,17 @@ export class TrackerComponent implements OnInit {
           backdropUrl: "",
         },
         timeoutDuration: 60,
+        sponsorInfo: {
+          enabled: false,
+          duration: 5000,
+          sponsors: [],
+        },
+        // Disabling the watermark/setting a custom text without Spectra Plus is against the License terms and strictly forbidden
+        watermarkInfo: {
+          spectraWatermark: true,
+          customTextEnabled: false,
+          customText: "",
+        },
       },
       timeoutState: {
         techPause: false,
@@ -65,6 +89,7 @@ export class TrackerComponent implements OnInit {
         rightTeam: false,
         rightTeamStartTime: 0,
       },
+      showAliveKDA: false,
     };
 
     if (this.ranksEnabled) {
@@ -73,7 +98,7 @@ export class TrackerComponent implements OnInit {
   }
 
   isAutoswitch(): boolean {
-    return this.route.component === AutoswitchComponent;
+    return this.route.snapshot.parent?.routeConfig?.path == "autoswitch";
   }
 
   isMinimal(): boolean {
