@@ -6,10 +6,12 @@ export class Config {
 
   attackerColorPrimary = "#b82e3c";
   attackerColorSecondary = "#ff4557";
+  attackerColorTertiary = "#7c303c";
   attackerColorShieldCurrency = "#ff838f";
 
   defenderColorPrimary = "#25ac79";
   defenderColorSecondary = "#61eab6";
+  defenderColorTertiary = "#215e45";
   defenderColorShieldCurrency = "#61eab6";
 
   public constructor(init?: Partial<Config>) {

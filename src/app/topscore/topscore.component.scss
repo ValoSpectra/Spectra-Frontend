@@ -2,12 +2,23 @@
   position: absolute;
   display: flex;
   width: 601px;
-  height: 143px;
+  height: 140px;
   left: 660px;
   top: 0px;
   align-items: center;
   justify-content: center;
-  margin-top: 5px;
+  margin-top: 10px;
+}
+
+.topscore-accent {
+  display: flex;
+  position: absolute;
+  top: -10px;
+  width: 600px;
+  height: 70px;
+  background-color: rgb(11,24,29);
+  border-color: white;
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 68% 0%, 61.5% 100%, 61.5% 4%, 38.5% 4%, 38.5% 100%, 32% 0%, 0 0%);
 }
 
 .topscore-container {
@@ -22,21 +33,22 @@
   display: inline-flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 168.97px;
+  gap: 200px;
   position: relative;
   // box-shadow: -1px 1px 1px #0000001f; This currently creates a weird shadow between the two scoreblocks
 }
 
 .teamcard {
   display: flex;
-  width: 175px;
+  width: 200px;
   align-items: center;
   position: relative;
+  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
 }
 
 .teamcard-border {
   @extend .teamcard;
-  height: 66.5px;
+  height: 60px;
   overflow: hidden;
 }
 
@@ -145,13 +157,12 @@
   }
   &.defender {
     @extend .scoreblock;
-    background-color: var(--defender-color);
+    background-color: var(--defender-color-tertiary);
   }
   &.attacker {
     @extend .scoreblock;
-    background-color: var(--attacker-color);
+    background-color: var(--attacker-color-tertiary);
   }
-  z-index: 1;
 }
 
 .score-text {
@@ -161,10 +172,9 @@
   font-family: "Montserrat", Helvetica;
   font-weight: 700;
   color: #ffffff;
-  font-size: 40px;
+  font-size: 36px;
   font-style: normal;
   text-align: center;
-  // letter-spacing: 1.2px;
   line-height: normal;
 }
 
@@ -177,7 +187,7 @@
   text-align: center;
   letter-spacing: 0.39px;
   line-height: normal;
-  top: 2px;
+  top: 0;
 }
 
 .spike-indicator {
@@ -198,33 +208,31 @@
 
 .mapwin-line {
   display: inline-flex;
-  flex-direction: column-reverse;
   justify-content: center;
-  gap: 1px;
+  gap: 10px;
   position: absolute;
-  width: 10px;
-  height: 100%;
-  flex: 1 1 1;
+  top: 115%;
   &-left {
     @extend .mapwin-line;
-    right: -10px;
+    right: 5%;
   }
   &-right {
     @extend .mapwin-line;
-    left: -10px;
+    left: 5%;
   }
-  z-index: 100;
 }
 
 .mapwin-pip {
   position: relative;
-  width: 10px;
-  height: 100%;
-  background-color: #0000007e;
-
+  width: 9px;
+  height: 9px;
+  rotate: 45deg;
+  border-radius: 1px;
+  border: 1px solid;
+  border-color: #ffffffaa;
   &-full {
-  @extend .mapwin-pip;
-    background-color: rgb(255, 255, 255);
+    @extend .mapwin-pip;
+    background-color: #ffffff;
   }
 }
 

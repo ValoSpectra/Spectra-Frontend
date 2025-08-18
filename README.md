@@ -51,6 +51,7 @@ Inside `config` folder, create a file named `config.json` with the following con
   "attackerColorShieldCurrency": "#ff838f",
   "defenderColorPrimary": "#25ac79",
   "defenderColorSecondary": "#61eab6",
+  "defenderColorTertiary": "#61eab6",
   "defenderColorShieldCurrency": "#61eab6"
 }
 ```

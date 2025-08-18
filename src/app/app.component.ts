@@ -45,6 +45,22 @@ export class AppComponent implements OnInit {
       this.hexToRgb(this.config.attackerColorSecondary).join(", "),
     );
     document.documentElement.style.setProperty(
+      "--attacker-color-tertiary",
+      this.config.attackerColorTertiary,
+    );
+    document.documentElement.style.setProperty(
+      "--attacker-color-tertiary-rgb",
+      this.hexToRgb(this.config.attackerColorTertiary).join(", "),
+    );
+    document.documentElement.style.setProperty(
+      "--defender-color-tertiary",
+      this.config.defenderColorTertiary,
+    );
+    document.documentElement.style.setProperty(
+      "--defender-color-tertiary-rgb",
+      this.hexToRgb(this.config.defenderColorTertiary).join(", "),
+    );
+    document.documentElement.style.setProperty(
       "--defender-color-shield-currency",
       this.config.defenderColorShieldCurrency,
     );

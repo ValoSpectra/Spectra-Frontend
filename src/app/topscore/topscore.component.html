@@ -1,5 +1,6 @@
 <div class="topscore" [class]="side">
   <div class="topscore-container">
+    <div class="topscore-accent"></div>
     <div class="scoreboard">
       <div class="teamcard">
         <div class="teamcard-border">
@@ -58,13 +59,10 @@
             </div>
           </div>
         </div>
-        <div class="mapwin-line-right"
-        *ngIf="match.tools.seriesInfo.needed > 1"
-        [class]="color">
+        <div class="mapwin-line-right" *ngIf="match.tools.seriesInfo.needed > 1">
           <div
             class="mapwin-pip-full"
             *ngFor="let i of numSequence(match.tools.seriesInfo.wonRight)"
-            [ngClass]="[color]"
           ></div>
           <div
             class="mapwin-pip"
