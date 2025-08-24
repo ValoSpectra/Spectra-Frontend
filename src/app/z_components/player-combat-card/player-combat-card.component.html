@@ -1,0 +1,58 @@
+<div class="flex flex-row vh-74" [class.!flex-row-reverse]="right">
+  <img
+    class="relative left-7 vh-74 vw-74 z-2"
+    [class.grayscale]="!player.isAlive"
+    [class.flip]="right"
+    [class.!-left-7]="right"
+    src="assets/agents/{{ player.agentInternal }}{{ player.iconNameSuffix }}Icon.webp"
+  />
+
+  <!-- playername container -->
+  <div
+    class="relative flex flex-col vw-128 px-8 pt-1.5"
+    [class]="'bg-playerinfo-' + backgroundClassSuffix()"
+    [class.items-end]="right"
+  >
+    <app-abilities-new class="vw-96" [player]="player"></app-abilities-new>
+    <div class="flex flex-row gap-1 items-center" [class.flex-row-reverse]="right">
+      <app-shield-icon [type]="player.armorName" [side]="color"></app-shield-icon>
+      <p class="font-montserrat font-extrabold text-xl text-center text-{{ color }}-shield/80">
+        {{ player.health }}
+      </p>
+      <p class="font-montserrat font-bold text-xs text-{{ color }}-shield/80 self-end mb-1">
+        {{ player.kills }}/{{ player.deaths }}/{{ player.assists }}
+      </p>
+    </div>
+    <p class="font-montserrat font-semibold text-white whitespace-nowrap -mt-1.5">
+      {{ player.name }}
+    </p>
+    <div
+      class="absolute bottom-0 vh-3 bg-{{ color }}-shield"
+      [class.left-0]="!right"
+      [class.right-0]="right"
+      [style.width.%]="clamp(player.health * 0.88 + 12, 0, 100)"
+    ></div>
+  </div>
+
+  <!-- weapon container -->
+  <div
+    class="flex flex-col vw-186 px-4 justify-center"
+    [class.items-end]="right"
+    [class]="'bg-weaponinfo-' + backgroundClassSuffix()"
+  >
+    <div>
+      <!-- div needed to image scales correctly -->
+      <img
+        class="vh-32"
+        [class.flip]="!right"
+        src="assets/weapons/{{ player.highestWeapon }}Killfeed.webp"
+      />
+    </div>
+    <app-ultimate-tracker
+      class="w-2/5 mt-1"
+      [max]="player.maxUltPoints"
+      [full]="player.currUltPoints"
+      image="assets/ultimates/{{ player.agentInternal }}Ultimate.webp"
+    ></app-ultimate-tracker>
+  </div>
+</div>

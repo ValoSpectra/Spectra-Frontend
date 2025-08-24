@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
+import { DataModelService } from "../../services/dataModel.service";
 
 @Component({
   selector: "app-topscore-new",
@@ -6,4 +7,6 @@ import { Component } from "@angular/core";
   templateUrl: "./topscore.component.html",
   styleUrl: "./topscore.component.css",
 })
-export class TopscoreComponent {}
+export class TopscoreComponent {
+  dataModel = inject(DataModelService);
+}

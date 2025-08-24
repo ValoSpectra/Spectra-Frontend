@@ -1,0 +1,39 @@
+.bg-roundwin-defender-top {
+  border-top: 2px solid;
+  border-color: var(--defender-color-shield-currency);
+  background: linear-gradient(
+    180deg,
+    rgba(var(--defender-color-shield-currency-rgb), 0.28) 0%,
+    rgba(var(--defender-color-shield-currency-rgb), 0) 100%
+  );
+}
+
+.bg-roundwin-defender-bottom {
+  border-bottom: 2px solid;
+  border-color: var(--defender-color-shield-currency);
+  background: linear-gradient(
+    0deg,
+    rgba(var(--defender-color-shield-currency-rgb), 0.28) 0%,
+    rgba(var(--defender-color-shield-currency-rgb), 0) 100%
+  );
+}
+
+.bg-roundwin-attacker-top {
+  border-top: 2px solid;
+  border-color: var(--attacker-color-shield-currency);
+  background: linear-gradient(
+    180deg,
+    rgba(var(--attacker-color-secondary-rgb), 0.28) 0%,
+    rgba(var(--attacker-color-secondary-rgb), 0) 100%
+  );
+}
+
+.bg-roundwin-attacker-bottom {
+  border-bottom: 2px solid;
+  border-color: var(--attacker-color-shield-currency);
+  background: linear-gradient(
+    0deg,
+    rgba(var(--attacker-color-secondary-rgb), 0.28) 0%,
+    rgba(var(--attacker-color-secondary-rgb), 0) 100%
+  );
+}

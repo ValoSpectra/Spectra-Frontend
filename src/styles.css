@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
 
 @import "tailwindcss";
+@import "./animations.css";
 
 @theme {
   --color-pill: linear-gradient(
@@ -39,6 +40,18 @@
 @utility vh-* {
   height: calc((--value(integer) / 1080) * 100vh);
 }
+@utility max-vw-* {
+  max-width: calc((--value(integer) / 1920) * 100vw);
+}
+@utility max-vh-* {
+  max-height: calc((--value(integer) / 1080) * 100vh);
+}
+@utility min-vw-* {
+  min-width: calc((--value(integer) / 1920) * 100vw);
+}
+@utility min-vh-* {
+  min-height: calc((--value(integer) / 1080) * 100vh);
+}
 
 /* Custom classes to position components on an overlay screen */
 @utility pos-x-center {
@@ -61,6 +74,10 @@
     rgba(15, 25, 35, 0.85) 0%,
     rgba(31.14, 37.75, 40.58, 0.85) 100%
   );
+}
+
+@utility flip {
+  transform: rotateY(180deg);
 }
 
 /* Disabled for tailwind rebuild */

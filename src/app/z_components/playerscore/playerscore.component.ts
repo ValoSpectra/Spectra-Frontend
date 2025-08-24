@@ -14,7 +14,7 @@ export class PlayerscoreComponent {
   @Input() right = false;
   @Input() color: "attacker" | "defender" = "defender";
 
-  backgroundClass = computed(() => {
+  readonly backgroundClass = computed(() => {
     return `bg-fade-${this.color}-${this.right ? "right" : "left"}`;
   });
 }

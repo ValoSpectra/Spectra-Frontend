@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from "@angular/core";
+import { Component, computed, Input } from "@angular/core";
 
 @Component({
   selector: "app-mapinfo-content",
@@ -6,12 +6,8 @@ import { Component, Input, OnChanges } from "@angular/core";
   templateUrl: "./mapinfo-content.component.html",
   styleUrl: "./mapinfo-content.component.css",
 })
-export class MapinfoContentComponent implements OnChanges {
-  @Input() map!: string;
+export class MapinfoContentComponent {
+  @Input() currentMap!: string;
   @Input() mapinfo!: any;
-  type: "past" | "present" | "future" = "future";
-
-  ngOnChanges(): void {
-    this.type = this.mapinfo.type;
-  }
+  readonly type = computed(() => this.mapinfo.type);
 }

@@ -1,5 +1,6 @@
-import { Component, Input } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { MapinfoContentComponent } from "./mapinfo-content/mapinfo-content.component";
+import { DataModelService } from "../../services/dataModel.service";
 
 @Component({
   selector: "app-mapinfo-new",
@@ -8,6 +9,5 @@ import { MapinfoContentComponent } from "./mapinfo-content/mapinfo-content.compo
   styleUrl: "./mapinfo.component.css",
 })
 export class MapinfoComponent {
-  @Input() tools!: any;
-  @Input() map!: any;
+  dataModel = inject(DataModelService);
 }

@@ -1,24 +1,23 @@
 <div class="pill-background w-full flex flex-row justify-center items-center text-center">
-    @switch (type) {
+  @switch (this.type()) {
     @case ("past") {
-    <p>{{mapinfo.map}}</p>
-    <img [src]="mapinfo.left.logo" class="px-1 py-0.5 max-w-5 max-h-5 align-middle" />
-    <p>{{mapinfo.left.score}} - {{mapinfo.right.score}}</p>
-    <img [src]="mapinfo.right.logo" class="px-1 py-0.5 max-w-5 max-h-5 align-middle" />
+      <p>{{ mapinfo.map }}</p>
+      <img [src]="mapinfo.left.logo" class="px-1 py-0.5 max-w-5 max-h-5 align-middle" />
+      <p>{{ mapinfo.left.score }} - {{ mapinfo.right.score }}</p>
+      <img [src]="mapinfo.right.logo" class="px-1 py-0.5 max-w-5 max-h-5 align-middle" />
     }
     @case ("present") {
-    Live: {{ map }}
-    <img [src]="mapinfo.logo" class="px-1 py-0.5 max-w-5 max-h-5 align-middle" />
+      Live: {{ currentMap }}
+      <img [src]="mapinfo.logo" class="px-1 py-0.5 max-w-5 max-h-5 align-middle" />
     }
     @case ("future") {
-    @if (mapinfo.logo !== "") {
-    <!-- someone picked the map -->
-    Next: {{ mapinfo.map }}
-    <img [src]="mapinfo.logo" class="px-1 py-0.5 max-w-5 max-h-5 align-middle" />
+      @if (mapinfo.logo !== "") {
+        <!-- someone picked the map -->
+        Next: {{ mapinfo.map }}
+        <img [src]="mapinfo.logo" class="px-1 py-0.5 max-w-5 max-h-5 align-middle" />
+      } @else {
+        Decider: {{ mapinfo.map }}
+      }
     }
-    @else {
-    Decider: {{ mapinfo.map }}
-    }
-    }
-    }
+  }
 </div>

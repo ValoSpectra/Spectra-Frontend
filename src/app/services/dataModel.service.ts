@@ -18,4 +18,5 @@ export class DataModelService {
   public readonly timeoutState = computed(() => this.match().timeoutState);
   public readonly spikeState = computed(() => this.match().spikeState);
   public readonly seriesInfo = computed(() => this.match().tools.seriesInfo);
+  public readonly seedingInfo = computed(() => this.match().tools.seedingInfo);
 }

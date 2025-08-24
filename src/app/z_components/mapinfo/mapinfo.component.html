@@ -1,8 +1,13 @@
-@if (tools.seriesInfo.mapInfo.length > 0) {
-<div class="font-montserrat font-extrabold text-white text-[15px] uppercase 
-    flex flex-row vh-24 vw-600 rounded-b-lg overflow-hidden">
-    @for (mapInfo of tools.seriesInfo.mapInfo; track $index) {
-    <app-mapinfo-content class="w-1/3" [map]="map" [mapinfo]="mapInfo"></app-mapinfo-content>
+@if (dataModel.seriesInfo().mapInfo.length > 0) {
+  <div
+    class="font-montserrat font-extrabold text-white text-[15px] uppercase flex flex-row vh-24 vw-600 rounded-b-lg overflow-hidden"
+  >
+    @for (mapInfo of dataModel.seriesInfo().mapInfo; track $index) {
+      <app-mapinfo-content
+        class="w-1/3"
+        [currentMap]="dataModel.match().map"
+        [mapinfo]="mapInfo"
+      ></app-mapinfo-content>
     }
-</div>
+  </div>
 }

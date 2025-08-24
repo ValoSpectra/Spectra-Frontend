@@ -1,0 +1,14 @@
+@keyframes a {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.animate-in {
+  animation: a 2s ease-in-out 0 1 forwards normal;
+}
+.animate-out {
+  animation: a 2s ease-in-out 0 1 reverse normal;
+}

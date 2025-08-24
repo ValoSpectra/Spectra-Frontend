@@ -1,26 +1,5 @@
-import { Component, Input } from "@angular/core";
-
-interface recordType {
-  type: string;
-  wasAttack: boolean;
-  round: number;
-}
-
-interface matchType {
-  switchRound: number;
-  firstOtRound: number;
-  roundNumber: number;
-  teams: [
-    {
-      teamTricode: string;
-      roundRecord: recordType[];
-    },
-    {
-      teamTricode: string;
-      roundRecord: recordType[];
-    },
-  ];
-}
+import { Component, inject } from "@angular/core";
+import { DataModelService } from "../../services/dataModel.service";
 
 @Component({
   selector: "app-roundreasons-new",
@@ -29,5 +8,12 @@ interface matchType {
   styleUrl: "./roundreasons.component.css",
 })
 export class RoundreasonsComponent {
-  @Input() match!: matchType;
+  dataModel = inject(DataModelService);
+
+  getBackgroundClass(record: any, team: any): string {
+    if (record.type == "lost") {
+      return "";
+    }
+    return `bg-roundwin-${record.wasAttack ? "attacker" : "defender"}-${team == this.dataModel.teams()[0] ? "top" : "bottom"}`;
+  }
 }
