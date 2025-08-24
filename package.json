@@ -38,8 +38,8 @@
     "zone.js": "^0.15.0"
   },
   "devDependencies": {
-    "@angular/build": "^20.0.2",
-    "@angular/cli": "^20.0.2",
+    "@angular/build": "^20.2.0",
+    "@angular/cli": "^20.2.0",
     "@angular/compiler-cli": "^20.2.1",
     "@types/jasmine": "~5.1.7",
     "angular-eslint": "20.0.0",
