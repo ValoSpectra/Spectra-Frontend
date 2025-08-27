@@ -11,7 +11,7 @@
   "mapinfo.decider": "Decider: {{map}}",
   "mapinfo.next": "Sonraki: {{map}}",
   "topinfo.watermark": "Overlay by Spectra",
-  "topscore.rounds": "TUR {{rounds}}",
+  "topscore.round": "TUR {{rounds}}",
   "team.attacker": "SALDIRI",
   "team.defender": "SAVUNMA",
   "scoreboard.spent": "BU TUR HARCANAN",
