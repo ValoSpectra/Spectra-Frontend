@@ -6,12 +6,12 @@
   "endround.win": "{{team}} ZAFER",
   "endround.attacker": "SALDIRI",
   "endround.defender": "SAVUNMA",
-  "endround.round": "TUR",
-  "mapinfo.live": "Oynanan:",
-  "mapinfo.decider": "Decider:",
-  "mapinfo.next": "Sonraki:",
+  "endround.round": "TUR {{rounds}}",
+  "mapinfo.live": "Oynanan: {{map}}",
+  "mapinfo.decider": "Decider: {{map}}",
+  "mapinfo.next": "Sonraki: {{map}}",
   "topinfo.watermark": "Overlay by Spectra",
-  "topscore.rounds": "TUR",
+  "topscore.rounds": "TUR {{rounds}}",
   "team.attacker": "SALDIRI",
   "team.defender": "SAVUNMA",
   "scoreboard.spent": "BU TUR HARCANAN",
@@ -19,5 +19,5 @@
   "scoreboard.deaths": "Ölme",
   "scoreboard.assists": "Asist",
   "timeout.technical_pause": "TEKNİK DURAKLATMA",
-  "timeout.tactical_timeout": "Taktik Duraklatma"
+  "timeout.tactical_timeout": "{{teamName}} Taktik Duraklatma"
 }
