@@ -11,7 +11,7 @@
   "mapinfo.decider": "Quyết định: {{map}}",
   "mapinfo.next": "Kế tiếp: {{map}}",
   "topinfo.watermark": "HUD Phát Triển Bởi Spectra",
-  "topscore.rounds": "HIỆP {{rounds}}",
+  "topscore.round": "HIỆP {{rounds}}",
   "team.attacker": "PHE TẤN CÔNG",
   "team.defender": "PHE PHÒNG THỦ",
   "scoreboard.spent": "ĐÃ CHI TRONG HIỆP NÀY",

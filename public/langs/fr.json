@@ -11,7 +11,7 @@
   "mapinfo.decider": "Décisive: {{map}}",
   "mapinfo.next": "Prochaine: {{map}}",
   "topinfo.watermark": "Overlay par Spectra",
-  "topscore.rounds": "Manches {{rounds}}",
+  "topscore.round": "Manches {{rounds}}",
   "team.attacker": "Attaquant",
   "team.defender": "Défenseur",
   "scoreboard.spent": "DEPENSÉE CETTE MANCHE",

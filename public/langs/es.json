@@ -11,7 +11,7 @@
   "mapinfo.decider": "Desempate: {{map}}",
   "mapinfo.next": "Siguiente: {{map}}",
   "topinfo.watermark": "Overlay por Spectra",
-  "topscore.rounds": "RONDAS {{rounds}}",
+  "topscore.round": "RONDAS {{rounds}}",
   "team.attacker": "ATACANTES",
   "team.defender": "DEFENSORES",
   "scoreboard.spent": "GASTADO ESTA RONDA",

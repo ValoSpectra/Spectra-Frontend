@@ -11,7 +11,7 @@
   "mapinfo.decider": "Decider: {{map}}",
   "mapinfo.next": "Next: {{map}}",
   "topinfo.watermark": "Overlay by Spectra",
-  "topscore.rounds": "ROUNDS {{rounds}}",
+  "topscore.round": "ROUND {{rounds}}",
   "team.attacker": "ATTACKER",
   "team.defender": "DEFENDER",
   "scoreboard.spent": "SPENT THIS ROUND",

@@ -11,7 +11,7 @@
   "mapinfo.decider": "決勝圖: {{map}}",
   "mapinfo.next": "下張地圖: {{map}}",
   "topinfo.watermark": "由 Spectra 提供技術支援",
-  "topscore.rounds": "第 {{rounds}} 回合",
+  "topscore.round": "第 {{rounds}} 回合",
   "team.attacker": "進攻方",
   "team.defender": "防守方",
   "scoreboard.spent": "已花費",

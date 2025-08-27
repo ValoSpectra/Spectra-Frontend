@@ -11,7 +11,7 @@
   "mapinfo.decider": "Decider: {{map}}",
   "mapinfo.next": "Next: {{map}}",
   "topinfo.watermark": "Spectra Overlay",
-  "topscore.rounds": "ラウンド {{rounds}}",
+  "topscore.round": "ラウンド {{rounds}}",
   "team.attacker": "アタッカー",
   "team.defender": "ディフェンダー",
   "scoreboard.spent": "クレジット消費",
