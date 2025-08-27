@@ -1,0 +1,23 @@
+{
+  "playercard.kills": "Hạ gục",
+  "playercard.deaths": "Chết",
+  "playercard.assists": "Hỗ trợ",
+  "endround.round_win": "THẮNG",
+  "endround.win": "{{team}} THẮNG",
+  "endround.attacker": "PHE TẤN CÔNG",
+  "endround.defender": "PHE PHÒNG THỦ",
+  "endround.round": "HIỆP {{rounds}}",
+  "mapinfo.live": "Hiện tại: {{map}}",
+  "mapinfo.decider": "Quyết định: {{map}}",
+  "mapinfo.next": "Kế tiếp: {{map}}",
+  "topinfo.watermark": "HUD Phát Triển Bởi Spectra",
+  "topscore.rounds": "HIỆP {{rounds}}",
+  "team.attacker": "PHE TẤN CÔNG",
+  "team.defender": "PHE PHÒNG THỦ",
+  "scoreboard.spent": "ĐÃ CHI TRONG HIỆP NÀY",
+  "scoreboard.kills": "Hạ gục",
+  "scoreboard.deaths": "Chết",
+  "scoreboard.assists": "Hỗ trợ",
+  "timeout.technical_pause": "TẠM DỪNG KỸ THUẬT",
+  "timeout.tactical_timeout": "{{teamName}} TẠM DỪNG HỘI Ý"
+}
