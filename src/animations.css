@@ -1,12 +1,38 @@
 @theme {
-  --animate-fade-in: fade-in 1s ease-in-out;
-  --animate-fade-out: fade-in 1s ease-in-out reverse;
+  --animate-fade-in: fade-in 1s ease-in;
+  --animate-fade-out: fade-in 1s ease-in reverse;
   @keyframes fade-in {
     0% {
       opacity: 0;
     }
     100% {
       opacity: 1;
+    }
+  }
+
+  --animate-fold-in: fold-in 0.1s ease-out;
+  --animate-fold-out: fold-in 0.25s ease-in reverse;
+  @keyframes fold-in {
+    0% {
+      width: 0;
+      opacity: 0;
+    }
+    100% {
+      width: *;
+      opacity: 1;
+    }
+  }
+
+  --animate-collapse-in: collapse 0.15s reverse;
+  --animate-collapse-out: collapse 0.15s;
+  @keyframes collapse {
+    0% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0, 1.5);
     }
   }
 }

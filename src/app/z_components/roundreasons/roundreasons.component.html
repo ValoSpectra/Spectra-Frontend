@@ -1,30 +1,36 @@
-<div class="flex flex-col max-w-150 vh-100 items-center pb-1 bg-background rounded-md py-0">
-  @for (team of dataModel.match().teams; track $index) {
-    <div
-      class="flex flex-row font-unbounded font-extrabold text-white items-center w-full h-1/2 justify-start"
-    >
-      <p class="grow-0 m-5">{{ team.teamTricode }}</p>
-      <div class="h-full flex-row flex justify-end overflow-hidden">
-        @for (record of team.roundRecord; track $index) {
-          @if (
-            record.round === dataModel.match().switchRound ||
-            record.round === dataModel.match().firstOtRound
-          ) {
-            <img class="mr-0.5" src="assets/roundWinReason/divider-line.svg" />
-          }
-
-          <div class="vw-25 mr-0.5 px-1.5" [class]="getBackgroundClass(record, team)">
-            @if (record.type === "lost") {
-              <p class="p-0 m-0 vw-24 vh-24 text-center leading-10">{{ record.round }}</p>
-            } @else {
-              <img
-                class="vw-24 vh-24 object-cover my-2"
-                src="assets/roundWinReason/{{ record.type }}.webp"
-              />
+@if (isShown()) {
+  <div
+    class="flex flex-col max-w-150 vh-100 items-center pb-1 bg-background rounded-md py-0"
+    animate.enter="animate-fade-in"
+    animate.leave="animate-fade-out"
+  >
+    @for (team of dataModel.match().teams; track $index) {
+      <div
+        class="flex flex-row font-unbounded font-extrabold text-white items-center w-full h-1/2 justify-start"
+      >
+        <p class="grow-0 m-5">{{ team.teamTricode }}</p>
+        <div class="h-full flex-row flex justify-end overflow-hidden">
+          @for (record of team.roundRecord; track $index) {
+            @if (
+              record.round === dataModel.match().switchRound ||
+              record.round === dataModel.match().firstOtRound
+            ) {
+              <img class="mr-0.5" src="assets/roundWinReason/divider-line.svg" />
             }
-          </div>
-        }
+
+            <div class="vw-25 mr-0.5 px-1.5" [class]="getBackgroundClass(record, team)">
+              @if (record.type === "lost") {
+                <p class="p-0 m-0 vw-24 vh-24 text-center leading-10">{{ record.round }}</p>
+              } @else {
+                <img
+                  class="vw-24 vh-24 object-cover my-2"
+                  src="assets/roundWinReason/{{ record.type }}.webp"
+                />
+              }
+            </div>
+          }
+        </div>
       </div>
-    </div>
-  }
-</div>
+    }
+  </div>
+}

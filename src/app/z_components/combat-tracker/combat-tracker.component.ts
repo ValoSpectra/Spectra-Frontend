@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, computed, inject } from "@angular/core";
 import { DataModelService } from "../../services/dataModel.service";
 import { PlayerCombatCardComponent } from "../player-combat-card/player-combat-card.component";
 
@@ -10,4 +10,6 @@ import { PlayerCombatCardComponent } from "../player-combat-card/player-combat-c
 })
 export class CombatTrackerComponent {
   dataModel = inject(DataModelService);
+
+  isShown = computed(() => this.dataModel.match().roundPhase !== "shopping");
 }

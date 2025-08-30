@@ -19,6 +19,13 @@ export class PlayerCombatCardComponent {
     return `${this.player.isObserved ? "observed" : this.color}-${this.right ? "right" : "left"}`;
   });
 
+  readonly textColor = computed(() =>
+    this.color == "attacker" ? "text-attacker-shield/80" : "text-defender-shield/80",
+  );
+  readonly backgroundColor = computed(() =>
+    this.color == "attacker" ? "bg-attacker-shield" : "bg-defender-shield",
+  );
+
   clamp(value: number, min: number, max: number): number {
     return Math.max(min, Math.min(max, value));
   }

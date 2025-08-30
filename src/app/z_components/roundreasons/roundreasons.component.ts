@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, computed, inject } from "@angular/core";
 import { DataModelService } from "../../services/dataModel.service";
 
 @Component({
@@ -9,6 +9,8 @@ import { DataModelService } from "../../services/dataModel.service";
 })
 export class RoundreasonsComponent {
   dataModel = inject(DataModelService);
+
+  isShown = computed(() => this.dataModel.match().roundPhase === "shopping");
 
   getBackgroundClass(record: any, team: any): string {
     if (record.type == "lost") {

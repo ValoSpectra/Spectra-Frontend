@@ -39,7 +39,7 @@ export class MatchOverlayComponent implements OnInit {
       isRanked: false,
       isRunning: true,
       roundNumber: 10,
-      roundPhase: "LOBBY",
+      roundPhase: "combat",
       spikeState: { planted: false },
       map: "Ascent",
       switchRound: 12,
@@ -84,9 +84,14 @@ export class MatchOverlayComponent implements OnInit {
         },
         timeoutDuration: 60,
         sponsorInfo: {
-          enabled: false,
+          enabled: true,
           duration: 5000,
-          sponsors: [],
+          sponsors: ["assets/misc/logo.webp", "assets/misc/icon.webp"],
+        },
+        watermarkInfo: {
+          customText: "",
+          customTextEnabled: false,
+          spectraWatermark: true,
         },
       },
       timeoutState: {

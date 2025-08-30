@@ -13,46 +13,55 @@
     [class]="'bg-playerinfo-' + backgroundClassSuffix()"
     [class.items-end]="right"
   >
-    <app-abilities-new class="vw-96" [player]="player"></app-abilities-new>
+    <app-abilities-new class="vw-96 vh-22" [player]="player"></app-abilities-new>
     <div class="flex flex-row gap-1 items-center" [class.flex-row-reverse]="right">
       <app-shield-icon [type]="player.armorName" [side]="color"></app-shield-icon>
-      <p class="font-montserrat font-extrabold text-xl text-center text-{{ color }}-shield/80">
+      <p class="font-montserrat font-extrabold text-xl text-center" [class]="textColor()">
         {{ player.health }}
       </p>
-      <p class="font-montserrat font-bold text-xs text-{{ color }}-shield/80 self-end mb-1">
+      <p class="font-montserrat font-bold text-xs self-end mb-1" [class]="textColor()">
         {{ player.kills }}/{{ player.deaths }}/{{ player.assists }}
       </p>
     </div>
     <p class="font-montserrat font-semibold text-white whitespace-nowrap -mt-1.5">
       {{ player.name }}
     </p>
-    <div
-      class="absolute bottom-0 vh-3 bg-{{ color }}-shield"
-      [class.left-0]="!right"
-      [class.right-0]="right"
-      [style.width.%]="clamp(player.health * 0.88 + 12, 0, 100)"
-    ></div>
+    @if (player.isAlive) {
+      <div
+        class="absolute bottom-0 vh-3 transition-all"
+        animate.enter="animate-fold-in"
+        animate.leave="animate-fold-out"
+        [class]="backgroundColor()"
+        [class.left-0]="!right"
+        [class.right-0]="right"
+        [style.width.%]="clamp(player.health * 0.88 + 12, 0, 100)"
+      ></div>
+    }
   </div>
 
   <!-- weapon container -->
-  <div
-    class="flex flex-col vw-186 px-4 justify-center"
-    [class.items-end]="right"
-    [class]="'bg-weaponinfo-' + backgroundClassSuffix()"
-  >
-    <div>
-      <!-- div needed to image scales correctly -->
-      <img
-        class="vh-32"
-        [class.flip]="!right"
-        src="assets/weapons/{{ player.highestWeapon }}Killfeed.webp"
-      />
+  @if (player.isAlive) {
+    <div
+      class="flex flex-col vw-186 px-4 justify-center"
+      animate.enter="animate-fold-in"
+      animate.leave="animate-fold-out"
+      [class.items-end]="right"
+      [class]="'bg-weaponinfo-' + backgroundClassSuffix()"
+    >
+      <div>
+        <!-- div needed to image scales correctly -->
+        <img
+          class="vh-32"
+          [class.flip]="!right"
+          src="assets/weapons/{{ player.highestWeapon }}Killfeed.webp"
+        />
+      </div>
+      <app-ultimate-tracker
+        class="w-2/5 mt-1"
+        [max]="player.maxUltPoints"
+        [full]="player.currUltPoints"
+        image="assets/ultimates/{{ player.agentInternal }}Ultimate.webp"
+      ></app-ultimate-tracker>
     </div>
-    <app-ultimate-tracker
-      class="w-2/5 mt-1"
-      [max]="player.maxUltPoints"
-      [full]="player.currUltPoints"
-      image="assets/ultimates/{{ player.agentInternal }}Ultimate.webp"
-    ></app-ultimate-tracker>
-  </div>
+  }
 </div>

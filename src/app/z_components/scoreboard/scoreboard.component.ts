@@ -1,4 +1,4 @@
-import { Component, inject, Input } from "@angular/core";
+import { Component, computed, inject } from "@angular/core";
 import { PlayerscoreComponent } from "../playerscore/playerscore.component";
 import { DataModelService } from "../../services/dataModel.service";
 
@@ -10,4 +10,6 @@ import { DataModelService } from "../../services/dataModel.service";
 })
 export class ScoreboardComponent {
   dataModel = inject(DataModelService);
+
+  isShown = computed(() => this.dataModel.match().roundPhase === "shopping");
 }

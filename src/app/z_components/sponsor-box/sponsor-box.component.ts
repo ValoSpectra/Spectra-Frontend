@@ -1,4 +1,5 @@
-import { Component, OnInit, signal } from "@angular/core";
+import { Component, inject, OnInit, signal } from "@angular/core";
+import { DataModelService } from "../../services/dataModel.service";
 
 @Component({
   selector: "app-sponsor-box",
@@ -7,10 +8,17 @@ import { Component, OnInit, signal } from "@angular/core";
   styleUrl: "./sponsor-box.component.css",
 })
 export class SponsorBoxComponent implements OnInit {
-  isShown = signal(false);
+  dataModel = inject(DataModelService);
+
+  currentIndex = signal(0);
+
   ngOnInit(): void {
     setInterval(() => {
-      this.isShown.update((isShown) => !isShown);
-    }, 3000);
+      this.currentIndex.update((i) => {
+        let ret = i + 1;
+        ret %= this.dataModel.sponsorInfo().sponsors.length;
+        return ret;
+      });
+    }, this.dataModel.sponsorInfo().duration);
   }
 }
