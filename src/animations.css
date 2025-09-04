@@ -35,6 +35,17 @@
       transform: scale(0, 1.5);
     }
   }
+
+  --animate-p: pulse-highlight 200ms;
+  @keyframes pulse-highlight {
+    from {
+      opacity: 0;
+      filter: brightness(80%);
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 @utility animate-duration-* {

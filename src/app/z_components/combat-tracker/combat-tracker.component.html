@@ -8,6 +8,7 @@
       @for (player of dataModel.teams()[0].players; track $index) {
         <app-player-combat-card
           [player]="player"
+          [playerHealth]="player.health"
           [right]="false"
           [color]="dataModel.teams()[0].isAttacking ? 'attacker' : 'defender'"
         ></app-player-combat-card>
