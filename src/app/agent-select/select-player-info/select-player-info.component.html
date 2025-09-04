@@ -17,7 +17,7 @@
       />
     </div>
     <div class="player-name">
-      {{ player.name }}
+      {{ player.fullName | nameOverride: player.name : getOverrideNames() }}
     </div>
     <div class="player-gradient" [ngClass]="color"></div>
   </div>

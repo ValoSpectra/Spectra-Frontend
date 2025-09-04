@@ -4,6 +4,7 @@
       <app-select-player-info
         *ngFor="let player of teamLeft.players; trackBy: trackByPlayerId"
         [player]="player"
+        [overrideNames]="match?.tools?.nameOverrides?.overrides"
         [color]="teamLeft.isAttacking ? 'attacker' : 'defender'"
       />
     </div>
@@ -27,6 +28,7 @@
       <app-select-player-info
         *ngFor="let player of teamRight.players; trackBy: trackByPlayerId"
         [player]="player"
+        [overrideNames]="match?.tools?.nameOverrides?.overrides"
         [color]="teamRight.isAttacking ? 'attacker' : 'defender'"
       />
     </div>

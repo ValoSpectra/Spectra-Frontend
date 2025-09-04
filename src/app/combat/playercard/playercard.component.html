@@ -106,7 +106,9 @@
           </div>
         </div>
         <div class="username-container">
-          <div class="username-title" [class]="side">{{ player.name }}</div>
+          <div class="username-title" [class]="side">
+            {{ player.fullName | nameOverride: player.name : getOverrideNames() }}
+          </div>
           <img
             class="captain-icon"
             *ngIf="player.isCaptain"

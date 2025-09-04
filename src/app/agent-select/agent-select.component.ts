@@ -104,9 +104,29 @@ export class AgentSelectComponent implements OnInit, AfterViewInit {
 
     this.teamLeft = this.match.teams[0];
     this.teamRight = this.match.teams[1];
+
+    // Construct map for name overrides if it's a string (from JSON). The server might keep it as JSON to avoid issues.
+    const tempOverrides = this.match?.tools?.nameOverrides?.overrides || null;
+    if (typeof tempOverrides === "string") {
+      this.match.tools.nameOverrides.overrides = this.jsonToMap(tempOverrides);
+    }
   }
 
   trackByPlayerId(index: number, player: any) {
     return player.playerId;
+  }
+
+  private jsonToMap(json: string): Map<string, string> {
+    try {
+      const obj = JSON.parse(json);
+      if (Array.isArray(obj)) {
+        return new Map(obj);
+      } else {
+        throw new Error("Invalid JSON format for Map");
+      }
+    } catch (error) {
+      console.error("Failed to parse JSON to Map:", error);
+      return new Map();
+    }
   }
 }
