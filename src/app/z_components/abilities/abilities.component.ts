@@ -8,6 +8,7 @@ import { Component, Input } from "@angular/core";
 })
 export class AbilitiesComponent {
   @Input() player!: any;
+  @Input() right = false;
 
   isAvailable(availablility: number): boolean {
     availablility = this.clamp(availablility, 0, 1);

@@ -9,17 +9,29 @@
 
   <!-- playername container -->
   <div
-    class="relative flex flex-col vw-128 px-8 pt-1.5 items-start"
+    class="relative flex flex-col min-vw-128 px-8 pt-1.5 items-start"
     [class]="'bg-playerinfo-' + backgroundClassSuffix()"
     [class.!items-end]="right"
   >
-    <app-abilities-new class="vw-96 vh-22" [player]="player"></app-abilities-new>
-    <div class="flex flex-row gap-1 items-center" [class.flex-row-reverse]="right">
-      <app-shield-icon [type]="player.armorName" [side]="color"></app-shield-icon>
-      <p class="font-montserrat font-extrabold text-xl text-center" [class]="textColor()">
-        {{ player.health }}
-      </p>
-      <p class="font-montserrat font-bold text-xs self-end mb-1" [class]="textColor()">
+    <app-abilities-new class="vw-96 vh-22" [player]="player" [right]="right"></app-abilities-new>
+    <div class="flex flex-row items-center vh-28" [class.flex-row-reverse]="right">
+      <div class="max-vw-64 flex" [class.flex-row-reverse]="right">
+        <!-- important for animation consistency -->
+        @if (player.isAlive) {
+          <div
+            class="flex flex-row gap-1 items-center overflow-hidden"
+            [class.flex-row-reverse]="right"
+            animate.enter="animate-collapse-side-in animate-duration-250"
+            animate.leave="animate-collapse-side-out animate-duration-200"
+          >
+            <app-shield-icon [type]="player.armorName" [side]="color"></app-shield-icon>
+            <p class="font-montserrat font-extrabold text-xl text-center" [class]="textColor()">
+              {{ player.health }}
+            </p>
+          </div>
+        }
+      </div>
+      <p class="font-montserrat font-bold text-xs self-end mb-1 mx-1" [class]="textColor()">
         {{ player.kills }}/{{ player.deaths }}/{{ player.assists }}
       </p>
     </div>
@@ -30,7 +42,7 @@
       <div
         class="absolute bottom-0 vh-3 transition-all"
         animate.enter="animate-collapse-side-in animate-duration-250"
-        animate.leave="animate-collapse-side-out animate-duration-100"
+        animate.leave="animate-collapse-side-out animate-duration-200"
         [class]="backgroundColor()"
         [class.left-0]="!right"
         [class.right-0]="right"
@@ -44,7 +56,7 @@
     <div
       class="flex flex-col vw-186 px-4 justify-center overflow-hidden"
       animate.enter="animate-collapse-side-in animate-duration-250"
-      animate.leave="animate-collapse-side-out animate-duration-100"
+      animate.leave="animate-collapse-side-out animate-duration-200"
       [class.items-end]="right"
       [class]="'bg-weaponinfo-' + backgroundClassSuffix()"
     >

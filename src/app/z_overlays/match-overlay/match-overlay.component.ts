@@ -140,7 +140,7 @@ export class MatchOverlayComponent implements OnInit {
               name: "Test",
               playerId: 0,
               isAlive: true,
-              agentInternal: "Wushu",
+              agentInternal: "Smonk",
               isObserved: false,
               armorName: "Heavy",
               money: 2100,
