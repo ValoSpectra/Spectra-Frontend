@@ -1,7 +1,7 @@
 <div class="relative flex flex-row justify-center items-center vh-25">
   @if (full !== max) {
     <div
-      class="absolute flex flex-row-gap-0.5 justify-center items-center"
+      class="absolute flex flex-row-gap-0.5 justify-center items-center animate-duration-150"
       animate.enter="animate-collapse-in"
       animate.leave="animate-collapse-out"
     >
@@ -13,6 +13,11 @@
       }
     </div>
   } @else {
-    <img class="vw-25" [src]="image" />
+    <img
+      class="vw-25 animate-duration-150"
+      [src]="image"
+      animate.enter="animate-fade-in"
+      animate.leave="animate-fade-out"
+    />
   }
 </div>

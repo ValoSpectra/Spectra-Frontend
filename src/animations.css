@@ -10,22 +10,22 @@
     }
   }
 
-  --animate-fold-in: fold-in 0.1s ease-out;
-  --animate-fold-out: fold-in 0.25s ease-in reverse;
-  @keyframes fold-in {
+  --animate-collapse-side-in: collapse-side-in 0.1s ease-out;
+  --animate-collapse-side-out: collapse-side-in 0.25s ease-in reverse;
+  @keyframes collapse-side-in {
     0% {
       width: 0;
       opacity: 0;
     }
     100% {
-      width: *;
+      width: calc(auto);
       opacity: 1;
     }
   }
 
-  --animate-collapse-in: collapse 0.15s reverse;
-  --animate-collapse-out: collapse 0.15s;
-  @keyframes collapse {
+  --animate-collapse-center-in: collapse-center 0.15s reverse;
+  --animate-collapse-center-out: collapse-center 0.15s;
+  @keyframes collapse-center {
     0% {
       opacity: 1;
       transform: scale(1, 1);
@@ -35,4 +35,8 @@
       transform: scale(0, 1.5);
     }
   }
+}
+
+@utility animate-duration-* {
+  animation-duration: calc(--value(integer) * 1ms);
 }
