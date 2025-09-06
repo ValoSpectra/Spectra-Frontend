@@ -41,7 +41,12 @@ export class PlayerCombatCardComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes["playerHealth"] && changes["playerHealth"].previousValue !== undefined) {
+    const healthChanges = changes["playerHealth"];
+    if (
+      healthChanges &&
+      healthChanges.previousValue !== undefined &&
+      healthChanges.previousValue !== 0
+    ) {
       this.onPlayerHealthChanged();
     }
   }

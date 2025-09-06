@@ -2,8 +2,8 @@
   @if (full !== max) {
     <div
       class="absolute flex flex-row-gap-0.5 justify-center items-center animate-duration-150"
-      animate.enter="animate-collapse-in"
-      animate.leave="animate-collapse-out"
+      animate.enter="animate-collapse-center-in"
+      animate.leave="animate-collapse-center-out"
     >
       @for (i of numSequence(full); track $index) {
         <img class="vw-10 vh-10" src="assets/misc/ultimate-pip-full.svg" />
