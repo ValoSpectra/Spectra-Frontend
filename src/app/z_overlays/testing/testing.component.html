@@ -1,0 +1,124 @@
+<app-match-overlay></app-match-overlay>
+
+<div class="absolute top-0 left-0 -z-3 aspect-video">
+  <img class="" src="assets/backgrounds/bg1.webp" />
+</div>
+
+<!-- general buttons -->
+<div class="absolute pos-x-center pos-y-350 flex flex-row gap-1">
+  <button (click)="changeRoundPhase()">Change Round Phase</button>
+  <button (click)="swapTeamColors()">Swap Team Colors</button>
+  <button [class.hidden]="dataModel.match().spikeState.planted" (click)="plantSpike()">
+    Plant Spike
+  </button>
+  <button [class.hidden]="!dataModel.match().spikeState.planted" (click)="defuseSpike()">
+    Detonate/Defuse Spike
+  </button>
+  <button (click)="toggleInterface()">Toggle Interface</button>
+  <button (click)="switchBackground()">Switch Background</button>
+</div>
+
+<!-- team buttons -->
+@if (showInterface()) {
+  <div class="absolute pos-x-center pos-y-500 vw-1720 flex flex-row justify-between">
+    @for (team of dataModel.teams(); track $index) {
+      <div class="flex flex-row gap-1">
+        <!-- <button [class.hidden]="" (click)="addPlayer($index)">Add Player</button>
+      <button [class.hidden]="" (click)="removePlayer($index)">Remove Player</button> -->
+        <button [class.hidden]="" (click)="winRound($index)">Win Round</button>
+      </div>
+    }
+  </div>
+}
+
+@if (showInterface()) {
+  <div class="absolute pos-x-center pos-y-600 vw-1720 flex flex-row justify-between">
+    <!-- left team buttons -->
+    <div class="flex flex-col gap-15">
+      @for (player of dataModel.teams()[0].players; track $index) {
+        <div class="flex flex-row gap-1">
+          <button [class.hidden]="!player.isAlive" (click)="killPlayer(0, $index)">Kill</button>
+          <button [class.hidden]="player.isAlive" (click)="revivePlayer(0, $index)">Revive</button>
+          <button
+            [class.hidden]="!player.isAlive || player.ultReady"
+            (click)="giveUltPoint(0, $index)"
+          >
+            Give Ult Point
+          </button>
+          <button
+            [class.hidden]="!player.isAlive || !player.ultReady"
+            (click)="useUltimate(0, $index)"
+          >
+            Use Ult
+          </button>
+          <button [class.hidden]="!player.isAlive" (click)="changeShield(0, $index)">
+            Change Shield
+          </button>
+          <button [class.hidden]="!player.isAlive" (click)="changeWeapon(0, $index)">
+            Change Weapon
+          </button>
+          <button [class.hidden]="player.isCaptain" (click)="makeCaptain(0, $index)">
+            Make Captain
+          </button>
+          <button
+            [class.hidden]="!player.isAlive || player.isObserved"
+            (click)="spectate(0, $index)"
+          >
+            Spectate
+          </button>
+          <button
+            [class.hidden]="!player.isAlive || player.hasSpike || !dataModel.teams()[0].isAttacking"
+            (click)="giveSpike(0, $index)"
+          >
+            Give Spike
+          </button>
+          <button (click)="changeStats(0, $index)">Change Stats</button>
+        </div>
+      }
+    </div>
+
+    <!-- right team buttons -->
+    <div class="flex flex-col gap-15">
+      @for (player of dataModel.teams()[1].players; track $index) {
+        <div class="flex flex-row-reverse gap-1">
+          <button [class.hidden]="!player.isAlive" (click)="killPlayer(1, $index)">Kill</button>
+          <button [class.hidden]="player.isAlive" (click)="revivePlayer(1, $index)">Revive</button>
+          <button
+            [class.hidden]="!player.isAlive || player.ultReady"
+            (click)="giveUltPoint(1, $index)"
+          >
+            Give Ult Point
+          </button>
+          <button
+            [class.hidden]="!player.isAlive || !player.ultReady"
+            (click)="useUltimate(1, $index)"
+          >
+            Use Ult
+          </button>
+          <button [class.hidden]="!player.isAlive" (click)="changeShield(1, $index)">
+            Change Shield
+          </button>
+          <button [class.hidden]="!player.isAlive" (click)="changeWeapon(1, $index)">
+            Change Weapon
+          </button>
+          <button [class.hidden]="player.isCaptain" (click)="makeCaptain(1, $index)">
+            Make Captain
+          </button>
+          <button
+            [class.hidden]="!player.isAlive || player.isObserved"
+            (click)="spectate(1, $index)"
+          >
+            Spectate
+          </button>
+          <button
+            [class.hidden]="!player.isAlive || player.hasSpike || !dataModel.teams()[1].isAttacking"
+            (click)="giveSpike(1, $index)"
+          >
+            Give Spike
+          </button>
+          <button (click)="changeStats(1, $index)">Change Stats</button>
+        </div>
+      }
+    </div>
+  </div>
+}

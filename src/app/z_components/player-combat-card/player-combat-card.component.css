@@ -1,0 +1,93 @@
+.bg-playerinfo-defender-left {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(var(--defender-color-rgb), 0.3) 0%,
+      rgba(var(--defender-color-rgb), 0) 100%
+    ),
+    rgba(15, 25, 35, 0.6);
+}
+
+.bg-playerinfo-attacker-left {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(var(--attacker-color-rgb), 0.5) 0%,
+      rgba(var(--attacker-color-rgb), 0) 100%
+    ),
+    rgba(15, 25, 35, 0.6);
+}
+
+.bg-playerinfo-defender-right {
+  background:
+    linear-gradient(
+      270deg,
+      rgba(var(--defender-color-rgb), 0.3) 0%,
+      rgba(var(--defender-color-rgb), 0) 100%
+    ),
+    rgba(15, 25, 35, 0.6);
+}
+
+.bg-playerinfo-attacker-right {
+  background:
+    linear-gradient(
+      270deg,
+      rgba(var(--attacker-color-rgb), 0.5) 0%,
+      rgba(var(--attacker-color-rgb), 0) 100%
+    ),
+    rgba(15, 25, 35, 0.6);
+}
+
+.bg-playerinfo-observed-left {
+  background:
+    linear-gradient(90deg, rgba(225, 181, 22, 0.3) 0%, rgba(225, 181, 22, 0) 100%),
+    rgba(15, 25, 35, 0.7);
+}
+
+.bg-playerinfo-observed-right {
+  background:
+    linear-gradient(270deg, rgba(225, 181, 22, 0.3) 0%, rgba(225, 181, 22, 0) 100%),
+    rgba(15, 25, 35, 0.7);
+}
+
+/* Weapon info container */
+
+.bg-weaponinfo-defender-left {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--defender-color-shield-currency-rgb), 0.5) 0%,
+    rgba(var(--defender-color-rgb), 0.2) 58.5%,
+    rgba(var(--defender-color-rgb), 0.01) 90.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.bg-weaponinfo-attacker-left {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--attacker-color-secondary-rgb), 0.5) 0%,
+    rgba(var(--attacker-color-rgb), 0.3) 58.5%,
+    rgba(var(--attacker-color-rgb), 0.01) 90.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.bg-weaponinfo-defender-right {
+  background: linear-gradient(
+    270deg,
+    rgba(var(--defender-color-shield-currency-rgb), 0.5) 0%,
+    rgba(var(--defender-color-rgb), 0.2) 58.5%,
+    rgba(var(--defender-color-rgb), 0.01) 90.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.bg-weaponinfo-attacker-right {
+  background: linear-gradient(
+    270deg,
+    rgba(var(--attacker-color-secondary-rgb), 0.5) 0%,
+    rgba(var(--attacker-color-rgb), 0.3) 58.5%,
+    rgba(var(--attacker-color-rgb), 0.01) 90.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}

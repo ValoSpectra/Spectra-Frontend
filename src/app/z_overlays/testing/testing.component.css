@@ -1,0 +1,11 @@
+button {
+  color: white;
+  background-color: #0f1923d9;
+  border: 2px groove gray;
+  padding: 4px;
+  font-family: Montserrat, Helvetica;
+  max-height: 28px;
+  font-size: 13.333px;
+  line-height: normal;
+  box-sizing: border-box;
+}
