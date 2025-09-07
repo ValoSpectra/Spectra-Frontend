@@ -36,7 +36,7 @@
     <!-- left team buttons -->
     <div class="flex flex-col gap-15">
       @for (player of dataModel.teams()[0].players; track $index) {
-        <div class="flex flex-row gap-1">
+        <div class="flex flex-row gap-1 hover:opacity-100 opacity-60">
           <button [class.hidden]="!player.isAlive" (click)="killPlayer(0, $index)">Kill</button>
           <button [class.hidden]="player.isAlive" (click)="revivePlayer(0, $index)">Revive</button>
           <button
@@ -80,7 +80,7 @@
     <!-- right team buttons -->
     <div class="flex flex-col gap-15">
       @for (player of dataModel.teams()[1].players; track $index) {
-        <div class="flex flex-row-reverse gap-1">
+        <div class="flex flex-row-reverse gap-1 hover:opacity-100 opacity-60">
           <button [class.hidden]="!player.isAlive" (click)="killPlayer(1, $index)">Kill</button>
           <button [class.hidden]="player.isAlive" (click)="revivePlayer(1, $index)">Revive</button>
           <button
