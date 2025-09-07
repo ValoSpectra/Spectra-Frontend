@@ -82,10 +82,8 @@
       "
       [@spike]
     >
-      <img
-        class="spike-icon"
-        src="../../assets/misc/Spike_top_{{ blinkState ? 'light' : 'dark' }}.svg"
-      />
+      <img class="spike-icon" src="../../assets/misc/Spike_top_light.svg" [hidden]="!blinkState" />
+      <img class="spike-icon" src="../../assets/misc/Spike_top_dark.svg" [hidden]="blinkState" />
     </div>
   </div>
   <div class="round-number">{{ "topscore.round" | translate: { rounds: match.roundNumber } }}</div>
