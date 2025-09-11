@@ -37,3 +37,24 @@
     rgba(var(--attacker-color-secondary-rgb), 0) 100%
   );
 }
+
+@keyframes animations-reasons {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.animate-reasons-in {
+  animation: animations-reasons 0.15s reverse ease-in-out;
+  will-change: opacity, transform;
+}
+
+.animate-reasons-out {
+  animation: animations-reasons 0.15s ease-in-out;
+  will-change: opacity, transform;
+}

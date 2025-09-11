@@ -17,3 +17,45 @@
     rgba(15, 25, 35, 0) 100%
   );
 }
+
+@keyframes animations-scoreboard {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(15rem);
+  }
+}
+
+.animate-scoreboard-in {
+  animation: animations-scoreboard 0.15s reverse ease-in-out;
+  will-change: opacity, transform;
+}
+
+.animate-scoreboard-out {
+  animation: animations-scoreboard 0.15s ease-in-out;
+  will-change: opacity, transform;
+}
+
+@keyframes animations-teamnames {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(15rem);
+  }
+}
+
+.animate-teamnames-in {
+  animation: animations-teamnames 0.15s reverse ease-in-out;
+  will-change: opacity, transform;
+}
+
+.animate-teamnames-out {
+  animation: animations-teamnames 0.15s ease-in-out;
+  will-change: opacity, transform;
+}

@@ -1,8 +1,8 @@
 @if (isShown()) {
   <div
-    class="flex flex-col max-w-150 vh-100 items-center pb-1 bg-background rounded-md py-0"
-    animate.enter="animate-fade-in"
-    animate.leave="animate-fade-out"
+    class="flex flex-col max-w-150 vh-100 items-center pb-1 bg-background rounded-sm py-0"
+    animate.enter="animate-reasons-in animate-duration-300"
+    animate.leave="animate-reasons-out animate-duration-300"
   >
     @for (team of dataModel.match().teams; track $index) {
       <div
