@@ -44,8 +44,14 @@
         {{ player.kills }}/{{ player.deaths }}/{{ player.assists }}
       </p>
     </div>
-    <div class="font-montserrat font-semibold text-white -mt-1.5 max-vw-160 truncate">
+    <div
+      class="flex flex-row gap-1 font-montserrat font-semibold text-white -mt-1.5 max-vw-160 truncate"
+      [class.flex-row-reverse!]="right"
+    >
       {{ player.name }}
+      @if (player.isCaptain) {
+        <img class="self-baseline vw-17 vh-17" src="assets/misc/TeamCaptain.svg" />
+      }
     </div>
     @if (player.isAlive) {
       <div
