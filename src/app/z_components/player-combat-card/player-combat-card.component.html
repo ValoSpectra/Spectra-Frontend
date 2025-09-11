@@ -25,7 +25,7 @@
             animate.leave="animate-collapse-side-out animate-duration-200"
             [class.animate-p]="healthAnimationRunning"
           >
-            <app-shield-icon [type]="player.armorName" [side]="color"></app-shield-icon>
+            <app-shield-icon [type]="player.armorName" [side]="color()"></app-shield-icon>
             <p class="font-montserrat font-extrabold text-xl text-center" [class]="textColor()">
               {{ player.health }}
             </p>

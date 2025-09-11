@@ -1,13 +1,4 @@
-import {
-  Component,
-  computed,
-  DoCheck,
-  effect,
-  inject,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from "@angular/core";
+import { Component, computed, input, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { UltimateTrackerComponent } from "../ultimate-tracker/ultimate-tracker.component";
 import { AbilitiesComponent } from "../abilities/abilities.component";
 import { ShieldIconComponent } from "../../combat/playercard/shield-icon/shield-icon.component";
@@ -23,17 +14,18 @@ export class PlayerCombatCardComponent implements OnChanges {
   @Input() playerHealth!: number; //only needed so change detection can give us an event for health change
 
   @Input() right = false;
-  @Input() color: "attacker" | "defender" = "defender";
+  readonly color = input<string>();
+  // @Input() color: "attacker" | "defender" = "defender";
 
   readonly backgroundClassSuffix = computed(() => {
-    return `${this.player.isObserved ? "observed" : this.color}-${this.right ? "right" : "left"}`;
+    return `${this.player.isObserved ? "observed" : this.color()}-${this.right ? "right" : "left"}`;
   });
 
   readonly textColor = computed(() =>
-    this.color == "attacker" ? "text-attacker-shield/80" : "text-defender-shield/80",
+    this.color() == "attacker" ? "text-attacker-shield/80" : "text-defender-shield/80",
   );
   readonly backgroundColor = computed(() =>
-    this.color == "attacker" ? "bg-attacker-shield" : "bg-defender-shield",
+    this.color() == "attacker" ? "bg-attacker-shield" : "bg-defender-shield",
   );
 
   clamp(value: number, min: number, max: number): number {

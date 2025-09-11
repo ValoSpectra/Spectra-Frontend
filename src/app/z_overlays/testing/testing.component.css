@@ -8,4 +8,5 @@ button {
   font-size: 13.333px;
   line-height: normal;
   box-sizing: border-box;
+  cursor: pointer;
 }
