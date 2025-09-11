@@ -1,6 +1,6 @@
 @theme {
-  --animate-fade-in: fade-in 1s ease-in;
-  --animate-fade-out: fade-in 1s ease-in reverse;
+  --animate-fade-in: fade-in 0.5s ease-in;
+  --animate-fade-out: fade-in 0.5s ease-in reverse;
   @keyframes fade-in {
     0% {
       opacity: 0;
@@ -50,4 +50,19 @@
 
 @utility animate-duration-* {
   animation-duration: calc(--value(integer) * 1ms) !important;
+}
+
+@utility animate-delay-* {
+  animation-delay: calc(--value(integer) * 1ms) !important;
+}
+@source inline("animate-delay-{0..2000..50}");
+
+@utility animate-style-keep {
+  animation-fill-mode: forwards;
+}
+@utility animate-style-early {
+  animation-fill-mode: backwards;
+}
+@utility animate-style-both {
+  animation-fill-mode: both;
 }

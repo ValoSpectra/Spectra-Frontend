@@ -1,0 +1,31 @@
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in-left cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: opacity;
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: opacity;
+}

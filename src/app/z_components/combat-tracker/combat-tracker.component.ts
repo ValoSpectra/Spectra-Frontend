@@ -12,4 +12,9 @@ export class CombatTrackerComponent {
   dataModel = inject(DataModelService);
 
   isShown = computed(() => this.dataModel.match().roundPhase !== "shopping");
+
+  delayClass(index: number): string {
+    const ret = `animate-delay-${(5 - index) * 50 + 200}`;
+    return ret;
+  }
 }

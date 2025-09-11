@@ -1,9 +1,5 @@
 @if (isShown()) {
-  <div
-    class="vw-1920 vh-430 flex flex-row justify-between"
-    animate.enter="animate-fade-in"
-    animate.leave="animate-fade-out"
-  >
+  <div class="vw-1920 vh-430 flex flex-row justify-between">
     <div class="flex flex-col gap-3.5">
       @for (player of dataModel.teams()[0].players; track $index) {
         <app-player-combat-card
@@ -12,6 +8,9 @@
           [isObserved]="player.isObserved"
           [right]="false"
           [color]="dataModel.teams()[0].isAttacking ? 'attacker' : 'defender'"
+          [class]="delayClass($index)"
+          animate.enter="animate-slide-in animate-duration-3000 animate-style-early!"
+          animate.leave=""
         ></app-player-combat-card>
       }
     </div>
@@ -23,6 +22,9 @@
           [isObserved]="player.isObserved"
           [right]="true"
           [color]="dataModel.teams()[1].isAttacking ? 'attacker' : 'defender'"
+          [class]="delayClass($index)"
+          animate.enter="animate-slide-in-right animate-duration-3000 animate-style-early!"
+          animate.leave=""
         ></app-player-combat-card>
       }
     </div>
