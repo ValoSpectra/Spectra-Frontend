@@ -1,0 +1,15 @@
+.animate-spike-slide-in {
+  animation: spike-slide-in 1s ease-out;
+}
+.animate-spike-slide-out {
+  animation: spike-slide-in 1s reverse;
+}
+
+@keyframes spike-slide-in {
+  from {
+    transform: translateY(-150%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}

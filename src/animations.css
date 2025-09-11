@@ -49,5 +49,5 @@
 }
 
 @utility animate-duration-* {
-  animation-duration: calc(--value(integer) * 1ms);
+  animation-duration: calc(--value(integer) * 1ms) !important;
 }

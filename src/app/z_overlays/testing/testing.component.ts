@@ -41,20 +41,31 @@ export class TestingComponent {
     });
   }
 
+  spikeTimer?: NodeJS.Timeout;
+
   plantSpike() {
     this.dataModel.match.update((v) => {
       const ret = v;
-
+      ret.spikeState.planted = true;
+      ret.spikeState.defused = false;
+      ret.spikeState.detonated = false;
       return ret;
     });
+    this.spikeTimer = setTimeout(() => {
+      this.defuseSpike();
+    }, 45 * 1000);
   }
 
   defuseSpike() {
     this.dataModel.match.update((v) => {
       const ret = v;
-
+      ret.spikeState.planted = false;
+      ret.spikeState.defused = true;
+      ret.spikeState.detonated = false;
       return ret;
     });
+    clearTimeout(this.spikeTimer);
+    this.spikeTimer = undefined;
   }
 
   showInterface = signal(true);

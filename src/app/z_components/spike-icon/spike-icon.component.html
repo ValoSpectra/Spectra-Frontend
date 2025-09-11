@@ -1,0 +1,18 @@
+@if (show()) {
+  <div
+    class="relative vw-138 vh-71 bg-timer"
+    animate.enter="animate-spike-slide-in animate-duration-300"
+    animate.leave="animate-spike-slide-out animate-duration-300"
+  >
+    <img
+      class="absolute top-1/5 left-1/2 -translate-x-1/2 aspect-square"
+      [class.hidden]="!blinkState"
+      src="assets/misc/Spike_top_light.svg"
+    />
+    <img
+      class="absolute top-1/5 left-1/2 -translate-x-1/2 aspect-square"
+      [class.hidden]="blinkState"
+      src="assets/misc/Spike_top_dark.svg"
+    />
+  </div>
+}

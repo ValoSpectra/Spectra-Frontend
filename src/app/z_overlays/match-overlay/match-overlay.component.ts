@@ -10,6 +10,7 @@ import { RoundreasonsComponent } from "../../z_components/roundreasons/roundreas
 import { ScoreboardComponent } from "../../z_components/scoreboard/scoreboard.component";
 import { DataModelService } from "../../services/dataModel.service";
 import { CombatTrackerComponent } from "../../z_components/combat-tracker/combat-tracker.component";
+import { SpikeIconComponent } from "../../z_components/spike-icon/spike-icon.component";
 
 @Component({
   selector: "app-match-overlay",
@@ -24,6 +25,7 @@ import { CombatTrackerComponent } from "../../z_components/combat-tracker/combat
     RoundreasonsComponent,
     ScoreboardComponent,
     CombatTrackerComponent,
+    SpikeIconComponent,
   ],
   templateUrl: "./match-overlay.component.html",
   styleUrl: "./match-overlay.component.css",
@@ -40,7 +42,7 @@ export class MatchOverlayComponent implements OnInit {
       isRunning: true,
       roundNumber: 10,
       roundPhase: "combat",
-      spikeState: { planted: false },
+      spikeState: { planted: false, defused: false, detonated: false },
       map: "Ascent",
       switchRound: 12,
       firstOtRound: 25,
