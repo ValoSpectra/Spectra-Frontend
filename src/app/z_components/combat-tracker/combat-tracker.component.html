@@ -9,6 +9,7 @@
         <app-player-combat-card
           [player]="player"
           [playerHealth]="player.health"
+          [isObserved]="player.isObserved"
           [right]="false"
           [color]="dataModel.teams()[0].isAttacking ? 'attacker' : 'defender'"
         ></app-player-combat-card>
@@ -18,6 +19,8 @@
       @for (player of dataModel.teams()[1].players; track $index) {
         <app-player-combat-card
           [player]="player"
+          [playerHealth]="player.health"
+          [isObserved]="player.isObserved"
           [right]="true"
           [color]="dataModel.teams()[1].isAttacking ? 'attacker' : 'defender'"
         ></app-player-combat-card>

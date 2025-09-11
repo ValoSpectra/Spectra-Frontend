@@ -10,9 +10,17 @@
   <!-- playername container -->
   <div
     class="relative flex flex-col min-vw-128 px-8 pt-1.5 items-start"
-    [class]="'bg-playerinfo-' + backgroundClassSuffix()"
+    [class]="playerinfoBackgroundClass()"
     [class.!items-end]="right"
   >
+    @if (isObserved()) {
+      <img
+        class="absolute top-2 right-2"
+        [class.left-2!]="right"
+        src="assets/misc/ObserverEye.svg"
+      />
+    }
+
     <app-abilities-new class="vw-96 vh-22" [player]="player" [right]="right"></app-abilities-new>
     <div class="flex flex-row items-center vh-28" [class.flex-row-reverse]="right">
       <div class="max-vw-64 flex" [class.flex-row-reverse]="right">
@@ -59,7 +67,7 @@
       animate.enter="animate-collapse-side-in animate-duration-250"
       animate.leave="animate-collapse-side-out animate-duration-200"
       [class.items-end]="right"
-      [class]="'bg-weaponinfo-' + backgroundClassSuffix()"
+      [class]="weaponInfoBackgroundClass()"
     >
       <div>
         <!-- div needed to image scales correctly -->

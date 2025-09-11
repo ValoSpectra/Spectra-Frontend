@@ -13,14 +13,18 @@ export class PlayerCombatCardComponent implements OnChanges {
   @Input() player!: any;
   @Input() playerHealth!: number; //only needed so change detection can give us an event for health change
 
+  readonly isObserved = input<boolean>(); //only needed so change detection can correctly trigger the color switch
+
   @Input() right = false;
   readonly color = input<string>();
   // @Input() color: "attacker" | "defender" = "defender";
 
-  readonly backgroundClassSuffix = computed(() => {
-    return `${this.player.isObserved ? "observed" : this.color()}-${this.right ? "right" : "left"}`;
+  readonly playerinfoBackgroundClass = computed(() => {
+    return `bg-playerinfo-${this.isObserved() ? "observed" : this.color()}-${this.right ? "right" : "left"}`;
   });
-
+  readonly weaponInfoBackgroundClass = computed(() => {
+    return `bg-weaponinfo-${this.color()}-${this.right ? "right" : "left"}`;
+  });
   readonly textColor = computed(() =>
     this.color() == "attacker" ? "text-attacker-shield/80" : "text-defender-shield/80",
   );
