@@ -11,6 +11,7 @@ import { ScoreboardComponent } from "../../z_components/scoreboard/scoreboard.co
 import { DataModelService } from "../../services/dataModel.service";
 import { CombatTrackerComponent } from "../../z_components/combat-tracker/combat-tracker.component";
 import { SpikeIconComponent } from "../../z_components/spike-icon/spike-icon.component";
+import { EndroundComponent } from "../../z_components/endround/endround.component";
 
 @Component({
   selector: "app-match-overlay",
@@ -26,6 +27,7 @@ import { SpikeIconComponent } from "../../z_components/spike-icon/spike-icon.com
     ScoreboardComponent,
     CombatTrackerComponent,
     SpikeIconComponent,
+    EndroundComponent,
   ],
   templateUrl: "./match-overlay.component.html",
   styleUrl: "./match-overlay.component.css",
@@ -80,6 +82,7 @@ export class MatchOverlayComponent implements OnInit {
           right: "Group B",
         },
         tournamentInfo: {
+          enabled: true,
           name: "",
           logoUrl: "",
           backdropUrl: "",

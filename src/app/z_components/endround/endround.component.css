@@ -1,0 +1,20 @@
+@keyframes swish {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 100%;
+  }
+}
+.animate-swish {
+  animation: swish;
+  will-change: width;
+}
+.animate-swish-out {
+  animation: swish reverse;
+  will-change: width;
+}
+
+.direction {
+  animation-direction: reverse;
+}

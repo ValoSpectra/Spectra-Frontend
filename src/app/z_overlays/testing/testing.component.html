@@ -5,7 +5,7 @@
 </div>
 
 <!-- general buttons -->
-<div class="absolute pos-x-center pos-y-350 flex flex-row gap-1">
+<div class="absolute pos-x-center pos-y-350 flex flex-row gap-1 z-10">
   <button (click)="changeRoundPhase()">Change Round Phase</button>
   <button (click)="swapTeamColors()">Swap Team Colors</button>
   <button [class.hidden]="dataModel.match().spikeState.planted" (click)="plantSpike()">

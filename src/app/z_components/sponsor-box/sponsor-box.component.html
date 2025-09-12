@@ -1,14 +1,13 @@
 @if (dataModel.sponsorInfo().enabled) {
   <div class="vw-240 vh-88 bg-black/60 rounded-b-md relative">
     @for (sponsor of dataModel.sponsorInfo().sponsors; track $index) {
-      @if (currentIndex() === $index) {
-        <img
-          animate.enter="animate-fade-in"
-          animate.leave="animate-fade-out"
-          class="max-vw-156! max-vh-71! absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
-          [src]="sponsor"
-        />
-      }
+      <img
+        animate.enter="animate-fade-in"
+        animate.leave="animate-fade-out"
+        class="max-vw-156! max-vh-71! absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+        [class.hidden]="currentIndex() !== $index"
+        [src]="sponsor"
+      />
     }
   </div>
 }

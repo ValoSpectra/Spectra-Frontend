@@ -21,4 +21,5 @@ export class DataModelService {
   public readonly seedingInfo = computed(() => this.match().tools.seedingInfo);
   public readonly sponsorInfo = computed(() => this.match().tools.sponsorInfo);
   public readonly watermarkInfo = computed(() => this.match().tools.watermarkInfo);
+  public readonly tournamentInfo = computed(() => this.match().tools.tournamentInfo);
 }
