@@ -1,10 +1,10 @@
 @if (dataModel.sponsorInfo().enabled) {
-  <div class="vw-240 vh-88 bg-black/60 rounded-b-md relative">
+  <div class="vw-240 vh-88 relative rounded-b-md bg-black/60">
     @for (sponsor of dataModel.sponsorInfo().sponsors; track $index) {
       <img
         animate.enter="animate-fade-in"
         animate.leave="animate-fade-out"
-        class="max-vw-156! max-vh-71! absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+        class="max-vw-156! max-vh-71! absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         [class.hidden]="currentIndex() !== $index"
         [src]="sponsor"
       />

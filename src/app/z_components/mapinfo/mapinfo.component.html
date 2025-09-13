@@ -1,6 +1,6 @@
 @if (dataModel.seriesInfo().mapInfo.length > 0) {
   <div
-    class="font-montserrat font-extrabold text-white text-[15px] uppercase flex flex-row vh-24 vw-600 rounded-b-lg overflow-hidden"
+    class="font-montserrat vh-24 vw-600 flex flex-row overflow-hidden rounded-b-lg text-[15px] font-extrabold text-white uppercase"
   >
     @for (mapInfo of dataModel.seriesInfo().mapInfo; track $index) {
       <app-mapinfo-content

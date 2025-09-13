@@ -1,10 +1,10 @@
 @if (dataModel.watermarkInfo().spectraWatermark || dataModel.watermarkInfo().customTextEnabled) {
   <div
-    class="pill-background flex flex-row justify-center items-center text-center vw-260 vh-24 rounded-b-lg overflow-hidden font-montserrat font-extrabold text-white text-[15px] uppercase"
+    class="pill-background vw-260 vh-24 font-montserrat flex flex-row items-center justify-center overflow-hidden rounded-b-lg text-center text-[15px] font-extrabold text-white uppercase"
   >
     @if (dataModel.watermarkInfo().spectraWatermark) {
-      <img src="assets/misc/icon.webp" class="px-1 py-0.5 max-w-5 max-h-5 align-middle" />
-      <div class="w-8/10 h-full relative flex justify-center">
+      <img src="assets/misc/icon.webp" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+      <div class="relative flex h-full w-8/10 justify-center">
         @if (currentRotationIndex() === 0) {
           <p class="absolute" animate.enter="animate-fade-in" animate.leave="animate-fade-out">
             Overlay by Spectra

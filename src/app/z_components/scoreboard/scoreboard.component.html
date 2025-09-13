@@ -7,17 +7,17 @@
     <!-- team headers -->
     @for (team of dataModel.teams(); track $index) {
       <div
-        class="vh-64 vw-600 bg-header-fade-left mx-5 rounded-lg flex flex-row items-center"
+        class="vh-64 vw-600 bg-header-fade-left mx-5 flex flex-row items-center rounded-lg"
         [class.bg-header-fade-right]="$index > 0"
         [class.flex-row-reverse!]="$index > 0"
       >
-        <img class="max-w-4/5 max-h-4/5 mx-2" [src]="team.teamUrl" />
-        <div class="flex flex-col font-unbounded text-white mx-2">
-          <p class="font-extrabold text-4xl">{{ team.teamName }}</p>
-          <div class="font-bold text-xs flex flex-row gap-1" [class.flex-row-reverse!]="$index > 0">
+        <img class="mx-2 max-h-4/5 max-w-4/5" [src]="team.teamUrl" />
+        <div class="font-unbounded mx-2 flex flex-col text-white">
+          <p class="text-4xl font-extrabold">{{ team.teamName }}</p>
+          <div class="flex flex-row gap-1 text-xs font-bold" [class.flex-row-reverse!]="$index > 0">
             <img class="vw-12 vh-12 mt-0.5" src="assets/misc/ValorantCreditsWhite.svg" />
             <p class="">{{ team.spentThisRound }}</p>
-            <p class="uppercase text-white/60">spent this round</p>
+            <p class="text-white/60 uppercase">spent this round</p>
           </div>
         </div>
       </div>
@@ -25,12 +25,12 @@
   </div>
 
   <div
-    class="vw-1920 flex flex-row justify-between mt-2"
+    class="vw-1920 mt-2 flex flex-row justify-between"
     animate.leave="animate-scoreboard-out animate-duration-300"
   >
     <!-- Score blocks -->
     <div
-      class="flex flex-col bg-background rounded-sm px-5 py-4 gap-2.5 mx-5"
+      class="bg-background mx-5 flex flex-col gap-2.5 rounded-sm px-5 py-4"
       animate.enter="animate-scoreboard-in animate-duration-300"
     >
       @for (player of dataModel.teams()[0].players; track $index) {
@@ -42,7 +42,7 @@
       }
     </div>
     <div
-      class="flex flex-col bg-background rounded-sm px-5 py-4 gap-2.5 mx-5"
+      class="bg-background mx-5 flex flex-col gap-2.5 rounded-sm px-5 py-4"
       animate.enter="animate-scoreboard-in animate-duration-300"
     >
       @for (player of dataModel.teams()[1].players; track $index) {

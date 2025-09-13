@@ -1,5 +1,5 @@
 <div
-  class="vh-74 w-full flex flex-row gap-4 items-center"
+  class="vh-74 flex w-full flex-row items-center gap-4"
   [class.flex-row-reverse!]="right"
   [class]="backgroundClass()"
 >
@@ -8,8 +8,8 @@
     [class.flip]="right"
     src="assets/agents/{{ player.agentInternal }}Icon.webp"
   />
-  <div class="vw-120 flex flex-col gap-1 items-center justify-center">
-    <p class="font-montserrat font-semibold text-white text-nowrap">{{ player.name }}</p>
+  <div class="vw-120 flex flex-col items-center justify-center gap-1">
+    <p class="font-montserrat font-semibold text-nowrap text-white">{{ player.name }}</p>
     <app-ultimate-tracker
       class="-mt-1"
       [max]="player.maxUltPoints"
@@ -20,7 +20,7 @@
   <img class="vw-36 vh-36" src="assets/shields/{{ player.armorName }}.webp" />
   <app-abilities-new class="vw-96" [player]="player"></app-abilities-new>
   <div
-    class="vw-106 font-unbounded font-semibold text-white flex flex-row gap-1 mx-4 justify-center"
+    class="vw-106 font-unbounded mx-4 flex flex-row justify-center gap-1 font-semibold text-white"
   >
     <p>{{ player.kills }}</p>
     <p class="text-white/50">/</p>
@@ -35,13 +35,13 @@
       src="assets/weapons/{{ player.highestWeapon }}Killfeed.webp"
     />
   </div>
-  <div class="grow-1 font-montserrat font-bold text-lg text-center flex flex-col">
-    <div class="flex flex-row text-credits-negative/80 gap-0.5 justify-center">
+  <div class="font-montserrat flex grow-1 flex-col text-center text-lg font-bold">
+    <div class="text-credits-negative/80 flex flex-row justify-center gap-0.5">
       <p>-</p>
       <img class="vw-12 vh12" src="assets/misc/ValorantCreditsSpent.svg" />
       <p>{{ player.moneySpent }}</p>
     </div>
-    <div class="flex flex-row text-white/80 gap-0.5 -mt-2 justify-center">
+    <div class="-mt-2 flex flex-row justify-center gap-0.5 text-white/80">
       <img class="vw-12 vh12" src="assets/misc/ValorantCreditsWhite.svg" />
       <p>{{ player.money }}</p>
     </div>

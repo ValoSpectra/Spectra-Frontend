@@ -1,27 +1,27 @@
 <div
-  class="relative top-0 vw-875 vh-200 overflow-hidden animate-duration-300"
+  class="vw-875 vh-200 animate-duration-300 relative top-0 overflow-hidden"
   [class.hidden]="hide"
   [class.animate-swish]="inAnimation"
   [class.animate-swish-out]="outAnimation"
 >
   <div
-    class="relative top-0 left-0 vw-875 vh-200 overflow-hidden flex flex-col justify-center items-center"
+    class="vw-875 vh-200 relative top-0 left-0 flex flex-col items-center justify-center overflow-hidden"
   >
-    <img class="w-full h-full absolute top-0 left-0 -z-1" [src]="tournamentBackgroundUrl()" />
+    <img class="absolute top-0 left-0 -z-1 h-full w-full" [src]="tournamentBackgroundUrl()" />
 
     @if (timeoutInfo().techPause) {
-      <p class="uppercase font-unbounded font-bold text-white text-5xl">Technical Pause</p>
+      <p class="font-unbounded text-5xl font-bold text-white uppercase">Technical Pause</p>
     } @else {
       <img class="max-vh-120 max-vw-400" [src]="timeoutTeam().teamUrl" />
-      <p class="font-unbounded font-bold text-white text-2xl">
+      <p class="font-unbounded text-2xl font-bold text-white">
         {{ timeoutTeam().teamName }} Tactical Timeout
       </p>
-      <div class="absolute bottom-0 w-full vh-23 bg-white/20 flex justify-center items-center">
+      <div class="vh-23 absolute bottom-0 flex w-full items-center justify-center bg-white/20">
         <div
-          class="absolute left-0 h-full bg-white/35 timer-transition"
+          class="timer-transition absolute left-0 h-full bg-white/35"
           [style.width]="timerWidth()"
         ></div>
-        <p class="font-montserrat font-bold text-white text-lg z-2 text-shadow-2xs">
+        <p class="font-montserrat z-2 text-lg font-bold text-white text-shadow-2xs">
           {{ timeoutInfo().timeRemaining }}s
         </p>
       </div>

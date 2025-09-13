@@ -1,15 +1,15 @@
 @if (isShown()) {
   <div
-    class="flex flex-row max-vw-480 vh-90 items-center py-0.5 bg-background rounded-sm"
+    class="max-vw-480 vh-90 bg-background flex flex-row items-center rounded-sm py-0.5"
     animate.enter="animate-reasons-in animate-duration-300"
     animate.leave="animate-reasons-out animate-duration-300"
   >
-    <div class="flex flex-col justify-around items-center vw-80 shrink-0 h-full">
+    <div class="vw-80 flex h-full shrink-0 flex-col items-center justify-around">
       @for (team of dataModel.match().teams; track $index; let teamIndex = $index) {
         <p class="font-unbounded font-extrabold text-white">{{ team.teamTricode }}</p>
       }
     </div>
-    <div class="flex flex-row h-full overflow-hidden justify-end">
+    <div class="flex h-full flex-row justify-end overflow-hidden">
       @for (r of dataModel.teams()[0].roundRecord; track $index; let recordIndex = $index) {
         @if ($index < dataModel.match().roundNumber || $index < 10) {
           @if (
@@ -18,19 +18,19 @@
             <img class="vw-25 h-full" src="assets/misc/swapIcon.svg" />
           }
           @if (r.type !== "upcoming") {
-            <div class="flex flex-col h-full justify-between">
+            <div class="flex h-full flex-col justify-between">
               @for (team of dataModel.teams(); track $index) {
                 @let record = team.roundRecord![recordIndex];
                 <div class="vw-25 mr-0.5 px-1.5" [class]="getBackgroundClass(record, team)">
                   @if (record.type === "lost") {
                     <p
-                      class="my-3 text-center self-center font-unbounded font-extrabold text-white"
+                      class="font-unbounded my-3 self-center text-center font-extrabold text-white"
                     >
                       {{ record.round }}
                     </p>
                   } @else {
                     <img
-                      class="vw-24 vh-24 object-cover my-2"
+                      class="vw-24 vh-24 my-2 object-cover"
                       src="assets/roundWinReason/{{ record.type }}.webp"
                     />
                   }
@@ -38,8 +38,8 @@
               }
             </div>
           } @else {
-            <div class="vw-25 mr-0.5 px-1.5 h-full flex justify-center items-center">
-              <p class="my-3 text-center self-center font-unbounded font-extrabold text-white">
+            <div class="vw-25 mr-0.5 flex h-full items-center justify-center px-1.5">
+              <p class="font-unbounded my-3 self-center text-center font-extrabold text-white">
                 {{ r.round }}
               </p>
             </div>

@@ -1,21 +1,21 @@
-<div class="flex flex-row vw-602 justify-between">
+<div class="vw-602 flex flex-row justify-between">
   @for (team of dataModel.teams(); track $index) {
     <div
-      class="vw-216 vh-63 flex flex-row justify-center relative rounded-md overflow-hidden"
+      class="vw-216 vh-63 relative flex flex-row justify-center overflow-hidden rounded-md"
       [class.flex-row-reverse]="$index > 0"
     >
       <div
-        class="flex flex-row items-center justify-center bg-timer/85 flex-grow"
+        class="bg-timer/85 flex flex-grow flex-row items-center justify-center"
         [class.flex-row-reverse]="$index > 0"
       >
-        <div class="w-2/5 flex justify-center items-center">
-          <img [src]="team.teamUrl" class="w-4/5 h-4/5" />
+        <div class="flex w-2/5 items-center justify-center">
+          <img [src]="team.teamUrl" class="h-4/5 w-4/5" />
         </div>
-        <div class="flex flex-col items-center justify-center max-w-3/5 overflow-hidden">
-          <p class="font-unbounded font-extrabold text-xl uppercase text-white tracking-tighter">
+        <div class="flex max-w-3/5 flex-col items-center justify-center overflow-hidden">
+          <p class="font-unbounded text-xl font-extrabold tracking-tighter text-white uppercase">
             {{ team.teamTricode }}
           </p>
-          <p class="font-montserrat font-extrabold text-xs text-white/60 tracking-tighter">
+          <p class="font-montserrat text-xs font-extrabold tracking-tighter text-white/60">
             {{ $index === 0 ? dataModel.seedingInfo().left : dataModel.seedingInfo().right }}
           </p>
         </div>
@@ -25,10 +25,10 @@
         [class.!bg-attacker-secondary]="team.isAttacking"
       ></div>
       <div
-        class="vw-70 shrink-0 h-full bg-defender-primary flex justify-center items-center"
+        class="vw-70 bg-defender-primary flex h-full shrink-0 items-center justify-center"
         [class.!bg-attacker-primary]="team.isAttacking"
       >
-        <p class="font-montserrat font-bold text-4xl text-white w-fit leading-none">
+        <p class="font-montserrat w-fit text-4xl leading-none font-bold text-white">
           {{ team.roundsWon }}
         </p>
       </div>

@@ -5,7 +5,7 @@
 </div>
 
 <!-- general buttons -->
-<div class="absolute pos-x-center pos-y-350 flex flex-row gap-1 z-10">
+<div class="pos-x-center pos-y-350 absolute z-10 flex flex-row gap-1">
   <button (click)="changeRoundPhase()">Change Round Phase</button>
   <button (click)="swapTeamColors()">Swap Team Colors</button>
   <button (click)="techPause()">Start/End Tech Pause</button>
@@ -21,7 +21,7 @@
 
 <!-- team buttons -->
 @if (showInterface()) {
-  <div class="absolute pos-x-center pos-y-500 vw-1720 flex flex-row justify-between">
+  <div class="pos-x-center pos-y-500 vw-1720 absolute flex flex-row justify-between">
     @for (team of dataModel.teams(); track $index) {
       <div class="flex flex-row gap-1">
         <!-- <button [class.hidden]="" (click)="addPlayer($index)">Add Player</button>
@@ -34,11 +34,11 @@
 }
 
 @if (showInterface()) {
-  <div class="absolute pos-x-center pos-y-600 vw-1720 flex flex-row justify-between">
+  <div class="pos-x-center pos-y-600 vw-1720 absolute flex flex-row justify-between">
     <!-- left team buttons -->
     <div class="flex flex-col gap-15">
       @for (player of dataModel.teams()[0].players; track $index) {
-        <div class="flex flex-row gap-1 hover:opacity-100 opacity-60">
+        <div class="flex flex-row gap-1 opacity-60 hover:opacity-100">
           <button [class.hidden]="!player.isAlive" (click)="killPlayer(0, $index)">Kill</button>
           <button [class.hidden]="player.isAlive" (click)="revivePlayer(0, $index)">Revive</button>
           <button
@@ -82,7 +82,7 @@
     <!-- right team buttons -->
     <div class="flex flex-col gap-15">
       @for (player of dataModel.teams()[1].players; track $index) {
-        <div class="flex flex-row-reverse gap-1 hover:opacity-100 opacity-60">
+        <div class="flex flex-row-reverse gap-1 opacity-60 hover:opacity-100">
           <button [class.hidden]="!player.isAlive" (click)="killPlayer(1, $index)">Kill</button>
           <button [class.hidden]="player.isAlive" (click)="revivePlayer(1, $index)">Revive</button>
           <button
