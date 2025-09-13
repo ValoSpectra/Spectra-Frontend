@@ -1,52 +1,83 @@
-<div class="flex flex-row vh-74" [class.!flex-row-reverse]="right">
+<div class="flex flex-row vh-74" [class.!flex-row-reverse]="right()">
   <img
     class="relative left-7 vh-74 vw-74 z-2"
     [class.grayscale]="!player.isAlive"
-    [class.flip]="right"
-    [class.!-left-7]="right"
+    [class.flip]="right()"
+    [class.!-left-7]="right()"
     src="assets/agents/{{ player.agentInternal }}{{ player.iconNameSuffix }}Icon.webp"
   />
 
   <!-- playername container -->
   <div
-    class="relative flex flex-col min-vw-128 px-8 pt-1.5 items-start"
-    [class]="playerinfoBackgroundClass()"
-    [class.!items-end]="right"
+    class="relative flex flex-col vw-146 pt-1.5 items-start"
+    [class]="[playerinfoBackgroundClass(), getLeftPad(), getRightPad()]"
+    [class.!items-end]="right()"
   >
     @if (isObserved()) {
       <img
         class="absolute top-2 right-2"
-        [class.left-2!]="right"
+        [class.left-2!]="right()"
         src="assets/misc/ObserverEye.svg"
       />
     }
 
-    <app-abilities-new class="vw-96 vh-22" [player]="player" [right]="right"></app-abilities-new>
-    <div class="flex flex-row items-center vh-28" [class.flex-row-reverse]="right">
-      <div class="max-vw-64 flex" [class.flex-row-reverse]="right">
+    <app-abilities-new class="vw-96 vh-22" [player]="player" [right]="right()"></app-abilities-new>
+    <div
+      class="flex flex-row items-center vh-28 vw-144"
+      [class.flex-row-reverse]="right()"
+      [class.justify-between]="player.isAlive"
+      [class.gap-4]="!player.isAlive"
+    >
+      <div class="vw-64 flex" [class.flex-row-reverse]="right()">
         <!-- important for animation consistency -->
         @if (player.isAlive) {
           <div
-            class="flex flex-row gap-1 items-center overflow-hidden"
-            [class.flex-row-reverse]="right"
-            animate.enter="animate-collapse-side-in animate-duration-250"
-            animate.leave="animate-collapse-side-out animate-duration-200"
-            [class.animate-p]="healthAnimationRunning"
+            class="flex flex-row gap-1 items-center"
+            [class.flex-row-reverse]="right()"
+            animate.enter="animate-collapse-side-in animate-duration-200"
+            animate.leave="animate-collapse-side-out animate-duration-150"
           >
-            <app-shield-icon [type]="player.armorName" [side]="color()"></app-shield-icon>
-            <p class="font-montserrat font-extrabold text-xl text-center" [class]="textColor()">
+            <p
+              class="font-montserrat font-extrabold text-xl text-center flex flex-row gap-1 items-center"
+              [class]="textColor()"
+            >
+              <app-shield-icon [type]="player.armorName" [side]="color()"></app-shield-icon>
               {{ player.health }}
             </p>
           </div>
+        } @else {
+          <div
+            class="flex flex-row gap-1 items-center font-montserrat font-semibold"
+            [class]="textColor()"
+          >
+            <img class="vw-12 vh-12" [src]="creditsIcon()" />
+            <p>{{ player.money }}</p>
+          </div>
         }
       </div>
-      <p class="font-montserrat font-bold text-xs self-end mb-1 mx-1" [class]="textColor()">
-        {{ player.kills }}/{{ player.deaths }}/{{ player.assists }}
-      </p>
+      @if (player.isAlive) {
+        <p
+          class="font-montserrat font-bold text-sm self-center"
+          animate.leave="animate-fade-out animate-duration-100 animate-style-late"
+          [class]="textColor()"
+        >
+          {{ player.kills }}/{{ player.deaths }}/{{ player.assists }}
+        </p>
+      } @else {
+        <p
+          class="absolute font-montserrat font-bold text-md self-center"
+          animate.enter="animate-fade-in animate-duration-150 animate-style-early"
+          [class]="textColor()"
+          [class.left-25]="!right()"
+          [class.right-25]="right()"
+        >
+          {{ player.kills }}/{{ player.deaths }}/{{ player.assists }}
+        </p>
+      }
     </div>
     <div
-      class="flex flex-row gap-1 font-montserrat font-semibold text-white -mt-1.5 max-vw-160 truncate"
-      [class.flex-row-reverse!]="right"
+      class="flex flex-row gap-1 font-montserrat font-semibold text-white -mt-1.5 vw-160 truncate"
+      [class.flex-row-reverse!]="right()"
     >
       {{ player.name }}
       @if (player.isCaptain) {
@@ -55,12 +86,12 @@
     </div>
     @if (player.isAlive) {
       <div
-        class="absolute bottom-0 vh-3 transition-all"
-        animate.enter="animate-collapse-side-in animate-duration-250"
-        animate.leave="animate-collapse-side-out animate-duration-200"
-        [class]="backgroundColor()"
-        [class.left-0]="!right"
-        [class.right-0]="right"
+        class="absolute bottom-0 vh-3 transition-all playercard-hp-shadow"
+        animate.enter="animate-collapse-side-in animate-duration-200"
+        animate.leave="animate-collapse-side-out animate-duration-150"
+        [class]="[backgroundColor(), color()]"
+        [class.left-0]="!right()"
+        [class.right-0]="right()"
         [style.width.%]="clamp(player.health * 0.88 + 12, 0, 100)"
       ></div>
     }
@@ -69,22 +100,23 @@
   <!-- weapon container -->
   @if (player.isAlive) {
     <div
-      class="flex flex-col vw-186 px-4 justify-center overflow-hidden"
-      animate.enter="animate-collapse-side-in animate-duration-250"
-      animate.leave="animate-collapse-side-out animate-duration-200"
-      [class.items-end]="right"
+      class="flex flex-col vw-156 px-4 justify-center overflow-hidden"
+      animate.enter="animate-weapon-collapse-in animate-duration-200 animate-delay-150 animate-style-both"
+      animate.leave="animate-weapon-collapse-out animate-duration-150 animate-style-keep"
+      [class.items-end]="right()"
       [class]="weaponInfoBackgroundClass()"
+      [class.right]="right()"
     >
       <div>
         <!-- div needed to image scales correctly -->
         <img
           class="vh-32"
-          [class.flip]="!right"
+          [class.flip]="!right()"
           src="assets/weapons/{{ player.highestWeapon }}Killfeed.webp"
         />
       </div>
       <app-ultimate-tracker
-        class="w-2/5 mt-1"
+        class="w-1/2 mt-1"
         [max]="player.maxUltPoints"
         [full]="player.currUltPoints"
         image="assets/ultimates/{{ player.agentInternal }}Ultimate.webp"

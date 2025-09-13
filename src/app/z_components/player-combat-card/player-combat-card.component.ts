@@ -14,16 +14,17 @@ export class PlayerCombatCardComponent implements OnChanges {
   @Input() playerHealth!: number; //only needed so change detection can give us an event for health change
 
   readonly isObserved = input<boolean>(); //only needed so change detection can correctly trigger the color switch
+  readonly isAlive = input<boolean>();
 
-  @Input() right = false;
+  right = input<boolean>(false);
   readonly color = input<string>();
   // @Input() color: "attacker" | "defender" = "defender";
 
   readonly playerinfoBackgroundClass = computed(() => {
-    return `bg-playerinfo-${this.isObserved() ? "observed" : this.color()}-${this.right ? "right" : "left"}`;
+    return `bg-playerinfo-${this.isAlive() == false ? "dead" : this.isObserved() ? "observed" : this.color()}-${this.right() ? "right" : "left"}`;
   });
   readonly weaponInfoBackgroundClass = computed(() => {
-    return `bg-weaponinfo-${this.color()}-${this.right ? "right" : "left"}`;
+    return `bg-weaponinfo-${this.color()}-${this.right() ? "right" : "left"}`;
   });
   readonly textColor = computed(() =>
     this.color() == "attacker" ? "text-attacker-shield/80" : "text-defender-shield/80",
@@ -31,6 +32,13 @@ export class PlayerCombatCardComponent implements OnChanges {
   readonly backgroundColor = computed(() =>
     this.color() == "attacker" ? "bg-attacker-shield" : "bg-defender-shield",
   );
+  readonly creditsIcon = computed(() =>
+    this.color() == "attacker"
+      ? "assets/misc/ValorantCreditsRed.svg"
+      : "assets/misc/ValorantCreditsGreen.svg",
+  );
+  readonly getLeftPad = computed(() => (this.right() ? "pl-2" : "pl-8"));
+  readonly getRightPad = computed(() => (this.right() ? "pr-8" : "pr-2"));
 
   clamp(value: number, min: number, max: number): number {
     return Math.max(min, Math.min(max, value));

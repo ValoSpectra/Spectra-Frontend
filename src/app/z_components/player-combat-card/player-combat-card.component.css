@@ -50,6 +50,24 @@
     rgba(15, 25, 35, 0.7);
 }
 
+.bg-playerinfo-dead-left {
+  background: linear-gradient(
+    to right,
+    rgba(15, 25, 35, 0.8) 0%,
+    rgba(15, 25, 35, 0.6) 60%,
+    rgba(15, 25, 35, 0) 90%
+  );
+}
+
+.bg-playerinfo-dead-right {
+  background: linear-gradient(
+    to left,
+    rgba(15, 25, 35, 0.8) 0%,
+    rgba(15, 25, 35, 0.6) 60%,
+    rgba(15, 25, 35, 0) 90%
+  );
+}
+
 /* Weapon info container */
 
 .bg-weaponinfo-defender-left {
@@ -90,4 +108,45 @@
     rgba(var(--attacker-color-rgb), 0.01) 90.5%,
     rgba(0, 0, 0, 0) 100%
   );
+}
+
+.playercard-hp-shadow.defender {
+  box-shadow: 0px 4px 8px 1px rgba(var(--defender-color-secondary-rgb), 0.6);
+}
+
+.playercard-hp-shadow.attacker {
+  box-shadow: 0px 4px 8px 1px rgba(var(--attacker-color-secondary-rgb), 0.6);
+}
+
+@keyframes weapon-collapse-side-in {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.animate-weapon-collapse-in {
+  transform-origin: left;
+  animation-name: weapon-collapse-side-in;
+}
+
+.animate-weapon-collapse-in.right {
+  transform-origin: right;
+  animation-name: weapon-collapse-side-in;
+}
+
+.animate-weapon-collapse-out {
+  transform-origin: left;
+  animation-name: weapon-collapse-side-in;
+  animation-direction: reverse;
+}
+
+.animate-weapon-collapse-out.right {
+  transform-origin: right;
+  animation-name: weapon-collapse-side-in;
+  animation-direction: reverse;
 }
