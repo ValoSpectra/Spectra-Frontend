@@ -1,40 +1,73 @@
 @if (dataModel.tournamentInfo().enabled) {
   <div
-    class="relative top-0 vw-875 vh-200 overflow-hidden animate-duration-300 animate-style-keep"
+    class="relative top-0 vw-875 vh-200 overflow-hidden animate-duration-300 animate-style-keep shadow-md shadow-timer/80 rounded-sm"
     [class.animate-swish]="runAnimation"
-    [class.animate-swish-out]="animateOut"
+    [class.animate-phase-out]="animateOut"
     [class.hidden]="hide && !preload"
     [class.opacity-1]="preload"
   >
     <div
       class="relative top-0 vw-875 vh-200 overflow-hidden flex flex-col justify-center items-center"
     >
-      <img class="w-full h-full absolute top-0 left-0 -z-1" [src]="tournamentBackgroundUrl()" />
-      <img class="max-h-7/10" [src]="tournamentIconUrl()" (load)="preload = false" />
+      @if (tournamentBackgroundUrl()) {
+        <img class="w-full h-full absolute top-0 left-0 -z-1" [src]="tournamentBackgroundUrl()" />
+      } @else {
+        <div
+          class="absolute w-full h-full rounded-sm -z-1"
+          [class]="waitingBackgroundClass()"
+        ></div>
+      }
+      <img
+        class="absolute left-8 max-h-1/2 opacity-20 grayscale-100"
+        [src]="dataModel.teams()[0].teamUrl"
+      />
+      <img class="max-h-6/10" [src]="tournamentIconUrl()" (load)="preload = false" />
       <p class="uppercase font-unbounded font-bold text-white text-3xl">Round Win</p>
+      <img
+        class="absolute right-8 max-h-1/2 opacity-20 grayscale-100"
+        [src]="dataModel.teams()[1].teamUrl"
+      />
     </div>
 
     <div
       class="absolute top-0 h-full w-full overflow-hidden animate-style-both animate-duration-300 animate-delay-2000"
-      [class.animate-swish]="runAnimation"
+      [class.animate-translate-to-right]="runAnimation && leftWon()"
+      [class.animate-translate-to-left]="runAnimation && !leftWon()"
     >
       <div
         class="absolute top-0 vw-875 vh-200 overflow-hidden flex flex-row justify-around items-center z-4"
       >
-        <img class="w-full h-full absolute top-0 left-0 -z-1" [src]="tournamentBackgroundUrl()" />
+        @if (tournamentBackgroundUrl()) {
+          <img class="w-full h-full absolute top-0 left-0 -z-1" [src]="tournamentBackgroundUrl()" />
+        } @else {
+          <div
+            class="absolute w-full h-full rounded-sm top-0 left-0 -z-1"
+            [class]="winningTeamBackgroundClass()"
+          ></div>
+        }
 
-        <div class="relative flex h-full flex-col justify-center items-center">
-          <img class="max-h-7/10" [src]="dataModel.teams()[teamWon()].teamUrl" />
-          <p class="uppercase font-unbounded font-bold text-white text-3xl">
-            {{ dataModel.match().attackersWon ? "Attacker" : "Defender" }} Win
-          </p>
-        </div>
+        @if (leftWon()) {
+          <div class="relative flex h-full flex-col justify-center items-center">
+            <img class="max-h-7/10" [src]="dataModel.teams()[teamWon()].teamUrl" />
+            <p class="uppercase font-unbounded font-bold text-white text-3xl">
+              {{ dataModel.match().attackersWon ? "Attacker" : "Defender" }} Win
+            </p>
+          </div>
+        }
         <div class="flex flex-col h-full justify-center items-center">
           <img class="max-h-7/10" [src]="tournamentIconUrl()" />
           <p class="uppercase font-unbounded font-bold text-white text-3xl">
             Round {{ dataModel.match().roundNumber }}
           </p>
         </div>
+        @if (!leftWon()) {
+          <div class="relative flex h-full flex-col justify-center items-center">
+            <img class="max-h-7/10" [src]="dataModel.teams()[teamWon()].teamUrl" />
+            <p class="uppercase font-unbounded font-bold text-white text-3xl">
+              {{ dataModel.match().attackersWon ? "Attacker" : "Defender" }} Win
+            </p>
+          </div>
+        }
       </div>
     </div>
   </div>

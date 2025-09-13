@@ -18,7 +18,7 @@ export class EndroundComponent {
   tournamentBackgroundUrl = computed(() => {
     const backdrop = this.dataModel.tournamentInfo().backdropUrl;
     if (backdrop && backdrop !== "") return backdrop;
-    else return "assets/misc/backdrop.webp";
+    else return false;
   });
 
   tournamentIconUrl = computed(() => {
@@ -33,6 +33,20 @@ export class EndroundComponent {
     } else {
       return this.dataModel.teams()[0].isAttacking ? 1 : 0;
     }
+  });
+
+  leftWon = computed(() => {
+    return this.teamWon() === 0;
+  });
+
+  readonly waitingBackgroundClass = computed(() => {
+    const test = `gradient-head-to-head-${this.dataModel.teams()[0].isAttacking ? "attacker" : "defender"}`;
+    console.log(test);
+    return test;
+  });
+
+  readonly winningTeamBackgroundClass = computed(() => {
+    return `gradient-${this.leftWon() ? "left" : "right"}-${this.dataModel.match().attackersWon ? "attacker" : "defender"}`;
   });
 
   ref = effect(() => {
