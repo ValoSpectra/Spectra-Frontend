@@ -9,7 +9,7 @@
     src="assets/agents/{{ player.agentInternal }}Icon.webp"
   />
   <div class="vw-120 flex flex-col gap-1 items-center justify-center">
-    <p class="font-montserrat font-semibold text-white">{{ player.name }}</p>
+    <p class="font-montserrat font-semibold text-white text-nowrap">{{ player.name }}</p>
     <app-ultimate-tracker
       class="-mt-1"
       [max]="player.maxUltPoints"
@@ -19,7 +19,9 @@
   </div>
   <img class="vw-36 vh-36" src="assets/shields/{{ player.armorName }}.webp" />
   <app-abilities-new class="vw-96" [player]="player"></app-abilities-new>
-  <div class="font-unbounded font-semibold text-white flex flex-row gap-1 mx-4">
+  <div
+    class="vw-106 font-unbounded font-semibold text-white flex flex-row gap-1 mx-4 justify-center"
+  >
     <p>{{ player.kills }}</p>
     <p class="text-white/50">/</p>
     <p>{{ player.deaths }}</p>

@@ -1,36 +1,51 @@
 @if (isShown()) {
   <div
-    class="flex flex-col max-w-150 vh-100 items-center pb-1 bg-background rounded-sm py-0"
+    class="flex flex-row max-vw-480 vh-90 items-center py-0.5 bg-background rounded-sm"
     animate.enter="animate-reasons-in animate-duration-300"
     animate.leave="animate-reasons-out animate-duration-300"
   >
-    @for (team of dataModel.match().teams; track $index) {
-      <div
-        class="flex flex-row font-unbounded font-extrabold text-white items-center w-full h-1/2 justify-start"
-      >
-        <p class="grow-0 m-5">{{ team.teamTricode }}</p>
-        <div class="h-full flex-row flex justify-end overflow-hidden">
-          @for (record of team.roundRecord; track $index) {
-            @if (
-              record.round === dataModel.match().switchRound ||
-              record.round === dataModel.match().firstOtRound
-            ) {
-              <img class="mr-0.5" src="assets/roundWinReason/divider-line.svg" />
-            }
-
-            <div class="vw-25 mr-0.5 px-1.5" [class]="getBackgroundClass(record, team)">
-              @if (record.type === "lost") {
-                <p class="p-0 m-0 vw-24 vh-24 text-center leading-10">{{ record.round }}</p>
-              } @else {
-                <img
-                  class="vw-24 vh-24 object-cover my-2"
-                  src="assets/roundWinReason/{{ record.type }}.webp"
-                />
+    <div class="flex flex-col justify-around items-center vw-80 shrink-0 h-full">
+      @for (team of dataModel.match().teams; track $index; let teamIndex = $index) {
+        <p class="font-unbounded font-extrabold text-white">{{ team.teamTricode }}</p>
+      }
+    </div>
+    <div class="flex flex-row h-full overflow-hidden justify-end">
+      @for (r of dataModel.teams()[0].roundRecord; track $index; let recordIndex = $index) {
+        @if ($index < dataModel.match().roundNumber || $index < 10) {
+          @if (
+            r.round === dataModel.match().switchRound || r.round === dataModel.match().firstOtRound
+          ) {
+            <img class="vw-25 h-full" src="assets/misc/Spike_Icon.svg" />
+          }
+          @if (r.type !== "upcoming") {
+            <div class="flex flex-col h-full justify-between">
+              @for (team of dataModel.teams(); track $index) {
+                @let record = team.roundRecord![recordIndex];
+                <div class="vw-25 mr-0.5 px-1.5" [class]="getBackgroundClass(record, team)">
+                  @if (record.type === "lost") {
+                    <p
+                      class="my-3 text-center self-center font-unbounded font-extrabold text-white"
+                    >
+                      {{ record.round }}
+                    </p>
+                  } @else {
+                    <img
+                      class="vw-24 vh-24 object-cover my-2"
+                      src="assets/roundWinReason/{{ record.type }}.webp"
+                    />
+                  }
+                </div>
               }
             </div>
+          } @else {
+            <div class="vw-25 mr-0.5 px-1.5 h-full flex justify-center items-center">
+              <p class="my-3 text-center self-center font-unbounded font-extrabold text-white">
+                {{ r.round }}
+              </p>
+            </div>
           }
-        </div>
-      </div>
-    }
+        }
+      }
+    </div>
   </div>
 }

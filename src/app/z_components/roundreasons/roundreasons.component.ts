@@ -13,7 +13,7 @@ export class RoundreasonsComponent {
   isShown = computed(() => this.dataModel.match().roundPhase === "shopping");
 
   getBackgroundClass(record: any, team: any): string {
-    if (record.type == "lost") {
+    if (record.type === "lost" || record.type === "upcoming") {
       return "";
     }
     return `bg-roundwin-${record.wasAttack ? "attacker" : "defender"}-${team == this.dataModel.teams()[0] ? "top" : "bottom"}`;

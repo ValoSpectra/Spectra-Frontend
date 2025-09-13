@@ -60,7 +60,7 @@ export interface IPlayerData {
 }
 
 export interface IRoundReason {
-  type: "lost" | "kills" | "defused" | "detonated" | "timeout";
+  type: "lost" | "kills" | "defused" | "detonated" | "timeout" | "upcoming";
   wasAttack: boolean;
   round: number;
 }
