@@ -15,7 +15,7 @@ export class DataModelService {
 
   public readonly match = signal({} as any, { equal: () => false });
   public readonly teams = computed(() => this.match().teams);
-  public readonly timeoutState = computed(() => this.match().timeoutState);
+  public readonly timeoutState = computed(() => this.match().timeoutState, { equal: () => false });
   public readonly spikeState = computed(() => this.match().spikeState);
   public readonly seriesInfo = computed(() => this.match().tools.seriesInfo);
   public readonly seedingInfo = computed(() => this.match().tools.seedingInfo);

@@ -8,6 +8,7 @@
 <div class="absolute pos-x-center pos-y-350 flex flex-row gap-1 z-10">
   <button (click)="changeRoundPhase()">Change Round Phase</button>
   <button (click)="swapTeamColors()">Swap Team Colors</button>
+  <button (click)="techPause()">Start/End Tech Pause</button>
   <button [class.hidden]="dataModel.match().spikeState.planted" (click)="plantSpike()">
     Plant Spike
   </button>
@@ -26,6 +27,7 @@
         <!-- <button [class.hidden]="" (click)="addPlayer($index)">Add Player</button>
       <button [class.hidden]="" (click)="removePlayer($index)">Remove Player</button> -->
         <button [class.hidden]="" (click)="winRound($index)">Win Round</button>
+        <button [class.hidden]="" (click)="timeout($index)">Start/End Timeout</button>
       </div>
     }
   </div>

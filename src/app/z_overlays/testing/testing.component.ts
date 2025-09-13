@@ -74,6 +74,15 @@ export class TestingComponent {
   }
 
   switchBackground() {}
+
+  techPause() {
+    this.stopTimeoutTimer();
+    this.dataModel.match.update((v) => {
+      const ret = v;
+      ret.timeoutState.techPause = !ret.timeoutState.techPause;
+      return ret;
+    });
+  }
   //#endregion
 
   //#region Team button handlers
@@ -104,6 +113,27 @@ export class TestingComponent {
       ret.roundNumber = ret.teams[0].roundsWon + ret.teams[1].roundsWon + 1;
       return ret;
     });
+  }
+
+  timeout(teamIndex: number) {
+    if (
+      (teamIndex == 0 && this.dataModel.timeoutState().leftTeam) ||
+      (teamIndex == 1 && this.dataModel.timeoutState().rightTeam)
+    ) {
+      //allows to toggle the timeout back off
+      this.stopTimeoutTimer();
+      return;
+    }
+    this.stopTimeoutTimer();
+    this.dataModel.match.update((v) => {
+      const ret = v;
+      ret.timeoutState.techPause = false;
+      ret.timeoutState.leftTeam = teamIndex == 0 ? !ret.timeoutState.leftTeam : false;
+      ret.timeoutState.rightTeam = teamIndex == 1 ? !ret.timeoutState.rightTeam : false;
+      ret.timeoutState.timeRemaining = ret.tools.timeoutDuration;
+      return ret;
+    });
+    this.startTimeoutTimer();
   }
   //#endregion
 
@@ -215,4 +245,29 @@ export class TestingComponent {
     });
   }
   //#endregion
+
+  timeoutTimerRef?: NodeJS.Timeout;
+  startTimeoutTimer() {
+    this.timeoutTimerRef = setInterval(() => {
+      this.dataModel.match.update((v) => {
+        const ret = v;
+        ret.timeoutState.timeRemaining--;
+        return ret;
+      });
+      if (this.dataModel.timeoutState().timeRemaining <= 0) {
+        this.stopTimeoutTimer();
+      }
+    }, 1000);
+  }
+
+  stopTimeoutTimer() {
+    clearInterval(this.timeoutTimerRef);
+    this.dataModel.match.update((v) => {
+      const ret = v;
+      ret.timeoutState.leftTeam = false;
+      ret.timeoutState.rightTeam = false;
+      ret.timeoutState.timeRemaining = 0;
+      return ret;
+    });
+  }
 }

@@ -1,6 +1,6 @@
 @if (dataModel.tournamentInfo().enabled) {
   <div
-    class="relative top-0 vw-875 vh-200 overflow-hidden animate-duration-300 animate-style-keep opa"
+    class="relative top-0 vw-875 vh-200 overflow-hidden animate-duration-300 animate-style-keep"
     [class.animate-swish]="runAnimation"
     [class.animate-swish-out]="animateOut"
     [class.hidden]="hide && !preload"
@@ -9,8 +9,8 @@
     <div
       class="relative top-0 vw-875 vh-200 overflow-hidden flex flex-col justify-center items-center"
     >
-      <img class="w-full h-full absolute top-0 left-0 -z-1" [src]="tournamentBackgroundUrl" />
-      <img class="max-h-7/10" [src]="tournamentUrl" (load)="preload = false" />
+      <img class="w-full h-full absolute top-0 left-0 -z-1" [src]="tournamentBackgroundUrl()" />
+      <img class="max-h-7/10" [src]="tournamentIconUrl()" (load)="preload = false" />
       <p class="uppercase font-unbounded font-bold text-white text-3xl">Round Win</p>
     </div>
 
@@ -21,16 +21,16 @@
       <div
         class="absolute top-0 vw-875 vh-200 overflow-hidden flex flex-row justify-around items-center z-4"
       >
-        <img class="w-full h-full absolute top-0 left-0 -z-1" [src]="tournamentBackgroundUrl" />
+        <img class="w-full h-full absolute top-0 left-0 -z-1" [src]="tournamentBackgroundUrl()" />
 
         <div class="relative flex h-full flex-col justify-center items-center">
-          <img class="max-h-7/10" [src]="dataModel.teams()[teamWon].teamUrl" />
+          <img class="max-h-7/10" [src]="dataModel.teams()[teamWon()].teamUrl" />
           <p class="uppercase font-unbounded font-bold text-white text-3xl">
             {{ dataModel.match().attackersWon ? "Attacker" : "Defender" }} Win
           </p>
         </div>
         <div class="flex flex-col h-full justify-center items-center">
-          <img class="max-h-7/10" [src]="tournamentUrl" />
+          <img class="max-h-7/10" [src]="tournamentIconUrl()" />
           <p class="uppercase font-unbounded font-bold text-white text-3xl">
             Round {{ dataModel.match().roundNumber }}
           </p>

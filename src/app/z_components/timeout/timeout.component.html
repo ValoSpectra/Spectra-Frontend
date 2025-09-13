@@ -1,0 +1,30 @@
+<div
+  class="relative top-0 vw-875 vh-200 overflow-hidden animate-duration-300"
+  [class.hidden]="hide"
+  [class.animate-swish]="inAnimation"
+  [class.animate-swish-out]="outAnimation"
+>
+  <div
+    class="relative top-0 left-0 vw-875 vh-200 overflow-hidden flex flex-col justify-center items-center"
+  >
+    <img class="w-full h-full absolute top-0 left-0 -z-1" [src]="tournamentBackgroundUrl()" />
+
+    @if (timeoutInfo().techPause) {
+      <p class="uppercase font-unbounded font-bold text-white text-5xl">Technical Pause</p>
+    } @else {
+      <img class="max-vh-120 max-vw-400" [src]="timeoutTeam().teamUrl" />
+      <p class="font-unbounded font-bold text-white text-2xl">
+        {{ timeoutTeam().teamName }} Tactical Timeout
+      </p>
+      <div class="absolute bottom-0 w-full vh-23 bg-white/20 flex justify-center items-center">
+        <div
+          class="absolute left-0 h-full bg-white/35 timer-transition"
+          [style.width]="timerWidth()"
+        ></div>
+        <p class="font-montserrat font-bold text-white text-lg z-2 text-shadow-2xs">
+          {{ timeoutInfo().timeRemaining }}s
+        </p>
+      </div>
+    }
+  </div>
+</div>

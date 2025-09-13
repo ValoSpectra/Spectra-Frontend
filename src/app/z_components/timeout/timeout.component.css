@@ -1,3 +1,7 @@
+.timer-transition {
+  transition: width 1s linear;
+}
+
 @keyframes swish {
   from {
     width: 0px;
