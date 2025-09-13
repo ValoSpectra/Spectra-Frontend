@@ -1,29 +1,29 @@
 <!-- eslint-disable @angular-eslint/template/eqeqeq -->
-<div class="h-full w-full bg-[#0f1923cc] overflow-clip">
-  <div class="w-full h-11/14 flex items-center justify-center">
+<div class="h-full w-full overflow-clip bg-[#0f1923cc]">
+  <div class="flex h-11/14 w-full items-center justify-center">
     <div class="relative h-full w-full" [class.invisible]="!isRotating" [class.w-0!]="!isRotating">
       <img
         id="rotateImage1Index{{ index }}"
         src="/assets/maps/wide/{{ roateMapNames[0] }}.webp"
-        class="aboslute top-0 left-0 object-cover h-full w-full z-1"
+        class="aboslute top-0 left-0 z-1 h-full w-full object-cover"
         [style.filter]="isRotating ? 'saturate(50%) brightness(0.5) blur(.5px)' : 'none'"
         [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'"
       />
       <img
         id="rotateImage2Index{{ index }}"
         src="/assets/maps/wide/{{ roateMapNames[1] }}.webp"
-        class="absolute top-0 left-0 object-cover h-full w-full"
+        class="absolute top-0 left-0 h-full w-full object-cover"
         [style.filter]="isRotating ? 'saturate(50%) brightness(0.5) blur(.5px)' : 'none'"
         [style.transition]="'filter 0.3s, border 0.2s, transform 0.1s'"
       />
     </div>
 
     <div
-      class="absolute flex flex-col items-center justify-center w-full h-full animate-[pulse_3s_infinite] z-3"
+      class="absolute z-3 flex h-full w-full animate-[pulse_3s_infinite] flex-col items-center justify-center"
       [class.invisible]="!isRotating || stage === 'side'"
     >
-      <img class="w-15 max-h-15 rounded-xs" [src]="teams[actingTeam!].url" />
-      <p class="text-white text-center text-3xl font-bold font-[Unbounded]">
+      <img class="max-h-15 w-15 rounded-xs" [src]="teams[actingTeam!].url" />
+      <p class="text-center font-[Unbounded] text-3xl font-bold text-white">
         {{ stage === "ban" ? "Banning" : "Picking" }}<br />
       </p>
     </div>
@@ -31,66 +31,66 @@
     @if (map.name !== "" && !isRotating) {
       <img
         src="/assets/maps/wide/{{ map.name }}.webp"
-        class="object-cover h-full w-full"
+        class="h-full w-full object-cover"
         [style.filter]="isBanned ? 'saturate(15%)' : 'brightness(115%) saturate(115%)'"
         [style.opacity]="isBanned ? '0.6' : '1'"
         [class]="isBanned ? 'animate-banned' : isPicked || isDecider ? 'animate-picked' : ''"
         id="mapImage-{{ index }}"
       />
       @if (map.bannedBy !== undefined) {
-        <p class="absolute text-white/80 text-center text-3xl font-bold font-[Unbounded]">
+        <p class="absolute text-center font-[Unbounded] text-3xl font-bold text-white/80">
           {{ map.name }}
         </p>
-        <app-mapban-ban-icon class="absolute w-fit h-fit" [index]="index"></app-mapban-ban-icon>
+        <app-mapban-ban-icon class="absolute h-fit w-fit" [index]="index"></app-mapban-ban-icon>
       } @else if (map.pickedBy !== undefined) {
         @if (map.score[0] != undefined && map.score[1] != undefined) {
-          <div class="absolute flex flex-col items-center justify-center w-full h-full">
+          <div class="absolute flex h-full w-full flex-col items-center justify-center">
             @if (map.score[0] > map.score[1]) {
-              <img class="w-15 max-h-15 rounded-xs" [src]="teams[0].url" />
+              <img class="max-h-15 w-15 rounded-xs" [src]="teams[0].url" />
             } @else if (map.score[0] < map.score[1]) {
-              <img class="w-15 max-h-15 rounded-xs" [src]="teams[1].url" />
+              <img class="max-h-15 w-15 rounded-xs" [src]="teams[1].url" />
             }
             <p
-              class="text-white text-center text-4xl font-bold font-[Unbounded] text-shadow-lg/55 mb-4"
+              class="mb-4 text-center font-[Unbounded] text-4xl font-bold text-white text-shadow-lg/55"
             >
               {{ map.score[0] }} - {{ map.score[1] }}
             </p>
             <p
-              class="text-white text-center text-2xl font-bold font-[Unbounded] text-shadow-lg/55 -mb-12"
+              class="-mb-12 text-center font-[Unbounded] text-2xl font-bold text-white text-shadow-lg/55"
             >
               {{ map.name }}
             </p>
           </div>
         } @else {
-          <div class="absolute flex flex-col items-center justify-center w-full h-full">
-            <img class="w-15 max-h-15 rounded-xs" [src]="teams[map.pickedBy].url" />
-            <p class="text-white text-center text-3xl font-bold font-[Unbounded] text-shadow-lg/55">
+          <div class="absolute flex h-full w-full flex-col items-center justify-center">
+            <img class="max-h-15 w-15 rounded-xs" [src]="teams[map.pickedBy].url" />
+            <p class="text-center font-[Unbounded] text-3xl font-bold text-white text-shadow-lg/55">
               {{ map.name }}
             </p>
           </div>
         }
       } @else {
         @if (map.score[0] != undefined && map.score[1] != undefined) {
-          <div class="absolute flex flex-col items-center justify-center w-full h-full">
+          <div class="absolute flex h-full w-full flex-col items-center justify-center">
             @if (map.score[0] > map.score[1] && map.score[0] >= 13) {
-              <img class="w-15 max-h-15 rounded-xs" [src]="teams[0].url" />
+              <img class="max-h-15 w-15 rounded-xs" [src]="teams[0].url" />
             } @else if (map.score[0] < map.score[1] && map.score[1] >= 13) {
-              <img class="w-15 max-h-15 rounded-xs" [src]="teams[1].url" />
+              <img class="max-h-15 w-15 rounded-xs" [src]="teams[1].url" />
             }
             <p
-              class="text-white text-center text-4xl font-bold font-[Unbounded] text-shadow-lg/55 mb-4"
+              class="mb-4 text-center font-[Unbounded] text-4xl font-bold text-white text-shadow-lg/55"
             >
               {{ map.score[0] }} - {{ map.score[1] }}
             </p>
             <p
-              class="text-white text-center text-2xl font-bold font-[Unbounded] text-shadow-lg/55 -mb-12"
+              class="-mb-12 text-center font-[Unbounded] text-2xl font-bold text-white text-shadow-lg/55"
             >
               {{ map.name }}
             </p>
           </div>
         } @else {
           <p
-            class="absolute text-white text-center text-3xl font-bold font-[Unbounded] text-shadow-lg/55"
+            class="absolute text-center font-[Unbounded] text-3xl font-bold text-white text-shadow-lg/55"
           >
             Decider:<br />{{ map.name }}
           </p>
@@ -99,7 +99,7 @@
     }
   </div>
   <div
-    class="w-full h-3/14 font-[Unbounded] text-white text-xl text-center flex justify-center items-center"
+    class="flex h-3/14 w-full items-center justify-center text-center font-[Unbounded] text-xl text-white"
   >
     @if (map.bannedBy !== undefined) {
       <p class="">
@@ -109,14 +109,14 @@
     } @else if (map.pickedBy !== undefined) {
       @if (map.pickedAttack !== undefined) {
         @if (map.score[0] != undefined && map.score[1] != undefined) {
-          <div class="flex flex-row w-full justify-around font-light">
+          <div class="flex w-full flex-row justify-around font-light">
             <div class="flex flex-col items-center">
               <p class="text-white/75">{{ teams[map.pickedBy].tricode }}</p>
-              <p class="text-white/75 -mt-1">Map</p>
+              <p class="-mt-1 text-white/75">Map</p>
             </div>
             <div class="flex flex-col items-center">
               <p class="text-white/75">{{ teams[map.sidePickedBy!].tricode }}</p>
-              <p class="text-white/75 -mt-1">{{ map.pickedAttack ? "Attack" : "Defense" }}</p>
+              <p class="-mt-1 text-white/75">{{ map.pickedAttack ? "Attack" : "Defense" }}</p>
             </div>
           </div>
         } @else {
@@ -134,14 +134,14 @@
     } @else if (map.bannedBy === undefined && map.pickedBy === undefined) {
       @if (map.pickedAttack !== undefined) {
         @if (map.score[0] != undefined && map.score[1] != undefined) {
-          <div class="flex flex-row w-full justify-around gap-2 font-light">
+          <div class="flex w-full flex-row justify-around gap-2 font-light">
             <div class="flex flex-col items-center">
               <p class="text-white/75">Decider</p>
-              <p class="text-white/75 -mt-1">Map</p>
+              <p class="-mt-1 text-white/75">Map</p>
             </div>
             <div class="flex flex-col items-center">
               <p class="text-white/75">{{ teams[map.sidePickedBy!].tricode }}</p>
-              <p class="text-white/75 -mt-1">{{ map.pickedAttack ? "Attack" : "Defense" }}</p>
+              <p class="-mt-1 text-white/75">{{ map.pickedAttack ? "Attack" : "Defense" }}</p>
             </div>
           </div>
         } @else {
@@ -151,7 +151,7 @@
           </p>
         }
       } @else if (isRotating) {
-        <p class="text-white/50 text-center">
+        <p class="text-center text-white/50">
           Still in pool:<br />
           {{ rotateNameCurrent }}
         </p>

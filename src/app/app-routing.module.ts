@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { TestingComponent } from "./testing/testing.component";
-import { OverlayComponent } from "./overlay/overlay.component";
+import { TestingComponent } from "./z_overlays/testing/testing.component";
 import { AgentSelectComponent } from "./agent-select/agent-select.component";
 import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
 import { RedirectComponent } from "./redirect/redirect.component";
 import { TimeoutComponent } from "./timeout/timeout.component";
 import { MapbanUiComponent } from "./mapban-ui/mapban-ui.component";
+import { MatchOverlayComponent } from "./z_overlays/match-overlay/match-overlay.component";
 
 const routes: Routes = [
   {
@@ -18,11 +18,11 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        component: OverlayComponent,
+        component: MatchOverlayComponent,
       },
       {
         path: "minimal",
-        component: OverlayComponent,
+        component: MatchOverlayComponent,
         data: {
           minimal: true,
         },

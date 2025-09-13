@@ -1,4 +1,4 @@
-import { Component, Input, inject } from "@angular/core";
+import { Component, Input, inject, input } from "@angular/core";
 import { Config } from "../../../shared/config";
 import { NgIf } from "@angular/common";
 
@@ -12,10 +12,10 @@ export class ShieldIconComponent {
   private config = inject(Config);
 
   @Input({ required: true }) type!: "Heavy" | "Regen" | "Light" | "None";
-  @Input({ required: true }) side!: "attacker" | "defender";
+  readonly side = input<string>();
 
   get color() {
-    return this.side == "attacker"
+    return this.side() == "attacker"
       ? this.config.attackerColorShieldCurrency
       : this.config.defenderColorShieldCurrency;
   }

@@ -1,8 +1,8 @@
 <div
-  class="absolute bottom-2 left-2 w-99/100 h-5/20 rounded-md bg-[#0f1923cc] overflow-clip"
+  class="absolute bottom-2 left-2 h-5/20 w-99/100 overflow-clip rounded-md bg-[#0f1923cc]"
   [@fade]
 >
-  <div class="flex flex-row h-full gap-1">
+  <div class="flex h-full flex-row gap-1">
     @for (map of selectedMaps; track $index) {
       <app-mapban-map
         [map]="map"
@@ -13,7 +13,7 @@
         [index]="$index"
         [logoIndex]="logoIndex"
         [isSupporter]="data.isSupporter"
-        class="col-span-1 w-full h-full"
+        class="col-span-1 h-full w-full"
       ></app-mapban-map>
     }
   </div>

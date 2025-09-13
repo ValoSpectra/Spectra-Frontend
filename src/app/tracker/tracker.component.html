@@ -7,7 +7,7 @@
     *ngIf="match.tools?.playercamsInfo?.enable ?? false"
     [match]="match"
     [class.hidden]="match.roundPhase !== 'combat'"
-    class="absolute top-185 left-119 h-48 aspect-video"
+    class="absolute top-185 left-119 aspect-video h-48"
   />
   <app-combat
     *ngIf="match.roundPhase !== 'shopping'"

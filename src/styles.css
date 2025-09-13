@@ -1,8 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
 
 @import "tailwindcss";
+@import "./animations.css";
+
+@theme static {
+  --color-pill: linear-gradient(
+    90deg,
+    rgba(15, 25, 35, 0.85) 0%,
+    rgba(31.14, 37.75, 40.58, 0.85) 100%
+  );
+  --color-timer: #0f1923;
+  --color-background: #0f1923cc;
+  --color-credits-negative: #ff4557;
+
+  --color-defender-primary: #25ac79;
+  --color-defender-secondary: #61eab6;
+  --color-defender-shield: #61eab6;
+
+  --color-attacker-primary: #b82e3c;
+  --color-attacker-secondary: #ff4557;
+  --color-attacker-shield: #ff838f;
+}
+
+@utility font-montserrat {
+  font-family: Montserrat, Helvetica;
+}
+@utility font-unbounded {
+  font-family: Unbounded, Helvetica;
+}
+
+/* Custom classes to size a component according to its relative size within a 1080p screen */
+@utility vw-* {
+  width: calc((--value(integer) / 1920) * 100vw);
+}
+@utility vh-* {
+  height: calc((--value(integer) / 1080) * 100vh);
+}
+@utility max-vw-* {
+  max-width: calc((--value(integer) / 1920) * 100vw);
+}
+@utility max-vh-* {
+  max-height: calc((--value(integer) / 1080) * 100vh);
+}
+@utility min-vw-* {
+  min-width: calc((--value(integer) / 1920) * 100vw);
+}
+@utility min-vh-* {
+  min-height: calc((--value(integer) / 1080) * 100vh);
+}
+
+/* Custom classes to position components on an overlay screen */
+@utility pos-x-center {
+  position: absolute;
+  left: 50vw;
+  translate: -50%;
+}
+@utility pos-x-* {
+  position: absolute;
+  left: calc((--value(integer) / 1920) * 100vw);
+}
+@utility pos-y-* {
+  position: absolute;
+  top: calc((--value(integer) / 1080) * 100vh);
+}
+
+@utility pill-background {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 25, 35, 0.85) 0%,
+    rgba(31.14, 37.75, 40.58, 0.85) 100%
+  );
+}
+
+@utility flip {
+  transform: rotateY(180deg);
+}
+
+/* Disabled for tailwind rebuild */
+/* * {
+  font-family: "Inter", sans-serif;
+  color: #1e1e1e;
+  box-sizing: unset;
+} */
 
 img {
   max-width: unset;

@@ -1,0 +1,37 @@
+<div class="vw-602 flex flex-row justify-between">
+  @for (team of dataModel.teams(); track $index) {
+    <div
+      class="vw-216 vh-63 relative flex flex-row justify-center overflow-hidden rounded-md"
+      [class.flex-row-reverse]="$index > 0"
+    >
+      <div
+        class="bg-timer/85 flex flex-grow flex-row items-center justify-center"
+        [class.flex-row-reverse]="$index > 0"
+      >
+        <div class="flex w-2/5 items-center justify-center">
+          <img [src]="team.teamUrl" class="h-4/5 w-4/5" />
+        </div>
+        <div class="flex max-w-3/5 flex-col items-center justify-center overflow-hidden">
+          <p class="font-unbounded text-xl font-extrabold tracking-tighter text-white uppercase">
+            {{ team.teamTricode }}
+          </p>
+          <p class="font-montserrat text-xs font-extrabold tracking-tighter text-white/60">
+            {{ $index === 0 ? dataModel.seedingInfo().left : dataModel.seedingInfo().right }}
+          </p>
+        </div>
+      </div>
+      <div
+        class="vw-4 bg-defender-secondary shrink-0"
+        [class.!bg-attacker-secondary]="team.isAttacking"
+      ></div>
+      <div
+        class="vw-70 bg-defender-primary flex h-full shrink-0 items-center justify-center"
+        [class.!bg-attacker-primary]="team.isAttacking"
+      >
+        <p class="font-montserrat w-fit text-4xl leading-none font-bold text-white">
+          {{ team.roundsWon }}
+        </p>
+      </div>
+    </div>
+  }
+</div>

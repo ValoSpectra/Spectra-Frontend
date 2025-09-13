@@ -1,27 +1,27 @@
 @for (player of match.teams[0].players; track $index) {
   @if (streams.has(player.fullName)) {
     <div
-      class="border-[#0f1923] border-3 box-border rounded-sm h-48 aspect-video overflow-clip absolute bg-[#0f1923]"
+      class="absolute box-border aspect-video h-48 overflow-clip rounded-sm border-3 border-[#0f1923] bg-[#0f1923]"
       [class.hidden]="!player.isObserved"
     >
       <div class="h-48 w-full">
         <iframe
           allow="camera;fullscreen;autoplay;"
           [src]="streams.get(player.fullName)"
-          class="w-full aspect-video"
+          class="aspect-video w-full"
         ></iframe>
       </div>
-      <div class="bg-black/70 h-7 w-full absolute -bottom-1 left-0 flex">
+      <div class="absolute -bottom-1 left-0 flex h-7 w-full bg-black/70">
         <div
-          class="absolute gradient"
+          class="gradient absolute"
           [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'"
         ></div>
         <div
-          class="w-full max-w-85 text-left px-2 text-lg text-white text-shadow-xl font-extrabold font-[Montserrat] overflow-clip"
+          class="text-shadow-xl w-full max-w-85 overflow-clip px-2 text-left font-[Montserrat] text-lg font-extrabold text-white"
         >
           {{ player.fullName | nameOverride: player.name : getOverrideNames() }}
         </div>
-        <div class="w-full text-right px-2 text-lg text-white font-semibold font-[Montserrat]">
+        <div class="w-full px-2 text-right font-[Montserrat] text-lg font-semibold text-white">
           {{ player.kills }} / {{ player.deaths }} / {{ player.assists }}
         </div>
       </div>
@@ -32,27 +32,27 @@
 @for (player of match.teams[1].players; track $index) {
   @if (streams.has(player.fullName)) {
     <div
-      class="border-[#0f1923] border-3 box-border rounded-sm h-48 aspect-video overflow-clip absolute bg-[#0f1923]"
+      class="absolute box-border aspect-video h-48 overflow-clip rounded-sm border-3 border-[#0f1923] bg-[#0f1923]"
       [class.hidden]="!player.isObserved"
     >
       <div class="h-48 w-full">
         <iframe
           allow="camera;fullscreen;autoplay;"
           [src]="streams.get(player.fullName)"
-          class="w-full aspect-video"
+          class="aspect-video w-full"
         ></iframe>
       </div>
-      <div class="bg-black/70 h-7 w-full absolute -bottom-1 left-0 flex">
+      <div class="absolute -bottom-1 left-0 flex h-7 w-full bg-black/70">
         <div
-          class="absolute gradient"
+          class="gradient absolute"
           [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"
         ></div>
         <div
-          class="w-full max-w-85 text-left px-2 text-lg text-white text-shadow-xl font-extrabold font-[Montserrat] overflow-clip"
+          class="text-shadow-xl w-full max-w-85 overflow-clip px-2 text-left font-[Montserrat] text-lg font-extrabold text-white"
         >
           {{ player.fullName | nameOverride: player.name : getOverrideNames() }}
         </div>
-        <div class="w-full text-right px-2 text-lg text-white font-semibold font-[Montserrat]">
+        <div class="w-full px-2 text-right font-[Montserrat] text-lg font-semibold text-white">
           {{ player.kills }} / {{ player.deaths }} / {{ player.assists }}
         </div>
       </div>
