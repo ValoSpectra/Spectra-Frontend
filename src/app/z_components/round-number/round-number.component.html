@@ -1,3 +1,9 @@
-<p class="font-[Helvetica] font-bold text-base text-white/60 text-nowrap">
-  ROUND {{ dataModel.match().roundNumber }}
-</p>
+@if (otNumber() > 0) {
+  <p class="font-montserrat font-bold text-base text-red-500/70 text-nowrap">
+    OVERTIME {{ otNumber() }}
+  </p>
+} @else {
+  <p class="font-montserrat font-bold text-base text-white/60 text-nowrap">
+    ROUND {{ dataModel.match().roundNumber }}
+  </p>
+}

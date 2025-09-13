@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, computed, inject } from "@angular/core";
 import { DataModelService } from "../../services/dataModel.service";
 
 @Component({
@@ -9,4 +9,10 @@ import { DataModelService } from "../../services/dataModel.service";
 })
 export class RoundNumberComponent {
   dataModel = inject(DataModelService);
+
+  otNumber = computed(() => {
+    const adjustedRound = this.dataModel.match().roundNumber - this.dataModel.match().firstOtRound;
+    const otNumber = Math.floor(adjustedRound / 2 + 1);
+    return otNumber;
+  });
 }
