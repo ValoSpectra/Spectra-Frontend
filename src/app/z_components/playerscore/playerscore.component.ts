@@ -1,4 +1,4 @@
-import { Component, computed, Input } from "@angular/core";
+import { Component, computed, input, Input } from "@angular/core";
 import { UltimateTrackerComponent } from "../ultimate-tracker/ultimate-tracker.component";
 import { AbilitiesComponent } from "../abilities/abilities.component";
 
@@ -12,9 +12,10 @@ export class PlayerscoreComponent {
   @Input() player!: any;
 
   @Input() right = false;
-  @Input() color: "attacker" | "defender" = "defender";
+  // @Input() color: "attacker" | "defender" = "defender";
+  color = input<string>();
 
   readonly backgroundClass = computed(() => {
-    return `bg-fade-${this.color}-${this.right ? "right" : "left"}`;
+    return `bg-fade-${this.color()}-${this.right ? "right" : "left"}`;
   });
 }
