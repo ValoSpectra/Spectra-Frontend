@@ -1,4 +1,4 @@
-@for (player of match.teams[0].players; track $index) {
+@for (player of match?.teams[0].players; track $index) {
   @if (streams.has(player.fullName)) {
     <div
       class="border-[#0f1923] border-3 box-border rounded-sm h-48 aspect-video overflow-clip absolute bg-[#0f1923]"
@@ -29,7 +29,7 @@
   }
 }
 
-@for (player of match.teams[1].players; track $index) {
+@for (player of match?.teams[1].players; track $index) {
   @if (streams.has(player.fullName)) {
     <div
       class="border-[#0f1923] border-3 box-border rounded-sm h-48 aspect-video overflow-clip absolute bg-[#0f1923]"

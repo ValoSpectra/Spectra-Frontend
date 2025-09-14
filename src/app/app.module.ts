@@ -39,6 +39,7 @@ import { MapbanUiComponent } from "./mapban-ui/mapban-ui.component";
 import { MapbanMapComponent } from "./mapban-ui/mapban-map/mapban-map.component";
 import { provideTranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateModule } from "@ngx-translate/core";
+import { PlayercamsComponent } from "./playercams/playercams.component";
 
 @NgModule({
   declarations: [AppComponent],
@@ -77,6 +78,7 @@ import { TranslateModule } from "@ngx-translate/core";
     ScoreboardOrderPipe,
     MapbanUiComponent,
     MapbanMapComponent,
+    PlayercamsComponent,
     TranslateModule.forRoot({
       loader: provideTranslateHttpLoader({ prefix: "./langs/", suffix: ".json" }),
       fallbackLang: "en",

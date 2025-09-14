@@ -7,6 +7,7 @@ import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
 import { RedirectComponent } from "./redirect/redirect.component";
 import { TimeoutComponent } from "./timeout/timeout.component";
 import { MapbanUiComponent } from "./mapban-ui/mapban-ui.component";
+import { PlayercamsComponent } from "./playercams/playercams.component";
 
 const routes: Routes = [
   {
@@ -72,6 +73,10 @@ const routes: Routes = [
   {
     path: "mapban",
     component: MapbanUiComponent,
+  },
+  {
+    path: "playercams",
+    component: PlayercamsComponent,
   },
 ];
 
