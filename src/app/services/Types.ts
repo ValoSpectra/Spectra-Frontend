@@ -1,3 +1,4 @@
+//#region Regular Matches
 export interface IMatchData {
   groupCode: string;
   isRanked: boolean;
@@ -77,6 +78,9 @@ export interface ITimeoutState {
   rightTeam: boolean;
   timeRemaining: number;
 }
+
+//#endregion
+//#region Tools
 
 export interface IToolsData {
   seriesInfo: ISeriesInfo;
@@ -175,3 +179,49 @@ export type MapPoolInfo =
   | PresentMapPoolInfo
   | FutureMapPoolInfo
   | DisabledMapPoolInfo;
+
+//#endregion
+//#region Mapban
+export interface IMapbanSessionData {
+  sessionIdentifier: string;
+  organizationName: string;
+  isSupporter: boolean;
+  teams: ISessionTeam[];
+  format: "bo1" | "bo3" | "bo5" | "custom" | undefined;
+  customFormatData?: ICustomFormatData;
+  availableMaps: SessionMap[];
+  selectedMaps: SessionMap[];
+  stage: Stage;
+  actingTeamCode: string;
+  actingTeam: 0 | 1;
+}
+
+export interface ISessionTeam {
+  name: string;
+  tricode: string;
+  url: string;
+}
+
+export class SessionMap {
+  name: string;
+  bannedBy?: 0 | 1 = undefined; // 0 = left team, 1 = right team
+  pickedBy?: 0 | 1 = undefined;
+  sidePickedBy?: 0 | 1 = undefined;
+  pickedAttack: boolean | undefined = undefined;
+  score: (number | undefined)[] = [undefined, undefined];
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+export interface ICustomFormatData {
+  pickAmount: number;
+  banAmount: number;
+  hasDecider: boolean;
+  pickBanStates: ("pick" | "ban" | "decider")[];
+  selectorTeam: (0 | 1)[];
+  sideSelectorTeam: (0 | 1)[];
+}
+
+export type Stage = "ban" | "pick" | "side" | "decider";

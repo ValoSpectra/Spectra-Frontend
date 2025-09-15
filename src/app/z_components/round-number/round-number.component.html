@@ -1,9 +1,7 @@
-@if (otNumber() > 0) {
-  <p class="font-montserrat text-base font-bold text-nowrap text-red-500/70">
+<p class="font-montserrat text-base font-bold text-nowrap text-white/60">
+  @if (otNumber() > 0) {
     OVERTIME {{ otNumber() }}
-  </p>
-} @else {
-  <p class="font-montserrat text-base font-bold text-nowrap text-white/60">
+  } @else {
     ROUND {{ dataModel.match().roundNumber }}
-  </p>
-}
+  }
+</p>
