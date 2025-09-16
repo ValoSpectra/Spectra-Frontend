@@ -5,7 +5,7 @@ import { TeamControllerComponent } from "./team-controller/team-controller.compo
 import { HttpClient } from "@angular/common/http";
 import { NgIf } from "@angular/common";
 import { TranslateService } from "@ngx-translate/core";
-import { LanguageAliasService } from "../services/languageAlias.service";
+import { i18nHelper } from "../services/i18nHelper";
 import { MatchOverlayComponent } from "../z_overlays/match-overlay/match-overlay.component";
 
 @Component({
@@ -44,7 +44,7 @@ export class TestingComponent implements AfterViewInit {
       this.hideAuxiliary = params["hideAuxiliary"] != undefined;
       this.previewCode = params["previewCode"] || "";
       const paramLang = params["lang"]?.toLowerCase() || "en";
-      this.lang = LanguageAliasService.resolveLanguageAlias(paramLang);
+      this.lang = i18nHelper.resolveLanguageAlias(paramLang);
     });
   }
 

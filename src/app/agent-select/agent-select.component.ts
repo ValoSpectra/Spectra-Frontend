@@ -9,7 +9,7 @@ import { NgIf, NgFor } from "@angular/common";
 import { SelectPlayerInfoComponent } from "./select-player-info/select-player-info.component";
 import { SelectTeamInfoComponent } from "./select-team-info/select-team-info.component";
 import { TranslateService } from "@ngx-translate/core";
-import { LanguageAliasService } from "../services/languageAlias.service";
+import { i18nHelper } from "../services/i18nHelper";
 
 @Component({
   selector: "app-agent-select",
@@ -41,7 +41,7 @@ export class AgentSelectComponent implements OnInit, AfterViewInit {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
       const paramLang = params["lang"]?.toLowerCase() || "en";
-      this.lang = LanguageAliasService.resolveLanguageAlias(paramLang);
+      this.lang = i18nHelper.resolveLanguageAlias(paramLang);
     });
   }
 

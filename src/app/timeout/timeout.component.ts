@@ -6,7 +6,7 @@ import { Config } from "../shared/config";
 import { trigger, transition, style, animate } from "@angular/animations";
 import { NgIf } from "@angular/common";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
-import { LanguageAliasService } from "../services/languageAlias.service";
+import { i18nHelper } from "../services/i18nHelper";
 
 @Component({
   selector: "app-timeout",
@@ -40,7 +40,7 @@ export class TimeoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.route.queryParams.subscribe((params) => {
       this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
       const paramLang = params["lang"]?.toLowerCase() || "en";
-      this.lang = LanguageAliasService.resolveLanguageAlias(paramLang);
+      this.lang = i18nHelper.resolveLanguageAlias(paramLang);
     });
   }
 

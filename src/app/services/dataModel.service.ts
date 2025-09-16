@@ -51,7 +51,27 @@ export class DataModelService {
   }
 
   private onMatchUpdate(data: any) {
+    // Construct map for name overrides if it's a string (from JSON).
+    // The server keeps it as JSON to avoid having to (de)-serialize multiple times.
+    const tempOverrides = data?.tools?.nameOverrides?.overrides || null;
+    if (typeof tempOverrides === "string") {
+      data.tools.nameOverrides.overrides = this.jsonToMap(tempOverrides);
+    }
     this.match.set(data);
+  }
+
+  private jsonToMap(json: string): Map<string, string> {
+    try {
+      const obj = JSON.parse(json);
+      if (Array.isArray(obj)) {
+        return new Map(obj);
+      } else {
+        throw new Error("Invalid JSON format for Map");
+      }
+    } catch (error) {
+      console.error("Failed to parse JSON to Map:", error);
+      return new Map();
+    }
   }
 
   private onMapbanUpdate(data: any) {
@@ -140,7 +160,7 @@ const initialMatchData: IMatchData = {
       customText: "",
     },
     playercamsInfo: { enable: false },
-    nameOverrides: { overrides: "" },
+    nameOverrides: { overrides: [] },
   },
   timeoutState: {
     techPause: false,

@@ -1,7 +1,6 @@
 import { Component, inject, Input, OnInit } from "@angular/core";
 import { trigger, transition, style, animate } from "@angular/animations";
 import { ActivatedRoute } from "@angular/router";
-import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
 import { NgIf } from "@angular/common";
 import { TopinfoComponent } from "../topscore/topinfo/topinfo.component";
 import { TopscoreComponent } from "../topscore/topscore.component";

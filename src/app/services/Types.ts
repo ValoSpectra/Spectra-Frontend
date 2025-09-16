@@ -134,11 +134,11 @@ export interface IPlayercamsInfo {
 }
 
 export interface INameOverrides {
-  overrides: string; // JSON representation of Map<string, string> for easier transfer
+  overrides: string[];
 }
 
 export interface IOverridesPlayercamsData {
-  nameOverrides: string; // JSON representation of Map<string, string> for easier transfer
+  nameOverrides: string[];
   enabledPlayers: string[];
 }
 
