@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from "@angular/core";
 import { MatchOverlayComponent } from "../match-overlay/match-overlay.component";
 import { DataModelService } from "../../services/dataModel.service";
+import { IMatchData } from "../../services/Types";
 
 @Component({
   selector: "app-testing-new",
@@ -23,6 +24,7 @@ export class TestingComponent implements OnInit {
       map: "Ascent",
       switchRound: 12,
       firstOtRound: 25,
+      showAliveKDA: true,
       tools: {
         seriesInfo: {
           needed: 3,
@@ -317,7 +319,7 @@ export class TestingComponent implements OnInit {
               name: "Test",
               playerId: 0,
               isAlive: true,
-              agentInternal: "Wushu",
+              agentInternal: "Smonk",
               isObserved: false,
               armorName: "Heavy",
               money: 2100,

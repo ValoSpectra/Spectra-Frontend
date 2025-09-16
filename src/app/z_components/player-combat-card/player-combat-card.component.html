@@ -21,62 +21,60 @@
       />
     }
 
-    <app-abilities-new class="vw-96 vh-22" [player]="player" [right]="right()"></app-abilities-new>
-    <div
-      class="vh-28 vw-144 flex flex-row items-center"
-      [class.flex-row-reverse]="right()"
-      [class.justify-between]="player.isAlive"
-      [class.gap-4]="!player.isAlive"
-    >
-      <div class="vw-64 flex" [class.flex-row-reverse]="right()">
-        <!-- important for animation consistency -->
-        @if (player.isAlive) {
-          <div
-            class="flex flex-row items-center gap-1"
-            [class.flex-row-reverse]="right()"
-            animate.enter="animate-collapse-side-in animate-duration-200"
-            animate.leave="animate-collapse-side-out animate-duration-150"
-          >
-            <p
-              class="font-montserrat flex flex-row items-center gap-1 text-center text-xl font-extrabold"
-              [class]="textColor()"
-            >
-              <app-shield-icon [type]="player.armorName" [side]="color()"></app-shield-icon>
-              {{ player.health }}
-            </p>
-          </div>
-        } @else {
-          <div
-            class="font-montserrat flex flex-row items-center gap-1 font-semibold"
-            [class]="textColor()"
-          >
-            <img class="vw-12 vh-12" [src]="creditsIcon()" />
-            <p>{{ player.money }}</p>
-          </div>
-        }
-      </div>
-      @if (player.isAlive) {
-        <p
-          class="font-montserrat self-center text-sm font-bold"
-          animate.leave="animate-fade-out animate-duration-100 animate-style-late"
+    <div class="vw-96 vh-22 relative" [class.flex-row-reverse!]="right()">
+      @if (!player.isAlive) {
+        <div
+          class="font-montserrat absolute flex flex-row items-baseline gap-1 font-bold"
+          [class.right-0]="right()"
           [class]="textColor()"
+          animate.enter="animate-fade-in animate-duration-300"
         >
-          {{ player.kills }}/{{ player.deaths }}/{{ player.assists }}
-        </p>
-      } @else {
-        <p
-          class="font-montserrat text-md absolute self-center font-bold"
-          animate.enter="animate-fade-in animate-duration-150 animate-style-early"
-          [class]="textColor()"
-          [class.left-25]="!right()"
-          [class.right-25]="right()"
-        >
-          {{ player.kills }}/{{ player.deaths }}/{{ player.assists }}
-        </p>
+          <img class="vw-10 vh-10" [src]="creditsIcon()" />
+          <p>{{ player.money }}</p>
+        </div>
+      }
+      @if (!dataModel.hideAuxiliary() && player.auxiliaryAvailable.abilities) {
+        <app-abilities-new
+          class="absoute h-full w-full max-w-fit justify-self-end"
+          [player]="player"
+          [right]="right()"
+        ></app-abilities-new>
       }
     </div>
+
+    <div class="vh-28 vw-144 flex flex-row gap-1" [class.flex-row-reverse]="right()">
+      <div
+        class="relative flex w-full flex-row gap-1 overflow-hidden transition-all duration-300"
+        [class.flex-row-reverse]="right()"
+        [class.grow-0!]="!player.isAlive"
+        [class.w-0!]="!player.isAlive"
+      >
+        <div class="flex flex-row gap-3">
+          <app-shield-icon [type]="player.armorName" [side]="color()"></app-shield-icon>
+        </div>
+
+        @if (!dataModel.hideAuxiliary() && player.auxiliaryAvailable.health) {
+          <p class="font-montserrat vw-35 text-center text-xl font-extrabold" [class]="textColor()">
+            {{ player.health }}
+          </p>
+        }
+      </div>
+      <div
+        class="font-montserrat relative flex flex-row items-center gap-1 text-sm font-bold transition-all duration-300"
+        [class.text-base!]="!player.isAlive"
+        [class]="textColor()"
+      >
+        @if (dataModel.match().showAliveKDA || !player.isAlive) {
+          <p>{{ player.kills }}/{{ player.deaths }}/{{ player.assists }}</p>
+        } @else {
+          <img class="vw-9 vh-9" [src]="creditsIcon()" />
+          <p>{{ player.money }}</p>
+        }
+      </div>
+    </div>
+
     <div
-      class="font-montserrat vw-160 -mt-1.5 flex flex-row gap-1 truncate font-semibold text-white"
+      class="font-montserrat vw-160 absolute bottom-0 -mt-1.5 flex flex-row gap-1 truncate font-semibold text-white"
       [class.flex-row-reverse!]="right()"
     >
       {{ player.name }}

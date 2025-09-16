@@ -18,7 +18,11 @@
     ></app-ultimate-tracker>
   </div>
   <img class="vw-36 vh-36" src="assets/shields/{{ player.armorName }}.webp" />
-  <app-abilities-new class="vw-96" [player]="player"></app-abilities-new>
+  @if (!dataModel.hideAuxiliary() && player.auxiliaryAvailable.abilities) {
+    <app-abilities-new class="vw-96" [player]="player"></app-abilities-new>
+  } @else {
+    <div class="vw-80"></div>
+  }
   <div
     class="vw-106 font-unbounded mx-4 flex flex-row justify-center gap-1 font-semibold text-white"
   >

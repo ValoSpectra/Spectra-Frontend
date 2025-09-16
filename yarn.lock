@@ -2642,6 +2642,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4":
+  version: 4.17.20
+  resolution: "@types/lodash@npm:4.17.20"
+  checksum: 10c0/98cdd0faae22cbb8079a01a3bb65aa8f8c41143367486c1cbf5adc83f16c9272a2a5d2c1f541f61d0d73da543c16ee1d21cf2ef86cb93cd0cc0ac3bced6dd88f
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:>=10.0.0":
   version: 24.3.1
   resolution: "@types/node@npm:24.3.1"
@@ -7244,6 +7251,7 @@ __metadata:
     "@ngx-translate/http-loader": "npm:^17.0.0"
     "@tailwindcss/postcss": "npm:^4.1.10"
     "@types/jasmine": "npm:~5.1.7"
+    "@types/lodash": "npm:^4"
     angular-eslint: "npm:20.2.0"
     animejs: "npm:^4.0.2"
     eslint: "npm:^9.28.0"
@@ -7255,6 +7263,7 @@ __metadata:
     karma-coverage: "npm:~2.2.1"
     karma-jasmine: "npm:~5.1.0"
     karma-jasmine-html-reporter: "npm:~2.1.0"
+    lodash: "npm:^4.17.21"
     prettier: "npm:3.5.3"
     prettier-plugin-tailwindcss: "npm:^0.6.14"
     rxjs: "npm:~7.8.2"

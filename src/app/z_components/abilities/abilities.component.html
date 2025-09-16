@@ -1,11 +1,12 @@
 @if (player.auxiliaryAvailable.abilities) {
-  <div class="flex flex-row" [class.justify-end]="right">
+  <div class="flex flex-row overflow-clip" [class.justify-end]="right">
     @if (player.isAlive) {
       <div
         class="flex flex-row gap-4 overflow-hidden"
         [class.justify-end]="right"
-        animate.enter="animate-collapse-side-in animate-duration-250"
-        animate.leave="animate-collapse-side-out animate-duration-200"
+        [class.right]="right"
+        animate.enter="animate-translate animate-duration-250"
+        animate.leave="animate-translate animate-reverse animate-duration-200"
       >
         <img
           class="vw-22"
@@ -25,13 +26,21 @@
       </div>
     } @else if (player.agentInternal === "Smonk") {
       <!-- Clove ability when dead -->
-      <img
-        class="vw-22"
-        [class.brightness-35]="!isAvailable(player.abilities?.ability2 || 0)"
-        src="assets/ability2/{{ player.agentInternal }}Ability2.webp"
-        animate.enter="animate-fade-in animate-duration-250"
-        animate.leave="animate-fade-out animate-duration-200"
-      />
+      <div
+        class="flex flex-row gap-4 overflow-hidden"
+        [class.justify-end]="right"
+        [class.flex-row-reverse]="right"
+      >
+        <div class="vw-22"></div>
+        <div class="vw-22"></div>
+        <img
+          class="vw-22 animate-style-early"
+          [class.brightness-35]="!isAvailable(player.abilities?.ability2 || 0)"
+          src="assets/ability2/{{ player.agentInternal }}Ability2.webp"
+          animate.enter="animate-fade-in animate-duration-250 animate-delay-300"
+          animate.leave="animate-fade-out animate-duration-200"
+        />
+      </div>
     }
   </div>
 }

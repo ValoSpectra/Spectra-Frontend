@@ -1,6 +1,7 @@
-import { Component, computed, input, Input } from "@angular/core";
+import { Component, computed, inject, input, Input } from "@angular/core";
 import { UltimateTrackerComponent } from "../ultimate-tracker/ultimate-tracker.component";
 import { AbilitiesComponent } from "../abilities/abilities.component";
+import { DataModelService } from "../../services/dataModel.service";
 
 @Component({
   selector: "app-playerscore-new",
@@ -9,6 +10,8 @@ import { AbilitiesComponent } from "../abilities/abilities.component";
   styleUrl: "./playerscore.component.css",
 })
 export class PlayerscoreComponent {
+  dataModel = inject(DataModelService);
+
   @Input() player!: any;
 
   @Input() right = false;

@@ -1,7 +1,8 @@
-import { Component, computed, input, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { Component, computed, inject, input, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { UltimateTrackerComponent } from "../ultimate-tracker/ultimate-tracker.component";
 import { AbilitiesComponent } from "../abilities/abilities.component";
 import { ShieldIconComponent } from "../../combat/playercard/shield-icon/shield-icon.component";
+import { DataModelService } from "../../services/dataModel.service";
 
 @Component({
   selector: "app-player-combat-card",
@@ -10,6 +11,8 @@ import { ShieldIconComponent } from "../../combat/playercard/shield-icon/shield-
   styleUrl: "./player-combat-card.component.css",
 })
 export class PlayerCombatCardComponent implements OnChanges {
+  dataModel = inject(DataModelService);
+
   @Input() player!: any;
   @Input() playerHealth!: number; //only needed so change detection can give us an event for health change
 
@@ -45,6 +48,8 @@ export class PlayerCombatCardComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.player.auxiliaryAvailable);
+
     const healthChanges = changes["playerHealth"];
     if (
       healthChanges &&

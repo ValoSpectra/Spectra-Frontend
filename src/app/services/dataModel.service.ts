@@ -17,6 +17,7 @@ export class DataModelService {
       this.groupCode.set(params["groupCode"] || "");
       this.sessionId.set(params["sessionId"] || "");
       this.paramLang.set(params["lang"]?.toLowerCase() || "en");
+      this.hideAuxiliary.set(params["hideAuxiliary"] || false);
     });
 
     if (this.route.firstChild && this.route.firstChild.firstChild) {
@@ -61,6 +62,7 @@ export class DataModelService {
   public readonly sessionId = signal("");
   public readonly paramLang = signal("en");
   public readonly minimalMode = signal(false);
+  public readonly hideAuxiliary = signal(false);
 
   public readonly match = signal<IMatchData>(initialMatchData, { equal: () => false });
   public readonly teams = computed(() => this.match().teams, { equal: () => false });
