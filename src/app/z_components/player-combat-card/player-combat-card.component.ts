@@ -3,6 +3,7 @@ import { UltimateTrackerComponent } from "../ultimate-tracker/ultimate-tracker.c
 import { AbilitiesComponent } from "../abilities/abilities.component";
 import { ShieldIconComponent } from "../../combat/playercard/shield-icon/shield-icon.component";
 import { DataModelService } from "../../services/dataModel.service";
+import { AgentNameService } from "../../services/agentName.service";
 
 @Component({
   selector: "app-player-combat-card",
@@ -65,4 +66,16 @@ export class PlayerCombatCardComponent implements OnChanges {
       this.healthAnimationRunning = false;
     }, 200);
   }
+
+  getAgentName(agent: string) {
+    return AgentNameService.getAgentName(agent);
+  }
 }
+
+@Component({
+  selector: "app-player-combat-card-minimal",
+  imports: [],
+  templateUrl: "./player-combat-card-minimal.component.html",
+  styleUrl: "./player-combat-card.component.css",
+})
+export class PlayerCombatCardMinimalComponent extends PlayerCombatCardComponent {}

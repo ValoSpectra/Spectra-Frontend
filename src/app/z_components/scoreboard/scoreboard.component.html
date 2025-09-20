@@ -13,12 +13,17 @@
       >
         <img class="mx-2 max-h-4/5 max-w-4/5" [src]="team.teamUrl" />
         <div class="font-unbounded mx-2 flex flex-col text-white">
-          <p class="text-4xl font-extrabold">{{ team.teamName }}</p>
-          <div class="flex flex-row gap-1 text-xs font-bold" [class.flex-row-reverse!]="$index > 0">
-            <img class="vw-12 vh-12 mt-0.5" src="assets/misc/ValorantCreditsWhite.svg" />
-            <p class="">{{ team.spentThisRound }}</p>
-            <p class="text-white/60 uppercase">spent this round</p>
-          </div>
+          <p class="text-4xl font-extrabold uppercase">{{ team.teamName }}</p>
+          @if (!dataModel.minimalMode()) {
+            <div
+              class="flex flex-row gap-1 text-xs font-bold"
+              [class.flex-row-reverse!]="$index > 0"
+            >
+              <img class="vw-12 vh-12 mt-0.5" src="assets/misc/ValorantCreditsWhite.svg" />
+              <p class="">{{ team.spentThisRound }}</p>
+              <p class="text-white/60 uppercase">spent this round</p>
+            </div>
+          }
         </div>
       </div>
     }
@@ -29,29 +34,27 @@
     animate.leave="animate-scoreboard-out animate-duration-300"
   >
     <!-- Score blocks -->
-    <div
-      class="bg-background mx-5 flex flex-col gap-2.5 rounded-sm px-5 py-4"
-      animate.enter="animate-scoreboard-in animate-duration-300"
-    >
-      @for (player of dataModel.teams()[0].players; track $index) {
-        <app-playerscore-new
-          [player]="player"
-          [right]="false"
-          [color]="dataModel.teams()[0].isAttacking ? 'attacker' : 'defender'"
-        ></app-playerscore-new>
-      }
-    </div>
-    <div
-      class="bg-background mx-5 flex flex-col gap-2.5 rounded-sm px-5 py-4"
-      animate.enter="animate-scoreboard-in animate-duration-300"
-    >
-      @for (player of dataModel.teams()[1].players; track $index) {
-        <app-playerscore-new
-          [player]="player"
-          [right]="true"
-          [color]="dataModel.teams()[1].isAttacking ? 'attacker' : 'defender'"
-        ></app-playerscore-new>
-      }
-    </div>
+    @for (team of dataModel.teams(); track $index; let teamIndex = $index) {
+      <div
+        class="bg-background mx-5 flex flex-col gap-2.5 rounded-sm px-5 py-4"
+        animate.enter="animate-scoreboard-in animate-duration-300"
+      >
+        @for (player of team.players; track $index) {
+          @if (!dataModel.minimalMode()) {
+            <app-playerscore-new
+              [player]="player"
+              [right]="teamIndex === 1"
+              [color]="team.isAttacking ? 'attacker' : 'defender'"
+            ></app-playerscore-new>
+          } @else {
+            <app-playerscore-minimal-new
+              [player]="player"
+              [right]="teamIndex === 1"
+              [color]="team.isAttacking ? 'attacker' : 'defender'"
+            ></app-playerscore-minimal-new>
+          }
+        }
+      </div>
+    }
   </div>
 }

@@ -9,7 +9,9 @@
     src="assets/agents/{{ player.agentInternal }}Icon.webp"
   />
   <div class="vw-120 flex flex-col items-center justify-center gap-1">
-    <p class="font-montserrat font-semibold text-nowrap text-white">{{ player.name }}</p>
+    <p class="font-montserrat font-semibold text-nowrap text-white">
+      {{ player.name }}
+    </p>
     <app-ultimate-tracker
       class="-mt-1"
       [max]="player.maxUltPoints"

@@ -1,10 +1,13 @@
 import { Component, computed, inject } from "@angular/core";
 import { DataModelService } from "../../services/dataModel.service";
-import { PlayerCombatCardComponent } from "../player-combat-card/player-combat-card.component";
+import {
+  PlayerCombatCardComponent,
+  PlayerCombatCardMinimalComponent,
+} from "../player-combat-card/player-combat-card.component";
 
 @Component({
   selector: "app-combat-tracker",
-  imports: [PlayerCombatCardComponent],
+  imports: [PlayerCombatCardComponent, PlayerCombatCardMinimalComponent],
   templateUrl: "./combat-tracker.component.html",
   styleUrl: "./combat-tracker.component.css",
 })

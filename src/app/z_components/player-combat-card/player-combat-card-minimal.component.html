@@ -1,0 +1,72 @@
+<div class="vh-74 flex flex-row" [class.!flex-row-reverse]="right()">
+  <img
+    class="vh-74 vw-74 relative left-7 z-2"
+    [class.grayscale]="!player.isAlive"
+    [class.flip]="right()"
+    [class.!-left-7]="right()"
+    src="assets/agents/{{ player.agentInternal }}{{ player.iconNameSuffix }}Icon.webp"
+  />
+
+  <!-- playername container -->
+  <div
+    class="vw-146 relative flex flex-col items-start justify-center gap-1"
+    [class]="[playerinfoBackgroundClass(), getLeftPad(), getRightPad()]"
+    [class.!items-end]="right()"
+  >
+    @if (isObserved()) {
+      <img
+        class="absolute top-2 right-2"
+        [class.left-2!]="right()"
+        src="assets/misc/ObserverEye.svg"
+      />
+    }
+
+    <p class="font-montserrat text-xs font-semibold" [class]="textColor()">
+      {{ getAgentName(player.agentInternal) }}
+    </p>
+    <div
+      class="font-montserrat vw-160 -mt-1.5 flex flex-row gap-1 truncate text-lg font-semibold text-white"
+      [class.flex-row-reverse!]="right()"
+    >
+      {{ player.name }}
+      @if (player.isCaptain) {
+        <img class="vw-17 vh-17 self-center" src="assets/misc/TeamCaptain.svg" />
+      }
+    </div>
+    @if (player.isAlive) {
+      <div
+        class="vh-3 playercard-hp-shadow absolute bottom-0 transition-all"
+        animate.enter="animate-collapse-side-in animate-duration-200"
+        animate.leave="animate-collapse-side-out animate-duration-150"
+        [class]="[backgroundColor(), color()]"
+        [class.left-0]="!right()"
+        [class.right-0]="right()"
+        [style.width.%]="clamp(player.health * 0.88 + 12, 0, 100)"
+      ></div>
+    }
+  </div>
+
+  <!-- weapon container -->
+  @if (player.isAlive) {
+    <div
+      class="vw-156 flex flex-row gap-2 overflow-hidden pl-3"
+      animate.enter="animate-weapon-collapse-in animate-duration-200 animate-delay-150 animate-style-both"
+      animate.leave="animate-weapon-collapse-out animate-duration-150 animate-style-keep"
+      [class]="weaponInfoBackgroundClass()"
+      [class.right]="right()"
+    >
+      <div class="font-montserrat vw-41 flex flex-col items-center justify-center text-white">
+        <div class="text-xs font-bold">Kills</div>
+        <div class="text-lg font-semibold">{{ player.kills }}</div>
+      </div>
+      <div class="font-montserrat vw-41 flex flex-col items-center justify-center text-white">
+        <div class="text-xs font-bold">Deaths</div>
+        <div class="text-lg font-semibold">{{ player.deaths }}</div>
+      </div>
+      <div class="font-montserrat vw-41 flex flex-col items-center justify-center text-white">
+        <div class="text-xs font-bold">Assists</div>
+        <div class="text-lg font-semibold">{{ player.assists }}</div>
+      </div>
+    </div>
+  }
+</div>
