@@ -17,7 +17,7 @@ export class DataModelService {
       this.groupCode.set(params["groupCode"] || "");
       this.sessionId.set(params["sessionId"] || "");
       this.paramLang.set(params["lang"]?.toLowerCase() || "en");
-      this.hideAuxiliary.set(params["hideAuxiliary"] || false);
+      this.hideAuxiliary.set(params["hideAuxiliary"] === "true");
     });
 
     if (this.route.firstChild && this.route.firstChild.firstChild) {
