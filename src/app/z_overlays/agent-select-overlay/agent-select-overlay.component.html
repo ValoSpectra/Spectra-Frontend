@@ -1,0 +1,44 @@
+<div
+  class="bg-timer/80 absolute bottom-1/100 left-1/100 flex h-4/10 w-98/100 flex-row overflow-clip rounded-3xl"
+>
+  <div class="flex h-full w-45/100 flex-row">
+    @for (player of dataModel.teams()[0].players; track $index) {
+      <app-agent-select-player-info
+        class="h-full w-1/5"
+        [agent]="player.agentInternal"
+        [locked]="player.locked"
+        [playerName]="player.name"
+        [color]="dataModel.teams()[0].isAttacking ? 'attacker' : 'defender'"
+        [down]="false"
+      ></app-agent-select-player-info>
+    }
+  </div>
+  <div class="bg-agent-select-team-info flex h-full w-1/10 flex-col">
+    @for (team of dataModel.teams(); track $index) {
+      <div
+        class="flex h-1/2 w-full flex-col items-center justify-between py-2"
+        [class.flex-col-reverse]="$index === 1"
+        [class.bg-agent-select-attacker]="team.isAttacking"
+        [class.bg-agent-select-defender]="!team.isAttacking"
+        [class.down]="$index === 1"
+      >
+        <img class="aspect-square max-h-8/10 w-8/10" [src]="team.teamUrl" />
+        <p class="font-unbounded text-3xl font-extrabold text-white">
+          {{ team.teamTricode }}
+        </p>
+      </div>
+    }
+  </div>
+  <div class="flex h-full w-45/100 flex-row">
+    @for (player of dataModel.teams()[1].players; track $index) {
+      <app-agent-select-player-info
+        class="h-full w-1/5"
+        [agent]="player.agentInternal"
+        [locked]="player.locked"
+        [playerName]="player.name"
+        [color]="dataModel.teams()[1].isAttacking ? 'attacker' : 'defender'"
+        [down]="true"
+      ></app-agent-select-player-info>
+    }
+  </div>
+</div>

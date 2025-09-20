@@ -1,0 +1,27 @@
+<div
+  class="relative h-full w-full overflow-clip"
+  [class.down]="down()"
+  [class]="'bg-agentselect-player-' + color()"
+>
+  <img
+    class="animate-style-early absolute -top-13/100 -left-15/10 z-2 w-4/1"
+    [class.grayscale]="!locked()"
+    [class.animate-switch]="animateSwitch"
+    [class.animate-lock]="locked()"
+    src="assets/agent-portraits/{{ agent() }}Portrait.webp"
+  />
+
+  <div class="animate-style-early absolute bottom-3/100 left-1/2 z-4 w-1/4 -translate-x-1/2">
+    <img
+      class="w-full"
+      [class.animate-switch]="animateSwitch"
+      [class.animate-lock]="locked()"
+      src="assets/roles/{{ getAgentRole(agent()) }}.webp"
+    />
+  </div>
+  <div
+    class="font-montserrat absolute bottom-15/100 left-1/2 z-4 w-9/10 -translate-x-1/2 overflow-clip text-center text-xl font-extrabold text-white"
+  >
+    {{ playerName() }}
+  </div>
+</div>

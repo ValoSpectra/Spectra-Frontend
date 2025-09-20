@@ -1,0 +1,21 @@
+<app-agent-select-overlay></app-agent-select-overlay>
+
+<div class="pos-x-center pos-y-550 absolute flex flex-row gap-70">
+  @for (team of dataModel.teams(); track $index; let teamIndex = $index) {
+    <div class="flex flex-row gap-27">
+      @for (player of team.players; track $index) {
+        <div class="flex flex-col gap-1 opacity-60 hover:opacity-100">
+          <button [class.hidden]="player.locked" (click)="lockAgent(teamIndex, $index)">
+            Lock
+          </button>
+          <button [class.hidden]="!player.locked" (click)="unlockAgent(teamIndex, $index)">
+            Unlock
+          </button>
+          <button [class.hidden]="player.locked" (click)="changeAgent(teamIndex, $index)">
+            Change
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>

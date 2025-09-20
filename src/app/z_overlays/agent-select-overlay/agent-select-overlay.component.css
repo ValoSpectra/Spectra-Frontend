@@ -1,0 +1,41 @@
+.bg-agent-select-defender {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--defender-color-rgb), 0.9) 0%,
+    rgba(var(--defender-color-secondary-rgb), 0) 90%
+  );
+}
+
+.bg-agent-select-attacker {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--attacker-color-rgb), 0.9) 0%,
+    rgba(var(--attacker-color-secondary-rgb), 0) 90%
+  );
+}
+
+.down.bg-agent-select-defender {
+  background: linear-gradient(
+    0deg,
+    rgba(var(--defender-color-rgb), 0.9) 0%,
+    rgba(var(--defender-color-secondary-rgb), 0) 90%
+  );
+}
+
+.down.bg-agent-select-attacker {
+  background: linear-gradient(
+    0deg,
+    rgba(var(--attacker-color-rgb), 0.9) 0%,
+    rgba(var(--attacker-color-secondary-rgb), 0) 90%
+  );
+}
+
+.bg-agent-select-team-info {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 25, 35, 0.65) 0%,
+    rgba(15, 25, 35, 0.53) 53%,
+    rgba(15, 25, 35, 0) 75%,
+    rgba(15, 25, 35, 0) 100%
+  );
+}

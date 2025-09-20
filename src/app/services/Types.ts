@@ -32,6 +32,7 @@ export interface IPlayerData {
   playerId: number;
   isAlive: boolean;
   agentInternal: string;
+  locked: boolean;
   isObserved: boolean;
   armorName: string;
   money: number;
