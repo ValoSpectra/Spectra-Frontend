@@ -41,7 +41,6 @@ export class EndroundComponent {
 
   readonly waitingBackgroundClass = computed(() => {
     const test = `gradient-head-to-head-${this.dataModel.teams()[0].isAttacking ? "attacker" : "defender"}`;
-    console.log(test);
     return test;
   });
 

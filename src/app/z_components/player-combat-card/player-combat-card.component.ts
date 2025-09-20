@@ -48,8 +48,6 @@ export class PlayerCombatCardComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.player.auxiliaryAvailable);
-
     const healthChanges = changes["playerHealth"];
     if (
       healthChanges &&
