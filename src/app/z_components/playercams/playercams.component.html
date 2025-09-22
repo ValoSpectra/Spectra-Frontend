@@ -1,0 +1,49 @@
+@if (dataModel.playercamsInfo().enable) {
+  <div [class.hidden]="dataModel.match().roundPhase !== 'combat'">
+    @for (team of dataModel.teams(); track $index; let teamIndex = $index) {
+      @for (player of team.players; track $index) {
+        @if (streams.has(player.fullName)) {
+          <div
+            class="bg-timer border-timer absolute box-border flex aspect-video h-48 flex-col justify-end overflow-clip rounded-sm border-3"
+            [class.hidden]="!player.isObserved"
+          >
+            <div class="absolute h-48 w-full">
+              <iframe
+                allow="camera;fullscreen;autoplay;"
+                [src]="streams.get(player.fullName)"
+                class="aspect-video w-full"
+              ></iframe>
+            </div>
+            @if (player.killsThisRound > 0) {
+              <div
+                class="killbox-gradient flex h-7 w-13 flex-row items-center gap-1 rounded-tr-2xl pl-2"
+                [class]="team.isAttacking ? 'attacker' : 'defender'"
+              >
+                <img class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
+                <p class="font-montserrat text-lg font-semibold text-white">
+                  {{ player.killsThisRound }}
+                </p>
+              </div>
+            }
+            <div class="relative flex h-7 w-full bg-black/70">
+              <div
+                class="gradient absolute"
+                [class]="team.isAttacking ? 'attacker' : 'defender'"
+              ></div>
+              <div
+                class="text-shadow-xl w-full max-w-85 overflow-clip px-2 text-left font-[Montserrat] text-lg font-extrabold text-white"
+              >
+                {{ getDisplayName(player.fullName, player.name) }}
+              </div>
+              <div
+                class="w-full px-2 text-right font-[Montserrat] text-lg font-semibold text-white"
+              >
+                {{ player.kills }} / {{ player.deaths }} / {{ player.assists }}
+              </div>
+            </div>
+          </div>
+        }
+      }
+    }
+  </div>
+}

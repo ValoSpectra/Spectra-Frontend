@@ -1,0 +1,46 @@
+.gradient {
+  height: 150%;
+  width: 100%;
+
+  &.defender {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(var(--defender-color-rgb), 0.5) 0%,
+        rgba(var(--defender-color-rgb), 0) 100%
+      ),
+      rgba(15, 25, 35, 0);
+  }
+
+  &.attacker {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(var(--attacker-color-rgb), 0.7) 0%,
+        rgba(var(--attacker-color-rgb), 0) 100%
+      ),
+      rgba(15, 25, 35, 0);
+  }
+}
+
+.killbox-gradient {
+  &.defender {
+    background:
+      linear-gradient(
+        to left,
+        rgba(var(--defender-color-rgb), 0.5) 0%,
+        rgba(var(--defender-color-rgb), 0.2) 100%
+      ),
+      rgba(15, 25, 35, 0);
+  }
+
+  &.attacker {
+    background:
+      linear-gradient(
+        to left,
+        rgba(var(--attacker-color-rgb), 0.7) 0%,
+        rgba(var(--attacker-color-rgb), 0.4) 100%
+      ),
+      rgba(15, 25, 35, 0);
+  }
+}

@@ -13,6 +13,7 @@ import { CombatTrackerComponent } from "../../z_components/combat-tracker/combat
 import { SpikeIconComponent } from "../../z_components/spike-icon/spike-icon.component";
 import { EndroundComponent } from "../../z_components/endround/endround.component";
 import { TimeoutComponent } from "../../z_components/timeout/timeout.component";
+import { PlayercamsComponent } from "../../z_components/playercams/playercams.component";
 
 @Component({
   selector: "app-match-overlay",
@@ -30,6 +31,7 @@ import { TimeoutComponent } from "../../z_components/timeout/timeout.component";
     SpikeIconComponent,
     EndroundComponent,
     TimeoutComponent,
+    PlayercamsComponent,
   ],
   templateUrl: "./match-overlay.component.html",
   styleUrl: "./match-overlay.component.css",

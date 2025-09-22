@@ -77,7 +77,7 @@ export class TestingComponent implements OnInit {
           customTextEnabled: false,
           spectraWatermark: true,
         },
-        playercamsInfo: { enable: false },
+        playercamsInfo: { enable: true, enabledPlayers: ["Testg#ABC"] },
         nameOverrides: { overrides: nameOverrideMap },
       },
       timeoutState: {
@@ -114,6 +114,7 @@ export class TestingComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 1,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -147,6 +148,7 @@ export class TestingComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -180,6 +182,7 @@ export class TestingComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 1,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -213,6 +216,7 @@ export class TestingComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -246,6 +250,7 @@ export class TestingComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -317,6 +322,7 @@ export class TestingComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -350,6 +356,7 @@ export class TestingComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 1,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -383,6 +390,7 @@ export class TestingComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 1,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -416,6 +424,7 @@ export class TestingComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 1,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -449,6 +458,7 @@ export class TestingComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,

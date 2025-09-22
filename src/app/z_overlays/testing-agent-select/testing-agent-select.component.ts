@@ -117,6 +117,7 @@ export class TestingAgentSelectComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -151,6 +152,7 @@ export class TestingAgentSelectComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -185,6 +187,7 @@ export class TestingAgentSelectComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -219,6 +222,7 @@ export class TestingAgentSelectComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -253,6 +257,7 @@ export class TestingAgentSelectComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -325,6 +330,7 @@ export class TestingAgentSelectComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -359,6 +365,7 @@ export class TestingAgentSelectComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -393,6 +400,7 @@ export class TestingAgentSelectComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -427,6 +435,7 @@ export class TestingAgentSelectComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
@@ -461,6 +470,7 @@ export class TestingAgentSelectComponent implements OnInit {
               kills: 0,
               deaths: 0,
               assists: 0,
+              killsThisRound: 0,
               health: 100,
               abilities: {
                 grenade: 1,
