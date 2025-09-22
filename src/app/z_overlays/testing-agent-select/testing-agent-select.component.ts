@@ -93,6 +93,7 @@ export class TestingAgentSelectComponent implements OnInit {
           players: [
             {
               name: "Testg",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Vampire",
@@ -126,6 +127,7 @@ export class TestingAgentSelectComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Smonk",
@@ -159,6 +161,7 @@ export class TestingAgentSelectComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -192,6 +195,7 @@ export class TestingAgentSelectComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -225,6 +229,7 @@ export class TestingAgentSelectComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -296,6 +301,7 @@ export class TestingAgentSelectComponent implements OnInit {
           players: [
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -329,6 +335,7 @@ export class TestingAgentSelectComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Smonk",
@@ -362,6 +369,7 @@ export class TestingAgentSelectComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -395,6 +403,7 @@ export class TestingAgentSelectComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -428,6 +437,7 @@ export class TestingAgentSelectComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",

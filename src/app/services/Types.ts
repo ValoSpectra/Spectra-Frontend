@@ -29,6 +29,7 @@ export interface ITeamData {
 
 export interface IPlayerData {
   name: string;
+  fullName: string;
   playerId: number;
   isAlive: boolean;
   agentInternal: string;

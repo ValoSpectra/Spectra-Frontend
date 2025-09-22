@@ -4,6 +4,7 @@ import { AbilitiesComponent } from "../abilities/abilities.component";
 import { DataModelService } from "../../services/dataModel.service";
 import { AgentNameService } from "../../services/agentName.service";
 import { AgentRoleService } from "../../services/agentRole.service";
+import { DisplayNameService } from "../../services/displayName.service";
 
 @Component({
   selector: "app-playerscore-new",
@@ -13,6 +14,7 @@ import { AgentRoleService } from "../../services/agentRole.service";
 })
 export class PlayerscoreComponent {
   dataModel = inject(DataModelService);
+  getDisplayName = inject(DisplayNameService).getDisplayName;
 
   @Input() player!: any;
 

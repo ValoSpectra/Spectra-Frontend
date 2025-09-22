@@ -17,7 +17,9 @@
     <p class="font-montserrat text-sm font-bold text-nowrap" [class]="textColor()">
       {{ getAgentName(player.agentInternal) }}
     </p>
-    <p class="font-montserrat text-lg font-semibold text-nowrap text-white">{{ player.name }}</p>
+    <p class="font-montserrat text-lg font-semibold text-nowrap text-white">
+      {{ getDisplayName(player.fullName, player.name) }}
+    </p>
   </div>
   <img class="vw-36 vh-36" src="assets/roles/{{ getAgentRole(player.agentInternal) }}.webp" />
   <div class="mx-4 flex flex-row justify-center gap-3 font-semibold text-white">

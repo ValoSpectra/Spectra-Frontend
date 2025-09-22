@@ -4,6 +4,7 @@ import { AbilitiesComponent } from "../abilities/abilities.component";
 import { ShieldIconComponent } from "../../combat/playercard/shield-icon/shield-icon.component";
 import { DataModelService } from "../../services/dataModel.service";
 import { AgentNameService } from "../../services/agentName.service";
+import { DisplayNameService } from "../../services/displayName.service";
 
 @Component({
   selector: "app-player-combat-card",
@@ -13,6 +14,7 @@ import { AgentNameService } from "../../services/agentName.service";
 })
 export class PlayerCombatCardComponent implements OnChanges {
   dataModel = inject(DataModelService);
+  getDisplayName = inject(DisplayNameService).getDisplayName;
 
   @Input() player!: any;
   @Input() playerHealth!: number; //only needed so change detection can give us an event for health change

@@ -10,7 +10,7 @@
   />
   <div class="vw-120 flex flex-col items-center justify-center gap-1">
     <p class="font-montserrat font-semibold text-nowrap text-white">
-      {{ player.name }}
+      {{ getDisplayName(player.fullName, player.name) }}
     </p>
     <app-ultimate-tracker
       class="-mt-1"

@@ -1,7 +1,6 @@
 import { Component, inject, OnInit, signal } from "@angular/core";
 import { MatchOverlayComponent } from "../match-overlay/match-overlay.component";
 import { DataModelService } from "../../services/dataModel.service";
-import { IMatchData } from "../../services/Types";
 
 @Component({
   selector: "app-testing-new",
@@ -14,6 +13,9 @@ export class TestingComponent implements OnInit {
   match: any;
 
   ngOnInit(): void {
+    const nameOverrideMap = new Map<string, string>();
+    nameOverrideMap.set("", "");
+
     this.match = {
       groupCode: "A",
       isRanked: false,
@@ -75,6 +77,8 @@ export class TestingComponent implements OnInit {
           customTextEnabled: false,
           spectraWatermark: true,
         },
+        playercamsInfo: { enable: false },
+        nameOverrides: { overrides: nameOverrideMap },
       },
       timeoutState: {
         techPause: false,
@@ -87,6 +91,7 @@ export class TestingComponent implements OnInit {
           players: [
             {
               name: "Testg",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Vampire",
@@ -119,6 +124,7 @@ export class TestingComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Test#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Smonk",
@@ -151,6 +157,7 @@ export class TestingComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -183,6 +190,7 @@ export class TestingComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -215,6 +223,7 @@ export class TestingComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -285,6 +294,7 @@ export class TestingComponent implements OnInit {
           players: [
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -317,6 +327,7 @@ export class TestingComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Smonk",
@@ -349,6 +360,7 @@ export class TestingComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -381,6 +393,7 @@ export class TestingComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",
@@ -413,6 +426,7 @@ export class TestingComponent implements OnInit {
             },
             {
               name: "Test",
+              fullName: "Testg#ABC",
               playerId: 0,
               isAlive: true,
               agentInternal: "Wushu",

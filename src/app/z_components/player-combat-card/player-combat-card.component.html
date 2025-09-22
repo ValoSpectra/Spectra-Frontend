@@ -77,7 +77,7 @@
       class="font-montserrat vw-160 absolute bottom-0 -mt-1.5 flex flex-row gap-1 truncate font-semibold text-white"
       [class.flex-row-reverse!]="right()"
     >
-      {{ player.name }}
+      {{ getDisplayName(player.fullName, player.name) }}
       @if (player.isCaptain) {
         <img class="vw-17 vh-17 self-baseline" src="assets/misc/TeamCaptain.svg" />
       }
