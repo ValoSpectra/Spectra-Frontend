@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, computed, effect, inject, OnInit } from "@angular/core";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { DataModelService } from "../../services/dataModel.service";
 import { DisplayNameService } from "../../services/displayName.service";
@@ -16,19 +16,36 @@ export class PlayercamsComponent implements OnInit {
 
   streams = new Map<string, SafeResourceUrl>();
 
-  public getEnabledPlayers(): string[] {
+  enabledPlayers = computed(() => {
     let toReturn = this.dataModel.playercamsInfo().enabledPlayers;
     if (!toReturn || toReturn.length === 0) {
       toReturn = [];
     }
     return toReturn;
-  }
+  });
 
   ngOnInit() {
-    for (const player of this.getEnabledPlayers()) {
+    for (const player of this.enabledPlayers()) {
       this.streams.set(player, this.getStreamUrl(player.split("#")[0], player.split("#")[1]));
     }
   }
+
+  effectRef = effect(() => {
+    const teams = this.dataModel.teams();
+    for (const team of teams) {
+      for (const player of team.players) {
+        if (!this.streams.has(player.fullName)) {
+          this.streams.set(
+            player.fullName,
+            this.getStreamUrl(player.fullName.split("#")[0], player.fullName.split("#")[1]),
+          );
+        }
+      }
+    }
+    if (this.streams.size >= 10) {
+      this.effectRef.destroy();
+    }
+  });
 
   public getStreamUrl(name: string, tagline: string): SafeResourceUrl {
     const identifier = this.dataModel.playercamsInfo().identifier;

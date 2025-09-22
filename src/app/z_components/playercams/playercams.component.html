@@ -2,7 +2,7 @@
   <div [class.hidden]="dataModel.match().roundPhase !== 'combat'">
     @for (team of dataModel.teams(); track $index; let teamIndex = $index) {
       @for (player of team.players; track $index) {
-        @if (streams.has(player.fullName)) {
+        @if (this.enabledPlayers().includes(player.fullName)) {
           <div
             class="bg-timer border-timer absolute box-border flex aspect-video h-48 flex-col justify-end overflow-clip rounded-sm border-3"
             [class.hidden]="!player.isObserved"
