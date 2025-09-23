@@ -1,8 +1,8 @@
 @if (player.auxiliaryAvailable.abilities) {
-  <div class="flex flex-row overflow-clip" [class.justify-end]="right">
+  <div class="flex w-full flex-row overflow-clip" [class.justify-end]="right">
     @if (player.isAlive) {
       <div
-        class="flex flex-row gap-4 overflow-hidden"
+        class="flex w-full flex-row justify-between overflow-hidden"
         [class.justify-end]="right"
         [class.right]="right"
         animate.enter="animate-translate animate-duration-250"
@@ -10,17 +10,17 @@
       >
         <img
           class="vw-22"
-          [class.brightness-35]="!isAvailable(player.abilities?.grenade || 0)"
+          [class.brightness-50]="!isAvailable(player.abilities?.grenade || 0)"
           src="assets/grenades/{{ player.agentInternal }}Grenade.webp"
         />
         <img
           class="vw-22"
-          [class.brightness-35]="!isAvailable(player.abilities?.ability1 || 0)"
+          [class.brightness-50]="!isAvailable(player.abilities?.ability1 || 0)"
           src="assets/ability1/{{ player.agentInternal }}Ability1.webp"
         />
         <img
           class="vw-22"
-          [class.brightness-35]="!isAvailable(player.abilities?.ability2 || 0)"
+          [class.brightness-50]="!isAvailable(player.abilities?.ability2 || 0)"
           src="assets/ability2/{{ player.agentInternal }}Ability2.webp"
         />
       </div>

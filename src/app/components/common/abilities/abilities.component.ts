@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: "app-abilities-new",
+  selector: "app-abilities-new-prototype",
   imports: [],
   templateUrl: "./abilities.component.html",
   styleUrl: "./abilities.component.css",

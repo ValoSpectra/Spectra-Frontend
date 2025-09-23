@@ -21,7 +21,7 @@
   </div>
   <img class="vw-36 vh-36" src="assets/shields/{{ player.armorName }}.webp" />
   @if (!dataModel.hideAuxiliary() && player.auxiliaryAvailable.abilities) {
-    <app-abilities-new class="vw-96" [player]="player"></app-abilities-new>
+    <app-abilities-new-prototype class="vw-96" [player]="player"></app-abilities-new-prototype>
   } @else {
     <div class="vw-80"></div>
   }

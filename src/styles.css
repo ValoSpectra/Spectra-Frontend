@@ -68,6 +68,11 @@
   top: calc((--value(integer) / 1080) * 100vh);
 }
 
+@utility pos-b-* {
+  position: absolute;
+  bottom: calc((--value(integer) / 1080) * 100vh);
+}
+
 @utility pill-background {
   background: linear-gradient(
     90deg,

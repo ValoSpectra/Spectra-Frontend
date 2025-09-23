@@ -1,19 +1,19 @@
 .bg-playerinfo-defender-left {
   background:
     linear-gradient(
-      90deg,
+      to right,
       rgba(var(--defender-color-rgb), 0.3) 0%,
-      rgba(var(--defender-color-rgb), 0) 100%
+      rgba(var(--defender-color-rgb), 0.1) 100%
     ),
-    rgba(15, 25, 35, 0.6);
+    rgba(15, 25, 35, 0.8);
 }
 
 .bg-playerinfo-attacker-left {
   background:
     linear-gradient(
-      90deg,
+      to right,
       rgba(var(--attacker-color-rgb), 0.5) 0%,
-      rgba(var(--attacker-color-rgb), 0) 100%
+      rgba(var(--attacker-color-rgb), 0.1) 100%
     ),
     rgba(15, 25, 35, 0.6);
 }
@@ -21,9 +21,9 @@
 .bg-playerinfo-defender-right {
   background:
     linear-gradient(
-      270deg,
+      to left,
       rgba(var(--defender-color-rgb), 0.3) 0%,
-      rgba(var(--defender-color-rgb), 0) 100%
+      rgba(var(--defender-color-rgb), 0.1) 100%
     ),
     rgba(15, 25, 35, 0.6);
 }
@@ -31,83 +31,95 @@
 .bg-playerinfo-attacker-right {
   background:
     linear-gradient(
-      270deg,
+      to left,
       rgba(var(--attacker-color-rgb), 0.5) 0%,
-      rgba(var(--attacker-color-rgb), 0) 100%
+      rgba(var(--attacker-color-rgb), 0.1) 100%
     ),
     rgba(15, 25, 35, 0.6);
 }
 
 .bg-playerinfo-observed-left {
   background:
-    linear-gradient(90deg, rgba(225, 181, 22, 0.3) 0%, rgba(225, 181, 22, 0) 100%),
+    linear-gradient(to right, rgba(240, 200, 85, 0.5) 0%, rgba(225, 181, 22, 0.1) 100%),
     rgba(15, 25, 35, 0.7);
 }
 
 .bg-playerinfo-observed-right {
   background:
-    linear-gradient(270deg, rgba(225, 181, 22, 0.3) 0%, rgba(225, 181, 22, 0) 100%),
+    linear-gradient(to left, rgba(240, 200, 85, 0.5) 0%, rgba(225, 181, 22, 0.1) 100%),
     rgba(15, 25, 35, 0.7);
 }
 
 .bg-playerinfo-dead-left {
   background: linear-gradient(
     to right,
-    rgba(15, 25, 35, 0.8) 0%,
-    rgba(15, 25, 35, 0.6) 60%,
-    rgba(15, 25, 35, 0) 90%
+    rgba(15, 25, 35, 0.7) 0%,
+    rgba(15, 25, 35, 0.5) 70%,
+    rgba(15, 25, 35, 0) 100%
   );
 }
 
 .bg-playerinfo-dead-right {
   background: linear-gradient(
     to left,
-    rgba(15, 25, 35, 0.8) 0%,
-    rgba(15, 25, 35, 0.6) 60%,
-    rgba(15, 25, 35, 0) 90%
+    rgba(15, 25, 35, 0.9) 0%,
+    rgba(15, 25, 35, 0.6) 80%,
+    rgba(15, 25, 35, 0) 100%
   );
 }
 
 /* Weapon info container */
 
 .bg-weaponinfo-defender-left {
-  background: linear-gradient(
-    90deg,
-    rgba(var(--defender-color-shield-currency-rgb), 0.5) 0%,
-    rgba(var(--defender-color-rgb), 0.2) 58.5%,
-    rgba(var(--defender-color-rgb), 0.01) 90.5%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background:
+    linear-gradient(
+      to right,
+      rgba(var(--defender-color-rgb), 0.1) 0%,
+      rgba(var(--defender-color-rgb), 0) 100%
+    ),
+    rgba(15, 25, 35, 0.8);
 }
 
 .bg-weaponinfo-attacker-left {
-  background: linear-gradient(
-    90deg,
-    rgba(var(--attacker-color-secondary-rgb), 0.5) 0%,
-    rgba(var(--attacker-color-rgb), 0.3) 58.5%,
-    rgba(var(--attacker-color-rgb), 0.01) 90.5%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background:
+    linear-gradient(
+      to right,
+      rgba(var(--attacker-color-rgb), 0.1) 0%,
+      rgba(var(--attacker-color-rgb), 0) 100%
+    ),
+    rgba(15, 25, 35, 0.6);
 }
 
 .bg-weaponinfo-defender-right {
-  background: linear-gradient(
-    270deg,
-    rgba(var(--defender-color-shield-currency-rgb), 0.5) 0%,
-    rgba(var(--defender-color-rgb), 0.2) 58.5%,
-    rgba(var(--defender-color-rgb), 0.01) 90.5%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background:
+    linear-gradient(
+      to left,
+      rgba(var(--defender-color-rgb), 0.1) 0%,
+      rgba(var(--defender-color-rgb), 0) 100%
+    ),
+    rgba(15, 25, 35, 0.6);
 }
 
 .bg-weaponinfo-attacker-right {
-  background: linear-gradient(
-    270deg,
-    rgba(var(--attacker-color-secondary-rgb), 0.5) 0%,
-    rgba(var(--attacker-color-rgb), 0.3) 58.5%,
-    rgba(var(--attacker-color-rgb), 0.01) 90.5%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background:
+    linear-gradient(
+      to left,
+      rgba(var(--attacker-color-rgb), 0.1) 0%,
+      rgba(var(--attacker-color-rgb), 0) 100%
+    ),
+    rgba(15, 25, 35, 0.6);
+}
+
+.bg-weaponinfo-observed-left {
+  background:
+    linear-gradient(to right, rgba(225, 181, 22, 0.1) 0%, rgba(225, 181, 22, 0) 100%),
+    rgba(15, 25, 35, 0.8);
+}
+
+.bg-weaponinfo-observed-right {
+  background:
+    linear-gradient(to left, rgba(225, 181, 22, 0.1) 0%, rgba(225, 181, 22, 0) 100%),
+    rgba(15, 25, 35, 0.8);
 }
 
 .playercard-hp-shadow.defender {
@@ -120,11 +132,18 @@
 
 @keyframes weapon-collapse-side-in {
   0% {
-    transform: scaleX(0);
+    background: rgba(15, 25, 35, 0.6);
     opacity: 0;
   }
+  40% {
+    transform: scaleX(0) translateX(-50%);
+    opacity: 0;
+  }
+  90% {
+    background: rgba(15, 25, 35, 0.6);
+  }
   100% {
-    transform: scaleX(1);
+    transform: scaleX(1) translateX(0%);
     opacity: 1;
   }
 }
@@ -148,5 +167,24 @@
 .animate-weapon-collapse-out.right {
   transform-origin: right;
   animation-name: weapon-collapse-side-in;
+  animation-direction: reverse;
+}
+
+@keyframes hpbar-in {
+  0% {
+    width: 0%;
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-hpbar-in {
+  animation-name: hpbar-in;
+}
+
+.animate-hpbar-out {
+  animation-name: hpbar-in;
   animation-direction: reverse;
 }
