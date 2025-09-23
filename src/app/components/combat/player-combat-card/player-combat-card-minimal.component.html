@@ -1,72 +1,118 @@
-<div class="vh-74 flex flex-row" [class.!flex-row-reverse]="right()">
-  <img
-    class="vh-74 vw-74 relative left-7 z-2"
-    [class.grayscale]="!player.isAlive"
-    [class.flip]="right()"
-    [class.!-left-7]="right()"
-    src="assets/agents/{{ player.agentInternal }}{{ player.iconNameSuffix }}Icon.webp"
-  />
+<div
+  class="vh-82 relative flex"
+  [class]="[right() ? 'right-7' : 'left-7', right() ? 'flex-row-reverse' : 'flex-row']"
+>
+  <div class="vh-56 vw-90 absolute">
+    <img
+      class="vh-68 vw-68 absolute -top-2 z-2 rounded-sm"
+      [class.grayscale]="!player.isAlive"
+      [class.flip]="right()"
+      [class]="right() ? 'right-0.5' : 'left-0.5'"
+      src="assets/agents/{{ player.agentInternal }}{{ player.iconNameSuffix }}Icon.webp"
+    />
+  </div>
 
   <!-- playername container -->
   <div
-    class="vw-146 relative flex flex-col items-start justify-center gap-1"
-    [class]="[playerinfoBackgroundClass()]"
+    class="vw-180 border-timer relative box-border flex flex-col items-start border-t-2 border-b-2"
+    [class.border-transparent]="!player.isAlive"
+    [class]="[
+      playerinfoBackgroundClass(),
+      right() ? 'border-r-2' : 'border-l-2',
+      right() ? 'rounded-tr-md' : 'rounded-tl-md',
+    ]"
     [class.!items-end]="right()"
   >
-    @if (isObserved()) {
-      <img
-        class="absolute top-2 right-2"
-        [class.left-2!]="right()"
-        src="assets/misc/ObserverEye.svg"
-      />
-    }
-
-    <p class="font-montserrat text-xs font-semibold" [class]="textColor()">
-      {{ getAgentName(player.agentInternal) }}
-    </p>
-    <div
-      class="font-montserrat vw-160 -mt-1.5 flex flex-row gap-1 truncate text-lg font-semibold text-white"
-      [class.flex-row-reverse!]="right()"
-    >
-      {{ getDisplayName(player.fullName, player.name) }}
-      @if (player.isCaptain) {
-        <img class="vw-17 vh-17 self-center" src="assets/misc/TeamCaptain.svg" />
-      }
-    </div>
-    @if (player.isAlive) {
+    <div class="h-full w-full">
       <div
-        class="vh-3 playercard-hp-shadow absolute bottom-0 transition-all"
-        animate.enter="animate-collapse-side-in animate-duration-200"
-        animate.leave="animate-collapse-side-out animate-duration-150"
-        [class]="[backgroundColor(), color()]"
-        [class.left-0]="!right()"
-        [class.right-0]="right()"
-        [style.width.%]="clamp(player.health * 0.88 + 12, 0, 100)"
-      ></div>
+        class="font-montserrat vw-146 text-md absolute -bottom-0.5 flex flex-row items-end gap-1 truncate font-semibold text-white"
+        [class.flex-row-reverse!]="right()"
+        [class]="right() ? 'right-1' : 'left-1'"
+      >
+        {{ getDisplayName(player.fullName, player.name) }}
+        @if (player.isCaptain) {
+          <img class="vw-17 vh-17 self-baseline" src="assets/misc/TeamCaptain.svg" />
+        }
+      </div>
+    </div>
+    @if (!player.isAlive) {
+      <div
+        class="font-montserrat text-md absolute w-full items-center font-semibold"
+        [class]="[textColor(), right() ? 'right-20' : 'left-20']"
+        animate.enter="animate-fade-in animate-duration-100"
+      >
+        <div>
+          <p>{{ player.kills }}/{{ player.deaths }}/{{ player.assists }}</p>
+        </div>
+      </div>
     }
   </div>
 
   <!-- weapon container -->
   @if (player.isAlive) {
     <div
-      class="vw-156 flex flex-row gap-2 overflow-hidden pl-3"
-      animate.enter="animate-weapon-collapse-in animate-duration-200 animate-delay-150 animate-style-both"
-      animate.leave="animate-weapon-collapse-out animate-duration-150 animate-style-keep"
-      [class]="weaponInfoBackgroundClass()"
+      class="vw-120 border-timer relative border-t-2 border-b-2"
+      animate.enter="animate-weapon-collapse-in animate-duration-200 animate-style-both"
+      animate.leave="animate-weapon-collapse-out animate-duration-100 animate-style-keep"
+      [class.items-end]="right()"
+      [class]="[
+        weaponInfoBackgroundClass(),
+        right() ? 'border-l-2' : 'border-r-2',
+        right() ? 'rounded-tl-sm' : 'rounded-tr-sm',
+      ]"
       [class.right]="right()"
     >
-      <div class="font-montserrat vw-41 flex flex-col items-center justify-center text-white">
-        <div class="text-xs font-bold">Kills</div>
-        <div class="text-lg font-semibold">{{ player.kills }}</div>
+      @if (isObserved()) {
+        <img
+          class="absolute top-0.5"
+          [class]="right() ? 'left-0.5' : 'right-0.5'"
+          src="assets/misc/ObserverEye.svg"
+        />
+      }
+
+      <div
+        class="font-montserrat vw-225 absolute bottom-6 flex flex-row transition-all duration-300"
+        [class.text-base!]="!player.isAlive"
+        [class]="right() ? '-right-25' : '-left-30'"
+      >
+        <div class="flex w-full flex-row justify-between gap-1">
+          <div class="text-md flex w-1/3 flex-col text-center font-bold" [class]="textColor()">
+            <p>Kills</p>
+            <p class="text-md font-bold">
+              {{ player.kills }}
+            </p>
+          </div>
+          <div class="text-md flex w-1/3 flex-col text-center font-bold" [class]="textColor()">
+            <p>Deaths</p>
+            <p class="text-md font-bold">
+              {{ player.deaths }}
+            </p>
+          </div>
+          <div class="flexw-1/3 text-md flex-col text-center font-bold" [class]="textColor()">
+            <p>Assists</p>
+            <p class="text-md font-bold">
+              {{ player.assists }}
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="font-montserrat vw-41 flex flex-col items-center justify-center text-white">
-        <div class="text-xs font-bold">Deaths</div>
-        <div class="text-lg font-semibold">{{ player.deaths }}</div>
-      </div>
-      <div class="font-montserrat vw-41 flex flex-col items-center justify-center text-white">
-        <div class="text-xs font-bold">Assists</div>
-        <div class="text-lg font-semibold">{{ player.assists }}</div>
+      <div
+        class="font-montserrat absolute bottom-0 flex gap-2 font-bold text-white/50"
+        [class]="[right() ? 'left-0.5' : 'right-0.5', right() ? 'flex-row' : 'flex-row-reverse']"
+      >
+        {{ getAgentName(player.agentInternal) }}
       </div>
     </div>
+    @if (player.isAlive) {
+      <div
+        class="vh-3 playercard-hp-shadow absolute bottom-0 transition-all"
+        animate.enter="animate-hpbar-in animate-duration-200"
+        animate.leave="animate-hpbar-out animate-duration-100"
+        [class]="[backgroundColor(), color()]"
+        [class.left-0]="!right()"
+        [class.right-0]="right()"
+        [style.width.%]="clamp(player.health, 0, 100)"
+      ></div>
+    }
   }
 </div>

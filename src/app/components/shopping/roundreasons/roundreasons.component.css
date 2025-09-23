@@ -3,7 +3,7 @@
   border-color: var(--defender-color-shield-currency);
   background: linear-gradient(
     180deg,
-    rgba(var(--defender-color-shield-currency-rgb), 0.28) 0%,
+    rgba(var(--defender-color-shield-currency-rgb), 0.5) 0%,
     rgba(var(--defender-color-shield-currency-rgb), 0) 100%
   );
 }
@@ -13,7 +13,7 @@
   border-color: var(--defender-color-shield-currency);
   background: linear-gradient(
     0deg,
-    rgba(var(--defender-color-shield-currency-rgb), 0.28) 0%,
+    rgba(var(--defender-color-shield-currency-rgb), 0.5) 0%,
     rgba(var(--defender-color-shield-currency-rgb), 0) 100%
   );
 }
@@ -23,7 +23,7 @@
   border-color: var(--attacker-color-shield-currency);
   background: linear-gradient(
     180deg,
-    rgba(var(--attacker-color-secondary-rgb), 0.28) 0%,
+    rgba(var(--attacker-color-secondary-rgb), 0.5) 0%,
     rgba(var(--attacker-color-secondary-rgb), 0) 100%
   );
 }
@@ -33,7 +33,7 @@
   border-color: var(--attacker-color-shield-currency);
   background: linear-gradient(
     0deg,
-    rgba(var(--attacker-color-secondary-rgb), 0.28) 0%,
+    rgba(var(--attacker-color-secondary-rgb), 0.5) 0%,
     rgba(var(--attacker-color-secondary-rgb), 0) 100%
   );
 }

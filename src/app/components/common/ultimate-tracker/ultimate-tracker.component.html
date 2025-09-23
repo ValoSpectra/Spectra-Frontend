@@ -1,23 +1,25 @@
-<div class="vh-25 relative flex flex-row items-center justify-center">
-  @if (full !== max) {
-    <div
-      class="flex-row-gap-0.5 animate-duration-150 absolute flex items-center justify-center"
-      animate.enter="animate-collapse-center-in"
-      animate.leave="animate-collapse-center-out"
-    >
-      @for (i of numSequence(full); track $index) {
-        <img class="vw-10 vh-10" src="assets/misc/ultimate-pip-full.svg" />
-      }
-      @for (i of numSequence(max - full); track $index) {
-        <img class="vw-10 vh-10" src="assets/misc/ultimate-pip.svg" />
-      }
-    </div>
-  } @else {
-    <img
-      class="vw-25 animate-duration-150"
-      [src]="image"
-      animate.enter="animate-fade-in"
-      animate.leave="animate-fade-out"
-    />
-  }
-</div>
+@if (max !== 0) {
+  <div class="vh-25 relative flex flex-row items-center justify-center">
+    @if (full !== max) {
+      <div
+        class="flex-row-gap-0.5 animate-duration-150 absolute flex items-center justify-center"
+        animate.enter="animate-collapse-center-in"
+        animate.leave="animate-collapse-center-out"
+      >
+        @for (i of numSequence(full); track $index) {
+          <img class="vw-10 vh-10" src="assets/misc/ultimate-pip-full.svg" />
+        }
+        @for (i of numSequence(max - full); track $index) {
+          <img class="vw-10 vh-10" src="assets/misc/ultimate-pip.svg" />
+        }
+      </div>
+    } @else {
+      <img
+        class="vw-25 animate-duration-150"
+        [src]="image"
+        animate.enter="animate-fade-in"
+        animate.leave="animate-fade-out"
+      />
+    }
+  </div>
+}

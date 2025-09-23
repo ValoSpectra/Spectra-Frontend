@@ -5,6 +5,7 @@ import { UltimateTrackerComponent } from "../../common/ultimate-tracker/ultimate
 import { ShieldIconComponent } from "../../common/shield-icon/shield-icon.component";
 import { AgentNameService } from "../../../services/agentName.service";
 import { DisplayNameService } from "../../../services/displayName.service";
+import { AgentRoleService } from "../../../services/agentRole.service";
 
 @Component({
   selector: "app-player-combat-card",
@@ -50,8 +51,6 @@ export class PlayerCombatCardComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.player.auxiliaryAvailable);
-
     const healthChanges = changes["playerHealth"];
     if (
       healthChanges &&
@@ -80,5 +79,8 @@ export class PlayerCombatCardComponent implements OnChanges {
 export class PlayerCombatCardMinimalComponent extends PlayerCombatCardComponent {
   getAgentName(agent: string) {
     return AgentNameService.getAgentName(agent);
+  }
+  getAgentRole(name: string): string {
+    return AgentRoleService.getAgentRole(name);
   }
 }

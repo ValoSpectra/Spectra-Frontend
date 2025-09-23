@@ -34,14 +34,12 @@
               class="w-3/5"
               [player]="player"
             ></app-abilities-new-prototype>
-          } @else {
-            <div class="h-4"></div>
           }
         } @else {
           <div
             class="font-montserrat text-md top-2 flex items-center gap-2 font-semibold"
             [class]="[textColor(), right() ? 'flex-row-reverse' : 'flex-row']"
-            animate.enter="animate-fade-in animate-duration-100"
+            animate.enter="animate-fade-in animate-duration-150"
           >
             <div class="flex flex-row items-center gap-1">
               <img class="vw-9 vh-9" [src]="creditsIcon()" />
@@ -62,7 +60,7 @@
       </div>
 
       <div
-        class="font-montserrat vw-146 text-md absolute bottom-0 flex flex-row items-end gap-1 truncate font-semibold text-white"
+        class="font-montserrat vw-146 text-md absolute -bottom-0.5 flex flex-row items-end gap-1 truncate font-semibold text-white"
         [class.flex-row-reverse!]="right()"
         [class]="right() ? 'right-1' : 'left-1'"
       >
@@ -71,11 +69,6 @@
           <img class="vw-17 vh-17 self-baseline" src="assets/misc/TeamCaptain.svg" />
         }
       </div>
-      @if (player.hasSpike) {
-        <div class="absolute bottom-0 -left-7">
-          <img class="vw-22 vh-22" src="assets/misc/Spike_Icon.svg" />
-        </div>
-      }
     </div>
   </div>
 
@@ -84,7 +77,7 @@
     <div
       class="vw-120 border-timer relative flex flex-col justify-center border-t-2 border-b-2"
       animate.enter="animate-weapon-collapse-in animate-duration-200 animate-style-both"
-      animate.leave="animate-weapon-collapse-out animate-duration-100 animate-style-keep"
+      animate.leave="animate-weapon-collapse-out animate-duration-150 animate-style-keep"
       [class.items-end]="right()"
       [class]="[
         weaponInfoBackgroundClass(),
@@ -100,7 +93,6 @@
           src="assets/misc/ObserverEye.svg"
         />
       }
-      <!-- div needed to image scales correctly -->
 
       <div
         class="vh-32 absolute top-4 flex w-full justify-center object-contain"
@@ -129,7 +121,7 @@
         }
       </div>
       <div
-        class="font-montserrat absolute bottom-1 flex flex-row items-center gap-1 text-sm font-bold transition-all duration-300"
+        class="font-montserrat absolute bottom-0 flex flex-row items-center gap-1 text-sm font-bold transition-all duration-300"
         [class.text-base!]="!player.isAlive"
         [class]="[textColor(), right() ? '-right-5' : '-left-5']"
       >
@@ -145,12 +137,17 @@
       <div
         class="vh-3 playercard-hp-shadow absolute bottom-0 transition-all"
         animate.enter="animate-hpbar-in animate-duration-200"
-        animate.leave="animate-hpbar-out animate-duration-100"
+        animate.leave="animate-hpbar-out animate-duration-200"
         [class]="[backgroundColor(), color()]"
         [class.left-0]="!right()"
         [class.right-0]="right()"
         [style.width.%]="clamp(player.health, 0, 100)"
       ></div>
     }
+  }
+  @if (player.hasSpike) {
+    <div class="absolute -bottom-1" [class]="right() ? '-left-8' : '-right-8'">
+      <img class="vw-32 vh-32" src="assets/misc/Spike_Icon.svg" />
+    </div>
   }
 </div>

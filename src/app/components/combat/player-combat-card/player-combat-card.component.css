@@ -113,13 +113,13 @@
 .bg-weaponinfo-observed-left {
   background:
     linear-gradient(to right, rgba(225, 181, 22, 0.1) 0%, rgba(225, 181, 22, 0) 100%),
-    rgba(15, 25, 35, 0.8);
+    rgba(15, 25, 35, 0.7);
 }
 
 .bg-weaponinfo-observed-right {
   background:
     linear-gradient(to left, rgba(225, 181, 22, 0.1) 0%, rgba(225, 181, 22, 0) 100%),
-    rgba(15, 25, 35, 0.8);
+    rgba(15, 25, 35, 0.7);
 }
 
 .playercard-hp-shadow.defender {
