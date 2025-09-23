@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-function-type */
 import * as io from "socket.io-client";
-import { ISessionData } from "../mapban-ui/mapban-ui.component";
+import { ISessionData } from "../overlays/mapban-overlay/mapban-overlay.component";
 
 export class SocketService {
   matchSocket!: io.Socket;

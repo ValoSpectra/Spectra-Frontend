@@ -1,0 +1,30 @@
+@if (dataModel.seriesInfo().mapInfo.length > 0) {
+  <div
+    class="font-montserrat vh-24 vw-600 flex flex-row overflow-hidden rounded-b-lg text-[15px] font-extrabold text-white uppercase"
+  >
+    @for (mapInfo of dataModel.seriesInfo().mapInfo; track $index) {
+      <div class="pill-background flex w-full flex-row items-center justify-center text-center">
+        @switch (mapInfo.type) {
+          @case ("past") {
+            <p>{{ mapInfo.map }}</p>
+            <img [src]="mapInfo.left.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+            <p>{{ mapInfo.left.score }} - {{ mapInfo.right.score }}</p>
+            <img [src]="mapInfo.right.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+          }
+          @case ("present") {
+            {{ TranslateKeys.Mapinfo_Live | translate: { map: dataModel.match().map } }}
+            <img [src]="mapInfo.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+          }
+          @case ("future") {
+            @if (mapInfo.logo !== "") {
+              {{ TranslateKeys.Mapinfo_Next | translate: { map: mapInfo.map } }}
+              <img [src]="mapInfo.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+            } @else {
+              {{ TranslateKeys.Mapinfo_Decider | translate: { map: mapInfo.map } }}
+            }
+          }
+        }
+      </div>
+    }
+  </div>
+}
