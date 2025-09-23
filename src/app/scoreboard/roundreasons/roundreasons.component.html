@@ -1,69 +1,66 @@
-<!-- Temporarily disable round reasons because of missing events -->
-@if (false) {
-  <div class="round-reasons-container" *ngIf="match.teams[0].roundRecord.length > 0">
-    <div class="left-team">
-      <div class="team-info">
-        {{ match.teams[0].teamTricode }}
-      </div>
-      <div class="reason-container">
+<div class="round-reasons-container" *ngIf="match.teams[0].roundRecord.length > 0">
+  <div class="left-team">
+    <div class="team-info">
+      {{ match.teams[0].teamTricode }}
+    </div>
+    <div class="reason-container">
+      <div
+        *ngFor="
+          let record of match.teams[0].roundRecord
+            | slice: getReasonStartIndex() : getReasonStartIndex() + roundRecordLength
+        "
+      >
         <div
-          *ngFor="
-            let record of match.teams[0].roundRecord
-              | slice: getReasonStartIndex() : getReasonStartIndex() + roundRecordLength
-          "
+          class="divider"
+          *ngIf="record.round === match.switchRound || record.round === match.firstOtRound"
         >
-          <div
-            class="divider"
-            *ngIf="record.round === match.switchRound || record.round === match.firstOtRound"
-          >
-            <img class="line" src="{{ assets }}/roundWinReason/divider-line.svg" />
-          </div>
+          <img class="line" src="{{ assets }}/roundWinReason/divider-line.svg" />
+        </div>
 
-          <div
-            [class]="'reason-color top ' + (record.wasAttack ? 'attacker' : 'defender')"
-            *ngIf="record.type !== 'lost' && record.type !== 'upcoming'"
-          >
-            <div class="image-container">
-              <img class="image" src="{{ assets }}/roundWinReason/{{ record.type }}.webp" />
-            </div>
-          </div>
-
-          <div class="reason-color lost" *ngIf="record.type === 'lost'">
-            <div class="round-number">{{ record.round }}</div>
-          </div>
-
-          <div class="reason-color lost" *ngIf="record.type === 'upcoming'">
-            <div class="round-number-upcoming">{{ record.round }}</div>
+        <div
+          [class]="'reason-color top ' + (record.wasAttack ? 'attacker' : 'defender')"
+          *ngIf="record.type !== 'lost' && record.type !== 'upcoming'"
+        >
+          <div class="image-container">
+            <img class="image" src="{{ assets }}/roundWinReason/{{ record.type }}.webp" />
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="right-team">
-      <div class="team-info">
-        {{ match.teams[1].teamTricode }}
-      </div>
-      <div class="reason-container">
-        <div
-          *ngFor="
-            let record of match.teams[1].roundRecord
-              | slice: getReasonStartIndex() : getReasonStartIndex() + roundRecordLength
-          "
-        >
-          <div
-            [class]="'reason-color bottom ' + (record.wasAttack ? 'attacker' : 'defender')"
-            *ngIf="record.type !== 'lost' && record.type !== 'upcoming'"
-          >
-            <div class="image-container">
-              <img class="image" src="{{ assets }}/roundWinReason/{{ record.type }}.webp" />
-            </div>
-          </div>
+        <div class="reason-color lost" *ngIf="record.type === 'lost'">
+          <div class="round-number">{{ record.round }}</div>
+        </div>
 
-          <div class="reason-color lost" *ngIf="record.type === 'lost'">
-            <div class="round-number">{{ record.round }}</div>
-          </div>
+        <div class="reason-color lost" *ngIf="record.type === 'upcoming'">
+          <div class="round-number-upcoming">{{ record.round }}</div>
         </div>
       </div>
     </div>
   </div>
-}
+
+  <div class="right-team">
+    <div class="team-info">
+      {{ match.teams[1].teamTricode }}
+    </div>
+    <div class="reason-container">
+      <div
+        *ngFor="
+          let record of match.teams[1].roundRecord
+            | slice: getReasonStartIndex() : getReasonStartIndex() + roundRecordLength
+        "
+      >
+        <div
+          [class]="'reason-color bottom ' + (record.wasAttack ? 'attacker' : 'defender')"
+          *ngIf="record.type !== 'lost' && record.type !== 'upcoming'"
+        >
+          <div class="image-container">
+            <img class="image" src="{{ assets }}/roundWinReason/{{ record.type }}.webp" />
+          </div>
+        </div>
+
+        <div class="reason-color lost" *ngIf="record.type === 'lost'">
+          <div class="round-number">{{ record.round }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
