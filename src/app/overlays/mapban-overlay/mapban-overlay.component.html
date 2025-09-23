@@ -1,6 +1,7 @@
 <div
   class="absolute bottom-2 left-2 h-5/20 w-99/100 overflow-clip rounded-md bg-[#0f1923cc]"
-  [@fade]
+  animate.enter="animate-fade-in animate-duration-500"
+  animate.leave="animate-fade-out animate-duration-500"
 >
   <div class="flex h-full flex-row gap-1">
     @for (map of selectedMaps; track $index) {

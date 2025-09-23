@@ -1,4 +1,3 @@
-import { trigger, transition, style, animate } from "@angular/animations";
 import { AfterViewInit, Component, inject, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../../services/SocketService";
@@ -11,13 +10,6 @@ import { MapbanMapComponent } from "../../components/mapban/mapban-map/mapban-ma
   selector: "app-mapban-ui",
   templateUrl: "./mapban-overlay.component.html",
   styleUrl: "./mapban-overlay.component.css",
-  animations: [
-    trigger("fade", [
-      transition(":enter", [style({ opacity: "0" }), animate("0.5s", style({ opacity: "1" }))]),
-
-      transition(":leave", animate("0.5s", style({ opacity: "0" }))),
-    ]),
-  ],
 })
 export class MapbanUiComponent implements OnInit, AfterViewInit {
   private route = inject(ActivatedRoute);
