@@ -1,9 +1,11 @@
 import { Component, computed, effect, inject } from "@angular/core";
 import { DataModelService } from "../../services/dataModel.service";
+import { TranslateKeys } from "../../services/i18nHelper";
+import { TranslatePipe } from "@ngx-translate/core";
 
 @Component({
   selector: "app-endround-new",
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: "./endround.component.html",
   styleUrl: "./endround.component.css",
 })
@@ -14,6 +16,8 @@ export class EndroundComponent {
   hide = true;
   animateOut = false;
   preload = true;
+
+  TranslateKeys = TranslateKeys;
 
   tournamentBackgroundUrl = computed(() => {
     const backdrop = this.dataModel.tournamentInfo().backdropUrl;

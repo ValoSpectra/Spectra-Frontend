@@ -7,7 +7,7 @@
       <div class="relative flex h-full w-8/10 justify-center">
         @if (currentRotationIndex() === 0) {
           <p class="absolute" animate.enter="animate-fade-in" animate.leave="animate-fade-out">
-            Overlay by Spectra
+            {{ TranslateKeys.Watermark_Text | translate }}
           </p>
         } @else {
           <p class="absolute" animate.enter="animate-fade-in" animate.leave="animate-fade-out">

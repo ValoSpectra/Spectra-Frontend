@@ -1,7 +1,7 @@
 <p class="font-montserrat text-base font-bold text-nowrap text-white/60">
   @if (otNumber() > 0) {
-    OVERTIME {{ otNumber() }}
+    {{ TranslateKeys.Top_OvertimeNumber | translate: { otNumber: otNumber() } }}
   } @else {
-    ROUND {{ dataModel.match().roundNumber }}
+    {{ TranslateKeys.Top_RoundNumber | translate: { rounds: dataModel.match().roundNumber } }}
   }
 </p>

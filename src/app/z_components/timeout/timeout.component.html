@@ -10,11 +10,13 @@
     <img class="absolute top-0 left-0 -z-1 h-full w-full" [src]="tournamentBackgroundUrl()" />
 
     @if (timeoutInfo().techPause) {
-      <p class="font-unbounded text-5xl font-bold text-white uppercase">Technical Pause</p>
+      <p class="font-unbounded text-5xl font-bold text-white uppercase">
+        {{ TranslateKeys.Timeout_Techpause | translate }}
+      </p>
     } @else {
       <img class="max-vh-120 max-vw-400" [src]="timeoutTeam().teamUrl" />
       <p class="font-unbounded text-2xl font-bold text-white">
-        {{ timeoutTeam().teamName }} Tactical Timeout
+        {{ TranslateKeys.Timeout_Tactical | translate: { teamName: timeoutTeam().teamName } }}
       </p>
       <div class="vh-23 absolute bottom-0 flex w-full items-center justify-center bg-white/20">
         <div

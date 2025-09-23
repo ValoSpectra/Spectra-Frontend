@@ -1,14 +1,17 @@
 import { Component, computed, effect, inject, signal } from "@angular/core";
 import { DataModelService } from "../../services/dataModel.service";
+import { TranslatePipe } from "@ngx-translate/core";
+import { TranslateKeys } from "../../services/i18nHelper";
 
 @Component({
   selector: "app-timeout-new",
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: "./timeout.component.html",
   styleUrl: "./timeout.component.css",
 })
 export class TimeoutComponent {
   dataModel = inject(DataModelService);
+  TranslateKeys = TranslateKeys;
 
   tournamentBackgroundUrl = computed(() => {
     const backdrop = this.dataModel.tournamentInfo().backdropUrl;

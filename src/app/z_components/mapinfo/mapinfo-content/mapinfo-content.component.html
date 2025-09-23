@@ -7,16 +7,15 @@
       <img [src]="mapinfo.right.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
     }
     @case ("present") {
-      Live: {{ currentMap }}
+      {{ TranslateKeys.Mapinfo_Live | translate: { map: currentMap } }}
       <img [src]="mapinfo.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
     }
     @case ("future") {
       @if (mapinfo.logo !== "") {
-        <!-- someone picked the map -->
-        Next: {{ mapinfo.map }}
+        {{ TranslateKeys.Mapinfo_Next | translate: { map: mapinfo.map } }}
         <img [src]="mapinfo.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
       } @else {
-        Decider: {{ mapinfo.map }}
+        {{ TranslateKeys.Mapinfo_Decider | translate: { map: mapinfo.map } }}
       }
     }
   }

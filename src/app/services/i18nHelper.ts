@@ -23,6 +23,7 @@ export enum TranslateKeys {
   Mapinfo_Next = "mapinfo.next",
   Watermark_Text = "topinfo.watermark",
   Top_RoundNumber = "topscore.round",
+  Top_OvertimeNumber = "topscore.overtime",
   Team_Is_Attacker = "team.attacker",
   Team_Is_Defender = "team.defender",
   Scoreboard_Spent = "scoreboard.spent",

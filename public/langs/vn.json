@@ -10,7 +10,7 @@
   "mapinfo.live": "Hiện tại: {{map}}",
   "mapinfo.decider": "Quyết định: {{map}}",
   "mapinfo.next": "Kế tiếp: {{map}}",
-  "topinfo.watermark": "HUD Phát Triển Bởi Spectra",
+  "topinfo.watermark": "Powered by Spectra",
   "topscore.round": "HIỆP {{rounds}}",
   "team.attacker": "PHE TẤN CÔNG",
   "team.defender": "PHE PHÒNG THỦ",

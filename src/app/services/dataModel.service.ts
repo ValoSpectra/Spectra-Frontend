@@ -4,6 +4,8 @@ import { IMapbanSessionData, IMatchData } from "./Types";
 import { ActivatedRoute } from "@angular/router";
 import { Config } from "../shared/config";
 import { isEqual } from "lodash";
+import { i18nHelper } from "./i18nHelper";
+import { TranslateService } from "@ngx-translate/core";
 
 @Injectable({
   providedIn: "root",
@@ -11,12 +13,16 @@ import { isEqual } from "lodash";
 export class DataModelService {
   protected route = inject(ActivatedRoute);
   protected config = inject(Config);
+  protected translate = inject(TranslateService);
 
   constructor() {
     this.route.queryParams.subscribe((params) => {
       this.groupCode.set(params["groupCode"] || "");
       this.sessionId.set(params["sessionId"] || "");
-      this.paramLang.set(params["lang"]?.toLowerCase() || "en");
+      const paramLang = params["lang"]?.toLowerCase() || "en";
+      console.log("Setting language to", paramLang);
+      this.language.set(i18nHelper.resolveLanguageAlias(paramLang));
+      this.translate.use(this.language());
       this.hideAuxiliary.set(params["hideAuxiliary"] === "true");
     });
 
@@ -80,7 +86,7 @@ export class DataModelService {
 
   public readonly groupCode = signal("");
   public readonly sessionId = signal("");
-  public readonly paramLang = signal("en");
+  public readonly language = signal("en");
   public readonly minimalMode = signal(false);
   public readonly hideAuxiliary = signal(false);
 

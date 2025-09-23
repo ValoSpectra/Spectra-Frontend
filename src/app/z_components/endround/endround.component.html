@@ -22,7 +22,9 @@
         [src]="dataModel.teams()[0].teamUrl"
       />
       <img class="max-h-6/10" [src]="tournamentIconUrl()" (load)="preload = false" />
-      <p class="font-unbounded text-3xl font-bold text-white uppercase">Round Win</p>
+      <p class="font-unbounded text-3xl font-bold text-white uppercase">
+        {{ TranslateKeys.Endround_RoundWin | translate }}
+      </p>
       <img
         class="absolute right-8 max-h-1/2 opacity-20 grayscale-100"
         [src]="dataModel.teams()[1].teamUrl"
@@ -49,22 +51,40 @@
         @if (leftWon()) {
           <div class="relative flex h-full flex-col items-center justify-center">
             <img class="max-h-7/10" [src]="dataModel.teams()[teamWon()].teamUrl" />
-            <p class="font-unbounded text-3xl font-bold text-white uppercase">
-              {{ dataModel.match().attackersWon ? "Attacker" : "Defender" }} Win
+            <p class="font-unbounded text-center text-2xl font-bold text-white uppercase">
+              {{
+                TranslateKeys.Endround_Winner
+                  | translate
+                    : {
+                        team: dataModel.match().attackersWon
+                          ? (TranslateKeys.Endround_Attacker | translate)
+                          : (TranslateKeys.Endround_Defender | translate),
+                      }
+              }}
             </p>
           </div>
         }
         <div class="flex h-full flex-col items-center justify-center">
           <img class="max-h-7/10" [src]="tournamentIconUrl()" />
           <p class="font-unbounded text-3xl font-bold text-white uppercase">
-            Round {{ dataModel.match().roundNumber }}
+            {{
+              TranslateKeys.Endround_Round | translate: { rounds: dataModel.match().roundNumber }
+            }}
           </p>
         </div>
         @if (!leftWon()) {
           <div class="relative flex h-full flex-col items-center justify-center">
             <img class="max-h-7/10" [src]="dataModel.teams()[teamWon()].teamUrl" />
-            <p class="font-unbounded text-3xl font-bold text-white uppercase">
-              {{ dataModel.match().attackersWon ? "Attacker" : "Defender" }} Win
+            <p class="font-unbounded text-center text-2xl font-bold text-white uppercase">
+              {{
+                TranslateKeys.Endround_Winner
+                  | translate
+                    : {
+                        team: dataModel.match().attackersWon
+                          ? (TranslateKeys.Endround_Attacker | translate)
+                          : (TranslateKeys.Endround_Defender | translate),
+                      }
+              }}
             </p>
           </div>
         }

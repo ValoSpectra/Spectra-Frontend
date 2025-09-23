@@ -10,7 +10,7 @@
   "mapinfo.live": "Oynanan: {{map}}",
   "mapinfo.decider": "Decider: {{map}}",
   "mapinfo.next": "Sonraki: {{map}}",
-  "topinfo.watermark": "Overlay by Spectra",
+  "topinfo.watermark": "Powered by Spectra",
   "topscore.round": "TUR {{rounds}}",
   "team.attacker": "SALDIRI",
   "team.defender": "SAVUNMA",
