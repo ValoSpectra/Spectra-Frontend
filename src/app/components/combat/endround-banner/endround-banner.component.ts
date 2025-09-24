@@ -17,6 +17,9 @@ export class EndroundBannerComponent {
   animateOut = false;
   preload = true;
 
+  lastInRoundNumber = -1;
+  lastOutRoundNumber = -1;
+
   TranslateKeys = TranslateKeys;
 
   tournamentBackgroundUrl = computed(() => {
@@ -54,7 +57,11 @@ export class EndroundBannerComponent {
 
   ref = effect(() => {
     const roundPhase = this.dataModel.match().roundPhase;
+    const roundNumber = this.dataModel.match().roundNumber;
     if (roundPhase === "end") {
+      if (roundNumber === this.lastInRoundNumber) return;
+      this.lastInRoundNumber = roundNumber;
+
       this.runAnimation = true;
       this.hide = false;
       this.animateOut = false;
@@ -62,6 +69,9 @@ export class EndroundBannerComponent {
         this.runAnimation = false;
       }, 2600);
     } else if (roundPhase === "shopping") {
+      if (roundNumber === this.lastOutRoundNumber) return;
+      this.lastOutRoundNumber = roundNumber;
+
       this.runAnimation = false;
       this.animateOut = true;
       setTimeout(() => {

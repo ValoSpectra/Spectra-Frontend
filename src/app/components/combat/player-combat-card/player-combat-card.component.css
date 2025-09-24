@@ -130,7 +130,7 @@
   box-shadow: 0px 4px 8px 1px rgba(var(--attacker-color-secondary-rgb), 0.6);
 }
 
-@keyframes weapon-collapse-side-in {
+@keyframes weapon-collapse-side-in-left {
   0% {
     background: rgba(15, 25, 35, 0.6);
     opacity: 0;
@@ -148,25 +148,43 @@
   }
 }
 
+@keyframes weapon-collapse-side-in-right {
+  0% {
+    background: rgba(15, 25, 35, 0.6);
+    opacity: 0;
+  }
+  40% {
+    transform: scaleX(0) translateX(50%);
+    opacity: 0;
+  }
+  90% {
+    background: rgba(15, 25, 35, 0.6);
+  }
+  100% {
+    transform: scaleX(1) translateX(0%);
+    opacity: 1;
+  }
+}
+
 .animate-weapon-collapse-in {
   transform-origin: left;
-  animation-name: weapon-collapse-side-in;
+  animation-name: weapon-collapse-side-in-left;
 }
 
 .animate-weapon-collapse-in.right {
   transform-origin: right;
-  animation-name: weapon-collapse-side-in;
+  animation-name: weapon-collapse-side-in-right;
 }
 
 .animate-weapon-collapse-out {
   transform-origin: left;
-  animation-name: weapon-collapse-side-in;
+  animation-name: weapon-collapse-side-in-left;
   animation-direction: reverse;
 }
 
 .animate-weapon-collapse-out.right {
   transform-origin: right;
-  animation-name: weapon-collapse-side-in;
+  animation-name: weapon-collapse-side-in-right;
   animation-direction: reverse;
 }
 
@@ -180,11 +198,21 @@
   }
 }
 
+@keyframes hpbar-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    width: 0%;
+    opacity: 0.6;
+    filter: grayscale(100%);
+  }
+}
+
 .animate-hpbar-in {
   animation-name: hpbar-in;
 }
 
 .animate-hpbar-out {
-  animation-name: hpbar-in;
-  animation-direction: reverse;
+  animation-name: hpbar-out;
 }
