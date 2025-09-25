@@ -7,23 +7,18 @@
 @import "tailwindcss";
 @import "./animations.css";
 
-@theme static {
-  --color-pill: linear-gradient(
-    90deg,
-    rgba(15, 25, 35, 0.85) 0%,
-    rgba(31.14, 37.75, 40.58, 0.85) 100%
-  );
+@theme static inline {
   --color-timer: #0f1923;
   --color-background: #0f1923cc;
   --color-credits-negative: #ff4557;
 
-  --color-defender-primary: #25ac79;
-  --color-defender-secondary: #61eab6;
-  --color-defender-shield: #61eab6;
+  --color-defender-primary: var(--defender-color);
+  --color-defender-secondary: var(--defender-color-secondary);
+  --color-defender-shield: var(--defender-color-shield-currency);
 
-  --color-attacker-primary: #b82e3c;
-  --color-attacker-secondary: #ff4557;
-  --color-attacker-shield: #ff838f;
+  --color-attacker-primary: var(--attacker-color);
+  --color-attacker-secondary: var(--attacker-color-secondary);
+  --color-attacker-shield: var(--attacker-color-shield-currency);
 }
 
 @utility font-montserrat {
@@ -84,13 +79,6 @@
 @utility flip {
   transform: rotateY(180deg);
 }
-
-/* Disabled for tailwind rebuild */
-/* * {
-  font-family: "Inter", sans-serif;
-  color: #1e1e1e;
-  box-sizing: unset;
-} */
 
 img {
   max-width: unset;
