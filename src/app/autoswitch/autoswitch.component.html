@@ -1,4 +1,7 @@
 <div class="body">
-  <app-agent-select-overlay></app-agent-select-overlay>
-  <app-match-overlay></app-match-overlay>
+  @if (dataModel.match().roundPhase === "LOBBY") {
+    <app-agent-select-overlay></app-agent-select-overlay>
+  } @else {
+    <app-match-overlay></app-match-overlay>
+  }
 </div>
