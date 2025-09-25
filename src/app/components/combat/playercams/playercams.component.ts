@@ -4,7 +4,7 @@ import { DataModelService } from "../../../services/dataModel.service";
 import { DisplayNameService } from "../../../services/displayName.service";
 
 @Component({
-  selector: "app-playercams-new",
+  selector: "app-playercams",
   imports: [],
   templateUrl: "./playercams.component.html",
   styleUrl: "./playercams.component.css",

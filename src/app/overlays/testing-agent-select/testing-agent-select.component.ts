@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { AgentSelectOverlayComponent } from "../agent-select-overlay/agent-select-overlay.component";
 import { DataModelService } from "../../services/dataModel.service";
 import { IMatchData } from "../../services/Types";

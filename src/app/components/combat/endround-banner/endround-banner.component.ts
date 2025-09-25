@@ -4,7 +4,7 @@ import { TranslateKeys } from "../../../services/i18nHelper";
 import { DataModelService } from "../../../services/dataModel.service";
 
 @Component({
-  selector: "app-endround-new",
+  selector: "app-endround",
   imports: [TranslatePipe],
   templateUrl: "./endround-banner.component.html",
   styleUrl: "./endround-banner.component.css",

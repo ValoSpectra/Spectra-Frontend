@@ -2,7 +2,7 @@ import { Component, computed, inject, effect } from "@angular/core";
 import { DataModelService } from "../../../../services/dataModel.service";
 
 @Component({
-  selector: "app-spike-icon",
+  selector: "app-spike-planted",
   imports: [],
   templateUrl: "./spike-planted.component.html",
   styleUrl: "./spike-planted.component.css",

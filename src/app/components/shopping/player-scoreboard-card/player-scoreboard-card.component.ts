@@ -7,7 +7,7 @@ import { UltimateTrackerComponent } from "../../common/ultimate-tracker/ultimate
 import { AbilitiesComponent } from "../../common/abilities/abilities.component";
 
 @Component({
-  selector: "app-playerscore-new",
+  selector: "app-scoreboard-card",
   imports: [UltimateTrackerComponent, AbilitiesComponent],
   templateUrl: "./player-scoreboard-card.component.html",
   styleUrl: "./player-scoreboard-card.component.css",
@@ -40,7 +40,7 @@ export class PlayerScoreboardCardComponent {
 }
 
 @Component({
-  selector: "app-playerscore-minimal-new",
+  selector: "app-scoreboard-card-minimal",
   imports: [],
   templateUrl: "./player-scoreboard-card-minimal.component.html",
   styleUrl: "./player-scoreboard-card.component.css",

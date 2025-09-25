@@ -7,7 +7,7 @@ import { MapbanMapComponent } from "../../components/mapban/mapban-map/mapban-ma
 @Component({
   standalone: true,
   imports: [MapbanMapComponent],
-  selector: "app-mapban-ui",
+  selector: "app-mapban-overlay",
   templateUrl: "./mapban-overlay.component.html",
   styleUrl: "./mapban-overlay.component.css",
 })

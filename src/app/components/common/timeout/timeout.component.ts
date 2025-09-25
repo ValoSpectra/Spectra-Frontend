@@ -4,7 +4,7 @@ import { TranslateKeys } from "../../../services/i18nHelper";
 import { DataModelService } from "../../../services/dataModel.service";
 
 @Component({
-  selector: "app-timeout-new",
+  selector: "app-timeout",
   imports: [TranslatePipe],
   templateUrl: "./timeout.component.html",
   styleUrl: "./timeout.component.css",

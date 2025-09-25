@@ -2,7 +2,7 @@ import { Component, computed, inject } from "@angular/core";
 import { DataModelService } from "../../../services/dataModel.service";
 
 @Component({
-  selector: "app-roundreasons-new",
+  selector: "app-roundreasons",
   imports: [],
   templateUrl: "./roundreasons.component.html",
   styleUrl: "./roundreasons.component.css",

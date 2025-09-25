@@ -43,17 +43,17 @@
       >
         @for (player of team.players; track $index) {
           @if (!dataModel.minimalMode()) {
-            <app-playerscore-new
+            <app-scoreboard-card
               [player]="player"
               [right]="teamIndex === 1"
               [color]="team.isAttacking ? 'attacker' : 'defender'"
-            ></app-playerscore-new>
+            ></app-scoreboard-card>
           } @else {
-            <app-playerscore-minimal-new
+            <app-scoreboard-card-minimal
               [player]="player"
               [right]="teamIndex === 1"
               [color]="team.isAttacking ? 'attacker' : 'defender'"
-            ></app-playerscore-minimal-new>
+            ></app-scoreboard-card-minimal>
           }
         }
       </div>

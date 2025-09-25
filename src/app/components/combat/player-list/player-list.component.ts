@@ -6,7 +6,7 @@ import {
 import { DataModelService } from "../../../services/dataModel.service";
 
 @Component({
-  selector: "app-combat-tracker",
+  selector: "app-combat-player-list",
   imports: [PlayerCombatCardComponent, PlayerCombatCardMinimalComponent],
   templateUrl: "./player-list.component.html",
   styleUrl: "./player-list.component.css",

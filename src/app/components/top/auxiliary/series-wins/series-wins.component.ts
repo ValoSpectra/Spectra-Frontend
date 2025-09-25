@@ -3,7 +3,7 @@ import { DataModelService } from "../../../../services/dataModel.service";
 import { SeriesWinPipComponent } from "./series-win-pip/series-win-pip.component";
 
 @Component({
-  selector: "app-mapwins",
+  selector: "app-series-wins",
   imports: [SeriesWinPipComponent],
   templateUrl: "./series-wins.component.html",
   styleUrl: "./series-wins.component.css",

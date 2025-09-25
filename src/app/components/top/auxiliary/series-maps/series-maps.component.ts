@@ -4,7 +4,7 @@ import { TranslateKeys } from "../../../../services/i18nHelper";
 import { DataModelService } from "../../../../services/dataModel.service";
 
 @Component({
-  selector: "app-mapinfo-new",
+  selector: "app-series-maps",
   imports: [TranslatePipe],
   templateUrl: "./series-maps.component.html",
   styleUrl: "./series-maps.component.css",

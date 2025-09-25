@@ -3,7 +3,7 @@ import { MatchOverlayComponent } from "../match-overlay/match-overlay.component"
 import { DataModelService } from "../../services/dataModel.service";
 
 @Component({
-  selector: "app-testing-new",
+  selector: "app-testing",
   imports: [MatchOverlayComponent],
   templateUrl: "./testing.component.html",
   styleUrl: "./testing.component.css",

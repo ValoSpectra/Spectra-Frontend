@@ -30,10 +30,7 @@
       >
         @if (isAlive()) {
           @if (!dataModel.hideAuxiliary() && player.auxiliaryAvailable.abilities) {
-            <app-abilities-new-prototype
-              class="w-3/5"
-              [player]="player"
-            ></app-abilities-new-prototype>
+            <app-abilities class="w-3/5" [player]="player"></app-abilities>
           }
         } @else {
           <div
