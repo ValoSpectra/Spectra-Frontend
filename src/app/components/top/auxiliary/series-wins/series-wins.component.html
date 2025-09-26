@@ -1,11 +1,14 @@
 @if (dataModel.seriesInfo().needed > 1) {
-  <div class="flex flex-row gap-1">
-    @for (i of numSequence(dataModel.seriesInfo().needed); track $index) {
-      <div class="mapwin-pip" [class.full]="$index < dataModel.seriesInfo().wonLeft"></div>
-    }
-    <div class="vw-175"></div>
-    @for (i of numSequence(dataModel.seriesInfo().needed); track $index) {
-      <div class="mapwin-pip" [class.full]="$index < dataModel.seriesInfo().wonRight"></div>
-    }
+  <div class="vw-500 flex flex-row justify-between opacity-80">
+    <div class="flex flex-row gap-1">
+      @for (i of numSequence(dataModel.seriesInfo().needed); track $index) {
+        <div class="mapwin-pip" [class.full]="$index < dataModel.seriesInfo().wonLeft"></div>
+      }
+    </div>
+    <div class="flex flex-row gap-1">
+      @for (i of numSequence(dataModel.seriesInfo().needed); track $index) {
+        <div class="mapwin-pip" [class.full]="$index < dataModel.seriesInfo().wonRight"></div>
+      }
+    </div>
   </div>
 }

@@ -1,6 +1,36 @@
-<div class="vw-602 flex flex-row justify-between">
+<div class="vw-550 vh-90 flex flex-row justify-between">
   @for (team of dataModel.teams(); track $index) {
-    <div
+    <div class="vw-200 vh-80 relative">
+      <!-- Image -->
+      <div
+        class="absolute top-1/2 flex w-2/5 -translate-y-1/2 justify-center"
+        [class]="$index === 0 ? 'left-0' : 'right-0'"
+      >
+        <img [src]="team.teamUrl" class="h-4/5 w-4/5" />
+      </div>
+      <!-- Team Info -->
+      <div
+        class="absolute top-1/2 flex w-4/5 -translate-y-1/2 flex-col items-center"
+        [class]="$index === 0 ? 'right-0' : 'left-0'"
+      >
+        <p class="font-unbounded text-xl font-extrabold tracking-tighter text-white uppercase">
+          {{ team.teamTricode }}
+        </p>
+        <p class="font-montserrat text-xs font-extrabold tracking-tighter text-white/60">
+          {{ $index === 0 ? dataModel.seedingInfo().left : dataModel.seedingInfo().right }}
+        </p>
+      </div>
+      <!-- Team Rounds -->
+      <div
+        class="absolute top-1/2 flex w-1/5 -translate-y-1/2 items-center justify-center"
+        [class]="$index === 0 ? 'right-0' : 'left-0'"
+      >
+        <p class="font-montserrat w-fit text-6xl leading-none font-bold text-white">
+          {{ team.roundsWon }}
+        </p>
+      </div>
+    </div>
+    <!-- <div
       class="vw-216 vh-63 relative flex flex-row justify-center overflow-hidden rounded-md"
       [class.flex-row-reverse]="$index > 0"
     >
@@ -32,6 +62,6 @@
           {{ team.roundsWon }}
         </p>
       </div>
-    </div>
+    </div> -->
   }
 </div>

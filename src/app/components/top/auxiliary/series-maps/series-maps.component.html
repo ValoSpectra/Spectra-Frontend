@@ -3,7 +3,7 @@
     class="font-montserrat vh-24 vw-600 flex flex-row overflow-hidden rounded-b-lg text-[15px] font-extrabold text-white uppercase"
   >
     @for (mapInfo of dataModel.seriesInfo().mapInfo; track $index) {
-      <div class="pill-background flex w-full flex-row items-center justify-center text-center">
+      <div class="flex w-full flex-row items-center justify-center text-center">
         @switch (mapInfo.type) {
           @case ("past") {
             <p>{{ mapInfo.map }}</p>

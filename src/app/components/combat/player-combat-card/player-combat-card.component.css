@@ -5,17 +5,17 @@
       rgba(var(--defender-color-rgb), 0.3) 0%,
       rgba(var(--defender-color-rgb), 0.1) 100%
     ),
-    rgba(15, 25, 35, 0.8);
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-playerinfo-attacker-left {
   background:
     linear-gradient(
       to right,
-      rgba(var(--attacker-color-rgb), 0.5) 0%,
+      rgba(var(--attacker-color-rgb), 0.3) 0%,
       rgba(var(--attacker-color-rgb), 0.1) 100%
     ),
-    rgba(15, 25, 35, 0.6);
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-playerinfo-defender-right {
@@ -25,29 +25,29 @@
       rgba(var(--defender-color-rgb), 0.3) 0%,
       rgba(var(--defender-color-rgb), 0.1) 100%
     ),
-    rgba(15, 25, 35, 0.6);
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-playerinfo-attacker-right {
   background:
     linear-gradient(
       to left,
-      rgba(var(--attacker-color-rgb), 0.5) 0%,
+      rgba(var(--attacker-color-rgb), 0.3) 0%,
       rgba(var(--attacker-color-rgb), 0.1) 100%
     ),
-    rgba(15, 25, 35, 0.6);
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-playerinfo-observed-left {
   background:
-    linear-gradient(to right, rgba(240, 200, 85, 0.5) 0%, rgba(225, 181, 22, 0.1) 100%),
-    rgba(15, 25, 35, 0.7);
+    linear-gradient(to right, rgba(240, 200, 85, 0.5) 0%, rgba(225, 181, 22, 0.15) 100%),
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-playerinfo-observed-right {
   background:
-    linear-gradient(to left, rgba(240, 200, 85, 0.5) 0%, rgba(225, 181, 22, 0.1) 100%),
-    rgba(15, 25, 35, 0.7);
+    linear-gradient(to left, rgba(240, 200, 85, 0.5) 0%, rgba(225, 181, 22, 0.15) 100%),
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-playerinfo-dead-left {
@@ -77,7 +77,7 @@
       rgba(var(--defender-color-rgb), 0.1) 0%,
       rgba(var(--defender-color-rgb), 0) 100%
     ),
-    rgba(15, 25, 35, 0.8);
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-weaponinfo-attacker-left {
@@ -87,7 +87,7 @@
       rgba(var(--attacker-color-rgb), 0.1) 0%,
       rgba(var(--attacker-color-rgb), 0) 100%
     ),
-    rgba(15, 25, 35, 0.6);
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-weaponinfo-defender-right {
@@ -97,7 +97,7 @@
       rgba(var(--defender-color-rgb), 0.1) 0%,
       rgba(var(--defender-color-rgb), 0) 100%
     ),
-    rgba(15, 25, 35, 0.6);
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-weaponinfo-attacker-right {
@@ -107,19 +107,19 @@
       rgba(var(--attacker-color-rgb), 0.1) 0%,
       rgba(var(--attacker-color-rgb), 0) 100%
     ),
-    rgba(15, 25, 35, 0.6);
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-weaponinfo-observed-left {
   background:
-    linear-gradient(to right, rgba(225, 181, 22, 0.1) 0%, rgba(225, 181, 22, 0) 100%),
-    rgba(15, 25, 35, 0.7);
+    linear-gradient(to right, rgba(225, 181, 22, 0.15) 0%, rgba(225, 181, 22, 0) 100%),
+    rgba(15, 25, 35, 0.9);
 }
 
 .bg-weaponinfo-observed-right {
   background:
-    linear-gradient(to left, rgba(225, 181, 22, 0.1) 0%, rgba(225, 181, 22, 0) 100%),
-    rgba(15, 25, 35, 0.7);
+    linear-gradient(to left, rgba(225, 181, 22, 0.15) 0%, rgba(225, 181, 22, 0) 100%),
+    rgba(15, 25, 35, 0.9);
 }
 
 .playercard-hp-shadow.defender {

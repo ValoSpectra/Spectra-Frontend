@@ -1,0 +1,120 @@
+.max-opacity {
+  opacity: 0.8;
+}
+
+.bg-to-max-opacity-right {
+  background: linear-gradient(to right, rgba(15, 25, 35, 1) 0%, rgba(15, 25, 35, 0.8) 100%);
+}
+
+.bg-to-max-opacity-left {
+  background: linear-gradient(to left, rgba(15, 25, 35, 1) 0%, rgba(15, 25, 35, 0.8) 100%);
+}
+
+.sponsor-skew {
+  display: inline-block;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%);
+}
+
+.sponsor-skew::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 99.5%;
+  height: 98%;
+  background: var(--color-timer);
+  clip-path: polygon(0.5% 0, 100% 0, 100% 100%, 25% 100%);
+  z-index: -1;
+}
+
+.left-score-skew-first {
+  display: inline-block;
+  clip-path: polygon(0 2%, 100% 0, 100% 100%, 12% 100%);
+}
+
+.left-score-skew-first::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 99.5%;
+  height: 100%;
+  background: var(--color-timer);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12% 100%);
+  z-index: -1;
+}
+
+.left-score-skew-second {
+  display: inline-block;
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+}
+
+.left-score-skew-second::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 99.5%;
+  height: 100%;
+  background:
+    radial-gradient(
+      100% 100% at 50% 100%,
+      rgba(var(--defender-color-rgb), 0.8),
+      rgba(var(--defender-color-rgb), 0)
+    ),
+    var(--color-timer);
+  clip-path: polygon(0.5% 0, 100% -1%, 89.5% 100%, 10% 100%);
+  z-index: -1;
+}
+
+.right-score-skew-first {
+  display: inline-block;
+  clip-path: polygon(0 0, 100% 2%, 88% 100%, 0% 100%);
+}
+
+.right-score-skew-first::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 99.5%;
+  height: 100%;
+  background: var(--color-timer);
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
+  z-index: -1;
+}
+
+.right-score-skew-second {
+  display: inline-block;
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+}
+
+.right-score-skew-second::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 99.5%;
+  height: 100%;
+  background:
+    radial-gradient(
+      100% 100% at 50% 100%,
+      rgba(var(--attacker-color-rgb), 0.8),
+      rgba(var(--attacker-color-rgb), 0)
+    ),
+    var(--color-timer);
+  clip-path: polygon(0 0, 100% 0%, 90% 100%, 10.5% 100%);
+  z-index: -1;
+}
+
+.topbg-shadow.defender {
+  box-shadow: 0px 1px 4px 3px rgba(var(--defender-color-rgb), 0.3);
+}
+
+.topbg-shadow.attacker {
+  box-shadow: 0px 1px 4px 3px rgba(var(--attacker-color-secondary-rgb), 0.3);
+}
+
+.bg-clash {
+  background: linear-gradient(to bottom, rgba(15, 25, 35, 1) 0%, rgba(15, 25, 35, 0) 100%);
+}

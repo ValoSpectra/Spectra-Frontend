@@ -12,6 +12,8 @@ export class TestingComponent implements OnInit {
   dataModel = inject(DataModelService);
   match: any;
 
+  bgCounter = 1;
+
   ngOnInit(): void {
     const nameOverrideMap = new Map<string, string>();
     nameOverrideMap.set("", "");
@@ -30,7 +32,7 @@ export class TestingComponent implements OnInit {
       tools: {
         seriesInfo: {
           needed: 3,
-          wonLeft: 2,
+          wonLeft: 1,
           wonRight: 2,
           mapInfo: [
             {
@@ -570,7 +572,12 @@ export class TestingComponent implements OnInit {
     this.showInterface.update((v) => !v);
   }
 
-  switchBackground() {}
+  switchBackground() {
+    this.bgCounter++;
+    if (this.bgCounter > 4) {
+      this.bgCounter = 1;
+    }
+  }
 
   techPause() {
     this.stopTimeoutTimer();

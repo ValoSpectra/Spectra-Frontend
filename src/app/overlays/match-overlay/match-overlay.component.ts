@@ -1,5 +1,4 @@
 import { Component, inject } from "@angular/core";
-import { TimerRounderComponent } from "../../components/top/match/timer-rounder/timer-rounder.component";
 import { ScoreboardComponent } from "../../components/shopping/scoreboard/scoreboard.component";
 import { DataModelService } from "../../services/dataModel.service";
 import { SeriesMapsComponent } from "../../components/top/auxiliary/series-maps/series-maps.component";
@@ -14,11 +13,11 @@ import { CombatPlayerListComponent } from "../../components/combat/player-list/p
 import { PlayercamsComponent } from "../../components/combat/playercams/playercams.component";
 import { EndroundBannerComponent } from "../../components/combat/endround-banner/endround-banner.component";
 import { TimeoutComponent } from "../../components/common/timeout/timeout.component";
+import { TopBackgroundComponent } from "../../components/top/match/background/background.component";
 
 @Component({
   selector: "app-match-overlay",
   imports: [
-    TimerRounderComponent,
     ScoreboardComponent,
     SeriesMapsComponent,
     RoundNumberComponent,
@@ -32,6 +31,7 @@ import { TimeoutComponent } from "../../components/common/timeout/timeout.compon
     PlayercamsComponent,
     EndroundBannerComponent,
     TimeoutComponent,
+    TopBackgroundComponent,
   ],
   templateUrl: "./match-overlay.component.html",
   styleUrl: "./match-overlay.component.css",
