@@ -1,60 +1,148 @@
 <div class="vw-1920 vh-200 relative flex flex-col overflow-clip">
-  <div class="absolute flex h-full w-full flex-row">
-    <!-- Left / Series Maps -->
-    <div class="vh-25 flex w-1/3 flex-row">
-      <div class="bg-timer max-opacity box-border h-full w-1/2 border-b-2 border-white"></div>
-      <div
-        class="bg-timer bg-to-max-opacity-left box-border h-full w-1/2 border-b-2 border-white/80"
-      ></div>
-    </div>
-    <!-- Center / Score -->
-    <div class="relative flex w-1/3 flex-col">
-      <div class="vh-25 bg-timer"></div>
-      <!-- Clean space around timer -->
-      <div class="vh-15 bg-clash absolute top-16 left-1/5 w-3/5"></div>
-      <!-- Left "box" -->
-      <div class="left-score-gradient absolute top-6 left-0 h-2/5 w-2/5">
-        <div
-          class="left-score-skew-first absolute h-1/2 w-full border-b-1 border-white bg-white"
-        ></div>
-        <div
-          class="left-score-skew-second absolute top-1/2 -right-1 h-1/3 w-5/6 border-b-2 bg-white"
-          [class]="leftAttacker() ? 'border-attacker-secondary' : 'border-defender-secondary'"
-        ></div>
-        <div
-          class="topbg-shadow absolute top-5/6 right-4.25 h-1/50 w-2/3"
-          [class]="leftAttacker() ? 'attacker' : 'defender'"
-        ></div>
-      </div>
-      <!-- Right "box" -->
-      <div class="absolute top-6 right-0 h-2/5 w-2/5">
-        <div
-          class="right-score-skew-first absolute h-1/2 w-full border-b-1 border-white bg-white"
-        ></div>
-        <div
-          class="right-score-skew-second topbg-shadow absolute top-1/2 -left-1 h-1/3 w-5/6 border-b-2 bg-white"
-          [class]="leftAttacker() ? 'border-defender-secondary' : 'border-attacker-secondary'"
-        ></div>
-        <div
-          class="topbg-shadow absolute top-5/6 left-4.25 h-1/50 w-2/3"
-          [class]="leftAttacker() ? 'defender' : 'attacker'"
-        ></div>
-      </div>
-      <!-- OBS Patches - There's weird gaps in the patchworks that are only visible in OBS -->
-      <div class="bg-timer absolute top-6 left-1 h-0.5 w-1/2"></div>
-      <div class="bg-timer absolute top-6 right-1 h-0.5 w-1/2"></div>
-      <div class="bg-timer absolute top-6 left-63 h-1/5 w-1"></div>
-      <div class="bg-timer absolute top-6 right-63 h-1/5 w-1"></div>
-    </div>
-    <!-- Right / Watermark, Sponsor -->
-    <div class="flex w-1/3 flex-row">
-      <div class="vh-25 bg-to-max-opacity-right w-1/2 border-b-2 border-white/80"></div>
-      <div class="max-opacity relative flex h-full w-1/2 flex-col">
-        <div class="bg-timer h-1/8 w-full border-b-1 border-white"></div>
-        <div
-          class="sponsor-skew absolute top-1/8 h-2/6 w-full justify-end rounded-bl-sm bg-white"
-        ></div>
-      </div>
-    </div>
-  </div>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="1921"
+    height="83.128"
+    viewBox="0 0 1921 83.128"
+  >
+    <defs>
+      <linearGradient
+        id="linear-gradient"
+        y1="0.384"
+        x2="1"
+        y2="0.315"
+        gradientUnits="objectBoundingBox"
+      >
+        <stop offset="0" stop-color="#0F1923" stop-opacity="0.4" />
+        <stop offset="0.349" stop-color="#0F1923" />
+        <stop offset="0.651" stop-color="#0F1923" />
+        <stop offset="1" stop-color="#0F1923" stop-opacity="0.4" />
+      </linearGradient>
+      <radialGradient
+        id="right-side-gradient"
+        cx="0.475"
+        cy="0.97"
+        r="0.409"
+        gradientTransform="matrix(0.9, 0.436, 1.09, -2.252, -1.059, 3.041)"
+        gradientUnits="objectBoundingBox"
+      >
+        <stop offset="0" stop-color="#e44756" />
+        <stop offset="1" stop-color="#0F1923" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient
+        id="left-side-gradient"
+        cx="0.525"
+        cy="0.97"
+        r="0.409"
+        gradientTransform="matrix(-0.9, 0.436, -1.09, -2.252, 2.104, 3.019)"
+        gradientUnits="objectBoundingBox"
+      >
+        <stop offset="0" stop-color="#61eab6" />
+        <stop offset="1" stop-color="#0F1923" stop-opacity="0" />
+      </radialGradient>
+      <linearGradient
+        id="linear-gradient-2"
+        x1="0.5"
+        y1="0.969"
+        x2="0.5"
+        gradientUnits="objectBoundingBox"
+      >
+        <stop offset="0" stop-color="#0F1923" stop-opacity="0" />
+        <stop offset="1" stop-color="#fff" stop-opacity="0.2" />
+      </linearGradient>
+      <linearGradient id="linear-gradient-3" y1="0.031" y2="1" xlink:href="#linear-gradient-2" />
+      <linearGradient
+        id="border-bottom-gradient"
+        y1="0.5"
+        x2="1"
+        y2="0.5"
+        gradientUnits="objectBoundingBox"
+      >
+        <stop offset="0" stop-color="#c8c8c8" />
+        <stop offset="0.339" stop-color="#a3a3a3" />
+        <stop offset="0.653" stop-color="#9e9e9e" />
+        <stop offset="0.853" stop-color="#b0b0b0" />
+        <stop offset="1" stop-color="#c8c8c8" />
+      </linearGradient>
+      <radialGradient
+        id="right-main-gradient"
+        cx="0.447"
+        cy="1.095"
+        r="1.513"
+        gradientTransform="matrix(-1, 0.017, 0.007, 0.433, 0.885, 0.61)"
+        gradientUnits="objectBoundingBox"
+      >
+        <stop offset="0" stop-color="#e44756" />
+        <stop offset="1" stop-color="#07171d" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient
+        id="left-main-gradient"
+        cx="0.553"
+        cy="1.095"
+        r="1.513"
+        gradientTransform="matrix(1, 0.017, -0.007, 0.433, 0.008, 0.608)"
+        gradientUnits="objectBoundingBox"
+      >
+        <stop offset="0" stop-color="#61eab6" />
+        <stop offset="1" stop-color="#07171d" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <g id="Topscore" transform="translate(0.5 0.127)">
+      <path
+        id="Bar_Main"
+        data-name="Bar Main"
+        d="M1680.479,82,1638.89,28H1251l-25,32h-14l-16.641,22H1056l-7-9H960V70h68V0h892V82ZM724.64,82,708,60H694L669,28H0V0H893V70h67v3H871l-7,9Z"
+        fill="url(#linear-gradient)"
+      />
+      <path
+        id="Right_Team_Accent"
+        data-name="Right Team Accent"
+        d="M43.146,1h19.5V-26.5H-44.5V56.349h32.058L4.976,34.415h13.7Z"
+        transform="translate(1207.095 26.5)"
+        fill="url(#right-side-gradient)"
+      />
+      <path
+        id="Left_Team_Accent"
+        data-name="Left Team Accent"
+        d="M-25,1H-44.5V-26.5H62.642V56.349H30.583L13.17,34.415H-.528Z"
+        transform="translate(694.5 26.5)"
+        fill="url(#left-side-gradient)"
+      />
+      <path
+        id="Line_Accent_Right"
+        data-name="Line Accent Right"
+        d="M128.4,26.446l.8.6L149.125.6l-.8-.6Zm-6.1.1.8.6L143.1.6l-.8-.6Zm-5.916-.112.8.6L137.1.6l-.8-.6Zm-5.995-.007.8.6L131.1.6l-.8-.6Zm-5.478-.194.8.6L125.475.6l-.8-.6Zm-5.957-.091.8.6L119.451.6l-.8-.6Zm-5.837-.217.8.6L113.45.6l-.8-.6Zm-5.958-.056.8.6L107.451.6l-.8-.6Zm-5.432-.257.8.6L101.826.6l-.8-.6Zm-6.006-.024.8.6L95.8.6,95,0Zm-5.99-.014.8.6L89.8.6,89,0Zm-6.011.014.8.6L83.8.6,83,0Zm-5.632.01.8.6L78.177.6l-.8-.6Zm-5.778-.328.8.6L72.152.6l-.8-.6Zm-5.971-.039.8.6L66.152.6l-.8-.6Zm-5.991-.012.8.6L60.152.6l-.8-.6Zm-5.405-.291.8.6L54.527.6l-.8-.6Zm-6.018-.009.8.6L48.5.6,47.7,0Zm-5.758-.32.8.6L42.5.6,41.7,0Zm-6-.005.8.6L36.5.6,35.7,0Zm-5.621-.005.8.6L30.878.6l-.8-.6ZM5.76,24.278l.8.6L24.853.6l-.8-.6ZM0,23.959l.8.6L18.853.6l-.8-.6ZM133.929,26.57l.8.6L153.546,2.2l-.8-.6Zm5.9.132.8.6L156.537,6.192l-.8-.6Zm5.965.046.8.6,12.934-17.165-.8-.6Zm5.933.122.8.6,10.62-14.092-.8-.6Zm5.621,0,.8.6,7.614-10.1-.8-.6Z"
+        transform="translate(1207.858 82.727) rotate(180)"
+        fill="url(#linear-gradient-2)"
+      />
+      <path
+        id="Line_Accent_Left"
+        data-name="Line Accent Left"
+        d="M127.2-3.482l.8-.6,19.928,26.445-.8.6Zm-6.1-.1.8-.6L141.9,22.361l-.8.6Zm-5.916.112.8-.6L135.9,22.361l-.8.6Zm-5.995.007.8-.6L129.9,22.361l-.8.6Zm-5.478.194.8-.6,19.771,26.237-.8.6Zm-5.957.091.8-.6,19.7,26.147-.8.6Zm-5.836.217.8-.6,19.54,25.93-.8.6Zm-5.958.056.8-.6,19.5,25.874-.8.6Zm-5.432.257.8-.6,19.3,25.618-.8.6Zm-6.006.024.8-.6L94.6,22.361l-.8.6Zm-5.99.014.8-.6L88.6,22.361l-.8.6ZM62.513-2.63l.8-.6L82.6,22.361l-.8.6Zm-5.632-.01.8-.6,19.293,25.6-.8.6ZM51.1-2.312l.8-.6L70.949,22.361l-.8.6Zm-5.971.039.8-.6L64.949,22.361l-.8.6Zm-5.991.012.8-.6L58.948,22.361l-.8.6Zm-5.405.291.8-.6,18.79,24.935-.8.6Zm-6.018.009.8-.6L47.3,22.361l-.8.6Zm-5.758.32.8-.6L41.3,22.361l-.8.6Zm-6,.005.8-.6L35.3,22.361l-.8.6Zm-5.621.005.8-.6L29.675,22.361l-.8.6Zm-5.785.317.8-.6L23.649,22.361l-.8.6ZM-1.2-1l.8-.6L17.65,22.361l-.8.6ZM132.726-3.606l.8-.6,18.819,24.973-.8.6Zm5.9-.132.8-.6,15.909,21.112-.8.6Zm5.965-.046.8-.6,12.934,17.165-.8.6Zm5.933-.122.8-.6,10.62,14.092-.8.6Zm5.621,0,.8-.6,7.614,10.1-.8.6Z"
+        transform="translate(713.301 60)"
+        fill="url(#linear-gradient-3)"
+      />
+      <path
+        id="Accent"
+        d="M1681,55.5l-42.5-54h-387l-25,32h-14l-16.648,22H1056l-7-9H871.5l-4.328,5.565-2.66,3.425v0l-.01.013H725.149L708.5,33.5h-14l-25.039-32H0V0H670.1L695,32h14l16.65,22H863.983l0-.009,3.967-5.065L871,45h.021l9.146-11.677,3.931-4-2.837,4.6L872.66,45h175.191l-8.594-11.064-2.837-4.6,3.93,4L1049.489,45h.011l1.531,1.968L1056.539,54H1195.35L1212,32h14l25-32h388l42.5,54H1921v1.5Z"
+        transform="translate(-0.5 27.5)"
+        opacity="0.6"
+        fill="url(#border-bottom-gradient)"
+      />
+      <path
+        id="Right_Color"
+        data-name="Right Color"
+        d="M893.172,27.5l-25,32-14,0L837.5,81.527,699.172,81.5,683.187,61.062l-4.114-4.229,2.8,4.584L677.783,55.4,669.5,43.208V-.127L893.172,0Z"
+        transform="translate(356.96 0.127)"
+        fill="url(#right-main-gradient)"
+      />
+      <path
+        id="Left_Color"
+        data-name="Left Color"
+        d="M669.5,27.5l25,32,14,0,16.667,22.027L863.5,81.5l15.984-20.438,4.114-4.229-2.8,4.584,4.092-6.021,8.283-12.188V-.127L669.5,0Z"
+        fill="url(#left-main-gradient)"
+      />
+    </g>
+  </svg>
 </div>

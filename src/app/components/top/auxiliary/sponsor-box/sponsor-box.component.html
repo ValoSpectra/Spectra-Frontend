@@ -1,5 +1,5 @@
 @if (dataModel.sponsorInfo().enabled) {
-  <div class="vw-250 vh-90 relative">
+  <div class="vw-250 vh-80 relative">
     @for (sponsor of dataModel.sponsorInfo().sponsors; track $index) {
       @if (currentIndex() === $index) {
         <img

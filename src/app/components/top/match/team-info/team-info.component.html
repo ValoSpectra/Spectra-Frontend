@@ -1,16 +1,16 @@
 <div class="vw-550 vh-90 flex flex-row justify-between">
   @for (team of dataModel.teams(); track $index) {
-    <div class="vw-200 vh-80 relative">
+    <div class="vw-200 vh-65 relative">
       <!-- Image -->
       <div
         class="absolute top-1/2 flex w-2/5 -translate-y-1/2 justify-center"
         [class]="$index === 0 ? 'left-0' : 'right-0'"
       >
-        <img [src]="team.teamUrl" class="h-4/5 w-4/5" />
+        <img [src]="team.teamUrl" class="h-7/11 w-7/11" />
       </div>
       <!-- Team Info -->
       <div
-        class="absolute top-1/2 flex w-4/5 -translate-y-1/2 flex-col items-center"
+        class="absolute top-1/2 flex w-8/9 -translate-y-1/2 flex-col items-center"
         [class]="$index === 0 ? 'right-0' : 'left-0'"
       >
         <p class="font-unbounded text-xl font-extrabold tracking-tighter text-white uppercase">
@@ -25,43 +25,10 @@
         class="absolute top-1/2 flex w-1/5 -translate-y-1/2 items-center justify-center"
         [class]="$index === 0 ? 'right-0' : 'left-0'"
       >
-        <p class="font-montserrat w-fit text-6xl leading-none font-bold text-white">
+        <p class="font-montserrat w-fit text-[2.75rem] leading-none font-bold text-white">
           {{ team.roundsWon }}
         </p>
       </div>
     </div>
-    <!-- <div
-      class="vw-216 vh-63 relative flex flex-row justify-center overflow-hidden rounded-md"
-      [class.flex-row-reverse]="$index > 0"
-    >
-      <div
-        class="bg-timer/85 flex flex-grow flex-row items-center justify-center"
-        [class.flex-row-reverse]="$index > 0"
-      >
-        <div class="flex w-2/5 items-center justify-center">
-          <img [src]="team.teamUrl" class="h-4/5 w-4/5" />
-        </div>
-        <div class="flex max-w-3/5 flex-col items-center justify-center overflow-hidden">
-          <p class="font-unbounded text-xl font-extrabold tracking-tighter text-white uppercase">
-            {{ team.teamTricode }}
-          </p>
-          <p class="font-montserrat text-xs font-extrabold tracking-tighter text-white/60">
-            {{ $index === 0 ? dataModel.seedingInfo().left : dataModel.seedingInfo().right }}
-          </p>
-        </div>
-      </div>
-      <div
-        class="vw-4 bg-defender-secondary shrink-0"
-        [class.!bg-attacker-secondary]="team.isAttacking"
-      ></div>
-      <div
-        class="vw-70 bg-defender-primary flex h-full shrink-0 items-center justify-center"
-        [class.!bg-attacker-primary]="team.isAttacking"
-      >
-        <p class="font-montserrat w-fit text-4xl leading-none font-bold text-white">
-          {{ team.roundsWon }}
-        </p>
-      </div>
-    </div> -->
   }
 </div>
