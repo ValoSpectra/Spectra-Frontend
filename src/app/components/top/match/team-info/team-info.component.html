@@ -1,22 +1,22 @@
-<div class="vw-550 vh-90 flex flex-row justify-between">
+<div class="vw-540 vh-190 relative flex flex-row justify-between">
   @for (team of dataModel.teams(); track $index) {
-    <div class="vw-200 vh-65 relative">
+    <div class="vw-200 vh-75 relative">
       <!-- Image -->
       <div
-        class="absolute top-1/2 flex w-2/5 -translate-y-1/2 justify-center"
-        [class]="$index === 0 ? 'left-0' : 'right-0'"
+        class="absolute top-1/2 flex h-3/5 w-1/4 -translate-y-1/2 justify-center"
+        [class]="$index === 0 ? 'left-5' : 'right-5'"
       >
-        <img [src]="team.teamUrl" class="h-7/11 w-7/11" />
+        <img [src]="team.teamUrl" class="max-h-full max-w-full" />
       </div>
       <!-- Team Info -->
       <div
         class="absolute top-1/2 flex w-8/9 -translate-y-1/2 flex-col items-center"
         [class]="$index === 0 ? 'right-0' : 'left-0'"
       >
-        <p class="font-unbounded text-xl font-extrabold tracking-tighter text-white uppercase">
+        <p class="font-unbounded text-xl font-bold tracking-tighter text-white uppercase">
           {{ team.teamTricode }}
         </p>
-        <p class="font-montserrat text-xs font-extrabold tracking-tighter text-white/60">
+        <p class="font-montserrat text-xs font-bold tracking-tighter text-white/60">
           {{ $index === 0 ? dataModel.seedingInfo().left : dataModel.seedingInfo().right }}
         </p>
       </div>
@@ -25,7 +25,7 @@
         class="absolute top-1/2 flex w-1/5 -translate-y-1/2 items-center justify-center"
         [class]="$index === 0 ? 'right-0' : 'left-0'"
       >
-        <p class="font-montserrat w-fit text-[2.75rem] leading-none font-bold text-white">
+        <p class="font-montserrat w-fit text-[2.75rem] leading-none font-extrabold text-white">
           {{ team.roundsWon }}
         </p>
       </div>
