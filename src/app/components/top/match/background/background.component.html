@@ -20,15 +20,22 @@
         <stop offset="1" stop-color="#0F1923" stop-opacity="0.4" />
       </linearGradient>
       <radialGradient
-        id="right-side-gradient"
-        cx="0.475"
-        cy="0.97"
-        r="0.409"
-        gradientTransform="matrix(0.9, 0.436, 1.09, -2.252, -1.059, 3.041)"
+        id="left-main-gradient"
+        cx="0.553"
+        cy="1.095"
+        r="1.513"
+        gradientTransform="matrix(1, 0.017, -0.007, 0.433, 0.008, 0.608)"
         gradientUnits="objectBoundingBox"
       >
-        <stop offset="0" stop-color="#e44756" />
-        <stop offset="1" stop-color="#0F1923" stop-opacity="0" />
+        <stop
+          offset="0"
+          [attr.stop-color]="
+            leftAttacker()
+              ? 'rgba(var(--attacker-color-secondary-rgb), 1)'
+              : 'rgba(var(--defender-color-rgb), 1)'
+          "
+        />
+        <stop offset="1" stop-color="#07171d" stop-opacity="0" />
       </radialGradient>
       <radialGradient
         id="left-side-gradient"
@@ -38,7 +45,50 @@
         gradientTransform="matrix(-0.9, 0.436, -1.09, -2.252, 2.104, 3.019)"
         gradientUnits="objectBoundingBox"
       >
-        <stop offset="0" stop-color="#61eab6" />
+        <stop
+          offset="0"
+          [attr.stop-color]="
+            leftAttacker()
+              ? 'rgba(var(--attacker-color-secondary-rgb), 1)'
+              : 'rgba(var(--defender-color-rgb), 1)'
+          "
+        />
+        <stop offset="1" stop-color="#0F1923" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient
+        id="right-main-gradient"
+        cx="0.447"
+        cy="1.095"
+        r="1.513"
+        gradientTransform="matrix(-1, 0.017, 0.007, 0.433, 0.885, 0.61)"
+        gradientUnits="objectBoundingBox"
+      >
+        <stop
+          offset="0"
+          [attr.stop-color]="
+            !leftAttacker()
+              ? 'rgba(var(--attacker-color-secondary-rgb), 1)'
+              : 'rgba(var(--defender-color-rgb), 1)'
+          "
+        />
+        <stop offset="1" stop-color="#07171d" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient
+        id="right-side-gradient"
+        cx="0.475"
+        cy="0.97"
+        r="0.409"
+        gradientTransform="matrix(0.9, 0.436, 1.09, -2.252, -1.059, 3.041)"
+        gradientUnits="objectBoundingBox"
+      >
+        <stop
+          offset="0"
+          [attr.stop-color]="
+            !leftAttacker()
+              ? 'rgba(var(--attacker-color-secondary-rgb), 1)'
+              : 'rgba(var(--defender-color-rgb), 1)'
+          "
+        />
         <stop offset="1" stop-color="#0F1923" stop-opacity="0" />
       </radialGradient>
       <linearGradient
@@ -65,28 +115,6 @@
         <stop offset="0.853" stop-color="#b0b0b0" />
         <stop offset="1" stop-color="#c8c8c8" />
       </linearGradient>
-      <radialGradient
-        id="right-main-gradient"
-        cx="0.447"
-        cy="1.095"
-        r="1.513"
-        gradientTransform="matrix(-1, 0.017, 0.007, 0.433, 0.885, 0.61)"
-        gradientUnits="objectBoundingBox"
-      >
-        <stop offset="0" stop-color="#e44756" />
-        <stop offset="1" stop-color="#07171d" stop-opacity="0" />
-      </radialGradient>
-      <radialGradient
-        id="left-main-gradient"
-        cx="0.553"
-        cy="1.095"
-        r="1.513"
-        gradientTransform="matrix(1, 0.017, -0.007, 0.433, 0.008, 0.608)"
-        gradientUnits="objectBoundingBox"
-      >
-        <stop offset="0" stop-color="#61eab6" />
-        <stop offset="1" stop-color="#07171d" stop-opacity="0" />
-      </radialGradient>
     </defs>
     <g id="Topscore">
       <path
