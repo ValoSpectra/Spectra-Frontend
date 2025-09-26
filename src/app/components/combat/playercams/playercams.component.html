@@ -31,13 +31,11 @@
                 [class]="team.isAttacking ? 'attacker' : 'defender'"
               ></div>
               <div
-                class="text-shadow-xl w-full max-w-85 overflow-clip px-2 text-left font-[Montserrat] text-lg font-extrabold text-white"
+                class="text-shadow-xl font-montserrat w-full max-w-85 overflow-clip px-2 text-left text-lg font-extrabold text-white"
               >
                 {{ getDisplayName(player.fullName, player.name) }}
               </div>
-              <div
-                class="w-full px-2 text-right font-[Montserrat] text-lg font-semibold text-white"
-              >
+              <div class="font-montserrat w-full px-2 text-right text-lg font-semibold text-white">
                 {{ player.kills }} / {{ player.deaths }} / {{ player.assists }}
               </div>
             </div>

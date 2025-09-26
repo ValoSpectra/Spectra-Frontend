@@ -1,5 +1,5 @@
 <!-- eslint-disable @angular-eslint/template/eqeqeq -->
-<div class="h-full w-full overflow-clip bg-[#0f1923cc]">
+<div class="bg-background h-full w-full overflow-clip">
   <div class="flex h-11/14 w-full items-center justify-center">
     <div class="relative h-full w-full" [class.invisible]="!isRotating" [class.w-0!]="!isRotating">
       <img
@@ -23,7 +23,7 @@
       [class.invisible]="!isRotating || stage === 'side'"
     >
       <img class="max-h-15 w-15 rounded-xs" [src]="teams[actingTeam!].url" />
-      <p class="text-center font-[Unbounded] text-3xl font-bold text-white">
+      <p class="font-unbounded text-center text-3xl font-bold text-white">
         {{ stage === "ban" ? "Banning" : "Picking" }}<br />
       </p>
     </div>
@@ -38,7 +38,7 @@
         id="mapImage-{{ index }}"
       />
       @if (map.bannedBy !== undefined) {
-        <p class="absolute text-center font-[Unbounded] text-3xl font-bold text-white/80">
+        <p class="font-unbounded absolute text-center text-3xl font-bold text-white/80">
           {{ map.name }}
         </p>
         <app-mapban-ban-icon class="absolute h-fit w-fit" [index]="index"></app-mapban-ban-icon>
@@ -51,12 +51,12 @@
               <img class="max-h-15 w-15 rounded-xs" [src]="teams[1].url" />
             }
             <p
-              class="mb-4 text-center font-[Unbounded] text-4xl font-bold text-white text-shadow-lg/55"
+              class="font-unbounded mb-4 text-center text-4xl font-bold text-white text-shadow-lg/55"
             >
               {{ map.score[0] }} - {{ map.score[1] }}
             </p>
             <p
-              class="-mb-12 text-center font-[Unbounded] text-2xl font-bold text-white text-shadow-lg/55"
+              class="font-unbounded -mb-12 text-center text-2xl font-bold text-white text-shadow-lg/55"
             >
               {{ map.name }}
             </p>
@@ -64,7 +64,7 @@
         } @else {
           <div class="absolute flex h-full w-full flex-col items-center justify-center">
             <img class="max-h-15 w-15 rounded-xs" [src]="teams[map.pickedBy].url" />
-            <p class="text-center font-[Unbounded] text-3xl font-bold text-white text-shadow-lg/55">
+            <p class="font-unbounded text-center text-3xl font-bold text-white text-shadow-lg/55">
               {{ map.name }}
             </p>
           </div>
@@ -78,19 +78,19 @@
               <img class="max-h-15 w-15 rounded-xs" [src]="teams[1].url" />
             }
             <p
-              class="mb-4 text-center font-[Unbounded] text-4xl font-bold text-white text-shadow-lg/55"
+              class="font-unbounded mb-4 text-center text-4xl font-bold text-white text-shadow-lg/55"
             >
               {{ map.score[0] }} - {{ map.score[1] }}
             </p>
             <p
-              class="-mb-12 text-center font-[Unbounded] text-2xl font-bold text-white text-shadow-lg/55"
+              class="font-unbounded -mb-12 text-center text-2xl font-bold text-white text-shadow-lg/55"
             >
               {{ map.name }}
             </p>
           </div>
         } @else {
           <p
-            class="absolute text-center font-[Unbounded] text-3xl font-bold text-white text-shadow-lg/55"
+            class="font-unbounded absolute text-center text-3xl font-bold text-white text-shadow-lg/55"
           >
             Decider:<br />{{ map.name }}
           </p>
@@ -99,7 +99,7 @@
     }
   </div>
   <div
-    class="flex h-3/14 w-full items-center justify-center text-center font-[Unbounded] text-xl text-white"
+    class="font-unbounded flex h-3/14 w-full items-center justify-center text-center text-xl text-white"
   >
     @if (map.bannedBy !== undefined) {
       <p class="">
