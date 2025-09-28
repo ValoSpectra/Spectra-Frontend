@@ -58,3 +58,7 @@
   animation: animations-reasons 0.15s ease-in-out;
   will-change: opacity, transform;
 }
+
+.bg-overtime {
+  background: linear-gradient(to right, #ffffff22 0%, transparent 40%);
+}

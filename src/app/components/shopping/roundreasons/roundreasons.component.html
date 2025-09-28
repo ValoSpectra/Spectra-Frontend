@@ -1,6 +1,6 @@
 @if (isShown()) {
   <div
-    class="max-vw-480 vh-90 bg-background flex flex-row items-center rounded-sm py-0.5"
+    class="max-vw-480 vh-90 bg-timer/90 shadow-timer/90 flex flex-row items-center rounded-xs border-1 border-[#9e9e9e]/50 py-0.5 shadow-md"
     animate.enter="animate-reasons-in animate-duration-300"
     animate.leave="animate-reasons-out animate-duration-300"
   >
@@ -12,10 +12,24 @@
     <div class="flex h-full flex-row justify-end overflow-hidden">
       @for (r of dataModel.teams()[0].roundRecord; track $index; let recordIndex = $index) {
         @if ($index < dataModel.match().roundNumber || $index < 10) {
-          @if (
-            r.round === dataModel.match().switchRound || r.round === dataModel.match().firstOtRound
-          ) {
-            <img class="vw-25 h-full" src="assets/misc/swapIcon.svg" />
+          @if (r.round === dataModel.match().switchRound + 1) {
+            <div class="mx-0.5 h-full min-w-0.5 bg-white/70"></div>
+            <div
+              class="font-unbounded vw-25 bg-overtime mr-0.5 flex h-full flex-col justify-center px-1.5 text-center font-extrabold text-white"
+            >
+              <img class="" src="assets/misc/swapIcon.svg" />
+            </div>
+          }
+          @let otRoundNumber = r.round - dataModel.match().firstOtRound;
+          @if (otRoundNumber >= 0 && otRoundNumber % 2 === 0) {
+            <div class="mx-0.5 h-full min-w-0.5 bg-white/70"></div>
+            <div
+              class="font-unbounded vw-25 bg-overtime mr-0.5 flex h-full flex-col justify-center px-1.5 text-center font-extrabold text-white"
+            >
+              <div class="-mb-1">O</div>
+              <div class="mb-1">T</div>
+              <div class="">{{ otRoundNumber / 2 + 1 }}</div>
+            </div>
           }
           @if (r.type !== "upcoming") {
             <div class="flex h-full flex-col justify-between">
