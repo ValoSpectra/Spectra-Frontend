@@ -1,13 +1,10 @@
-import { Component, inject } from "@angular/core";
-import { DataModelService } from "../../services/dataModel.service";
-import { AgentSelectPlayerInfoComponent } from "../../components/agent-select/player-info/player-info.component";
+import { Component } from "@angular/core";
+import { AgentSelectComponent } from "../../components/agent-select/agent-select.component";
 
 @Component({
   selector: "app-agent-select-overlay",
-  imports: [AgentSelectPlayerInfoComponent],
+  imports: [AgentSelectComponent],
   templateUrl: "./agent-select-overlay.component.html",
   styleUrl: "./agent-select-overlay.component.css",
 })
-export class AgentSelectOverlayComponent {
-  readonly dataModel = inject(DataModelService);
-}
+export class AgentSelectOverlayComponent {}

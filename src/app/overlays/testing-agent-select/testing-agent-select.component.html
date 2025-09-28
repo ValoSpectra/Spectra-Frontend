@@ -1,6 +1,6 @@
 <app-agent-select-overlay></app-agent-select-overlay>
 
-<div class="pos-x-center pos-y-550 absolute flex flex-row gap-70">
+<div class="pos-x-center pos-y-450 absolute flex flex-row gap-40">
   @for (team of dataModel.teams(); track $index; let teamIndex = $index) {
     <div class="flex flex-row gap-27">
       @for (player of team.players; track $index) {
