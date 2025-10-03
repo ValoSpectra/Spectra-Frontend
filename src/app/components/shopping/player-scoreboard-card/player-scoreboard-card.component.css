@@ -1,81 +1,81 @@
 .bg-fade-defender-left {
   background: linear-gradient(
-    90deg,
-    rgba(var(--defender-color-rgb), 0) 3.74%,
-    rgba(var(--defender-color-rgb), 0.65) 5.57%,
-    rgba(var(--defender-color-rgb), 0.3) 22.42%,
-    rgba(var(--defender-color-rgb), 0) 37.11%
+    to right,
+    transparent 10%,
+    rgba(var(--defender-color-rgb), 0.6) 20%,
+    rgba(var(--defender-color-rgb), 0.3) 40%,
+    transparent
   );
 }
 
 .bg-fade-attacker-left {
   background: linear-gradient(
-    90deg,
-    rgba(var(--attacker-color-rgb), 0) 4.69%,
-    rgba(var(--attacker-color-rgb), 0.65) 6.5%,
-    rgba(var(--attacker-color-rgb), 0.3) 23.1%,
-    rgba(var(--attacker-color-rgb), 0) 37.57%
+    to right,
+    transparent 10%,
+    rgba(var(--attacker-color-rgb), 0.6) 20%,
+    rgba(var(--attacker-color-rgb), 0.3) 40%,
+    transparent
   );
 }
 
 .bg-fade-defender-right {
   background: linear-gradient(
-    270deg,
-    rgba(var(--defender-color-rgb), 0) 3.74%,
-    rgba(var(--defender-color-rgb), 0.65) 5.57%,
-    rgba(var(--defender-color-rgb), 0.3) 22.42%,
-    rgba(var(--defender-color-rgb), 0) 37.11%
+    to left,
+    transparent 10%,
+    rgba(var(--defender-color-rgb), 0.6) 20%,
+    rgba(var(--defender-color-rgb), 0.3) 40%,
+    transparent
   );
 }
 
 .bg-fade-attacker-right {
   background: linear-gradient(
-    270deg,
-    rgba(var(--attacker-color-rgb), 0) 4.69%,
-    rgba(var(--attacker-color-rgb), 0.65) 6.5%,
-    rgba(var(--attacker-color-rgb), 0.3) 23.1%,
-    rgba(var(--attacker-color-rgb), 0) 37.57%
+    to left,
+    transparent 10%,
+    rgba(var(--attacker-color-rgb), 0.6) 20%,
+    rgba(var(--attacker-color-rgb), 0.3) 40%,
+    transparent
   );
 }
 
 /* minimal backgrounds */
 .minimal.bg-fade-defender-left {
   background: linear-gradient(
-    90deg,
-    rgba(var(--defender-color-rgb), 0) 3.74%,
-    rgba(var(--defender-color-rgb), 0.65) 5.57%,
-    rgba(var(--defender-color-rgb), 0.3) 42.42%,
-    rgba(var(--defender-color-rgb), 0) 67.11%
+    to right,
+    transparent 10%,
+    rgba(var(--defender-color-rgb), 0.6) 20%,
+    rgba(var(--defender-color-rgb), 0.3) 40%,
+    transparent 95%
   );
 }
 
 .minimal.bg-fade-attacker-left {
   background: linear-gradient(
-    90deg,
-    rgba(var(--attacker-color-rgb), 0) 4.69%,
-    rgba(var(--attacker-color-rgb), 0.65) 6.5%,
-    rgba(var(--attacker-color-rgb), 0.3) 53.1%,
-    rgba(var(--attacker-color-rgb), 0) 77.57%
+    to right,
+    transparent 10%,
+    rgba(var(--attacker-color-rgb), 0.6) 20%,
+    rgba(var(--attacker-color-rgb), 0.3) 40%,
+    transparent 95%
   );
 }
 
 .minimal.bg-fade-defender-right {
   background: linear-gradient(
-    270deg,
-    rgba(var(--defender-color-rgb), 0) 3.74%,
-    rgba(var(--defender-color-rgb), 0.65) 5.57%,
-    rgba(var(--defender-color-rgb), 0.3) 42.42%,
-    rgba(var(--defender-color-rgb), 0) 67.11%
+    to left,
+    transparent 10%,
+    rgba(var(--defender-color-rgb), 0.6) 20%,
+    rgba(var(--defender-color-rgb), 0.3) 40%,
+    transparent 95%
   );
 }
 
 .minimal.bg-fade-attacker-right {
   background: linear-gradient(
-    270deg,
-    rgba(var(--attacker-color-rgb), 0) 4.69%,
-    rgba(var(--attacker-color-rgb), 0.65) 6.5%,
-    rgba(var(--attacker-color-rgb), 0.3) 53.1%,
-    rgba(var(--attacker-color-rgb), 0) 77.57%
+    to left,
+    transparent 10%,
+    rgba(var(--attacker-color-rgb), 0.6) 20%,
+    rgba(var(--attacker-color-rgb), 0.3) 40%,
+    transparent 95%
   );
 }
 

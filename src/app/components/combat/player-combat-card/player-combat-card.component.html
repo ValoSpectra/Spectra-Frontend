@@ -143,8 +143,13 @@
     }
   }
   @if (player.hasSpike) {
-    <div class="absolute -bottom-1" [class]="right() ? '-left-8' : '-right-8'">
-      <img class="vw-32 vh-32" src="assets/misc/Spike_Icon.svg" />
+    <div
+      class="absolute bottom-0.5"
+      [class]="[right() ? '-left-8' : '-right-8', right() ? 'right' : 'left']"
+      animate.enter="spike-in animate-duration-200"
+      animate.leave="spike-out animate-duration-200"
+    >
+      <img class="vw-30 vh-30" src="assets/misc/Spike_Icon.svg" />
     </div>
   }
 </div>

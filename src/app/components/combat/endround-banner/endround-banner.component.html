@@ -10,7 +10,11 @@
       class="vw-875 vh-200 relative top-0 flex flex-col items-center justify-center overflow-hidden"
     >
       @if (tournamentBackgroundUrl()) {
-        <img class="absolute top-0 left-0 -z-1 h-full w-full" [src]="tournamentBackgroundUrl()" />
+        <img
+          class="absolute top-0 left-0 -z-1 h-full w-full"
+          [src]="tournamentBackgroundUrl()"
+          alt=""
+        />
       } @else {
         <div
           class="absolute -z-1 h-full w-full rounded-sm"
@@ -20,6 +24,7 @@
       <img
         class="absolute left-8 max-h-1/2 opacity-20 grayscale-100"
         [src]="dataModel.teams()[0].teamUrl"
+        alt=""
       />
       <img class="max-h-6/10" [src]="tournamentIconUrl()" (load)="preload = false" />
       <p class="font-unbounded text-3xl font-bold text-white uppercase">
@@ -28,6 +33,7 @@
       <img
         class="absolute right-8 max-h-1/2 opacity-20 grayscale-100"
         [src]="dataModel.teams()[1].teamUrl"
+        alt=""
       />
     </div>
 
@@ -40,7 +46,11 @@
         class="vw-875 vh-200 absolute top-0 z-4 flex flex-row items-center justify-around overflow-hidden"
       >
         @if (tournamentBackgroundUrl()) {
-          <img class="absolute top-0 left-0 -z-1 h-full w-full" [src]="tournamentBackgroundUrl()" />
+          <img
+            class="absolute top-0 left-0 -z-1 h-full w-full"
+            [src]="tournamentBackgroundUrl()"
+            alt=""
+          />
         } @else {
           <div
             class="absolute top-0 left-0 -z-1 h-full w-full rounded-sm"
@@ -50,7 +60,7 @@
 
         @if (leftWon()) {
           <div class="relative flex h-full flex-col items-center justify-center">
-            <img class="max-h-7/10" [src]="dataModel.teams()[teamWon()].teamUrl" />
+            <img class="max-h-7/10" [src]="dataModel.teams()[teamWon()].teamUrl" alt="" />
             <p class="font-unbounded text-center text-2xl font-bold text-white uppercase">
               {{
                 TranslateKeys.Endround_Winner
@@ -65,7 +75,7 @@
           </div>
         }
         <div class="flex h-full flex-col items-center justify-center">
-          <img class="max-h-7/10" [src]="tournamentIconUrl()" />
+          <img class="max-h-7/10" [src]="tournamentIconUrl()" alt="" />
           <p class="font-unbounded text-3xl font-bold text-white uppercase">
             {{
               TranslateKeys.Endround_Round | translate: { rounds: dataModel.match().roundNumber }
@@ -74,7 +84,7 @@
         </div>
         @if (!leftWon()) {
           <div class="relative flex h-full flex-col items-center justify-center">
-            <img class="max-h-7/10" [src]="dataModel.teams()[teamWon()].teamUrl" />
+            <img class="max-h-7/10" [src]="dataModel.teams()[teamWon()].teamUrl" alt="" />
             <p class="font-unbounded text-center text-2xl font-bold text-white uppercase">
               {{
                 TranslateKeys.Endround_Winner

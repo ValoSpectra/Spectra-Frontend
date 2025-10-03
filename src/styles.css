@@ -9,6 +9,7 @@
 
 @theme static inline {
   --color-timer: #0f1923;
+  --color-timer-rgb: 15, 25, 35;
   --color-background: #0f1923cc;
   --color-credits-negative: #ff4557;
 

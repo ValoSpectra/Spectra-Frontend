@@ -59,3 +59,53 @@
   animation: animations-teamnames 0.15s ease-in-out;
   will-change: opacity, transform;
 }
+
+.teamname-underline.defender {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(var(--defender-color-rgb), 0.8),
+    transparent
+  );
+}
+
+.teamname-underline.attacker {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(var(--attacker-color-secondary-rgb), 0.8),
+    transparent
+  );
+}
+
+.score-name-gradient.defender.left {
+  background: radial-gradient(
+    ellipse 45% 100% at 45% top,
+    rgba(var(--defender-color-rgb), 0.25) 0%,
+    transparent
+  );
+}
+
+.score-name-gradient.attacker.left {
+  background: radial-gradient(
+    ellipse 45% 100% at 45% top,
+    rgba(var(--attacker-color-rgb), 0.4) 0%,
+    transparent
+  );
+}
+
+.score-name-gradient.defender.right {
+  background: radial-gradient(
+    ellipse 45% 100% at 55% top,
+    rgba(var(--defender-color-rgb), 0.25) 0%,
+    transparent
+  );
+}
+
+.score-name-gradient.attacker.right {
+  background: radial-gradient(
+    ellipse 45% 100% at 55% top,
+    rgba(var(--attacker-color-rgb), 0.4) 0%,
+    transparent
+  );
+}

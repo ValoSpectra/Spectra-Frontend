@@ -216,3 +216,41 @@
 .animate-hpbar-out {
   animation-name: hpbar-out;
 }
+
+.spike-in.left {
+  animation: spike-in-left 0.3s ease-in-out;
+}
+
+.spike-out.left {
+  animation: spike-in-left 0.3s ease-in-out reverse;
+}
+
+.spike-in.right {
+  animation: spike-in-right 0.3s ease-in-out;
+}
+
+.spike-out.right {
+  animation: spike-in-right 0.3s ease-in-out reverse;
+}
+
+@keyframes spike-in-left {
+  0% {
+    transform: translateX(-25%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes spike-in-right {
+  0% {
+    transform: translateX(25%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}

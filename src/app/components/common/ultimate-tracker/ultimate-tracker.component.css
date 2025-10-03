@@ -1,0 +1,12 @@
+.ult-glow {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.8);
+  animation: ult-bg-ping 3.75s infinite alternate-reverse;
+}
+
+@keyframes ult-bg-ping {
+  80%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

@@ -1,25 +1,28 @@
 <div
-  class="vh-74 flex w-full flex-row items-center gap-4"
-  [class.flex-row-reverse!]="right"
-  [class]="backgroundClass()"
-  [class.minimal]="dataModel.minimalMode()"
+  class="vh-74 flex w-full items-center gap-4"
+  [class]="[right ? 'flex-row-reverse' : 'flex-row', right ? '-ml-4' : 'ml-4']"
 >
-  <img
-    class="vw-74 vh-74"
-    [class.flip]="right"
-    src="assets/agents/{{ player.agentInternal }}Icon.webp"
-  />
   <div
-    class="vw-120 flex flex-col items-center justify-center"
-    [class.mr-3]="!right"
-    [class.ml-3]="right"
+    class="border-timer/80 flex items-center border-b-2"
+    [class.minimal]="true"
+    [class]="[right ? 'flex-row-reverse' : 'flex-row', backgroundClass()]"
   >
-    <p class="font-montserrat text-sm font-bold text-nowrap" [class]="textColor()">
-      {{ getAgentName(player.agentInternal) }}
-    </p>
-    <p class="font-montserrat text-lg font-semibold text-nowrap text-white">
-      {{ getDisplayName(player.fullName, player.name) }}
-    </p>
+    <img
+      class="vw-74 vh-74"
+      [class.flip]="right"
+      src="assets/agents/{{ player.agentInternal }}Icon.webp"
+    />
+    <div
+      class="vw-160 mx-2 flex h-full flex-col justify-center truncate"
+      [class]="right ? 'items-end' : 'items-start'"
+    >
+      <p class="font-montserrat text-sm font-bold text-nowrap" [class]="textColor()">
+        {{ getAgentName(player.agentInternal) }}
+      </p>
+      <p class="font-montserrat text-lg font-semibold text-nowrap text-white">
+        {{ getDisplayName(player.fullName, player.name) }}
+      </p>
+    </div>
   </div>
   <img class="vw-36 vh-36" src="assets/roles/{{ getAgentRole(player.agentInternal) }}.webp" />
   <div class="mx-4 flex flex-row justify-center gap-3 font-semibold text-white">
