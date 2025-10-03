@@ -98,7 +98,10 @@ const routes: Routes = [
   },
   {
     path: "playercams",
-    component: PlayercamsComponent,
+    loadComponent: () =>
+      import("./components/combat/playercams/playercams.component").then(
+        (m) => m.PlayercamsComponent,
+      ),
   },
 ];
 

@@ -598,23 +598,6 @@ export class TestingComponent implements OnInit {
   //#endregion
 
   //#region Team button handlers
-  addPlayer(teamIndex: number) {
-    this.dataModel.match.update((v) => {
-      const ret = v;
-      const team = ret.teams[teamIndex];
-
-      return ret;
-    });
-  }
-
-  removePlayer(teamIndex: number) {
-    this.dataModel.match.update((v) => {
-      const ret = v;
-      const team = ret.teams[teamIndex];
-
-      return ret;
-    });
-  }
 
   winRound(teamIndex: number) {
     this.dataModel.match.update((v) => {
