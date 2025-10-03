@@ -10,7 +10,7 @@
   "mapinfo.live": "進行中: {{map}}",
   "mapinfo.decider": "決勝圖: {{map}}",
   "mapinfo.next": "下張地圖: {{map}}",
-  "topinfo.watermark": "由 Spectra 提供技術支援",
+  "topinfo.watermark": "Powered by Spectra",
   "topscore.round": "第 {{rounds}} 回合",
   "team.attacker": "進攻方",
   "team.defender": "防守方",

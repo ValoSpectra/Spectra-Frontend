@@ -1,0 +1,31 @@
+@keyframes translate-to-right {
+  from {
+    transform: translateX(-100%) scaleX(0.7);
+  }
+  to {
+    transform: translateX(0%) scaleX(1);
+  }
+}
+
+@keyframes translate-to-left {
+  from {
+    transform: translateX(100%) scaleX(0.7);
+  }
+  to {
+    transform: translateX(0%) scaleX(1);
+  }
+}
+
+.animate-translate {
+  animation: translate-to-right;
+  will-change: transform;
+}
+
+.animate-translate.right {
+  animation: translate-to-left;
+  will-change: transform;
+}
+
+.animate-reverse {
+  animation-direction: reverse !important;
+}

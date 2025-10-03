@@ -1,0 +1,111 @@
+.bg-header-fade-left {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 25, 35, 0.65) 0%,
+    rgba(15, 25, 35, 0.53) 53%,
+    rgba(15, 25, 35, 0) 75%,
+    rgba(15, 25, 35, 0) 100%
+  );
+}
+
+.bg-header-fade-right {
+  background: linear-gradient(
+    270deg,
+    rgba(15, 25, 35, 0.65) 0%,
+    rgba(15, 25, 35, 0.53) 53%,
+    rgba(15, 25, 35, 0) 75%,
+    rgba(15, 25, 35, 0) 100%
+  );
+}
+
+@keyframes animations-scoreboard {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(15rem);
+  }
+}
+
+.animate-scoreboard-in {
+  animation: animations-scoreboard 0.15s reverse ease-in-out;
+  will-change: opacity, transform;
+}
+
+.animate-scoreboard-out {
+  animation: animations-scoreboard 0.15s ease-in-out;
+  will-change: opacity, transform;
+}
+
+@keyframes animations-teamnames {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(15rem);
+  }
+}
+
+.animate-teamnames-in {
+  animation: animations-teamnames 0.15s reverse ease-in-out;
+  will-change: opacity, transform;
+}
+
+.animate-teamnames-out {
+  animation: animations-teamnames 0.15s ease-in-out;
+  will-change: opacity, transform;
+}
+
+.teamname-underline.defender {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(var(--defender-color-rgb), 0.8),
+    transparent
+  );
+}
+
+.teamname-underline.attacker {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(var(--attacker-color-secondary-rgb), 0.8),
+    transparent
+  );
+}
+
+.score-name-gradient.defender.left {
+  background: radial-gradient(
+    ellipse 45% 100% at 45% top,
+    rgba(var(--defender-color-rgb), 0.25) 0%,
+    transparent
+  );
+}
+
+.score-name-gradient.attacker.left {
+  background: radial-gradient(
+    ellipse 45% 100% at 45% top,
+    rgba(var(--attacker-color-rgb), 0.4) 0%,
+    transparent
+  );
+}
+
+.score-name-gradient.defender.right {
+  background: radial-gradient(
+    ellipse 45% 100% at 55% top,
+    rgba(var(--defender-color-rgb), 0.25) 0%,
+    transparent
+  );
+}
+
+.score-name-gradient.attacker.right {
+  background: radial-gradient(
+    ellipse 45% 100% at 55% top,
+    rgba(var(--attacker-color-rgb), 0.4) 0%,
+    transparent
+  );
+}

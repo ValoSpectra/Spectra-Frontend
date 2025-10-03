@@ -1,13 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { TestingComponent } from "./testing/testing.component";
-import { OverlayComponent } from "./overlay/overlay.component";
-import { AgentSelectComponent } from "./agent-select/agent-select.component";
-import { AutoswitchComponent } from "./autoswitch/autoswitch.component";
-import { RedirectComponent } from "./redirect/redirect.component";
-import { TimeoutComponent } from "./timeout/timeout.component";
-import { MapbanUiComponent } from "./mapban-ui/mapban-ui.component";
-import { PlayercamsComponent } from "./playercams/playercams.component";
+import { RedirectComponent } from "./components/common/redirect/redirect.component";
 
 const routes: Routes = [
   {
@@ -19,11 +12,17 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        component: OverlayComponent,
+        loadComponent: () =>
+          import("./overlays/match-overlay/match-overlay.component").then(
+            (m) => m.MatchOverlayComponent,
+          ),
       },
       {
         path: "minimal",
-        component: OverlayComponent,
+        loadComponent: () =>
+          import("./overlays/match-overlay/match-overlay.component").then(
+            (m) => m.MatchOverlayComponent,
+          ),
         data: {
           minimal: true,
         },
@@ -35,31 +34,45 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        component: TestingComponent,
+        loadComponent: () =>
+          import("./overlays/testing/testing.component").then((m) => m.TestingComponent),
       },
       {
         path: "minimal",
-        component: TestingComponent,
+        loadComponent: () =>
+          import("./overlays/testing/testing.component").then((m) => m.TestingComponent),
         data: {
           minimal: true,
         },
+      },
+      {
+        path: "agent-select",
+        loadComponent: () =>
+          import("./overlays/testing-agent-select/testing-agent-select.component").then(
+            (m) => m.TestingAgentSelectComponent,
+          ),
       },
     ],
   },
   {
     path: "agent-select",
-    component: AgentSelectComponent,
+    loadComponent: () =>
+      import("./overlays/agent-select-overlay/agent-select-overlay.component").then(
+        (m) => m.AgentSelectOverlayComponent,
+      ),
   },
   {
     path: "autoswitch",
     children: [
       {
         path: "",
-        component: AutoswitchComponent,
+        loadComponent: () =>
+          import("./autoswitch/autoswitch.component").then((m) => m.AutoswitchComponent),
       },
       {
         path: "minimal",
-        component: AutoswitchComponent,
+        loadComponent: () =>
+          import("./autoswitch/autoswitch.component").then((m) => m.AutoswitchComponent),
         data: {
           minimal: true,
         },
@@ -68,15 +81,27 @@ const routes: Routes = [
   },
   {
     path: "timeout",
-    component: TimeoutComponent,
+    loadComponent: () =>
+      import("./components/common/timeout/timeout.component").then((m) => m.TimeoutComponent),
   },
   {
     path: "mapban",
-    component: MapbanUiComponent,
+    loadComponent: () =>
+      import("./overlays/mapban-overlay/mapban-overlay.component").then((m) => m.MapbanUiComponent),
   },
   {
     path: "playercams",
-    component: PlayercamsComponent,
+    loadComponent: () =>
+      import("./components/combat/playercams/playercams.component").then(
+        (m) => m.PlayercamsComponent,
+      ),
+  },
+  {
+    path: "playercams",
+    loadComponent: () =>
+      import("./components/combat/playercams/playercams.component").then(
+        (m) => m.PlayercamsComponent,
+      ),
   },
 ];
 

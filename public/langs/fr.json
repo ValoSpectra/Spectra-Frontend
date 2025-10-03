@@ -10,7 +10,7 @@
   "mapinfo.live": "En cours: {{map}}",
   "mapinfo.decider": "Décisive: {{map}}",
   "mapinfo.next": "Prochaine: {{map}}",
-  "topinfo.watermark": "Overlay par Spectra",
+  "topinfo.watermark": "Powered by Spectra",
   "topscore.round": "Manches {{rounds}}",
   "team.attacker": "Attaquant",
   "team.defender": "Défenseur",

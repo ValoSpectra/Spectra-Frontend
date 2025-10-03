@@ -10,7 +10,7 @@
   "mapinfo.live": "Now: {{map}}",
   "mapinfo.decider": "Decider: {{map}}",
   "mapinfo.next": "Next: {{map}}",
-  "topinfo.watermark": "Spectra Overlay",
+  "topinfo.watermark": "Powered by Spectra",
   "topscore.round": "ラウンド {{rounds}}",
   "team.attacker": "アタッカー",
   "team.defender": "ディフェンダー",

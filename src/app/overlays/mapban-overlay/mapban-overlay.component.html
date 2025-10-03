@@ -1,0 +1,21 @@
+<div
+  class="bg-background absolute bottom-2 left-2 h-5/20 w-99/100 overflow-clip rounded-md"
+  animate.enter="animate-fade-in animate-duration-500"
+  animate.leave="animate-fade-out animate-duration-500"
+>
+  <div class="flex h-full flex-row gap-1">
+    @for (map of selectedMaps; track $index) {
+      <app-mapban-map
+        [map]="map"
+        [availableMapNames]="availableMapNames"
+        [teams]="data.teams"
+        [actingTeam]="data.actingTeam"
+        [stage]="data.stage"
+        [index]="$index"
+        [logoIndex]="logoIndex"
+        [isSupporter]="data.isSupporter"
+        class="col-span-1 h-full w-full"
+      ></app-mapban-map>
+    }
+  </div>
+</div>

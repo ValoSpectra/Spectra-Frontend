@@ -1,0 +1,32 @@
+<div
+  class="vw-875 vh-200 animate-duration-300 relative top-0 overflow-hidden"
+  [class.hidden]="hide"
+  [class.animate-swish]="inAnimation"
+  [class.animate-swish-out]="outAnimation"
+>
+  <div
+    class="vw-875 vh-200 relative top-0 left-0 flex flex-col items-center justify-center overflow-hidden"
+  >
+    <img class="absolute top-0 left-0 -z-1 h-full w-full" [src]="tournamentBackgroundUrl()" />
+
+    @if (timeoutInfo().techPause) {
+      <p class="font-unbounded text-5xl font-bold text-white uppercase">
+        {{ TranslateKeys.Timeout_Techpause | translate }}
+      </p>
+    } @else {
+      <img class="max-vh-120 max-vw-400" [src]="timeoutTeam().teamUrl" />
+      <p class="font-unbounded text-2xl font-bold text-white">
+        {{ TranslateKeys.Timeout_Tactical | translate: { teamName: timeoutTeam().teamName } }}
+      </p>
+      <div class="vh-23 absolute bottom-0 flex w-full items-center justify-center bg-white/20">
+        <div
+          class="timer-transition absolute left-0 h-full bg-white/35"
+          [style.width]="timerWidth()"
+        ></div>
+        <p class="font-montserrat z-2 text-lg font-bold text-white text-shadow-2xs">
+          {{ timeoutInfo().timeRemaining }}s
+        </p>
+      </div>
+    }
+  </div>
+</div>

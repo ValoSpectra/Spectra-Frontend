@@ -1,0 +1,64 @@
+.bg-agentselect-player-attacker {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--attacker-color-rgb), 1) 0%,
+    rgba(var(--attacker-color-rgb), 0.4) 25%,
+    rgba(var(--attacker-color-secondary-rgb), 0) 100%
+  );
+}
+
+.bg-agentselect-player-defender {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--defender-color-rgb), 1) 0%,
+    rgba(var(--defender-color-rgb), 0.4) 25%,
+    rgba(var(--defender-color-secondary-rgb), 0) 100%
+  );
+}
+
+.down.bg-agentselect-player-attacker {
+  background: linear-gradient(
+    0deg,
+    rgba(var(--attacker-color-rgb), 1) 0%,
+    rgba(var(--attacker-color-rgb), 0.4) 25%,
+    rgba(var(--attacker-color-secondary-rgb), 0) 100%
+  );
+}
+
+.down.bg-agentselect-player-defender {
+  background: linear-gradient(
+    0deg,
+    rgba(var(--defender-color-rgb), 1) 0%,
+    rgba(var(--defender-color-rgb), 0.4) 25%,
+    rgba(var(--defender-color-secondary-rgb), 0) 100%
+  );
+}
+
+@keyframes switchAnimation {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.animate-switch {
+  animation: switchAnimation 100ms ease-out;
+  will-change: opacity;
+}
+
+@keyframes lockAnimation {
+  from {
+    filter: grayscale(1) brightness(200%);
+  }
+  to {
+    filter: grayscale(0) brightness(100%);
+  }
+}
+.animate-lock {
+  animation: lockAnimation 300ms ease-out;
+  will-change: filter;
+}

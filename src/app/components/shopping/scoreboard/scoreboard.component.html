@@ -1,0 +1,76 @@
+@if (isShown()) {
+  <div
+    class="vw-1900 vh-452 flex flex-row justify-between"
+    animate.enter="animate-teamnames-in animate-duration-300"
+    animate.leave="animate-teamnames-out animate-duration-300"
+  >
+    @for (team of dataModel.teams(); track $index; let teamIndex = $index) {
+      <div
+        class="bg-timer/95 shadow-timer/90 flex w-10/21 flex-col rounded-md border-1 border-[#9e9e9e]/50 shadow-md"
+      >
+        <div
+          class="flex h-1/7 items-center"
+          [class]="teamIndex === 0 ? 'flex-row-reverse' : 'flex-row'"
+        >
+          <div
+            class="font-montserrat flex h-full w-1/7 flex-col justify-center text-center text-xl font-bold"
+          >
+            <div class="text-credits-negative/80 flex flex-row justify-center gap-0.5">
+              <p>-</p>
+              <img class="vw-12 vh12" src="assets/misc/ValorantCreditsSpent.svg" />
+              <p>{{ teamSpent(teamIndex) }}</p>
+            </div>
+            <div class="-mt-2 flex flex-row justify-center gap-0.5 text-white/80">
+              <img class="vw-12 vh12" src="assets/misc/ValorantCreditsWhite.svg" />
+              <p>{{ teamMoney(teamIndex) }}</p>
+            </div>
+          </div>
+          <div
+            class="score-name-gradient flex h-full w-7/8 flex-col justify-between"
+            [class]="[
+              team.isAttacking ? 'attacker' : 'defender',
+              teamIndex === 0 ? 'left' : 'right',
+            ]"
+          >
+            <div
+              class="text-bold font-unbounded w-full truncate text-center text-[2.75rem] text-white"
+            >
+              {{ team.teamName }}
+            </div>
+            <div
+              class="vh-4 teamname-underline w-full"
+              [class]="team.isAttacking ? 'attacker' : 'defender'"
+            ></div>
+          </div>
+          <!-- <div class="-mt-2 flex h-full w-1/8 items-center justify-center">
+            <img class="max-h-4/5 max-w-full" [src]="team.teamUrl" />
+          </div> -->
+        </div>
+        <!-- Players -->
+        <div class="mt-2 flex h-5/6 w-full flex-col justify-around">
+          @for (player of team.players | appScoreboardOrder; track player.playerId) {
+            @if (!dataModel.minimalMode() && player.maxUltPoints !== 0) {
+              <app-scoreboard-card
+                [player]="player"
+                [right]="teamIndex === 1"
+                [color]="team.isAttacking ? 'attacker' : 'defender'"
+              ></app-scoreboard-card>
+            } @else {
+              <app-scoreboard-card-minimal
+                [player]="player"
+                [right]="teamIndex === 1"
+                [color]="team.isAttacking ? 'attacker' : 'defender'"
+              ></app-scoreboard-card-minimal>
+            }
+          }
+        </div>
+        <div
+          class="vh-300 vw-300 absolute top-1/4 -z-1"
+          [class]="teamIndex === 1 ? 'right-40' : 'left-40'"
+        >
+          <img [src]="team.teamUrl" class="max-h-full max-w-full" alt="" />
+        </div>
+      </div>
+    }
+  </div>
+}

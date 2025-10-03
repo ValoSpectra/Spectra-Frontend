@@ -1,0 +1,42 @@
+<div
+  class="vh-74 flex w-full items-center gap-4"
+  [class]="[right ? 'flex-row-reverse' : 'flex-row', right ? '-ml-4' : 'ml-4']"
+>
+  <div
+    class="border-timer/80 flex items-center border-b-2"
+    [class.minimal]="true"
+    [class]="[right ? 'flex-row-reverse' : 'flex-row', backgroundClass()]"
+  >
+    <img
+      class="vw-74 vh-74"
+      [class.flip]="right"
+      src="assets/agents/{{ player.agentInternal }}Icon.webp"
+    />
+    <div
+      class="vw-160 mx-2 flex h-full flex-col justify-center truncate"
+      [class]="right ? 'items-end' : 'items-start'"
+    >
+      <p class="font-montserrat text-sm font-bold text-nowrap" [class]="textColor()">
+        {{ getAgentName(player.agentInternal) }}
+      </p>
+      <p class="font-montserrat text-lg font-semibold text-nowrap text-white">
+        {{ getDisplayName(player.fullName, player.name) }}
+      </p>
+    </div>
+  </div>
+  <img class="vw-36 vh-36" src="assets/roles/{{ getAgentRole(player.agentInternal) }}.webp" />
+  <div class="mx-4 flex flex-row justify-center gap-3 font-semibold text-white">
+    <div class="font-montserrat vw-41 flex flex-col items-center justify-center text-white">
+      <div class="text-xs font-bold">Kills</div>
+      <div class="text-lg font-semibold">{{ player.kills }}</div>
+    </div>
+    <div class="font-montserrat vw-41 flex flex-col items-center justify-center text-white">
+      <div class="text-xs font-bold">Deaths</div>
+      <div class="text-lg font-semibold">{{ player.deaths }}</div>
+    </div>
+    <div class="font-montserrat vw-41 flex flex-col items-center justify-center text-white">
+      <div class="text-xs font-bold">Assists</div>
+      <div class="text-lg font-semibold">{{ player.assists }}</div>
+    </div>
+  </div>
+</div>

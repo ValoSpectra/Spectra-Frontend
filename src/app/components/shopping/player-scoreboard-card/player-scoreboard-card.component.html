@@ -1,0 +1,76 @@
+<div
+  class="vh-70 relative flex w-full items-center justify-around"
+  [class]="right ? 'flex-row-reverse' : 'flex-row'"
+>
+  <div
+    class="border-timer/80 flex h-full items-center gap-2"
+    [class]="[right ? 'flex-row-reverse' : 'flex-row', backgroundClass()]"
+  >
+    <img
+      class="vw-70 vh-70"
+      [class.flip]="right"
+      src="assets/agents/{{ player.agentInternal }}Icon.webp"
+    />
+    <div
+      class="vw-160 flex h-full flex-col justify-center truncate"
+      [class]="right ? 'items-end' : 'items-start'"
+    >
+      <p
+        class="font-montserrat flex items-center gap-1 text-sm font-bold text-nowrap"
+        [class]="[textColor(), right ? 'flex-row-reverse' : 'flex-row']"
+      >
+        <img class="vw-12 vh-12" src="assets/roles/{{ getAgentRole(player.agentInternal) }}.webp" />
+        {{ getAgentName(player.agentInternal) }}
+      </p>
+      <p
+        class="font-montserrat flex gap-2 truncate font-bold text-nowrap text-white"
+        [class]="right ? 'flex-row-reverse' : 'flex-row'"
+      >
+        {{ getDisplayName(player.fullName, player.name) }}
+        @if (player.hasSpike) {
+          <img class="vw-24 vh-24" src="assets/misc/Spike_Icon.svg" />
+        }
+      </p>
+    </div>
+  </div>
+  <div class="vw-124 font-unbounded flex flex-row justify-center gap-1 font-semibold text-white">
+    <p>{{ player.kills }}</p>
+    <p class="text-white/50">/</p>
+    <p>{{ player.deaths }}</p>
+    <p class="text-white/50">/</p>
+    <p>{{ player.assists }}</p>
+  </div>
+  <div class="vw-96 flex h-full flex-col justify-center gap-1">
+    @if (!dataModel.hideAuxiliary() && player.auxiliaryAvailable.abilities) {
+      <app-abilities class="vw-96" [player]="player"></app-abilities>
+    }
+    <app-ultimate-tracker
+      class="w-full"
+      [class.scale-125]="player.currUltPoints === player.maxUltPoints"
+      [max]="player.maxUltPoints"
+      [full]="player.currUltPoints"
+      image="assets/ultimates/{{ player.agentInternal }}Ultimate.webp"
+    ></app-ultimate-tracker>
+  </div>
+  <div class="flex items-center gap-3" [class]="right ? 'flex-row-reverse' : 'flex-row'">
+    <img class="vw-36 vh-36" src="assets/shields/{{ player.armorName }}.webp" />
+    <div class="vw-160 flex items-center justify-center">
+      <img
+        class="max-vh-40 max-vw-160! justify-self-center"
+        [class.flip]="!right"
+        src="assets/weapons/{{ player.highestWeapon }}Killfeed.webp"
+      />
+    </div>
+  </div>
+  <div class="font-montserrat vw-100 flex flex-col text-center text-lg font-bold">
+    <div class="text-credits-negative/80 flex flex-row justify-center gap-0.5">
+      <p>-</p>
+      <img class="vw-12 vh12" src="assets/misc/ValorantCreditsSpent.svg" />
+      <p>{{ player.moneySpent }}</p>
+    </div>
+    <div class="-mt-2 flex flex-row justify-center gap-0.5 text-white/80">
+      <img class="vw-12 vh12" src="assets/misc/ValorantCreditsWhite.svg" />
+      <p>{{ player.money }}</p>
+    </div>
+  </div>
+</div>

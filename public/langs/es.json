@@ -10,7 +10,7 @@
   "mapinfo.live": "En vivo: {{map}}",
   "mapinfo.decider": "Desempate: {{map}}",
   "mapinfo.next": "Siguiente: {{map}}",
-  "topinfo.watermark": "Overlay por Spectra",
+  "topinfo.watermark": "Powered by Spectra",
   "topscore.round": "RONDAS {{rounds}}",
   "team.attacker": "ATACANTES",
   "team.defender": "DEFENSORES",

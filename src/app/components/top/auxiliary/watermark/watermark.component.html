@@ -1,0 +1,24 @@
+@if (dataModel.watermarkInfo().spectraWatermark || dataModel.watermarkInfo().customTextEnabled) {
+  <div
+    class="vw-320 vh-27 font-montserrat flex flex-row items-center justify-center overflow-hidden rounded-b-lg text-center text-[15px] font-extrabold text-white uppercase"
+  >
+    @if (dataModel.watermarkInfo().spectraWatermark) {
+      <img src="assets/misc/icon.webp" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+      <div class="relative flex h-full w-8/10 items-center justify-center">
+        @if (currentRotationIndex() === 0) {
+          <p class="absolute" animate.enter="animate-fade-in" animate.leave="animate-fade-out">
+            {{ TranslateKeys.Watermark_Text | translate }}
+          </p>
+        } @else {
+          <p class="absolute" animate.enter="animate-fade-in" animate.leave="animate-fade-out">
+            &copy; valospectra.com
+          </p>
+        }
+      </div>
+    } @else if (dataModel.watermarkInfo().customTextEnabled) {
+      <div class="w-full">
+        <p>{{ dataModel.watermarkInfo().customText }}</p>
+      </div>
+    }
+  </div>
+}
