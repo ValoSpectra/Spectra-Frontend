@@ -25,6 +25,7 @@ enum AgentName {
   "Mage" = "Harbor",
   "Nox" = "Vyse",
   "Pandemic" = "Viper",
+  "Pine" = "Veto",
   "Phoenix" = "Phoenix",
   "Rift" = "Astra",
   "Sarge" = "Brimstone",
