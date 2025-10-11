@@ -35,12 +35,16 @@
         } @else {
           <div
             class="font-montserrat text-md top-2 flex items-center gap-2 font-semibold"
-            [class]="[textColor(), right() ? 'flex-row-reverse' : 'flex-row']"
+            [class]="[
+              textColor(),
+              right() ? 'flex-row-reverse' : 'flex-row',
+              right() ? 'pr-2' : 'pl-2',
+            ]"
             animate.enter="animate-fade-in animate-duration-150"
           >
             <div class="flex flex-row items-center gap-1">
               <img class="vw-9 vh-9" [src]="creditsIcon()" />
-              <p>{{ player.money }}</p>
+              <p>{{ formatNumber(player.money) }}</p>
             </div>
             <div>
               <p>{{ player.kills }}/{{ player.deaths }}/{{ player.assists }}</p>

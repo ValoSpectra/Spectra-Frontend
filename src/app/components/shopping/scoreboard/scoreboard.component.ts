@@ -32,4 +32,8 @@ export class ScoreboardComponent {
       .teams()
       [teamIndex].players.reduce((sum, player) => sum + player.moneySpent, 0);
   }
+
+  formatNumber(number: number): string {
+    return this.dataModel.numberFormatter().format(number);
+  }
 }

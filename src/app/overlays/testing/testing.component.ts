@@ -22,7 +22,7 @@ export class TestingComponent implements OnInit {
       groupCode: "A",
       isRanked: false,
       isRunning: true,
-      roundNumber: 10,
+      roundNumber: 11,
       roundPhase: "combat",
       spikeState: { planted: false, defused: false, detonated: false },
       map: "Ascent",
@@ -128,7 +128,7 @@ export class TestingComponent implements OnInit {
             {
               name: "Twoperator",
               fullName: "Twoperator#DEBUG",
-              playerId: 0,
+              playerId: 1,
               isAlive: true,
               agentInternal: "Smonk",
               isObserved: false,
@@ -162,7 +162,7 @@ export class TestingComponent implements OnInit {
             {
               name: "ThreeOfLife",
               fullName: "ThreeOfLife#DEBUG",
-              playerId: 0,
+              playerId: 2,
               isAlive: true,
               agentInternal: "BountyHunter",
               isObserved: false,
@@ -196,7 +196,7 @@ export class TestingComponent implements OnInit {
             {
               name: "Fourcefield",
               fullName: "Fourcefield#DEBUG",
-              playerId: 0,
+              playerId: 3,
               isAlive: true,
               agentInternal: "Killjoy",
               isObserved: false,
@@ -230,7 +230,7 @@ export class TestingComponent implements OnInit {
             {
               name: "FIVEbyFIVE",
               fullName: "FIVEbyFIVE#DEBUG",
-              playerId: 0,
+              playerId: 4,
               isAlive: true,
               agentInternal: "Wushu",
               isObserved: false,
@@ -306,7 +306,7 @@ export class TestingComponent implements OnInit {
             {
               name: "AlpacaHoarder",
               fullName: "AlpcacaHoarder#DEBUG",
-              playerId: 0,
+              playerId: 5,
               isAlive: true,
               agentInternal: "Grenadier",
               isObserved: false,
@@ -340,7 +340,7 @@ export class TestingComponent implements OnInit {
             {
               name: "BeeSting",
               fullName: "BeeSting#DEBUG",
-              playerId: 0,
+              playerId: 6,
               isAlive: true,
               agentInternal: "Terra",
               isObserved: false,
@@ -374,7 +374,7 @@ export class TestingComponent implements OnInit {
             {
               name: "CowTipper",
               fullName: "CowTipper#DEBUG",
-              playerId: 0,
+              playerId: 7,
               isAlive: true,
               agentInternal: "Sprinter",
               isObserved: false,
@@ -408,7 +408,7 @@ export class TestingComponent implements OnInit {
             {
               name: "DodoDaniel",
               fullName: "DodoDaniel#DEBUG",
-              playerId: 0,
+              playerId: 8,
               isAlive: true,
               agentInternal: "BountyHunter",
               isObserved: false,
@@ -442,9 +442,9 @@ export class TestingComponent implements OnInit {
             {
               name: "Eeliminator",
               fullName: "Eeliminator#DEBUG",
-              playerId: 0,
+              playerId: 9,
               isAlive: true,
-              agentInternal: "Stealth",
+              agentInternal: "Pine",
               isObserved: false,
               armorName: "Heavy",
               money: 2100,

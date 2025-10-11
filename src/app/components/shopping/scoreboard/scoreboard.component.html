@@ -18,11 +18,11 @@
             <div class="text-credits-negative/80 flex flex-row justify-center gap-0.5">
               <p>-</p>
               <img class="vw-12 vh12" src="assets/misc/ValorantCreditsSpent.svg" />
-              <p>{{ teamSpent(teamIndex) }}</p>
+              <p>{{ formatNumber(teamSpent(teamIndex)) }}</p>
             </div>
             <div class="-mt-2 flex flex-row justify-center gap-0.5 text-white/80">
               <img class="vw-12 vh12" src="assets/misc/ValorantCreditsWhite.svg" />
-              <p>{{ teamMoney(teamIndex) }}</p>
+              <p>{{ formatNumber(teamMoney(teamIndex)) }}</p>
             </div>
           </div>
           <div

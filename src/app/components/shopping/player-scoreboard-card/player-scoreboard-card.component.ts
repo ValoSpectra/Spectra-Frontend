@@ -37,6 +37,10 @@ export class PlayerScoreboardCardComponent {
   getAgentRole(agent: string): string {
     return AgentRoleService.getAgentRole(agent);
   }
+
+  formatNumber(number: number): string {
+    return this.dataModel.numberFormatter().format(number);
+  }
 }
 
 @Component({

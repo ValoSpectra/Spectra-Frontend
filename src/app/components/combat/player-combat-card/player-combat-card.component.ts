@@ -68,6 +68,10 @@ export class PlayerCombatCardComponent implements OnChanges {
       this.healthAnimationRunning = false;
     }, 200);
   }
+
+  formatNumber(number: number): string {
+    return this.dataModel.numberFormatter().format(number);
+  }
 }
 
 @Component({

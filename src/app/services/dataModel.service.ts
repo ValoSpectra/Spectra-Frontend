@@ -108,6 +108,18 @@ export class DataModelService {
   });
 
   public readonly mapban = signal<IMapbanSessionData>(initialMapbanData, { equal: () => false });
+
+  public readonly numberFormatter = computed<Intl.NumberFormat>(() => {
+    try {
+      return new Intl.NumberFormat(this.language(), { useGrouping: true });
+    } catch (error) {
+      console.warn(
+        `Invalid locale "${this.language()}" for number formatting, falling back to "en"`,
+        error,
+      );
+      return new Intl.NumberFormat("en", { useGrouping: true });
+    }
+  });
 }
 
 //setting up with empty match state so certain ui parts dont complain
