@@ -71,18 +71,25 @@ export class TimeoutComponent {
   outAnimation = false;
 
   hideAnimationEffect = effect(() => {
-    if (this.shouldHide()) {
+    const hideState = this.shouldHide();
+    
+    if (hideState) {
+      // Hiding - trigger out animation
       this.outAnimation = true;
       setTimeout(() => {
         this.outAnimation = false;
         this.hide = true;
       }, 300);
     } else {
+      // Showing - immediately show without delay, then trigger in animation
       this.hide = false;
-      this.inAnimation = true;
-      setTimeout(() => {
-        this.inAnimation = false;
-      }, 300);
+      // Use requestAnimationFrame to ensure DOM update before animation
+      requestAnimationFrame(() => {
+        this.inAnimation = true;
+        setTimeout(() => {
+          this.inAnimation = false;
+        }, 300);
+      });
     }
   });
 
