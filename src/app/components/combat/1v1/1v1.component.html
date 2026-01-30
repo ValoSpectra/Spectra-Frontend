@@ -133,6 +133,31 @@
                     }
                 </div>
             }
+            <!-- dead agent icons -->
+            <div class="dead-left absolute bottom-4 left-4 bg-linear-to-t from-[#0D101C] to-[#2225334d] vw-312 vh-38 flex items-center justify-evenly overflow-hidden">
+                @for (deadPlayer of leftTeamDeadPlayers(); track deadPlayer.fullName) {
+                    <div class="h-full flex items-center justify-center">
+                        <img 
+                            [src]="'assets/agents/' + deadPlayer.agentInternal + 'Icon.webp'" 
+                            [alt]="deadPlayer.agentInternal"
+                            class="h-14 w-14 object-contain grayscale"
+                            style="mask-image: linear-gradient(to top, #0D101C, #2225334d); -webkit-mask-image: linear-gradient(to top, #0D101C, #2225334d);"
+                        />
+                    </div>
+                }
+            </div>
+            <div class="dead-right absolute bottom-4 right-4 bg-linear-to-t from-[#0D101C] to-[#2225334d] vw-312 vh-38 flex items-center justify-evenly overflow-hidden">
+                @for (deadPlayer of rightTeamDeadPlayers(); track deadPlayer.fullName) {
+                    <div class="h-full flex items-center justify-center">
+                        <img 
+                            [src]="'assets/agents/' + deadPlayer.agentInternal + 'Icon.webp'" 
+                            [alt]="deadPlayer.agentInternal"
+                            class="h-14 w-14 object-contain grayscale scale-x-[-1]"
+                            style="mask-image: linear-gradient(to top, #0D101C, #2225334d); -webkit-mask-image: linear-gradient(to top, #0D101C, #2225334d);"
+                        />
+                    </div>
+                }
+            </div>
         </div>
     </div>
 }
