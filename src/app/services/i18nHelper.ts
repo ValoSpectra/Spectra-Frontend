@@ -32,4 +32,5 @@ export enum TranslateKeys {
   Scoreboard_Assists = "scoreboard.assists",
   Timeout_Techpause = "timeout.technical_pause",
   Timeout_Tactical = "timeout.tactical_timeout",
+  Timeout_Amount = "timeout.amount",
 }

@@ -16,7 +16,11 @@ export class TimeoutComponent {
   tournamentBackgroundUrl = computed(() => {
     const backdrop = this.dataModel.tournamentInfo().backdropUrl;
     if (backdrop && backdrop !== "") return backdrop;
-    else return "assets/misc/backdrop.webp";
+    else return false;
+  });
+
+  readonly timeoutTeamBackgroundClass = computed(() => {
+    return `gradient-${this.timeoutInfo().leftTeam ? "left" : "right"}-${this.timeoutTeam().isAttacking ? "attacker" : "defender"}`;
   });
 
   tournamentIconUrl = computed(() => {
@@ -36,6 +40,23 @@ export class TimeoutComponent {
 
   //only needed to have some control over our own update timing so the out-animation goes smoothly
   timeoutInfo = signal(Object.assign({}, this.dataModel.timeoutState()));
+
+  maxTimeouts = computed(() => {
+    return this.dataModel.timeoutCounter().max;
+  });
+
+  timeoutCounterLeft = computed(() => {
+    return this.dataModel.timeoutCounter().left;
+  });
+
+  timeoutCounterRight = computed(() => {
+    return this.dataModel.timeoutCounter().right;
+  });
+
+  activeTimeoutCounter = computed(() => {
+    if (this.timeoutInfo().leftTeam) return this.timeoutCounterLeft();
+    else return this.timeoutCounterRight();
+  });
 
   shouldHide = computed(() => {
     return (
@@ -74,4 +95,8 @@ export class TimeoutComponent {
       this.timeoutInfo.set(Object.assign({}, this.dataModel.timeoutState()));
     }
   });
+
+  numSequence(n: number): number[] {
+    return Array(n);
+  }
 }

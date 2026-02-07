@@ -1,3 +1,53 @@
+.gradient-left-attacker {
+  background:
+    linear-gradient(
+      to right,
+      rgba(var(--attacker-color-rgb), 0.75) 0%,
+      rgba(var(--attacker-color-rgb), 0) 90%
+    ),
+    rgba(15, 25, 35, 1);
+}
+
+.gradient-right-attacker {
+  background:
+    linear-gradient(
+      to left,
+      rgba(var(--attacker-color-rgb), 0.75) 0%,
+      rgba(var(--attacker-color-rgb), 0) 90%
+    ),
+    rgba(15, 25, 35, 1);
+}
+
+.gradient-left-defender {
+  background:
+    linear-gradient(
+      to right,
+      rgba(var(--defender-color-rgb), 0.75) 0%,
+      rgba(var(--defender-color-rgb), 0) 90%
+    ),
+    rgba(15, 25, 35, 1);
+}
+
+.gradient-right-defender {
+  background:
+    linear-gradient(
+      to left,
+      rgba(var(--defender-color-rgb), 0.75) 0%,
+      rgba(var(--defender-color-rgb), 0) 90%
+    ),
+    rgba(15, 25, 35, 1);
+}
+
+.gradient-tech-pause {
+  background:
+    linear-gradient(
+      to top,
+      rgba(var(--attacker-color-rgb), 0.75) 0%,
+      rgba(var(--attacker-color-rgb), 0) 90%
+    ),
+    rgba(15, 25, 35, 1);
+}
+
 .timer-transition {
   transition: width 1s linear;
 }
@@ -17,4 +67,15 @@
 .animate-swish-out {
   animation: swish reverse;
   will-change: width;
+}
+
+.timeout-pulse {
+  opacity: 0.7;
+  animation: to-pulse 3s infinite;
+}
+
+@keyframes to-pulse {
+  40% {
+    opacity: 0.25;
+  }
 }

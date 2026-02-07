@@ -95,6 +95,9 @@ export class DataModelService {
   public readonly timeoutState = computed(() => this.match().timeoutState, {
     equal: () => false,
   });
+  public readonly timeoutCounter = computed(() => this.match().tools.timeoutCounter, {
+    equal: () => false,
+  });
   public readonly spikeState = computed(() => this.match().spikeState, {
     equal: isEqual,
   });
@@ -169,6 +172,11 @@ const initialMatchData: IMatchData = {
       backdropUrl: "",
     },
     timeoutDuration: 60,
+    timeoutCounter: {
+      max: 2,
+      left: 2,
+      right: 2,
+    },
     sponsorInfo: {
       enabled: false,
       duration: 5000,

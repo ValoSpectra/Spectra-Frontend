@@ -1,26 +1,58 @@
 <div
-  class="vw-875 vh-200 animate-duration-300 relative top-0 overflow-hidden"
+  class="vw-750 vh-200 animate-duration-300 animate-style-keep relative top-0 overflow-hidden"
   [class.hidden]="hide"
   [class.animate-swish]="inAnimation"
   [class.animate-swish-out]="outAnimation"
 >
   <div
-    class="vw-875 vh-200 relative top-0 left-0 flex flex-col items-center justify-center overflow-hidden"
+    class="vw-750 vh-200 relative top-0 left-0 flex flex-col items-center justify-center overflow-hidden"
   >
-    <img class="absolute top-0 left-0 -z-1 h-full w-full" [src]="tournamentBackgroundUrl()" />
+    @if (tournamentBackgroundUrl()) {
+      <img class="absolute top-0 left-0 -z-1 h-full w-full" [src]="tournamentBackgroundUrl()" />
+    } @else if (!timeoutInfo().techPause) {
+      <div
+        class="absolute top-0 left-0 -z-1 h-full w-full rounded-lg"
+        [class]="timeoutTeamBackgroundClass()"
+      ></div>
+    } @else {
+      <div class="gradient-tech-pause absolute top-0 left-0 -z-1 h-full w-full rounded-lg"></div>
+    }
 
     @if (timeoutInfo().techPause) {
       <p class="font-unbounded text-5xl font-bold text-white uppercase">
         {{ TranslateKeys.Timeout_Techpause | translate }}
       </p>
     } @else {
-      <img class="max-vh-120 max-vw-400" [src]="timeoutTeam().teamUrl" />
+      <div class="-mt-2 flex h-2/3 w-1/2 flex-row content-center items-center justify-around">
+        <div class="w-1/2">
+          <img class="max-vh-120 max-vw-400" [src]="timeoutTeam().teamUrl" />
+        </div>
+        <div class="flex w-1/2 flex-col gap-2 text-center">
+          <p class="font-unbounded text-2xl font-bold text-white">
+            {{ TranslateKeys.Timeout_Amount | translate }}
+          </p>
+          <div class="flex flex-row justify-center gap-2">
+            @for (i of numSequence(activeTimeoutCounter()); track $index) {
+              @if ($index === activeTimeoutCounter() - 1) {
+                <img class="vw-25 vh-25 timeout-pulse" src="assets/misc/ultimate-pip.svg" />
+              } @else {
+                <img class="vw-25 vh-25" src="assets/misc/ultimate-pip-full.svg" />
+              }
+            }
+            @for (i of numSequence(maxTimeouts() - activeTimeoutCounter()); track $index) {
+              <img class="vw-25 vh-25" src="assets/misc/ultimate-pip.svg" />
+            }
+          </div>
+        </div>
+      </div>
       <p class="font-unbounded text-2xl font-bold text-white">
         {{ TranslateKeys.Timeout_Tactical | translate: { teamName: timeoutTeam().teamName } }}
       </p>
-      <div class="vh-23 absolute bottom-0 flex w-full items-center justify-center bg-white/20">
+      <div
+        class="vh-22 absolute bottom-0 flex w-full items-center justify-center rounded-b-lg bg-white/20"
+      >
         <div
-          class="timer-transition absolute left-0 h-full bg-white/35"
+          class="timer-transition absolute left-0 h-full rounded-tr-lg rounded-br-lg rounded-bl-lg bg-white/35"
           [style.width]="timerWidth()"
         ></div>
         <p class="font-montserrat z-2 text-lg font-bold text-white text-shadow-2xs">

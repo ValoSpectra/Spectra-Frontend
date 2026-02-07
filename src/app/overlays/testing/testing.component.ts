@@ -69,6 +69,11 @@ export class TestingComponent implements OnInit {
           backdropUrl: "",
         },
         timeoutDuration: 60,
+        timeoutCounter: {
+          max: 2,
+          left: 2,
+          right: 2,
+        },
         sponsorInfo: {
           enabled: true,
           duration: 5000,

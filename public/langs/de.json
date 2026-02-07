@@ -1,7 +1,7 @@
 {
-  "kills": "Elims",
-  "deaths": "Tode",
-  "assists": "Assists",
+  "playercard.kills": "Elims",
+  "playercard.deaths": "Tode",
+  "playercard.assists": "Assists",
   "endround.round_win": "RUNDE GEWONNEN",
   "endround.win": "{{team}} GEWINNEN",
   "endround.attacker": "ANGREIFER",
@@ -16,6 +16,10 @@
   "team.attacker": "ANGREIFER",
   "team.defender": "VERTEIDIGER",
   "scoreboard.spent": "DIESE RUNDE AUSGEGEBEN",
+  "scoreboard.kills": "Elims",
+  "scoreboard.deaths": "Tode",
+  "scoreboard.assists": "Assists",
   "timeout.technical_pause": "TECHNISCHE PAUSE",
-  "timeout.tactical_timeout": "{{teamName}} TAKTISCHE PAUSE"
+  "timeout.tactical_timeout": "{{teamName}} TAKTISCHE PAUSE",
+  "timeout.amount": "PAUSEN"
 }
