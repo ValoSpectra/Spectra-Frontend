@@ -300,6 +300,33 @@ export class TestingComponent implements OnInit {
             { type: "lost", wasAttack: true, round: 29 },
             { type: "lost", wasAttack: false, round: 30 },
           ],
+          moneyRecord: [
+            { round: 1, start: 4000, spent: 3900 },
+            { round: 2, start: 12000, spent: 11000 },
+            { round: 3, start: 6000, spent: 5000 },
+            { round: 4, start: 28000, spent: 25000 },
+            { round: 5, start: 8000, spent: 2000 },
+            { round: 6, start: 35000, spent: 0 },
+            { round: 7, start: 45000, spent: 24000 },
+            { round: 8, start: 22000, spent: 15000 },
+            { round: 9, start: 12000, spent: 12000 },
+            { round: 10, start: 16000, spent: 4000 },
+            { round: 11, start: 32000, spent: 23000 },
+            { round: 12, start: 9000, spent: 8000 },
+            { round: 13, start: 40000, spent: 0 },
+            { round: 14, start: 45000, spent: 25000 },
+            { round: 15, start: 5000, spent: 0 },
+            { round: 16, start: 30000, spent: 21000 },
+            { round: 17, start: 18000, spent: 17000 },
+            { round: 18, start: 14000, spent: 6000 },
+            { round: 19, start: 26000, spent: 25000 },
+            { round: 20, start: 8000, spent: 1000 },
+            { round: 21, start: 42000, spent: 24000 },
+            { round: 22, start: 15000, spent: 0 },
+            { round: 23, start: 38000, spent: 22000 },
+            { round: 24, start: 12000, spent: 11000 },
+            { round: 25, start: 45000, spent: 25000 },
+          ],
         },
         {
           players: [
@@ -512,6 +539,33 @@ export class TestingComponent implements OnInit {
             { type: "kills", wasAttack: false, round: 29 },
             { type: "kills", wasAttack: true, round: 30 },
           ],
+          moneyRecord: [
+            { round: 1, start: 4000, spent: 4000 },
+            { round: 2, start: 8000, spent: 1000 },
+            { round: 3, start: 28000, spent: 24000 },
+            { round: 4, start: 12000, spent: 12000 },
+            { round: 5, start: 35000, spent: 0 },
+            { round: 6, start: 45000, spent: 25000 },
+            { round: 7, start: 20000, spent: 18000 },
+            { round: 8, start: 15000, spent: 5000 },
+            { round: 9, start: 42000, spent: 23000 },
+            { round: 10, start: 7000, spent: 0 },
+            { round: 11, start: 30000, spent: 21000 },
+            { round: 12, start: 18000, spent: 17000 },
+            { round: 13, start: 16000, spent: 3000 },
+            { round: 14, start: 26000, spent: 25000 },
+            { round: 15, start: 12000, spent: 12000 },
+            { round: 16, start: 45000, spent: 0 },
+            { round: 17, start: 22000, spent: 15000 },
+            { round: 18, start: 10000, spent: 9000 },
+            { round: 19, start: 28000, spent: 26000 },
+            { round: 20, start: 14000, spent: 2000 },
+            { round: 21, start: 40000, spent: 24000 },
+            { round: 22, start: 9000, spent: 0 },
+            { round: 23, start: 32000, spent: 20000 },
+            { round: 24, start: 45000, spent: 25000 },
+            { round: 25, start: 6000, spent: 0 },
+          ],
         },
       ],
     };
@@ -575,7 +629,7 @@ export class TestingComponent implements OnInit {
     this.spikeTimer = undefined;
   }
 
-  showInterface = signal(true);
+  showInterface = signal(false);
   toggleInterface() {
     this.showInterface.update((v) => !v);
   }

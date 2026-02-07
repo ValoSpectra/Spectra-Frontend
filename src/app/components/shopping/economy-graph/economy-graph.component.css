@@ -1,0 +1,20 @@
+@keyframes animations-econ {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10rem);
+  }
+}
+
+.animate-econ-in {
+  animation: animations-econ reverse ease-in-out;
+  will-change: opacity, transform;
+}
+
+.animate-econ-out {
+  animation: animations-econ ease-in-out;
+  will-change: opacity, transform;
+}

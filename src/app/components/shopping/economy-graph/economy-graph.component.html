@@ -1,0 +1,9 @@
+@if (isShown()) {
+  <div
+    class="vw-375 vh-150 bg-timer/95 shadow-timer/90 rounded-xs border-1 border-[#9e9e9e]/50 p-2 shadow-md"
+    animate.enter="animate-econ-in animate-duration-300"
+    animate.leave="animate-econ-out animate-duration-300"
+  >
+    <div echarts [options]="chartOptions()" class="h-full w-full"></div>
+  </div>
+}

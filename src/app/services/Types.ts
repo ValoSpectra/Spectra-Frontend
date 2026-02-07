@@ -25,6 +25,7 @@ export interface ITeamData {
   roundsWon: number;
   players: IPlayerData[];
   roundRecord?: IRoundReason[];
+  moneyRecord?: IMoneyRecord[];
 }
 
 export interface IPlayerData {
@@ -67,6 +68,12 @@ export interface IRoundReason {
   type: "lost" | "kills" | "defused" | "detonated" | "timeout" | "upcoming";
   wasAttack: boolean;
   round: number;
+}
+
+export interface IMoneyRecord {
+  round: number;
+  start: number;
+  spent: number;
 }
 
 export interface ISpikeState {

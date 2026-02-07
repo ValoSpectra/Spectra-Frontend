@@ -312,17 +312,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/animations@npm:^20.2.1":
-  version: 20.2.4
-  resolution: "@angular/animations@npm:20.2.4"
-  dependencies:
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    "@angular/core": 20.2.4
-  checksum: 10c0/fdf9dfa23217f5dbc2a82ae56e0b605ed93efb18001e5104f1a1fa407a8fa9fb6db6b4814bd72aa1a199767e5f1592f9f906d54ac786f0f20a2becf303d992d2
-  languageName: node
-  linkType: hard
-
 "@angular/build@npm:^20.2.0":
   version: 20.2.2
   resolution: "@angular/build@npm:20.2.2"
@@ -3665,6 +3654,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"echarts@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "echarts@npm:6.0.0"
+  dependencies:
+    tslib: "npm:2.3.0"
+    zrender: "npm:6.0.0"
+  checksum: 10c0/60bbb4f00ac679d2f81d7a0aa684597c8ccc46041c5ae536def4c4bbb85d5557c1653a536ac6e11f42757718ab66e2bbc35d53d795173c50e8541154c8d59bbd
+  languageName: node
+  linkType: hard
+
 "ee-first@npm:1.1.1":
   version: 1.1.1
   resolution: "ee-first@npm:1.1.1"
@@ -5914,6 +5913,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ngx-echarts@npm:^20.0.2":
+  version: 20.0.2
+  resolution: "ngx-echarts@npm:20.0.2"
+  dependencies:
+    tslib: "npm:^2.3.0"
+  peerDependencies:
+    "@angular/core": ">=20.0.0"
+    echarts: ">=5.0.0"
+  checksum: 10c0/62a27f0d0841e5f1bdf7883e35378d723530c4ca54ef0d6c6394465ae71a7d45872335a9bff718fd97cfa07f2be3717395f072abdf38e06c3a64ff8177f0f000
+  languageName: node
+  linkType: hard
+
 "node-addon-api@npm:^6.1.0":
   version: 6.1.0
   resolution: "node-addon-api@npm:6.1.0"
@@ -7236,7 +7247,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "spectra-frontend@workspace:."
   dependencies:
-    "@angular/animations": "npm:^20.2.1"
     "@angular/build": "npm:^20.2.0"
     "@angular/cli": "npm:^20.2.0"
     "@angular/common": "npm:^20.2.1"
@@ -7254,6 +7264,7 @@ __metadata:
     "@types/lodash": "npm:^4"
     angular-eslint: "npm:20.2.0"
     animejs: "npm:^4.0.2"
+    echarts: "npm:^6.0.0"
     eslint: "npm:^9.28.0"
     eslint-config-prettier: "npm:^9.1.0"
     express: "npm:^4.21.2"
@@ -7264,6 +7275,7 @@ __metadata:
     karma-jasmine: "npm:~5.1.0"
     karma-jasmine-html-reporter: "npm:~2.1.0"
     lodash: "npm:^4.17.21"
+    ngx-echarts: "npm:^20.0.2"
     prettier: "npm:3.5.3"
     prettier-plugin-tailwindcss: "npm:^0.6.14"
     rxjs: "npm:~7.8.2"
@@ -7479,6 +7491,13 @@ __metadata:
   peerDependencies:
     typescript: ">=4.8.4"
   checksum: 10c0/9806a38adea2db0f6aa217ccc6bc9c391ddba338a9fe3080676d0d50ed806d305bb90e8cef0276e793d28c8a929f400abb184ddd7ff83a416959c0f4d2ce754f
+  languageName: node
+  linkType: hard
+
+"tslib@npm:2.3.0":
+  version: 2.3.0
+  resolution: "tslib@npm:2.3.0"
+  checksum: 10c0/a845aed84e7e7dbb4c774582da60d7030ea39d67307250442d35c4c5dd77e4b44007098c37dd079e100029c76055f2a362734b8442ba828f8cc934f15ed9be61
   languageName: node
   linkType: hard
 
@@ -7971,5 +7990,14 @@ __metadata:
   version: 0.15.1
   resolution: "zone.js@npm:0.15.1"
   checksum: 10c0/4eca000f90dbea1c34f62e88ce56910dace8cdecbe14747b214f2af37aa511264c7bd50faf3e9b00612e95dc4567da156a9690fef1983bfcf74604a630d190ef
+  languageName: node
+  linkType: hard
+
+"zrender@npm:6.0.0":
+  version: 6.0.0
+  resolution: "zrender@npm:6.0.0"
+  dependencies:
+    tslib: "npm:2.3.0"
+  checksum: 10c0/c794e05ee969c750de6d17cfff60d9d4e6342d1591cf6ba3e488fb084ac7a0415355fe4aec55f83a400fd4cda63792db0533362455058ac06f6e1343be28d0ce
   languageName: node
   linkType: hard
