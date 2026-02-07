@@ -69,6 +69,11 @@
   bottom: calc((--value(integer) / 1080) * 100vh);
 }
 
+@utility pos-r-* {
+  position: absolute;
+  right: calc((--value(integer) / 1920) * 100vw);
+}
+
 @utility pill-background {
   background: linear-gradient(
     90deg,
