@@ -1,0 +1,39 @@
+.gradient-left-attacker {
+  background:
+    linear-gradient(
+      to right,
+      rgba(var(--attacker-color-rgb), 0.6) 0%,
+      rgba(var(--attacker-color-rgb), 0) 80%
+    ),
+    rgba(15, 25, 35, 1);
+}
+
+.gradient-right-attacker {
+  background:
+    linear-gradient(
+      to left,
+      rgba(var(--attacker-color-rgb), 0.6) 0%,
+      rgba(var(--attacker-color-rgb), 0) 80%
+    ),
+    rgba(15, 25, 35, 1);
+}
+
+.gradient-left-defender {
+  background:
+    linear-gradient(
+      to right,
+      rgba(var(--defender-color-rgb), 0.5) 0%,
+      rgba(var(--defender-color-rgb), 0) 80%
+    ),
+    rgba(15, 25, 35, 1);
+}
+
+.gradient-right-defender {
+  background:
+    linear-gradient(
+      to left,
+      rgba(var(--defender-color-rgb), 0.5) 0%,
+      rgba(var(--defender-color-rgb), 0) 80%
+    ),
+    rgba(15, 25, 35, 1);
+}

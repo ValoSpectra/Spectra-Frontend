@@ -109,3 +109,41 @@
     transparent
   );
 }
+
+.animate-timeout-counter-in.left {
+  animation: animations-teamnames-left;
+}
+
+.animate-timeout-counter-in.right {
+  animation: animations-teamnames-right;
+}
+
+.animate-timeout-counter-out.left {
+  animation: animations-teamnames-left reverse;
+}
+
+.animate-timeout-counter-out.right {
+  animation: animations-teamnames-right reverse;
+}
+
+@keyframes animations-teamnames-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-15rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes animations-teamnames-right {
+  0% {
+    opacity: 0;
+    transform: translateX(15rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}

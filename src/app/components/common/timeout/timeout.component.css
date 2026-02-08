@@ -70,8 +70,8 @@
 }
 
 .timeout-pulse {
-  opacity: 0.7;
-  animation: to-pulse 3s infinite;
+  opacity: 0.75;
+  animation: to-pulse infinite;
 }
 
 @keyframes to-pulse {

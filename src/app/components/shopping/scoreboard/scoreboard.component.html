@@ -71,6 +71,15 @@
           <img [src]="team.teamUrl" class="max-h-full max-w-full" alt="" />
         </div>
       </div>
+      @if (shouldShowTimeoutCounter(teamIndex)) {
+        <app-timeout-counter
+          class="vw-120 vh-60 absolute -top-1/7"
+          [class]="teamIndex === 1 ? 'right right-0.5' : 'left left-0'"
+          [forRight]="teamIndex === 1"
+          animate.enter="animate-timeout-counter-in animate-duration-200 animate-style-both"
+          animate.leave="animate-timeout-counter-out animate-duration-200 animate-style-both"
+        ></app-timeout-counter>
+      }
     }
   </div>
 }

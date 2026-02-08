@@ -1,0 +1,15 @@
+<div
+  class="bg-timer/95 flex h-full w-full flex-col content-center justify-center gap-1 rounded-sm border-1 border-[#9e9e9e]/40 text-center"
+  [class]="timeoutTeamBackgroundClass()"
+>
+  <p class="font-unbounded text-xs font-bold text-white">
+    {{ TranslateKeys.Timeout_Amount | translate }}
+  </p>
+  <div class="flex flex-row justify-center gap-2">
+    @for (i of numSequence(relevantCounter()); track $index) {
+    <img class="vw-15 vh-15" src="assets/misc/ultimate-pip-full.svg" />
+    } @for (i of numSequence(maxTimeouts() - relevantCounter()); track $index) {
+    <img class="vw-15 vh-15" src="assets/misc/ultimate-pip.svg" />
+    }
+  </div>
+</div>

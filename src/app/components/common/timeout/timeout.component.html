@@ -34,7 +34,16 @@
           <div class="flex flex-row justify-center gap-2">
             @for (i of numSequence(activeTimeoutCounter()); track $index) {
               @if ($index === activeTimeoutCounter() - 1) {
-                <img class="vw-25 vh-25 timeout-pulse" src="assets/misc/ultimate-pip.svg" />
+                <div class="vw-25 vh-25 relative">
+                  <img
+                    class="vw-25 vh-25 timeout-pulse animate-duration-3000 absolute"
+                    src="assets/misc/ultimate-pip-full.svg"
+                  />
+                  <img
+                    class="vw-25 vh-25 animate-duration-3000 absolute animate-ping"
+                    src="assets/misc/ultimate-pip-full.svg"
+                  />
+                </div>
               } @else {
                 <img class="vw-25 vh-25" src="assets/misc/ultimate-pip-full.svg" />
               }
