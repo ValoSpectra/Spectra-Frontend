@@ -1,6 +1,8 @@
 @if (leftTeam?.tricode && rightTeam?.tricode) {
 <div class="flex h-screen w-screen flex-row gap-4">
+  @if (!hideBg) {
   <img class="absolute -z-10" src="/assets/maps/wide/{{statsData?.metadata?.map?.name}}.webp" />
+  }
   <!-- LEFT TEAM -->
   <div class="m-2 grid h-97/100 w-1/2 grid-rows-7 gap-3 rounded-md p-2">
     <!-- Team Info -->

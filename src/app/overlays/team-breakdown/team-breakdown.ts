@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { Config } from "../../shared/config";
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute } from "@angular/router";
@@ -12,6 +12,7 @@ import { MvpPlayer } from "../../components/breakdown/mvp-player/mvp-player";
 import { RegularPlayer } from "../../components/breakdown/regular-player/regular-player";
 import { TranslateKeys } from "../../services/i18nHelper";
 import { TranslatePipe } from "@ngx-translate/core";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-team-breakdown",
@@ -19,12 +20,14 @@ import { TranslatePipe } from "@ngx-translate/core";
   templateUrl: "./team-breakdown.html",
   styleUrl: "./team-breakdown.css",
 })
-export class TeamBreakdown implements OnInit {
+export class TeamBreakdown implements OnInit, OnDestroy {
   protected config = inject(Config);
 
   protected http = inject(HttpClient);
   protected route = inject(ActivatedRoute);
   TranslateKeys = TranslateKeys;
+
+  protected hideBg = false;
 
   protected statsData?: StatsApiMatch;
   protected roundsPlayed = 0;
@@ -35,25 +38,65 @@ export class TeamBreakdown implements OnInit {
   protected leftPlayers?: StatsApiMatchPlayer[];
   protected rightPlayers?: StatsApiMatchPlayer[];
 
+  private hasReceivedData = false;
+  private pollTimerRef?: ReturnType<typeof setInterval>;
+  private routeSubscription?: Subscription;
+
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
+    this.routeSubscription = this.route.queryParams.subscribe((params) => {
+      this.hideBg = params["hideBg"] === "true" || params["hideBg"] === "1";
       const groupCode = params["groupCode"];
       if (groupCode) {
-        this.http
-          .get<StatsApiMatchResponse>(`${this.config.statsEndpoint}/getStats`, {
-            params: { code: groupCode },
-          })
-          .subscribe((data: StatsApiMatchResponse) => {
-            this.processStatsData(data.data, groupCode);
-          });
+        this.hasReceivedData = false;
+        this.stopPolling();
+        this.fetchStats(groupCode);
+        this.startPolling(groupCode);
+      } else {
+        this.stopPolling();
       }
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ngOnDestroy() {
+    this.stopPolling();
+    this.routeSubscription?.unsubscribe();
+  }
+
+  private startPolling(groupCode: string) {
+    this.pollTimerRef = setInterval(() => {
+      if (this.hasReceivedData) {
+        this.stopPolling();
+        return;
+      }
+      this.fetchStats(groupCode);
+    }, 15000);
+  }
+
+  private stopPolling() {
+    if (this.pollTimerRef) {
+      clearInterval(this.pollTimerRef);
+      this.pollTimerRef = undefined;
+    }
+  }
+
+  private fetchStats(groupCode: string) {
+    this.http
+      .get<StatsApiMatchResponse>(`${this.config.statsEndpoint}/getStats`, {
+        params: { code: groupCode },
+      })
+      .subscribe((response: StatsApiMatchResponse) => {
+        if (this.hasReceivedData || !response.data?.players?.length) {
+          return;
+        }
+
+        this.hasReceivedData = true;
+        this.stopPolling();
+        this.processStatsData(response.data, groupCode);
+      });
+  }
+
   processStatsData(data: StatsApiMatch, groupCode: string) {
     this.statsData = data;
-    this.statsData.metadata.map.name = "Corrode";
     this.roundsPlayed = this.statsData.rounds.length;
 
     this.leftTeam = this.statsData.teams.find((team) => team.team_id === "Red");
@@ -75,29 +118,16 @@ export class TeamBreakdown implements OnInit {
     this.leftPlayers.sort((a, b) => (b.stats.acs || 0) - (a.stats.acs || 0));
     this.rightPlayers.sort((a, b) => (b.stats.acs || 0) - (a.stats.acs || 0));
 
-    // this.http
-    //   .get<{ leftTeam: AuthTeam; rightTeam: AuthTeam }>(
-    //     `${this.config.extrasEndpoint}/getTeamInfoForCode`,
-    //     {
-    //       params: { groupCode },
-    //     },
-    //   )
-    //   .subscribe((data: { leftTeam: AuthTeam; rightTeam: AuthTeam }) => {
-    //     this.processTeamInfo(data);
-    //   });
-
-    this.processTeamInfo({
-      leftTeam: {
-        name: "G2 Esports",
-        tricode: "G2",
-        url: "https://eu.valospectra.com/assets/misc/icon.webp",
-      },
-      rightTeam: {
-        name: "Fnatic",
-        tricode: "FNC",
-        url: "https://eu.valospectra.com/assets/misc/icon.webp",
-      },
-    });
+    this.http
+      .get<{ leftTeam: AuthTeam; rightTeam: AuthTeam }>(
+        `${this.config.extrasEndpoint}/getTeamInfoForCode`,
+        {
+          params: { groupCode },
+        },
+      )
+      .subscribe((data: { leftTeam: AuthTeam; rightTeam: AuthTeam }) => {
+        this.processTeamInfo(data);
+      });
   }
 
   calculateFirstKills() {

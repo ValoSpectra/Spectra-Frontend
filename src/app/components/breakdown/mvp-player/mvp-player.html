@@ -54,7 +54,7 @@
         <img class="vh-24 vw-24" src="/assets/roles/{{ getAgentRole(agentInternalName) }}.webp" />
         <span class="text-xl font-bold text-white">{{player.agent.name}}</span>
       </div>
-      <span class="text-5xl font-bold text-white">{{player.name}}</span>
+      <span class="text-3xl font-bold text-white">{{player.name}}</span>
     </div>
   </div>
   <!-- Numbers -->
@@ -76,8 +76,8 @@
       <div class="flex flex-col" [style.direction]="'ltr'">
         <span class="font-montserrat text-md text-gray-300">Headshot %</span>
         <span class="font-unbounded text-3xl text-white"
-          >{{round(player.stats.headshots / (player.stats.bodyshots + player.stats.legshots) *
-          100)}}%</span
+          >{{round(player.stats.headshots / (player.stats.bodyshots + player.stats.legshots +
+          player.stats.headshots) * 100)}}%</span
         >
       </div>
       <div class="flex flex-col">
