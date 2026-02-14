@@ -59,6 +59,10 @@
   position: absolute;
   left: calc((--value(integer) / 1920) * 100vw);
 }
+@utility pos-y-bottom {
+  position: absolute;
+  bottom: 0;
+}
 @utility pos-y-* {
   position: absolute;
   top: calc((--value(integer) / 1080) * 100vh);

@@ -1,0 +1,58 @@
+<div class="grid h-full w-full grid-cols-3" [style.direction]="isRight ? 'rtl' : 'ltr'">
+  <!-- Image + Name-->
+  <div class="col-span-1 flex h-full min-h-0 flex-row overflow-visible">
+    <img
+      class="w-1/2"
+      [class.-scale-x-100]="isRight"
+      src="/assets/agents/{{agentInternalName}}Icon.webp"
+    />
+    <div class="flex h-full w-1/2 flex-col items-start justify-end px-2">
+      <div class="flex flex-row items-center gap-2">
+        <img class="vh-18 vw-18" src="/assets/roles/{{ getAgentRole(agentInternalName) }}.webp" />
+        <span class="text-md font-bold text-white">{{player.agent.name}}</span>
+      </div>
+      <span class="text-lg font-bold text-white">{{player.name}}</span>
+    </div>
+  </div>
+  <!-- Abilities -->
+  <div class="col-span-1 flex h-full w-full flex-col">
+    <div class="h-1/2">
+      <div class="flex h-full flex-row content-center items-center justify-center gap-2">
+        <img class="vh-48 vw-48" src="/assets/ultimates/{{agentInternalName}}Ultimate.webp" />
+        <span class="font-unbounded text-3xl font-bold text-white"
+          >{{player.ability_casts.ultimate}}</span
+        >
+      </div>
+    </div>
+    <div class="flex h-1/2 flex-row" [style.direction]="'ltr'">
+      <div class="flex h-full w-full flex-col content-center items-center justify-center gap-1">
+        <img class="vh-32 vw-32" src="/assets/grenades/{{agentInternalName}}Grenade.webp" />
+        <span class="font-montserrat text-xl text-white">{{player.ability_casts.grenade}}</span>
+      </div>
+      <div class="flex h-full w-full flex-col content-center items-center justify-center gap-1">
+        <img class="vh-32 vw-32" src="/assets/ability1/{{agentInternalName}}Ability1.webp" />
+        <span class="font-montserrat text-xl text-white">{{player.ability_casts.ability1}}</span>
+      </div>
+      <div class="flex h-full w-full flex-col content-center items-center justify-center gap-1">
+        <img class="vh-32 vw-32" src="/assets/ability2/{{agentInternalName}}Ability2.webp" />
+        <span class="font-montserrat text-xl text-white">{{player.ability_casts.ability2}}</span>
+      </div>
+    </div>
+  </div>
+  <!-- Numbers -->
+  <div
+    class="col-span-1 mx-2 flex h-full w-full flex-col items-center justify-around text-center"
+    [style.direction]="'ltr'"
+  >
+    <div class="flex flex-col">
+      <span class="font-montserrat text-md text-gray-300">ACS</span>
+      <span class="font-unbounded text-3xl text-white">{{player.stats.acs}}</span>
+    </div>
+    <div class="flex flex-col">
+      <span class="font-montserrat text-sm text-gray-300">K / D / A</span>
+      <span class="font-unbounded text-2xl text-white"
+        >{{player.stats.kills}} / {{player.stats.deaths}} / {{player.stats.assists}}</span
+      >
+    </div>
+  </div>
+</div>

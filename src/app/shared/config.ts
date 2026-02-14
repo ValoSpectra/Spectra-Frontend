@@ -15,6 +15,12 @@ export class Config {
   defenderColorSecondary = "#61eab6";
   defenderColorShieldCurrency = "#61eab6";
 
+  // statsEndpoint = "https://stats.valospectra.com";
+  statsEndpoint = "http://localhost:31000";
+
+  extrasEndpoint = "https://eu-extras.valospectra.com";
+  // extrasEndpoint = "http://localhost:5101";
+
   public constructor(init?: Partial<Config>) {
     Object.assign(this, init);
   }

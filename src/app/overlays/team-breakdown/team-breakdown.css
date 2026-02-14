@@ -1,0 +1,53 @@
+.timer-gradient-to-left {
+  background: linear-gradient(
+    to left,
+    rgba(var(--color-timer-rgb), 0.9) 0%,
+    rgba(var(--color-timer-rgb), 0.6) 80%,
+    rgba(var(--color-timer-rgb), 0) 100%
+  );
+}
+
+.timer-gradient-to-right {
+  background: linear-gradient(
+    to right,
+    rgba(var(--color-timer-rgb), 0.9) 0%,
+    rgba(var(--color-timer-rgb), 0.6) 80%,
+    rgba(var(--color-timer-rgb), 0) 100%
+  );
+}
+
+.mvp-gradient-to-left {
+  background: linear-gradient(
+    to left,
+    rgba(var(--color-timer-rgb), 0.8) 0%,
+    rgba(var(--color-timer-rgb), 0.8) 80%,
+    rgba(var(--color-timer-rgb), 0.5) 100%
+  );
+}
+
+.mvp-gradient-to-right {
+  background: linear-gradient(
+    to right,
+    rgba(var(--color-timer-rgb), 0.8) 0%,
+    rgba(var(--color-timer-rgb), 0.8) 80%,
+    rgba(var(--color-timer-rgb), 0.5) 100%
+  );
+}
+
+.regular-gradient-to-left {
+  background: linear-gradient(
+    to left,
+    rgba(var(--color-timer-rgb), 0.65) 0%,
+    rgba(var(--color-timer-rgb), 0.65) 80%,
+    rgba(var(--color-timer-rgb), 0.35) 100%
+  );
+}
+
+.regular-gradient-to-right {
+  background: linear-gradient(
+    to right,
+    rgba(var(--color-timer-rgb), 0.65) 0%,
+    rgba(var(--color-timer-rgb), 0.65) 80%,
+    rgba(var(--color-timer-rgb), 0.35) 100%
+  );
+}

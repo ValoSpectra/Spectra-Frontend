@@ -97,11 +97,14 @@ const routes: Routes = [
       ),
   },
   {
-    path: "playercams",
+    path: "team-breakdown",
     loadComponent: () =>
-      import("./components/combat/playercams/playercams.component").then(
-        (m) => m.PlayercamsComponent,
-      ),
+      import("./overlays/team-breakdown/team-breakdown").then((m) => m.TeamBreakdown),
+  },
+  {
+    path: "map-breakdown",
+    loadComponent: () =>
+      import("./overlays/map-breakdown/map-breakdown").then((m) => m.MapBreakdown),
   },
 ];
 
