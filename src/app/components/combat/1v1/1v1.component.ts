@@ -56,6 +56,9 @@ export class OneVersusOneComponent implements OnInit {
                     this.storedRightPlayerIndex.set(rightPlayerIndex);
                 }
             }
+            if (this.oneVersusOneTriggered() && (aliveLeft >= 2 || aliveRight >= 2)) {
+                this.oneVersusOneTriggered.set(false);
+            }
         });
     }
 
