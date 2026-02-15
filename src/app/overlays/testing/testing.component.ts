@@ -84,7 +84,11 @@ export class TestingComponent implements OnInit {
           customTextEnabled: false,
           spectraWatermark: true,
         },
-        playercamsInfo: { enable: true, enabledPlayers: ["Voodoo One#DEBUG"] },
+        playercamsInfo: { 
+        enable: true,
+        enabledPlayers: ["Voodoo One#DEBUG", "BeeSting#DEBUG"],
+        removeTricodes: false,
+      },
         nameOverrides: { overrides: nameOverrideMap },
       },
       timeoutState: {
@@ -310,7 +314,7 @@ export class TestingComponent implements OnInit {
           players: [
             {
               name: "AlpacaHoarder",
-              fullName: "AlpcacaHoarder#DEBUG",
+              fullName: "AlpacaHoarder#DEBUG",
               playerId: 5,
               isAlive: true,
               agentInternal: "Grenadier",

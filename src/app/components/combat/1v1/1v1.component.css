@@ -1,0 +1,142 @@
+.animate-1v1-stay {
+    animation: none;
+}
+
+/* calculate the offset as: index * (82/1080 * 100vh + 24px) */
+
+.animate-1v1-from-slot-1 {
+    animation: slide-from-slot-1 0.22s ease-in-out forwards;
+}
+
+@keyframes slide-from-slot-1 {
+    from {
+        transform: translateY(calc((82 / 1080) * 100vh + 1.5rem));
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.animate-1v1-from-slot-2 {
+    animation: slide-from-slot-2 0.22s ease-in-out forwards;
+}
+
+@keyframes slide-from-slot-2 {
+    from {
+        transform: translateY(calc(2 * ((82 / 1080) * 100vh + 1.5rem)));
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.animate-1v1-from-slot-3 {
+    animation: slide-from-slot-3 0.22s ease-in-out forwards;
+}
+
+@keyframes slide-from-slot-3 {
+    from {
+        transform: translateY(calc(3 * ((82 / 1080) * 100vh + 1.5rem)));
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.animate-1v1-from-slot-4 {
+    animation: slide-from-slot-4 0.22s ease-in-out forwards;
+}
+
+@keyframes slide-from-slot-4 {
+    from {
+        transform: translateY(calc(4 * ((82 / 1080) * 100vh + 1.5rem)));
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.playercam-container-left {
+    animation: slide-in-playercam-left 0.2s ease-in-out 0.22s both;
+}
+
+@keyframes slide-in-playercam-left {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.playercam-container-right {
+    animation: slide-in-playercam-right 0.2s ease-in-out 0.22s both;
+}
+
+@keyframes slide-in-playercam-right {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.dead-left {
+    animation: slide-in-playercam-left 0.2s ease-in-out 0.45s both;
+}
+
+.dead-right {
+    animation: slide-in-playercam-right 0.2s ease-in-out 0.45s both;
+}
+
+.gradient {
+  height: 150%;
+  width: 100%;
+
+  &.defender {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(var(--defender-color-rgb), 0.5) 0%,
+        rgba(var(--defender-color-rgb), 0) 100%
+      ),
+      rgba(15, 25, 35, 0);
+  }
+
+  &.attacker {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(var(--attacker-color-rgb), 0.7) 0%,
+        rgba(var(--attacker-color-rgb), 0) 100%
+      ),
+      rgba(15, 25, 35, 0);
+  }
+}
+
+.killbox-gradient {
+  &.defender {
+    background:
+      linear-gradient(
+        to left,
+        rgba(var(--defender-color-rgb), 0.5) 0%,
+        rgba(var(--defender-color-rgb), 0.2) 100%
+      ),
+      rgba(15, 25, 35, 0);
+  }
+
+  &.attacker {
+    background:
+      linear-gradient(
+        to left,
+        rgba(var(--attacker-color-rgb), 0.7) 0%,
+        rgba(var(--attacker-color-rgb), 0.4) 100%
+      ),
+      rgba(15, 25, 35, 0);
+  }
+}

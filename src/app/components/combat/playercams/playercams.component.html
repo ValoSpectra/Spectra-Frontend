@@ -1,4 +1,4 @@
-@if (dataModel.playercamsInfo().enable) {
+@if (dataModel.playercamsInfo().enable && !isOneVersusOne()) {
   <div [class.hidden]="dataModel.match().roundPhase !== 'combat'">
     @for (team of dataModel.teams(); track $index; let teamIndex = $index) {
       @for (player of team.players; track $index) {
@@ -10,7 +10,7 @@
             <div class="absolute h-48 w-full">
               <iframe
                 allow="camera;fullscreen;autoplay;"
-                [src]="streams.get(player.fullName)"
+                [src]="getStream(player.fullName)"
                 class="aspect-video w-full"
               ></iframe>
             </div>
