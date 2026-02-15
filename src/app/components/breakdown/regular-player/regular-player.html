@@ -45,11 +45,15 @@
     [style.direction]="'ltr'"
   >
     <div class="flex flex-col">
-      <span class="font-montserrat text-md text-gray-300">ACS</span>
+      <span class="font-montserrat text-md text-gray-300"
+        >{{TranslateKeys.Breakdown_ACS | translate}}</span
+      >
       <span class="font-unbounded text-3xl text-white">{{player.stats.acs}}</span>
     </div>
     <div class="flex flex-col">
-      <span class="font-montserrat text-sm text-gray-300">K / D / A</span>
+      <span class="font-montserrat text-sm text-gray-300"
+        >{{TranslateKeys.Breakdown_KDA | translate}}</span
+      >
       <span class="font-unbounded text-2xl text-white"
         >{{player.stats.kills}} / {{player.stats.deaths}} / {{player.stats.assists}}</span
       >

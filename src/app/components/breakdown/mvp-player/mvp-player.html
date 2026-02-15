@@ -1,7 +1,9 @@
 <div class="grid h-full w-full grid-cols-3 gap-4" [style.direction]="isRight ? 'rtl' : 'ltr'">
   <!-- Image -->
   <div class="col-span-1 flex h-full min-h-0 flex-col overflow-hidden">
-    <span class="font-unbounded text-center text-4xl text-white">MVP</span>
+    <span class="font-unbounded text-center text-4xl text-white"
+      >{{TranslateKeys.Breakdown_MVP | translate}}</span
+    >
     <div class="min-h-0 flex-1 overflow-visible">
       <img
         class="h-[250%] w-full -translate-y-[10%] object-cover object-top"
@@ -63,25 +65,33 @@
     [style.direction]="'ltr'"
   >
     <div class="flex flex-col">
-      <span class="font-montserrat text-xl text-gray-300">ACS</span>
+      <span class="font-montserrat text-xl text-gray-300"
+        >{{TranslateKeys.Breakdown_ACS | translate}}</span
+      >
       <span class="font-unbounded text-4xl text-white">{{player.stats.acs}}</span>
     </div>
     <div class="flex flex-col">
-      <span class="font-montserrat text-md text-gray-300">K / D / A</span>
+      <span class="font-montserrat text-md text-gray-300"
+        >{{TranslateKeys.Breakdown_KDA | translate}}</span
+      >
       <span class="font-unbounded text-3xl text-white"
         >{{player.stats.kills}} / {{player.stats.deaths}} / {{player.stats.assists}}</span
       >
     </div>
     <div class="flex flex-row gap-8" [style.direction]="isRight ? 'rtl' : 'ltr'">
       <div class="flex flex-col" [style.direction]="'ltr'">
-        <span class="font-montserrat text-md text-gray-300">Headshot %</span>
+        <span class="font-montserrat text-md text-gray-300"
+          >{{TranslateKeys.Breakdown_HeadshotPercentage | translate}}</span
+        >
         <span class="font-unbounded text-3xl text-white"
           >{{round(player.stats.headshots / (player.stats.bodyshots + player.stats.legshots +
           player.stats.headshots) * 100)}}%</span
         >
       </div>
       <div class="flex flex-col">
-        <span class="font-montserrat text-md text-gray-300">First Kills</span>
+        <span class="font-montserrat text-md text-gray-300"
+          >{{TranslateKeys.Breakdown_FirstKills | translate}}</span
+        >
         <span class="font-unbounded text-3xl text-white">{{player.stats.firstKills}}</span>
       </div>
     </div>

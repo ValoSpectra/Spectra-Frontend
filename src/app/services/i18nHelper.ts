@@ -33,4 +33,9 @@ export enum TranslateKeys {
   Timeout_Techpause = "timeout.technical_pause",
   Timeout_Tactical = "timeout.tactical_timeout",
   Timeout_Amount = "timeout.amount",
+  Breakdown_MVP = "breakdown.mvp",
+  Breakdown_ACS = "breakdown.acs",
+  Breakdown_KDA = "breakdown.kda",
+  Breakdown_FirstKills = "breakdown.first_kills",
+  Breakdown_HeadshotPercentage = "breakdown.headshot_percentage",
 }

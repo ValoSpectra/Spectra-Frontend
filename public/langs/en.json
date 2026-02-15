@@ -21,5 +21,10 @@
   "scoreboard.assists": "Assists",
   "timeout.technical_pause": "TECHNICAL PAUSE",
   "timeout.tactical_timeout": "{{teamName}} Tactical Timeout",
-  "timeout.amount": "TIMEOUTS"
+  "timeout.amount": "TIMEOUTS",
+  "breakdown.mvp": "MVP",
+  "breakdown.acs": "ACS",
+  "breakdown.kda": "K / D / A",
+  "breakdown.first_kills": "First Kills",
+  "breakdown.headshot_percentage": "Headshot %"
 }
