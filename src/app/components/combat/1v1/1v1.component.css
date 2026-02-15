@@ -1,97 +1,97 @@
 .animate-1v1-stay {
-    animation: none;
+  animation: none;
 }
 
 /* calculate the offset as: index * (82/1080 * 100vh + 24px) */
 
 .animate-1v1-from-slot-1 {
-    animation: slide-from-slot-1 0.22s ease-in-out forwards;
+  animation: slide-from-slot-1 0.22s ease-in-out forwards;
 }
 
 @keyframes slide-from-slot-1 {
-    from {
-        transform: translateY(calc((82 / 1080) * 100vh + 1.5rem));
-    }
-    to {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(calc((82 / 1080) * 100vh + 1.5rem));
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .animate-1v1-from-slot-2 {
-    animation: slide-from-slot-2 0.22s ease-in-out forwards;
+  animation: slide-from-slot-2 0.22s ease-in-out forwards;
 }
 
 @keyframes slide-from-slot-2 {
-    from {
-        transform: translateY(calc(2 * ((82 / 1080) * 100vh + 1.5rem)));
-    }
-    to {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(calc(2 * ((82 / 1080) * 100vh + 1.5rem)));
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .animate-1v1-from-slot-3 {
-    animation: slide-from-slot-3 0.22s ease-in-out forwards;
+  animation: slide-from-slot-3 0.22s ease-in-out forwards;
 }
 
 @keyframes slide-from-slot-3 {
-    from {
-        transform: translateY(calc(3 * ((82 / 1080) * 100vh + 1.5rem)));
-    }
-    to {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(calc(3 * ((82 / 1080) * 100vh + 1.5rem)));
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .animate-1v1-from-slot-4 {
-    animation: slide-from-slot-4 0.22s ease-in-out forwards;
+  animation: slide-from-slot-4 0.22s ease-in-out forwards;
 }
 
 @keyframes slide-from-slot-4 {
-    from {
-        transform: translateY(calc(4 * ((82 / 1080) * 100vh + 1.5rem)));
-    }
-    to {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(calc(4 * ((82 / 1080) * 100vh + 1.5rem)));
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .playercam-container-left {
-    animation: slide-in-playercam-left 0.2s ease-in-out 0.22s both;
+  animation: slide-in-playercam-left 0.2s ease-in-out 0.22s both;
 }
 
 @keyframes slide-in-playercam-left {
-    from {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .playercam-container-right {
-    animation: slide-in-playercam-right 0.2s ease-in-out 0.22s both;
+  animation: slide-in-playercam-right 0.2s ease-in-out 0.22s both;
 }
 
 @keyframes slide-in-playercam-right {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .dead-left {
-    animation: slide-in-playercam-left 0.2s ease-in-out 0.45s both;
+  animation: slide-in-playercam-left 0.2s ease-in-out 0.45s both;
 }
 
 .dead-right {
-    animation: slide-in-playercam-right 0.2s ease-in-out 0.45s both;
+  animation: slide-in-playercam-right 0.2s ease-in-out 0.45s both;
 }
 
 .gradient {

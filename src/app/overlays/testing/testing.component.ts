@@ -84,11 +84,11 @@ export class TestingComponent implements OnInit {
           customTextEnabled: false,
           spectraWatermark: true,
         },
-        playercamsInfo: { 
-        enable: true,
-        enabledPlayers: ["Voodoo One#DEBUG", "BeeSting#DEBUG"],
-        removeTricodes: false,
-      },
+        playercamsInfo: {
+          enable: true,
+          enabledPlayers: ["Voodoo One#DEBUG", "BeeSting#DEBUG"],
+          removeTricodes: false,
+        },
         nameOverrides: { overrides: nameOverrideMap },
       },
       timeoutState: {
