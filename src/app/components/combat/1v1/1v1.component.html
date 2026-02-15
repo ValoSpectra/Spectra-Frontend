@@ -1,163 +1,230 @@
-@if(isOneVersusOne() && (dataModel.match().roundPhase === 'combat' || dataModel.match().roundPhase === 'end')){
-    <div class="fixed inset-0 z-50 pointer-events-none">
-        <div class="vw-1920 vh-1080 relative flex justify-between px-0">
-            @if(leftPlayer(); as lPlayer) {
-                <div class="pos-b-25 vh-520 vw-300 flex flex-col justify-start" [class]="leftPlayerAnimationClass()">
-                    <app-player-combat-card
-                        [player]="lPlayer"
-                        [playerHealth]="lPlayer.health"
-                        [isObserved]="lPlayer.isObserved"
-                        [isAlive]="lPlayer.isAlive"
-                        [right]="false"
-                        [color]="leftTeam().isAttacking ? 'attacker' : 'defender'"
-                    ></app-player-combat-card>
-                    
-                    @if (shouldShowPlayercams()) {
-                        <div class="playercam-container-left relative left-6 top-10">
-                            <div
-                                class="bg-timer border-timer box-border flex aspect-video vw-300 flex-col justify-end overflow-clip rounded-sm border-3"
-                            >
-                                <div class="absolute h-full w-full">
-                                    <iframe
-                                        allow="camera;fullscreen;autoplay;"
-                                        [src]="getStream(lPlayer.fullName)"
-                                        class="aspect-video w-full"
-                                    ></iframe>
-                                </div>
-                                @if (lPlayer.killsThisRound > 0) {
-                                    <div
-                                        class="killbox-gradient flex h-7 w-13 flex-row items-center gap-1 rounded-tr-2xl pl-2"
-                                        [class]="leftTeam().isAttacking ? 'attacker' : 'defender'"
-                                    >
-                                        <img class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
-                                        <p class="font-montserrat text-lg font-semibold text-white">
-                                            {{ lPlayer.killsThisRound }}
-                                        </p>
-                                    </div>
-                                }
-                                <div class="relative flex h-7 w-full bg-black/70">
-                                    <div
-                                        class="gradient absolute"
-                                        [class]="leftTeam().isAttacking ? 'attacker' : 'defender'"
-                                    ></div>
-                                    <div
-                                        class="text-shadow-xl font-montserrat w-full max-w-85 overflow-clip px-2 text-left text-lg font-extrabold text-white"
-                                    >
-                                        {{ getDisplayName(lPlayer.fullName, lPlayer.name) }}
-                                    </div>
-                                    <div class="font-montserrat w-full px-2 text-right text-lg font-semibold text-white">
-                                        {{ lPlayer.kills }} / {{ lPlayer.deaths }} / {{ lPlayer.assists }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    @if (leftTeam().isAttacking) {
-                        <div class="team-accent-corner-left absolute right-40 top-110 pointer-events-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="354" height="354" viewBox="0 0 354 354">
-                                <defs>
-                                    <radialGradient id="corner-gradient-left-atk" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
-                                    <stop offset="0" stop-color="var(--color-attacker-primary)" stop-opacity="0.3"/>
-                                    <stop offset="1" stop-color="var(--color-attacker-primary)" stop-opacity="0"/>
-                                    </radialGradient>
-                                </defs>
-                                <rect id="Team_Accent_Corner" data-name="Team Accent Corner" width="354" height="354" fill="url(#corner-gradient-left-atk)"/>
-                            </svg>
-                        </div>
-                    } @else {
-                        <div class="team-accent-corner-left absolute right-40 top-110 pointer-events-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="354" height="354" viewBox="0 0 354 354">
-                                <defs>
-                                    <radialGradient id="corner-gradient-left-def" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
-                                    <stop offset="0" stop-color="var(--color-defender-primary)" stop-opacity="0.3"/>
-                                    <stop offset="1" stop-color="var(--color-defender-primary)" stop-opacity="0"/>
-                                    </radialGradient>
-                                </defs>
-                                <rect id="Team_Accent_Corner" data-name="Team Accent Corner" width="354" height="354" fill="url(#corner-gradient-left-def)"/>
-                            </svg>
-                        </div>
-                    }
-                </div>
-            }
+@if (
+  isOneVersusOne() &&
+  (dataModel.match().roundPhase === "combat" || dataModel.match().roundPhase === "end")
+) {
+  <div class="pointer-events-none fixed inset-0 z-50">
+    <div class="vw-1920 vh-1080 relative flex justify-between px-0">
+      @if (leftPlayer(); as lPlayer) {
+        <div
+          class="pos-b-25 vh-520 vw-300 flex flex-col justify-start"
+          [class]="leftPlayerAnimationClass()"
+        >
+          <app-player-combat-card
+            [player]="lPlayer"
+            [playerHealth]="lPlayer.health"
+            [isObserved]="lPlayer.isObserved"
+            [isAlive]="lPlayer.isAlive"
+            [right]="false"
+            [color]="leftTeam().isAttacking ? 'attacker' : 'defender'"
+          ></app-player-combat-card>
 
-            @if(rightPlayer(); as rPlayer) {
-                <div class="pos-b-25 vh-520 vw-300 flex flex-col justify-start right-0" [class]="rightPlayerAnimationClass()">
-                    <app-player-combat-card
-                        [player]="rPlayer"
-                        [playerHealth]="rPlayer.health"
-                        [isObserved]="rPlayer.isObserved"
-                        [isAlive]="rPlayer.isAlive"
-                        [right]="true"
-                        [color]="rightTeam().isAttacking ? 'attacker' : 'defender'"
-                    ></app-player-combat-card>
-                    
-                    @if (shouldShowPlayercams()) {
-                        <div class="playercam-container-right relative right-7.5 top-10">
-                            <div
-                                class="bg-timer border-timer box-border flex aspect-video vw-300 flex-col justify-end overflow-clip rounded-sm border-3"
-                            >
-                                <div class="absolute h-full w-full">
-                                    <iframe
-                                        allow="camera;fullscreen;autoplay;"
-                                        [src]="getStream(rPlayer.fullName)"
-                                        class="aspect-video w-full"
-                                    ></iframe>
-                                </div>
-                                @if (rPlayer.killsThisRound > 0) {
-                                    <div
-                                        class="killbox-gradient flex h-7 w-13 flex-row-reverse items-center gap-1 rounded-tl-2xl pr-2 self-end"
-                                        [class]="rightTeam().isAttacking ? 'attacker' : 'defender'"
-                                    >
-                                        <img class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
-                                        <p class="font-montserrat text-lg font-semibold text-white">
-                                            {{ rPlayer.killsThisRound }}
-                                        </p>
-                                    </div>
-                                }
-                                <div class="relative flex flex-row-reverse h-7 w-full bg-black/70">
-                                    <div
-                                        class="gradient absolute"
-                                        [class]="rightTeam().isAttacking ? 'attacker' : 'defender'"
-                                    ></div>
-                                    <div
-                                        class="text-shadow-xl font-montserrat w-full max-w-85 overflow-clip px-2 text-right text-lg font-extrabold text-white"
-                                    >
-                                        {{ getDisplayName(rPlayer.fullName, rPlayer.name) }}
-                                    </div>
-                                    <div class="font-montserrat w-full px-2 text-left text-lg font-semibold text-white">
-                                        {{ rPlayer.kills }} / {{ rPlayer.deaths }} / {{ rPlayer.assists }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
+          @if (shouldShowPlayercams()) {
+            <div class="playercam-container-left relative top-10 left-6">
+              <div
+                class="bg-timer border-timer vw-300 box-border flex aspect-video flex-col justify-end overflow-clip rounded-sm border-3"
+              >
+                <div class="absolute h-full w-full">
+                  <iframe
+                    allow="camera;fullscreen;autoplay;"
+                    [src]="getStream(lPlayer.fullName)"
+                    class="aspect-video w-full"
+                  ></iframe>
                 </div>
-            }
-            <!-- dead agent icons -->
-            <div class="dead-left absolute bottom-4 left-4 bg-linear-to-t from-[#0D101C] to-[#2225334d] vw-312 vh-38 flex items-center justify-evenly overflow-hidden">
-                @for (deadPlayer of leftTeamDeadPlayers(); track deadPlayer.fullName) {
-                    <div class="h-full flex items-center justify-center">
-                        <img 
-                            [src]="'assets/agents/' + deadPlayer.agentInternal + 'Icon.webp'" 
-                            [alt]="deadPlayer.agentInternal"
-                            class="h-14 w-14 object-contain grayscale"
-                            style="mask-image: linear-gradient(to top, #0D101C, #2225334d); -webkit-mask-image: linear-gradient(to top, #0D101C, #2225334d);"
-                        />
-                    </div>
+                @if (lPlayer.killsThisRound > 0) {
+                  <div
+                    class="killbox-gradient flex h-7 w-13 flex-row items-center gap-1 rounded-tr-2xl pl-2"
+                    [class]="leftTeam().isAttacking ? 'attacker' : 'defender'"
+                  >
+                    <img class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
+                    <p class="font-montserrat text-lg font-semibold text-white">
+                      {{ lPlayer.killsThisRound }}
+                    </p>
+                  </div>
                 }
+                <div class="relative flex h-7 w-full bg-black/70">
+                  <div
+                    class="gradient absolute"
+                    [class]="leftTeam().isAttacking ? 'attacker' : 'defender'"
+                  ></div>
+                  <div
+                    class="text-shadow-xl font-montserrat w-full max-w-85 overflow-clip px-2 text-left text-lg font-extrabold text-white"
+                  >
+                    {{ getDisplayName(lPlayer.fullName, lPlayer.name) }}
+                  </div>
+                  <div
+                    class="font-montserrat w-full px-2 text-right text-lg font-semibold text-white"
+                  >
+                    {{ lPlayer.kills }} / {{ lPlayer.deaths }} / {{ lPlayer.assists }}
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="dead-right absolute bottom-4 right-4 bg-linear-to-t from-[#0D101C] to-[#2225334d] vw-312 vh-38 flex items-center justify-evenly overflow-hidden">
-                @for (deadPlayer of rightTeamDeadPlayers(); track deadPlayer.fullName) {
-                    <div class="h-full flex items-center justify-center">
-                        <img 
-                            [src]="'assets/agents/' + deadPlayer.agentInternal + 'Icon.webp'" 
-                            [alt]="deadPlayer.agentInternal"
-                            class="h-14 w-14 object-contain grayscale scale-x-[-1]"
-                            style="mask-image: linear-gradient(to top, #0D101C, #2225334d); -webkit-mask-image: linear-gradient(to top, #0D101C, #2225334d);"
-                        />
-                    </div>
-                }
+          }
+          @if (leftTeam().isAttacking) {
+            <div class="team-accent-corner-left pointer-events-none absolute top-110 right-40">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="354"
+                height="354"
+                viewBox="0 0 354 354"
+              >
+                <defs>
+                  <radialGradient
+                    id="corner-gradient-left-atk"
+                    cx="0.5"
+                    cy="0.5"
+                    r="0.5"
+                    gradientUnits="objectBoundingBox"
+                  >
+                    <stop
+                      offset="0"
+                      stop-color="var(--color-attacker-primary)"
+                      stop-opacity="0.3"
+                    />
+                    <stop offset="1" stop-color="var(--color-attacker-primary)" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+                <rect
+                  id="Team_Accent_Corner"
+                  data-name="Team Accent Corner"
+                  width="354"
+                  height="354"
+                  fill="url(#corner-gradient-left-atk)"
+                />
+              </svg>
             </div>
+          } @else {
+            <div class="team-accent-corner-left pointer-events-none absolute top-110 right-40">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="354"
+                height="354"
+                viewBox="0 0 354 354"
+              >
+                <defs>
+                  <radialGradient
+                    id="corner-gradient-left-def"
+                    cx="0.5"
+                    cy="0.5"
+                    r="0.5"
+                    gradientUnits="objectBoundingBox"
+                  >
+                    <stop
+                      offset="0"
+                      stop-color="var(--color-defender-primary)"
+                      stop-opacity="0.3"
+                    />
+                    <stop offset="1" stop-color="var(--color-defender-primary)" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+                <rect
+                  id="Team_Accent_Corner"
+                  data-name="Team Accent Corner"
+                  width="354"
+                  height="354"
+                  fill="url(#corner-gradient-left-def)"
+                />
+              </svg>
+            </div>
+          }
         </div>
+      }
+
+      @if (rightPlayer(); as rPlayer) {
+        <div
+          class="pos-b-25 vh-520 vw-300 right-0 flex flex-col justify-start"
+          [class]="rightPlayerAnimationClass()"
+        >
+          <app-player-combat-card
+            [player]="rPlayer"
+            [playerHealth]="rPlayer.health"
+            [isObserved]="rPlayer.isObserved"
+            [isAlive]="rPlayer.isAlive"
+            [right]="true"
+            [color]="rightTeam().isAttacking ? 'attacker' : 'defender'"
+          ></app-player-combat-card>
+
+          @if (shouldShowPlayercams()) {
+            <div class="playercam-container-right relative top-10 right-7.5">
+              <div
+                class="bg-timer border-timer vw-300 box-border flex aspect-video flex-col justify-end overflow-clip rounded-sm border-3"
+              >
+                <div class="absolute h-full w-full">
+                  <iframe
+                    allow="camera;fullscreen;autoplay;"
+                    [src]="getStream(rPlayer.fullName)"
+                    class="aspect-video w-full"
+                  ></iframe>
+                </div>
+                @if (rPlayer.killsThisRound > 0) {
+                  <div
+                    class="killbox-gradient flex h-7 w-13 flex-row-reverse items-center gap-1 self-end rounded-tl-2xl pr-2"
+                    [class]="rightTeam().isAttacking ? 'attacker' : 'defender'"
+                  >
+                    <img class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
+                    <p class="font-montserrat text-lg font-semibold text-white">
+                      {{ rPlayer.killsThisRound }}
+                    </p>
+                  </div>
+                }
+                <div class="relative flex h-7 w-full flex-row-reverse bg-black/70">
+                  <div
+                    class="gradient absolute"
+                    [class]="rightTeam().isAttacking ? 'attacker' : 'defender'"
+                  ></div>
+                  <div
+                    class="text-shadow-xl font-montserrat w-full max-w-85 overflow-clip px-2 text-right text-lg font-extrabold text-white"
+                  >
+                    {{ getDisplayName(rPlayer.fullName, rPlayer.name) }}
+                  </div>
+                  <div
+                    class="font-montserrat w-full px-2 text-left text-lg font-semibold text-white"
+                  >
+                    {{ rPlayer.kills }} / {{ rPlayer.deaths }} / {{ rPlayer.assists }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+      <!-- dead agent icons -->
+      <div
+        class="dead-left vw-312 vh-38 absolute bottom-4 left-4 flex items-center justify-evenly overflow-hidden bg-linear-to-t from-[#0D101C] to-[#2225334d]"
+      >
+        @for (deadPlayer of leftTeamDeadPlayers(); track deadPlayer.fullName) {
+          <div class="flex h-full items-center justify-center">
+            <img
+              [src]="'assets/agents/' + deadPlayer.agentInternal + 'Icon.webp'"
+              [alt]="deadPlayer.agentInternal"
+              class="h-14 w-14 object-contain grayscale"
+              style="
+                mask-image: linear-gradient(to top, #0d101c, #2225334d);
+                -webkit-mask-image: linear-gradient(to top, #0d101c, #2225334d);
+              "
+            />
+          </div>
+        }
+      </div>
+      <div
+        class="dead-right vw-312 vh-38 absolute right-4 bottom-4 flex items-center justify-evenly overflow-hidden bg-linear-to-t from-[#0D101C] to-[#2225334d]"
+      >
+        @for (deadPlayer of rightTeamDeadPlayers(); track deadPlayer.fullName) {
+          <div class="flex h-full items-center justify-center">
+            <img
+              [src]="'assets/agents/' + deadPlayer.agentInternal + 'Icon.webp'"
+              [alt]="deadPlayer.agentInternal"
+              class="h-14 w-14 scale-x-[-1] object-contain grayscale"
+              style="
+                mask-image: linear-gradient(to top, #0d101c, #2225334d);
+                -webkit-mask-image: linear-gradient(to top, #0d101c, #2225334d);
+              "
+            />
+          </div>
+        }
+      </div>
     </div>
+  </div>
 }

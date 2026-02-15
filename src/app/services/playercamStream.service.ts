@@ -40,14 +40,10 @@ export class PlayercamStreamService {
   initializeFromEnabledPlayers(enabledPlayers: string[]): void {
     for (const player of enabledPlayers) {
       if (!this.streams.has(player)) {
-        this.streams.set(
-          player,
-          this.createStreamUrl(player.split("#")[0], player.split("#")[1]),
-        );
+        this.streams.set(player, this.createStreamUrl(player.split("#")[0], player.split("#")[1]));
       }
     }
   }
-
 
   // initialize streams
   initializeFromTeams(): void {
