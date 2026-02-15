@@ -2,7 +2,7 @@
     <div class="fixed inset-0 z-50 pointer-events-none">
         <div class="vw-1920 vh-1080 relative flex justify-between px-0">
             @if(leftPlayer(); as lPlayer) {
-                <div class="pos-b-25 vh-520 flex flex-col justify-start" [class]="leftPlayerAnimationClass()">
+                <div class="pos-b-25 vh-520 vw-300 flex flex-col justify-start" [class]="leftPlayerAnimationClass()">
                     <app-player-combat-card
                         [player]="lPlayer"
                         [playerHealth]="lPlayer.health"
@@ -13,54 +13,39 @@
                     ></app-player-combat-card>
                     
                     @if (shouldShowPlayercams()) {
-                        <div class="playercam-container-left">
+                        <div class="playercam-container-left relative left-6 top-10">
                             <div
-                                class="bg-[#161515] left-4 top-6 border-[#161515] box-border flex aspect-video h-44 flex-col justify-end overflow-clip relative"
+                                class="bg-timer border-timer box-border flex aspect-video vw-300 flex-col justify-end overflow-clip rounded-sm border-3"
                             >
-                                <div class="absolute h-42 w-76.25 top-1 left-1 overflow-hidden">
+                                <div class="absolute h-full w-full">
                                     <iframe
                                         allow="camera;fullscreen;autoplay;"
                                         [src]="getStream(lPlayer.fullName)"
                                         class="aspect-video w-full"
                                     ></iframe>
                                 </div>
-                                <div class="team-accent absolute bottom-1 right-0.75" style="transform: scaleX(-1);">
-                                    @if (leftTeam().isAttacking) {
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="306" height="169" viewBox="0 0 306 169">
-                                            <defs>
-                                                <clipPath id="clip-path-left-atk">
-                                                    <rect width="306" height="169" transform="translate(1595 651)" fill="#fff"/>
-                                                </clipPath>
-                                                <radialGradient id="left-gradient-atk" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
-                                                    <stop offset="0" stop-color="var(--color-attacker-primary)" stop-opacity="0.7"/>
-                                                    <stop offset="1" stop-color="var(--color-attacker-primary)" stop-opacity="0"/>
-                                                </radialGradient>
-                                            </defs>
-                                            <g transform="translate(-1595 -651)" clip-path="url(#clip-path-left-atk)">
-                                                <rect width="277" height="155" transform="translate(1729 772)" fill="url(#left-gradient-atk)"/>
-                                            </g>
-                                        </svg>
-                                    } @else {
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="306" height="169" viewBox="0 0 306 169">
-                                            <defs>
-                                                <clipPath id="clip-path-left-def">
-                                                    <rect width="306" height="169" transform="translate(1595 651)" fill="#fff"/>
-                                                </clipPath>
-                                                <radialGradient id="left-gradient-def" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
-                                                    <stop offset="0" stop-color="var(--color-defender-primary)" stop-opacity="0.7"/>
-                                                    <stop offset="1" stop-color="var(--color-defender-primary)" stop-opacity="0"/>
-                                                </radialGradient>
-                                            </defs>
-                                            <g transform="translate(-1595 -651)" clip-path="url(#clip-path-left-def)">
-                                                <rect width="277" height="155" transform="translate(1729 772)" fill="url(#left-gradient-def)"/>
-                                            </g>
-                                        </svg>
-                                    }
-                                </div>
-                                <div class="relative flex h-10 w-76.25 left-1 items-center">
+                                @if (lPlayer.killsThisRound > 0) {
                                     <div
-                                        class="w-full px-3 text-left font-foundry-extrabold text-white text-lg"
+                                        class="killbox-gradient flex h-7 w-13 flex-row items-center gap-1 rounded-tr-2xl pl-2"
+                                        [class]="leftTeam().isAttacking ? 'attacker' : 'defender'"
                                     >
+                                        <img class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
+                                        <p class="font-montserrat text-lg font-semibold text-white">
+                                            {{ lPlayer.killsThisRound }}
+                                        </p>
+                                    </div>
+                                }
+                                <div class="relative flex h-7 w-full bg-black/70">
+                                    <div
+                                        class="gradient absolute"
+                                        [class]="leftTeam().isAttacking ? 'attacker' : 'defender'"
+                                    ></div>
+                                    <div
+                                        class="text-shadow-xl font-montserrat w-full max-w-85 overflow-clip px-2 text-left text-lg font-extrabold text-white"
+                                    >
+                                        {{ getDisplayName(lPlayer.fullName, lPlayer.name) }}
+                                    </div>
+                                    <div class="font-montserrat w-full px-2 text-right text-lg font-semibold text-white">
                                         {{ lPlayer.kills }} / {{ lPlayer.deaths }} / {{ lPlayer.assists }}
                                     </div>
                                 </div>
@@ -96,7 +81,7 @@
             }
 
             @if(rightPlayer(); as rPlayer) {
-                <div class="pos-b-25 vh-520 flex flex-col justify-start right-0" [class]="rightPlayerAnimationClass()">
+                <div class="pos-b-25 vh-520 vw-300 flex flex-col justify-start right-0" [class]="rightPlayerAnimationClass()">
                     <app-player-combat-card
                         [player]="rPlayer"
                         [playerHealth]="rPlayer.health"
@@ -107,83 +92,43 @@
                     ></app-player-combat-card>
                     
                     @if (shouldShowPlayercams()) {
-                        <div class="playercam-container-right">
+                        <div class="playercam-container-right relative right-7.5 top-10">
                             <div
-                                class="bg-[#161515] right-4 top-6 border-[#161515] box-border flex aspect-video h-44 flex-col justify-end overflow-clip relative"
+                                class="bg-timer border-timer box-border flex aspect-video vw-300 flex-col justify-end overflow-clip rounded-sm border-3"
                             >
-                                <div class="absolute h-42 w-76.25 top-1 left-1 overflow-hidden">
+                                <div class="absolute h-full w-full">
                                     <iframe
                                         allow="camera;fullscreen;autoplay;"
                                         [src]="getStream(rPlayer.fullName)"
                                         class="aspect-video w-full"
                                     ></iframe>
                                 </div>
-                                <div class="team-accent absolute bottom-1 left-0.75">
-                                    @if (rightTeam().isAttacking) {
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="306" height="169" viewBox="0 0 306 169">
-                                            <defs>
-                                                <clipPath id="clip-path-right-atk">
-                                                    <rect width="306" height="169" transform="translate(1595 651)" fill="#fff"/>
-                                                </clipPath>
-                                                <radialGradient id="right-gradient-atk" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
-                                                    <stop offset="0" stop-color="var(--color-attacker-primary)" stop-opacity="0.7"/>
-                                                    <stop offset="1" stop-color="var(--color-attacker-primary)" stop-opacity="0"/>
-                                                </radialGradient>
-                                            </defs>
-                                            <g transform="translate(-1595 -651)" clip-path="url(#clip-path-right-atk)">
-                                                <rect width="277" height="155" transform="translate(1729 772)" fill="url(#right-gradient-atk)"/>
-                                            </g>
-                                        </svg>
-                                    } @else {
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="306" height="169" viewBox="0 0 306 169">
-                                            <defs>
-                                                <clipPath id="clip-path-right-def">
-                                                    <rect width="306" height="169" transform="translate(1595 651)" fill="#fff"/>
-                                                </clipPath>
-                                                <radialGradient id="right-gradient-def" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
-                                                    <stop offset="0" stop-color="var(--color-defender-primary)" stop-opacity="0.7"/>
-                                                    <stop offset="1" stop-color="var(--color-defender-primary)" stop-opacity="0"/>
-                                                </radialGradient>
-                                            </defs>
-                                            <g transform="translate(-1595 -651)" clip-path="url(#clip-path-right-def)">
-                                                <rect width="277" height="155" transform="translate(1729 772)" fill="url(#right-gradient-def)"/>
-                                            </g>
-                                        </svg>
-                                    }
-                                </div>
-                                <div class="relative flex h-10 w-76.25 left-1 items-center">
+                                @if (rPlayer.killsThisRound > 0) {
                                     <div
-                                        class="w-full px-3 text-right font-foundry-extrabold text-white text-lg"
+                                        class="killbox-gradient flex h-7 w-13 flex-row-reverse items-center gap-1 rounded-tl-2xl pr-2 self-end"
+                                        [class]="rightTeam().isAttacking ? 'attacker' : 'defender'"
                                     >
+                                        <img class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
+                                        <p class="font-montserrat text-lg font-semibold text-white">
+                                            {{ rPlayer.killsThisRound }}
+                                        </p>
+                                    </div>
+                                }
+                                <div class="relative flex flex-row-reverse h-7 w-full bg-black/70">
+                                    <div
+                                        class="gradient absolute"
+                                        [class]="rightTeam().isAttacking ? 'attacker' : 'defender'"
+                                    ></div>
+                                    <div
+                                        class="text-shadow-xl font-montserrat w-full max-w-85 overflow-clip px-2 text-right text-lg font-extrabold text-white"
+                                    >
+                                        {{ getDisplayName(rPlayer.fullName, rPlayer.name) }}
+                                    </div>
+                                    <div class="font-montserrat w-full px-2 text-left text-lg font-semibold text-white">
                                         {{ rPlayer.kills }} / {{ rPlayer.deaths }} / {{ rPlayer.assists }}
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    }
-                    @if (rightTeam().isAttacking) {
-                        <div class="team-accent-corner-right absolute left-40 top-110 pointer-events-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="354" height="354" viewBox="0 0 354 354">
-                                <defs>
-                                    <radialGradient id="corner-gradient-right-atk" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
-                                    <stop offset="0" stop-color="var(--color-attacker-primary)" stop-opacity="0.3"/>
-                                    <stop offset="1" stop-color="var(--color-attacker-primary)" stop-opacity="0"/>
-                                    </radialGradient>
-                                </defs>
-                                <rect id="Team_Accent_Corner" data-name="Team Accent Corner" width="354" height="354" fill="url(#corner-gradient-right-atk)"/>
-                            </svg>
-                        </div>
-                    } @else {
-                        <div class="team-accent-corner-right absolute left-40 top-110 pointer-events-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="354" height="354" viewBox="0 0 354 354">
-                                <defs>
-                                    <radialGradient id="corner-gradient-right-def" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
-                                    <stop offset="0" stop-color="var(--color-defender-primary)" stop-opacity="0.3"/>
-                                    <stop offset="1" stop-color="var(--color-defender-primary)" stop-opacity="0"/>
-                                    </radialGradient>
-                                </defs>
-                                <rect id="Team_Accent_Corner" data-name="Team Accent Corner" width="354" height="354" fill="url(#corner-gradient-right-def)"/>
-                            </svg>
                         </div>
                     }
                 </div>
