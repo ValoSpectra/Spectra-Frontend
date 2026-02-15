@@ -1,2 +1,179 @@
-<p>map-breakdown works!</p>
-,
+@if (leftTeam?.tricode && rightTeam?.tricode) {
+<div
+  class="flex h-screen w-screen flex-row gap-4"
+  animate.enter="slide-in-bottom"
+  animate.leave="animate-fade-out"
+>
+  <!-- Map + Scores -->
+  <div class="relative bottom-0 m-2 grid h-88/104 w-18/100 grid-rows-7 gap-3 rounded-tl-md p-2">
+    <img
+      class="absolute h-full w-full rounded-tl-md object-cover"
+      src="/assets/maps/tall/{{statsData?.metadata?.map?.name}}.webp"
+    />
+    <div class="bg-timer/40 absolute h-full w-full rounded-md"></div>
+    <!-- Teams -->
+    <div class="absolute h-15/20 w-full">
+      <div class="flex h-8/20 w-full flex-row">
+        <div class="flex h-full w-1/2 flex-col items-center justify-center gap-2">
+          <img class="w-2/3" src="{{leftTeam?.url}}" />
+          <span class="font-unbounded text-2xl font-bold text-white">{{leftTeam?.tricode}}</span>
+        </div>
+        <div class="flex h-full w-1/2 flex-col items-center justify-center gap-2">
+          <img class="w-2/3" src="{{rightTeam?.url}}" />
+          <span class="font-unbounded text-2xl font-bold text-white">{{rightTeam?.tricode}}</span>
+        </div>
+      </div>
+      <!-- Scores -->
+      <div
+        class="font-unbounded flex h-1/20 items-center justify-center text-center text-7xl font-bold text-white"
+      >
+        {{leftTeam?.rounds?.won}} - {{rightTeam?.rounds?.won}}
+      </div>
+    </div>
+    <span
+      class="font-unbounded absolute bottom-1 w-full text-center text-5xl font-semibold text-white"
+      >{{statsData?.metadata?.map?.name}}</span
+    >
+  </div>
+  <!-- Main Stats -->
+  <div class="bg-timer absolute left-92 m-2 h-88/104 w-60/100 gap-3 p-2">
+    <div class="relative flex h-full w-full flex-row content-center justify-center">
+      <div class="font-unbounded flex h-full w-4/10 flex-col gap-12 text-3xl font-bold text-white">
+        <div class="flex h-1/14 w-full items-center justify-center">{{leftTeam?.name}}</div>
+        <div class="flex h-12/14 w-full flex-col items-center justify-around">
+          <div>{{leftFirstKills}}</div>
+          <div>{{leftThrifties}}</div>
+          <div>{{leftAces}}</div>
+          <div>{{leftClutches}}</div>
+          <div>{{leftFlawless}}</div>
+          <div>{{leftWonPostPlants}} / {{leftWonPostPlants + rightWonPostPlants}}</div>
+        </div>
+      </div>
+      <div class="font-unbounded flex h-full w-2/10 flex-col gap-12 text-xl font-bold text-white">
+        <div class="flex h-1/14 w-full items-center justify-center">
+          <img src="assets/misc/icon.webp" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+          <span class="font-montserrat text-sm"
+            >{{ TranslateKeys.Watermark_Text | translate }}</span
+          >
+        </div>
+        <div class="flex h-12/14 w-full flex-col items-center justify-around">
+          <div>{{TranslateKeys.Breakdown_FirstKills | translate}}</div>
+          <div>{{TranslateKeys.Breakdown_Thrifties | translate}}</div>
+          <div>{{TranslateKeys.Breakdown_Aces | translate}}</div>
+          <div>{{TranslateKeys.Breakdown_Clutches | translate}}</div>
+          <div>{{TranslateKeys.Breakdown_Flawless | translate}}</div>
+          <div>{{TranslateKeys.Breakdown_PostPlants | translate}}</div>
+        </div>
+      </div>
+      <div class="font-unbounded flex h-full w-4/10 flex-col gap-12 text-3xl font-bold text-white">
+        <div class="flex h-1/14 w-full items-center justify-center">{{rightTeam?.name}}</div>
+        <div class="flex h-12/14 w-full flex-col items-center justify-around">
+          <div>{{rightFirstKills}}</div>
+          <div>{{rightThrifties}}</div>
+          <div>{{rightAces}}</div>
+          <div>{{rightClutches}}</div>
+          <div>{{rightFlawless}}</div>
+          <div>{{rightWonPostPlants}} / {{leftWonPostPlants + rightWonPostPlants}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Misc -->
+  <div
+    class="bg-timer absolute right-0 m-2 grid h-88/104 w-18/100 grid-rows-7 gap-3 rounded-tr-md p-2"
+  >
+    <!-- Teams -->
+    <div class="absolute h-full w-full">
+      <!-- Scores -->
+      <div class="font-unbounded flex h-full flex-col items-center justify-around">
+        <div class="flex w-full flex-col justify-center gap-2">
+          <div class="w-full text-center text-xl font-semibold text-white">
+            {{TranslateKeys.Breakdown_AverageACS | translate}}
+          </div>
+          <div
+            class="flex w-full flex-row justify-center gap-24 text-center text-xl font-semibold text-white"
+          >
+            <span>{{leftAverageACS}}</span>
+            <span>{{rightAverageACS}}</span>
+          </div>
+        </div>
+        <div class="flex w-full flex-col justify-center gap-2">
+          <div class="w-full text-center text-xl font-semibold text-white">
+            {{TranslateKeys.Breakdown_TotalKills | translate}}
+          </div>
+          <div
+            class="flex w-full flex-row justify-center gap-24 text-center text-xl font-semibold text-white"
+          >
+            <span>{{leftTotalKills}}</span>
+            <span>{{rightTotalKills}}</span>
+          </div>
+        </div>
+        <div class="flex w-full flex-col justify-center gap-2">
+          <div class="w-full text-center text-xl font-semibold text-white">
+            {{TranslateKeys.Breakdown_AverageLoadoutValue | translate}}
+          </div>
+          <div
+            class="flex w-full flex-row justify-center gap-24 text-center text-xl font-semibold text-white"
+          >
+            <span>{{leftAverageLoadoutValue}}</span>
+            <span>{{rightAverageLoadoutValue}}</span>
+          </div>
+        </div>
+        <div class="flex w-full flex-col justify-center gap-2">
+          <div class="w-full text-center text-xl font-semibold text-white">
+            {{TranslateKeys.Breakdown_RetakeSuccessRate | translate}}
+          </div>
+          <div
+            class="flex w-full flex-row justify-center gap-24 text-center text-xl font-semibold text-white"
+          >
+            <span>{{leftRetakeRate}}%</span>
+            <span>{{rightRetakeRate}}%</span>
+          </div>
+        </div>
+        <div class="flex w-full flex-col justify-center gap-2">
+          <div class="w-full text-center text-xl font-semibold text-white">
+            {{TranslateKeys.Breakdown_TradeSuccessRate5s | translate}}
+          </div>
+          <div
+            class="flex w-full flex-row justify-center gap-24 text-center text-xl font-semibold text-white"
+          >
+            <span>{{leftKillTradeRate}}%</span>
+            <span>{{rightKillTradeRate}}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Reasons -->
+  <div class="bg-timer absolute bottom-2 left-2 h-12/100 w-119/120 rounded-b-md">
+    <div class="relative flex h-full w-full flex-col items-center justify-center">
+      <!-- Left -->
+      <div class="flex h-5/11 w-full flex-row items-center justify-around">
+        <img class="vw-36" src="{{leftTeam?.url}}" />
+        @for (round of roundReasonValues(); track $index) { @if (round.winner === 0) {
+        <img class="vh-28 vw-28" src="/assets/roundWinReason/{{round.reason}}.webp" />
+        } @else {
+        <div class="vh-28 vw-28"></div>
+        } }
+      </div>
+      <!-- Numbers -->
+      <div class="flex h-1/11 w-full flex-row items-center justify-around">
+        <div class="vh-36 vw-36"></div>
+        @for (round of roundReasonValues(); track $index) {
+
+        <div class="vh-28 vw-28 font-unbounded text-center text-white italic">{{$index + 1}}</div>
+        }
+      </div>
+      <!-- Right -->
+      <div class="flex h-5/11 w-full flex-row items-center justify-around">
+        <img class="vw-36" src="{{rightTeam?.url}}" />
+        @for (round of roundReasonValues(); track $index) { @if (round.winner === 1) {
+        <img class="vh-28 vw-28" src="/assets/roundWinReason/{{round.reason}}.webp" />
+        } @else {
+        <div class="vh-28 vw-28"></div>
+        } }
+      </div>
+    </div>
+  </div>
+</div>
+}

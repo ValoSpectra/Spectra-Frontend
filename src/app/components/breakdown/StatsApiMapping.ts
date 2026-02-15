@@ -1,6 +1,27 @@
 export type StatsApiAffinity = "eu" | "na" | "latam" | "br" | "ap" | "kr";
 export type StatsApiPlatform = "pc" | "console";
 
+export const StatsApiCeremonies = {
+  Thrifty: "CeremonyThrifty",
+  Clutch: "CeremonyClutch",
+  Ace: "CeremonyAce",
+  Flawless: "CeremonyFlawless",
+  TeamAce: "CeremonyTeamAce",
+  Closer: "CeremonyCloser",
+  Default: "CeremonyDefault",
+} as const;
+
+export type StatsApiCeremony = (typeof StatsApiCeremonies)[keyof typeof StatsApiCeremonies];
+
+export const StatsApiWinReasons = {
+  Defused: "Defuse",
+  Detonated: "Detonate",
+  Kills: "Elimination",
+  Timeout: "",
+} as const;
+
+export type StatsApiWinReason = (typeof StatsApiWinReasons)[keyof typeof StatsApiWinReasons];
+
 export interface StatsApiMatchResponse {
   status: number;
   data: StatsApiMatch;
@@ -146,8 +167,8 @@ export interface StatsApiMatchTeam {
 
 export interface StatsApiMatchRound {
   id: number;
-  result: string;
-  ceremony: string;
+  result: StatsApiWinReason;
+  ceremony: StatsApiCeremony;
   winning_team: string;
   plant: StatsApiMatchRoundPlantDefuse | null;
   defuse: StatsApiMatchRoundPlantDefuse | null;

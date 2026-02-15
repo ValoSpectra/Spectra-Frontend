@@ -26,5 +26,15 @@
   "breakdown.acs": "ACS",
   "breakdown.kda": "K / D / A",
   "breakdown.first_kills": "First Kills",
-  "breakdown.headshot_percentage": "Headshot %"
+  "breakdown.thrifties": "Thrifties",
+  "breakdown.aces": "Aces",
+  "breakdown.clutches": "Clutches",
+  "breakdown.flawless": "Flawless Rounds",
+  "breakdown.post_plants": "Post Plants",
+  "breakdown.headshot_percentage": "Headshot %",
+  "breakdown.average_acs": "Average ACS",
+  "breakdown.total_kills": "Total Kills",
+  "breakdown.average_loadout_value": "Avg Loadout Value",
+  "breakdown.retake_success_rate": "Retake Success",
+  "breakdown.trade_success_rate_5s": "Traded Within 5s"
 }

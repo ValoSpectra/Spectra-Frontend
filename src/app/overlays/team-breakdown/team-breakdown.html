@@ -1,5 +1,9 @@
 @if (leftTeam?.tricode && rightTeam?.tricode) {
-<div class="flex h-screen w-screen flex-row gap-4">
+<div
+  class="flex h-screen w-screen flex-row gap-4"
+  animate.enter="animate-fade-in"
+  animate.leave="animate-fade-out"
+>
   @if (!hideBg) {
   <img class="absolute -z-10" src="/assets/maps/wide/{{statsData?.metadata?.map?.name}}.webp" />
   }
