@@ -22,6 +22,8 @@ import { Subscription } from "rxjs";
 })
 export class TeamBreakdown implements OnInit, OnDestroy {
   protected config = inject(Config);
+  private leftTeamName = "Red";
+  private rightTeamName = "Blue";
 
   protected http = inject(HttpClient);
   protected route = inject(ActivatedRoute);
@@ -99,14 +101,18 @@ export class TeamBreakdown implements OnInit, OnDestroy {
     this.statsData = data;
     this.roundsPlayed = this.statsData.rounds.length;
 
-    this.leftTeam = this.statsData.teams.find((team) => team.team_id === "Red");
-    this.rightTeam = this.statsData.teams.find((team) => team.team_id === "Blue");
+    this.leftTeam = this.statsData.teams.find((team) => team.team_id === this.leftTeamName);
+    this.rightTeam = this.statsData.teams.find((team) => team.team_id === this.rightTeamName);
 
     // Do this here so that when the players get distributed they definitely have the info
     this.calculateFirstKills();
 
-    this.leftPlayers = this.statsData.players.filter((player) => player.team_id === "Red");
-    this.rightPlayers = this.statsData.players.filter((player) => player.team_id === "Blue");
+    this.leftPlayers = this.statsData.players.filter(
+      (player) => player.team_id === this.leftTeamName,
+    );
+    this.rightPlayers = this.statsData.players.filter(
+      (player) => player.team_id === this.rightTeamName,
+    );
 
     this.leftPlayers.forEach((player) => {
       player.stats.acs = Math.round(player.stats.score / (this.roundsPlayed || 1));
