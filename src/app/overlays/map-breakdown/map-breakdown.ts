@@ -22,8 +22,8 @@ import { TranslatePipe } from "@ngx-translate/core";
 })
 export class MapBreakdown implements OnInit, OnDestroy {
   protected config = inject(Config);
-  private leftTeamName = "Red";
-  private rightTeamName = "Blue";
+  private leftTeamName = "Blue";
+  private rightTeamName = "Red";
 
   protected http = inject(HttpClient);
   protected route = inject(ActivatedRoute);
@@ -82,8 +82,9 @@ export class MapBreakdown implements OnInit, OnDestroy {
   ngOnInit() {
     this.routeSubscription = this.route.queryParams.subscribe((params) => {
       this.hideBg = params["hideBg"] === "true" || params["hideBg"] === "1";
-      const groupCode = params["groupCode"];
+      let groupCode = params["groupCode"];
       if (groupCode) {
+        groupCode = groupCode.toUpperCase();
         this.hasReceivedData = false;
         this.stopPolling();
         this.fetchStats(groupCode);
