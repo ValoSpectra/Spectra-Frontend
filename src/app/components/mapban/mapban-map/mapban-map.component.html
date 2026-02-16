@@ -22,7 +22,7 @@
       class="absolute z-3 flex h-full w-full animate-[pulse_3s_infinite] flex-col items-center justify-center"
       [class.invisible]="!isRotating || stage === 'side'"
     >
-      <img class="max-h-15 w-15 rounded-xs" [src]="teams[actingTeam!].url" />
+      <img alt="" class="max-h-15 w-15 rounded-xs" [src]="teams[actingTeam!].url" />
       <p class="font-unbounded text-center text-3xl font-bold text-white">
         {{ stage === "ban" ? "Banning" : "Picking" }}<br />
       </p>
@@ -46,9 +46,9 @@
         @if (map.score[0] != undefined && map.score[1] != undefined) {
           <div class="absolute flex h-full w-full flex-col items-center justify-center">
             @if (map.score[0] > map.score[1]) {
-              <img class="max-h-15 w-15 rounded-xs" [src]="teams[0].url" />
+              <img alt="" class="max-h-15 w-15 rounded-xs" [src]="teams[0].url" />
             } @else if (map.score[0] < map.score[1]) {
-              <img class="max-h-15 w-15 rounded-xs" [src]="teams[1].url" />
+              <img alt="" class="max-h-15 w-15 rounded-xs" [src]="teams[1].url" />
             }
             <p
               class="font-unbounded mb-4 text-center text-4xl font-bold text-white text-shadow-lg/55"
@@ -63,7 +63,7 @@
           </div>
         } @else {
           <div class="absolute flex h-full w-full flex-col items-center justify-center">
-            <img class="max-h-15 w-15 rounded-xs" [src]="teams[map.pickedBy].url" />
+            <img alt="" class="max-h-15 w-15 rounded-xs" [src]="teams[map.pickedBy].url" />
             <p class="font-unbounded text-center text-3xl font-bold text-white text-shadow-lg/55">
               {{ map.name }}
             </p>
@@ -73,9 +73,9 @@
         @if (map.score[0] != undefined && map.score[1] != undefined) {
           <div class="absolute flex h-full w-full flex-col items-center justify-center">
             @if (map.score[0] > map.score[1] && map.score[0] >= 13) {
-              <img class="max-h-15 w-15 rounded-xs" [src]="teams[0].url" />
+              <img alt="" class="max-h-15 w-15 rounded-xs" [src]="teams[0].url" />
             } @else if (map.score[0] < map.score[1] && map.score[1] >= 13) {
-              <img class="max-h-15 w-15 rounded-xs" [src]="teams[1].url" />
+              <img alt="" class="max-h-15 w-15 rounded-xs" [src]="teams[1].url" />
             }
             <p
               class="font-unbounded mb-4 text-center text-4xl font-bold text-white text-shadow-lg/55"

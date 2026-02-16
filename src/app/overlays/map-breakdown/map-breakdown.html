@@ -15,7 +15,7 @@
     <div class="absolute h-15/20 w-full">
       <div class="flex h-8/20 w-full flex-row">
         <div class="flex h-full w-1/2 flex-col items-center justify-center gap-2">
-          <img class="w-2/3" src="{{leftTeam?.url}}" />
+          <img alt="" class="w-2/3" src="{{leftTeam?.url}}" />
           <span class="font-unbounded text-2xl font-bold text-white">{{leftTeam?.tricode}}</span>
         </div>
         <div class="flex h-full w-1/2 flex-col items-center justify-center gap-2">
@@ -149,7 +149,7 @@
     <div class="relative flex h-full w-full flex-col items-center justify-center">
       <!-- Left -->
       <div class="flex h-5/11 w-full flex-row items-center justify-around">
-        <img class="vw-36" src="{{leftTeam?.url}}" />
+        <img alt="" class="vw-36" src="{{leftTeam?.url}}" />
         @for (round of roundReasonValues(); track $index) { @if (round.winner === 0) {
         <img class="vh-28 vw-28" src="/assets/roundWinReason/{{round.reason}}.webp" />
         } @else {
@@ -166,7 +166,7 @@
       </div>
       <!-- Right -->
       <div class="flex h-5/11 w-full flex-row items-center justify-around">
-        <img class="vw-36" src="{{rightTeam?.url}}" />
+        <img alt="" class="vw-36" src="{{rightTeam?.url}}" />
         @for (round of roundReasonValues(); track $index) { @if (round.winner === 1) {
         <img class="vh-28 vw-28" src="/assets/roundWinReason/{{round.reason}}.webp" />
         } @else {

@@ -35,7 +35,7 @@
                     class="killbox-gradient flex h-7 w-13 flex-row items-center gap-1 rounded-tr-2xl pl-2"
                     [class]="leftTeam().isAttacking ? 'attacker' : 'defender'"
                   >
-                    <img class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
+                    <img alt="" class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
                     <p class="font-montserrat text-lg font-semibold text-white">
                       {{ lPlayer.killsThisRound }}
                     </p>
@@ -163,7 +163,7 @@
                     class="killbox-gradient flex h-7 w-13 flex-row-reverse items-center gap-1 self-end rounded-tl-2xl pr-2"
                     [class]="rightTeam().isAttacking ? 'attacker' : 'defender'"
                   >
-                    <img class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
+                    <img alt="" class="aspect-square h-8/10" src="assets/misc/crosshair.svg" />
                     <p class="font-montserrat text-lg font-semibold text-white">
                       {{ rPlayer.killsThisRound }}
                     </p>

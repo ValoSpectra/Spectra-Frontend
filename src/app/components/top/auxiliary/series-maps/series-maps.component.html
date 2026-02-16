@@ -7,18 +7,26 @@
         @switch (mapInfo.type) {
           @case ("past") {
             <p>{{ mapInfo.map }}</p>
-            <img [src]="mapInfo.left.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+            <img
+              alt=""
+              [src]="mapInfo.left.logo"
+              class="max-h-5 max-w-5 px-1 py-0.5 align-middle"
+            />
             <p>{{ mapInfo.left.score }} - {{ mapInfo.right.score }}</p>
-            <img [src]="mapInfo.right.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+            <img
+              alt=""
+              [src]="mapInfo.right.logo"
+              class="max-h-5 max-w-5 px-1 py-0.5 align-middle"
+            />
           }
           @case ("present") {
             {{ TranslateKeys.Mapinfo_Live | translate: { map: dataModel.match().map } }}
-            <img [src]="mapInfo.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+            <img alt="" [src]="mapInfo.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
           }
           @case ("future") {
             @if (mapInfo.logo !== "") {
               {{ TranslateKeys.Mapinfo_Next | translate: { map: mapInfo.map } }}
-              <img [src]="mapInfo.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
+              <img alt="" [src]="mapInfo.logo" class="max-h-5 max-w-5 px-1 py-0.5 align-middle" />
             } @else {
               {{ TranslateKeys.Mapinfo_Decider | translate: { map: mapInfo.map } }}
             }

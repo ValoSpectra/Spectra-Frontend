@@ -8,7 +8,11 @@
     />
     <div class="flex h-full w-1/2 flex-col items-start justify-end px-2">
       <div class="flex flex-row items-center gap-2">
-        <img class="vh-18 vw-18" src="/assets/roles/{{ getAgentRole(agentInternalName) }}.webp" />
+        <img
+          alt=""
+          class="vh-18 vw-18"
+          src="/assets/roles/{{ getAgentRole(agentInternalName) }}.webp"
+        />
         <span class="text-md font-bold text-white">{{player.agent.name}}</span>
       </div>
       <span class="text-lg font-bold text-white">{{player.name}}</span>
@@ -18,7 +22,11 @@
   <div class="col-span-1 flex h-full w-full flex-col">
     <div class="h-1/2">
       <div class="flex h-full flex-row content-center items-center justify-center gap-2">
-        <img class="vh-48 vw-48" src="/assets/ultimates/{{agentInternalName}}Ultimate.webp" />
+        <img
+          alt=""
+          class="vh-48 vw-48"
+          src="/assets/ultimates/{{agentInternalName}}Ultimate.webp"
+        />
         <span class="font-unbounded text-3xl font-bold text-white"
           >{{player.ability_casts.ultimate}}</span
         >
@@ -26,15 +34,15 @@
     </div>
     <div class="flex h-1/2 flex-row" [style.direction]="'ltr'">
       <div class="flex h-full w-full flex-col content-center items-center justify-center gap-1">
-        <img class="vh-32 vw-32" src="/assets/grenades/{{agentInternalName}}Grenade.webp" />
+        <img alt="" class="vh-32 vw-32" src="/assets/grenades/{{agentInternalName}}Grenade.webp" />
         <span class="font-montserrat text-xl text-white">{{player.ability_casts.grenade}}</span>
       </div>
       <div class="flex h-full w-full flex-col content-center items-center justify-center gap-1">
-        <img class="vh-32 vw-32" src="/assets/ability1/{{agentInternalName}}Ability1.webp" />
+        <img alt="" class="vh-32 vw-32" src="/assets/ability1/{{agentInternalName}}Ability1.webp" />
         <span class="font-montserrat text-xl text-white">{{player.ability_casts.ability1}}</span>
       </div>
       <div class="flex h-full w-full flex-col content-center items-center justify-center gap-1">
-        <img class="vh-32 vw-32" src="/assets/ability2/{{agentInternalName}}Ability2.webp" />
+        <img alt="" class="vh-32 vw-32" src="/assets/ability2/{{agentInternalName}}Ability2.webp" />
         <span class="font-montserrat text-xl text-white">{{player.ability_casts.ability2}}</span>
       </div>
     </div>
