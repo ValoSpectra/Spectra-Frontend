@@ -28,7 +28,7 @@
       />
       <img alt="" class="max-h-6/10" [src]="tournamentIconUrl()" (load)="preload = false" />
       <p class="font-unbounded text-3xl font-bold text-white uppercase">
-        {{ TranslateKeys.Endround_RoundWin | translate }}
+        {{ roundWonType() | translate }}
       </p>
       <img
         class="absolute right-8 max-h-1/2 opacity-20 grayscale-100"

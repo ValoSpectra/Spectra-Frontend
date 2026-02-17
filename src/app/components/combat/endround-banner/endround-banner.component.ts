@@ -22,6 +22,37 @@ export class EndroundBannerComponent {
 
   TranslateKeys = TranslateKeys;
 
+  roundWonType = computed(() => {
+    const wonTeam = this.dataModel.match().teams[this.teamWon()];
+
+    let ace = false;
+    let clutch = false;
+    let flawless = true;
+    let teamAce = true;
+    // Todo: implement Thrifty round ceremonies when data gets available by Overwolf
+    const thrifty = false;
+
+    for (const player of wonTeam.players) {
+      if (new Set(player.killedPlayerNames).size >= 5) {
+        ace = true;
+        break;
+      }
+      if (player.isAlive && !clutch) clutch = true;
+      else if (player.isAlive && clutch) {
+        clutch = false;
+      }
+      if (player.deathsThisRound >= 1) flawless = false;
+      if (!(player.killsThisRound >= 1)) teamAce = false;
+    }
+
+    if (ace) return TranslateKeys.Endround_RoundAce;
+    else if (clutch) return TranslateKeys.Endround_RoundClutch;
+    else if (teamAce) return TranslateKeys.Endround_RoundTeamAce;
+    else if (flawless) return TranslateKeys.Endround_RoundFlawless;
+    else if (thrifty) return TranslateKeys.Endround_RoundThrifty;
+    else return TranslateKeys.Endround_RoundWin;
+  });
+
   tournamentBackgroundUrl = computed(() => {
     const backdrop = this.dataModel.tournamentInfo().backdropUrl;
     if (backdrop && backdrop !== "") return backdrop;
