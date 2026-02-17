@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject } from "@angular/core";
+import { Component, computed, effect, inject, signal, WritableSignal } from "@angular/core";
 import { TranslatePipe } from "@ngx-translate/core";
 import { TranslateKeys } from "../../../services/i18nHelper";
 import { DataModelService } from "../../../services/dataModel.service";
@@ -22,8 +22,11 @@ export class EndroundBannerComponent {
 
   TranslateKeys = TranslateKeys;
 
-  roundWonType = computed(() => {
+  roundWonType: WritableSignal<TranslateKeys> = signal(TranslateKeys.Endround_RoundWin);
+
+  private calculateRoundWonType(): TranslateKeys {
     const wonTeam = this.dataModel.match().teams[this.teamWon()];
+    let aliveCount = 0;
 
     let ace = false;
     let clutch = false;
@@ -37,13 +40,11 @@ export class EndroundBannerComponent {
         ace = true;
         break;
       }
-      if (player.isAlive && !clutch) clutch = true;
-      else if (player.isAlive && clutch) {
-        clutch = false;
-      }
+      if (player.isAlive) aliveCount++;
       if (player.deathsThisRound >= 1) flawless = false;
       if (!(player.killsThisRound >= 1)) teamAce = false;
     }
+    if (aliveCount == 1) clutch = true;
 
     if (ace) return TranslateKeys.Endround_RoundAce;
     else if (clutch) return TranslateKeys.Endround_RoundClutch;
@@ -51,7 +52,7 @@ export class EndroundBannerComponent {
     else if (flawless) return TranslateKeys.Endround_RoundFlawless;
     else if (thrifty) return TranslateKeys.Endround_RoundThrifty;
     else return TranslateKeys.Endround_RoundWin;
-  });
+  }
 
   tournamentBackgroundUrl = computed(() => {
     const backdrop = this.dataModel.tournamentInfo().backdropUrl;
@@ -89,16 +90,21 @@ export class EndroundBannerComponent {
   ref = effect(() => {
     const roundPhase = this.dataModel.match().roundPhase;
     const roundNumber = this.dataModel.match().roundNumber;
+
     if (roundPhase === "end") {
       if (roundNumber === this.lastInRoundNumber) return;
       this.lastInRoundNumber = roundNumber;
 
-      this.runAnimation = true;
-      this.hide = false;
-      this.animateOut = false;
       setTimeout(() => {
-        this.runAnimation = false;
-      }, 2600);
+        this.roundWonType.set(this.calculateRoundWonType());
+
+        this.runAnimation = true;
+        this.hide = false;
+        this.animateOut = false;
+        setTimeout(() => {
+          this.runAnimation = false;
+        }, 2600);
+      }, 200);
     } else if (roundPhase === "shopping") {
       if (roundNumber === this.lastOutRoundNumber) return;
       this.lastOutRoundNumber = roundNumber;
