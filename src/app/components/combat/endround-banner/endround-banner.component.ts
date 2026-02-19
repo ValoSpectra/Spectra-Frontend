@@ -26,6 +26,7 @@ export class EndroundBannerComponent {
 
   private calculateRoundWonType(): TranslateKeys {
     const wonTeam = this.dataModel.match().teams[this.teamWon()];
+    const lostTeam = this.dataModel.match().teams[this.teamWon() === 0 ? 1 : 0];
     let aliveCount = 0;
 
     let ace = false;
@@ -35,6 +36,9 @@ export class EndroundBannerComponent {
     // Todo: implement Thrifty round ceremonies when data gets available by Overwolf
     const thrifty = false;
 
+    lostTeam.players.forEach((player) => {
+      if (player.isAlive) flawless = false;
+    });
     for (const player of wonTeam.players) {
       if (new Set(player.killedPlayerNames).size >= 5) {
         ace = true;
