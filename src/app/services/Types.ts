@@ -54,6 +54,8 @@ export interface IPlayerData {
   deaths: number;
   assists: number;
   killsThisRound: number;
+  deathsThisRound: number;
+  killedPlayerNames: number[];
   health: number;
   abilities: {
     grenade: number;

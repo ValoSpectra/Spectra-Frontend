@@ -126,7 +126,7 @@ export class DataModelService {
 }
 
 //setting up with empty match state so certain ui parts dont complain
-const initialMatchData: IMatchData = {
+export const initialMatchData: IMatchData = {
   groupCode: "A",
   isRanked: false,
   isRunning: true,
