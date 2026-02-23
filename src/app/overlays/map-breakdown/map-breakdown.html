@@ -56,13 +56,36 @@
             >{{ TranslateKeys.Watermark_Text | translate }}</span
           >
         </div>
-        <div class="flex h-12/14 w-full flex-col items-center justify-around">
-          <div>{{TranslateKeys.Breakdown_FirstKills | translate}}</div>
-          <div>{{TranslateKeys.Breakdown_Thrifties | translate}}</div>
-          <div>{{TranslateKeys.Breakdown_Aces | translate}}</div>
-          <div>{{TranslateKeys.Breakdown_Clutches | translate}}</div>
-          <div>{{TranslateKeys.Breakdown_Flawless | translate}}</div>
-          <div>{{TranslateKeys.Breakdown_PostPlants | translate}}</div>
+        <div class="flex h-12/14 w-full flex-col items-center justify-around text-sm">
+          <div class="vh-100 flex flex-col items-center justify-center">
+            {{TranslateKeys.Breakdown_FirstKills | translate}}
+            <img class="vw-64 vh-64" src="/assets/breakdowns/skullFirstBlood.webp" />
+          </div>
+
+          <div class="vh-100 flex flex-col items-center justify-center">
+            {{TranslateKeys.Breakdown_Thrifties | translate}}
+            <img class="vw-64 vh-64" src="/assets/breakdowns/thrifty.webp" />
+          </div>
+
+          <div class="vh-100 flex flex-col items-center justify-center">
+            {{TranslateKeys.Breakdown_Aces | translate}}
+            <img class="vw-64 vh-64" src="/assets/breakdowns/skullAceCrown.webp" />
+          </div>
+
+          <div class="vh-100 flex flex-col items-center justify-center">
+            {{TranslateKeys.Breakdown_Clutches | translate}}
+            <img class="vw-64 vh-64" src="/assets/breakdowns/clutch.webp" />
+          </div>
+
+          <div class="vh-100 flex flex-col items-center justify-center">
+            {{TranslateKeys.Breakdown_Flawless | translate}}
+            <img class="vw-64 vh-64" src="/assets/breakdowns/flawless.webp" />
+          </div>
+
+          <div class="vh-100 flex flex-col items-center justify-center">
+            {{TranslateKeys.Breakdown_PostPlants | translate}}
+            <img class="vw-64 vh-64" src="/assets/misc/Spike_Icon.svg" />
+          </div>
         </div>
       </div>
       <div class="font-unbounded flex h-full w-4/10 flex-col gap-12 text-3xl font-bold text-white">
