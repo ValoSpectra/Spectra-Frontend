@@ -36,6 +36,8 @@ export class CombatPlayerListComponent {
 
       if (aliveLeft === 1 && aliveRight === 1) {
         this.oneVersusOneTriggered.set(true);
+      } else {
+        this.oneVersusOneTriggered.set(false);
       }
     });
   }
