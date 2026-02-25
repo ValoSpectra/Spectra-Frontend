@@ -1,8 +1,9 @@
-import { Component, computed, effect, inject, OnInit, signal } from "@angular/core";
+import { Component, computed, inject, OnInit } from "@angular/core";
 import { SafeResourceUrl } from "@angular/platform-browser";
 import { DataModelService } from "../../../services/dataModel.service";
 import { DisplayNameService } from "../../../services/displayName.service";
 import { PlayercamStreamService } from "../../../services/playercamStream.service";
+import { OneVersusOneService } from "../../../services/1v1.service";
 
 @Component({
   selector: "app-playercams",
@@ -13,34 +14,10 @@ import { PlayercamStreamService } from "../../../services/playercamStream.servic
 export class PlayercamsComponent implements OnInit {
   readonly dataModel = inject(DataModelService);
   readonly streamService = inject(PlayercamStreamService);
+  readonly oneVsOneService = inject(OneVersusOneService);
   getDisplayName = inject(DisplayNameService).getDisplayName;
 
-  private lastRoundNumber = signal<number>(-1);
-  private oneVersusOneTriggered = signal<boolean>(false);
-
-  constructor() {
-    // track round changes and 1v1 state
-    effect(() => {
-      const currentRound = this.dataModel.match().roundNumber;
-      const previousRound = this.lastRoundNumber();
-
-      if (currentRound !== previousRound) {
-        this.oneVersusOneTriggered.set(false);
-        this.lastRoundNumber.set(currentRound);
-      }
-
-      // check if 1v1
-      const teams = this.dataModel.teams();
-      const aliveLeft = teams[0].players.filter((p: any) => p.isAlive).length;
-      const aliveRight = teams[1].players.filter((p: any) => p.isAlive).length;
-
-      if (aliveLeft === 1 && aliveRight === 1) {
-        this.oneVersusOneTriggered.set(true);
-      }
-    });
-  }
-
-  isOneVersusOne = computed(() => this.oneVersusOneTriggered());
+  isOneVersusOne = computed(() => this.oneVsOneService.isOneVersusOne());
 
   enabledPlayers = computed(() => {
     let toReturn = this.dataModel.playercamsInfo().enabledPlayers;

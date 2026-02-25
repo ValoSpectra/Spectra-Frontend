@@ -1,9 +1,10 @@
-import { Component, computed, effect, inject, OnInit, signal } from "@angular/core";
+import { Component, computed, inject, OnInit } from "@angular/core";
 import { SafeResourceUrl } from "@angular/platform-browser";
 import { DataModelService } from "../../../services/dataModel.service";
 import { PlayerCombatCardComponent } from "../player-combat-card/player-combat-card.component";
 import { DisplayNameService } from "../../../services/displayName.service";
 import { PlayercamStreamService } from "../../../services/playercamStream.service";
+import { OneVersusOneService } from "../../../services/1v1.service";
 
 @Component({
   selector: "app-1v1",
@@ -15,74 +16,15 @@ export class OneVersusOneComponent implements OnInit {
   dataModel = inject(DataModelService);
   getDisplayName = inject(DisplayNameService).getDisplayName;
   readonly streamService = inject(PlayercamStreamService);
+  readonly oneVsOneService = inject(OneVersusOneService);
 
-  private lastRoundNumber = signal<number>(-1);
-  private oneVersusOneTriggered = signal<boolean>(false);
-  private storedLeftPlayer = signal<any>(null);
-  private storedRightPlayer = signal<any>(null);
-  private storedLeftPlayerIndex = signal<number>(2);
-  private storedRightPlayerIndex = signal<number>(2);
-
-  constructor() {
-    effect(() => {
-      const currentRound = this.dataModel.match().roundNumber;
-      const previousRound = this.lastRoundNumber();
-
-      if (currentRound !== previousRound) {
-        this.oneVersusOneTriggered.set(false);
-        this.storedLeftPlayer.set(null);
-        this.storedRightPlayer.set(null);
-        this.storedLeftPlayerIndex.set(2);
-        this.storedRightPlayerIndex.set(2);
-        this.lastRoundNumber.set(currentRound);
-      }
-
-      const teams = this.dataModel.teams();
-      const aliveLeft = teams[0].players.filter((p: any) => p.isAlive).length;
-      const aliveRight = teams[1].players.filter((p: any) => p.isAlive).length;
-
-      if (aliveLeft === 1 && aliveRight === 1) {
-        this.oneVersusOneTriggered.set(true);
-        const leftPlayerIndex = teams[0].players.findIndex((p: any) => p.isAlive);
-        const rightPlayerIndex = teams[1].players.findIndex((p: any) => p.isAlive);
-        const leftPlayer = teams[0].players[leftPlayerIndex];
-        const rightPlayer = teams[1].players[rightPlayerIndex];
-        if (leftPlayer) {
-          this.storedLeftPlayer.set(leftPlayer);
-          this.storedLeftPlayerIndex.set(leftPlayerIndex);
-        }
-        if (rightPlayer) {
-          this.storedRightPlayer.set(rightPlayer);
-          this.storedRightPlayerIndex.set(rightPlayerIndex);
-        }
-      }
-      if (this.oneVersusOneTriggered() && (aliveLeft >= 2 || aliveRight >= 2)) {
-        this.oneVersusOneTriggered.set(false);
-      }
-    });
-  }
-
-  isOneVersusOne = computed(() => this.oneVersusOneTriggered());
-
-  leftPlayer = computed(() => {
-    if (this.isOneVersusOne()) {
-      const index = this.storedLeftPlayerIndex();
-      return this.dataModel.teams()[0]?.players[index] || null;
-    }
-    return this.dataModel.teams()[0]?.players.find((p: any) => p.isAlive) || null;
-  });
-
-  rightPlayer = computed(() => {
-    if (this.isOneVersusOne()) {
-      const index = this.storedRightPlayerIndex();
-      return this.dataModel.teams()[1]?.players[index] || null;
-    }
-    return this.dataModel.teams()[1]?.players.find((p: any) => p.isAlive) || null;
-  });
+  isOneVersusOne = computed(() => this.oneVsOneService.isOneVersusOne());
+  leftPlayer = computed(() => this.oneVsOneService.leftPlayer());
+  rightPlayer = computed(() => this.oneVsOneService.rightPlayer());
 
   // Get animation class based on player position
   leftPlayerAnimationClass = computed(() => {
-    const index = this.storedLeftPlayerIndex();
+    const index = this.oneVsOneService.leftPlayerIndex();
     if (index === 0) {
       return "animate-1v1-stay";
     }
@@ -90,7 +32,7 @@ export class OneVersusOneComponent implements OnInit {
   });
 
   rightPlayerAnimationClass = computed(() => {
-    const index = this.storedRightPlayerIndex();
+    const index = this.oneVsOneService.rightPlayerIndex();
     if (index === 0) {
       return "animate-1v1-stay";
     }
