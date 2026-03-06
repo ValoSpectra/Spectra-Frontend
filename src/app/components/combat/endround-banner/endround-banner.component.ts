@@ -24,38 +24,59 @@ export class EndroundBannerComponent {
 
   roundWonType: WritableSignal<TranslateKeys> = signal(TranslateKeys.Endround_RoundWin);
 
+  clutchTeamOne = -1;
+  clutchTeamTwo = -1;
+  clutch: number[] = [-1, -1];
+
+  private calculateClutch(): void {
+    const teamOne = this.dataModel.match().teams[0];
+    const teamTwo = this.dataModel.match().teams[1];
+
+    const aliveCountTeamOne = teamOne.players.filter((player) => player.isAlive).length;
+    const aliveCountTeamTwo = teamTwo.players.filter((player) => player.isAlive).length;
+
+    if (aliveCountTeamOne < 1 || aliveCountTeamOne >= 2) this.clutch[0] = 0;
+    if (aliveCountTeamTwo < 1 || aliveCountTeamTwo >= 2) this.clutch[1] = 0;
+
+    if ((aliveCountTeamOne == 1 && aliveCountTeamTwo >= 2) || this.clutch[0] == 1)
+      this.clutch[0] = 1;
+    if ((aliveCountTeamTwo == 1 && aliveCountTeamOne >= 2) || this.clutch[1] == 1)
+      this.clutch[1] = 1;
+  }
+
   private calculateRoundWonType(): TranslateKeys {
     const wonTeam = this.dataModel.match().teams[this.teamWon()];
     const lostTeam = this.dataModel.match().teams[this.teamWon() === 0 ? 1 : 0];
-    let aliveCount = 0;
 
     let ace = false;
-    let clutch = false;
     let flawless = true;
     let teamAce = true;
     // Todo: implement Thrifty round ceremonies when data gets available by Overwolf
     const thrifty = false;
 
+    const lostTeamPlayerNames = new Set(lostTeam.players.map((player) => player.name));
+
     lostTeam.players.forEach((player) => {
       if (player.isAlive) flawless = false;
     });
     for (const player of wonTeam.players) {
-      if (new Set(player.killedPlayerNames).size >= 5) {
+      const killsFromLostTeam = player.killedPlayerNames.filter((playerName) =>
+        lostTeamPlayerNames.has(playerName),
+      );
+      if (new Set(killsFromLostTeam).size >= 5) {
         ace = true;
         break;
       }
-      if (player.isAlive) aliveCount++;
       if (player.deathsThisRound >= 1) flawless = false;
       if (!(player.killsThisRound >= 1)) teamAce = false;
     }
-    if (aliveCount == 1) clutch = true;
 
     if (ace) return TranslateKeys.Endround_RoundAce;
-    else if (clutch) return TranslateKeys.Endround_RoundClutch;
-    else if (teamAce) return TranslateKeys.Endround_RoundTeamAce;
-    else if (flawless) return TranslateKeys.Endround_RoundFlawless;
-    else if (thrifty) return TranslateKeys.Endround_RoundThrifty;
-    else return TranslateKeys.Endround_RoundWin;
+    if (this.clutch[this.teamWon()]) return TranslateKeys.Endround_RoundClutch;
+    if (teamAce) return TranslateKeys.Endround_RoundTeamAce;
+    if (flawless) return TranslateKeys.Endround_RoundFlawless;
+    if (thrifty) return TranslateKeys.Endround_RoundThrifty;
+    return TranslateKeys.Endround_RoundWin;
   }
 
   tournamentBackgroundUrl = computed(() => {
@@ -95,6 +116,8 @@ export class EndroundBannerComponent {
     const roundPhase = this.dataModel.match().roundPhase;
     const roundNumber = this.dataModel.match().roundNumber;
 
+    this.calculateClutch();
+
     if (roundPhase === "end") {
       if (roundNumber === this.lastInRoundNumber) return;
       this.lastInRoundNumber = roundNumber;
@@ -107,6 +130,9 @@ export class EndroundBannerComponent {
         this.animateOut = false;
         setTimeout(() => {
           this.runAnimation = false;
+
+          this.clutchTeamOne = -1;
+          this.clutchTeamTwo = -1;
         }, 2600);
       }, 200);
     } else if (roundPhase === "shopping") {
