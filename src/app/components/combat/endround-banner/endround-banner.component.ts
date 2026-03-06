@@ -24,8 +24,6 @@ export class EndroundBannerComponent {
 
   roundWonType: WritableSignal<TranslateKeys> = signal(TranslateKeys.Endround_RoundWin);
 
-  clutchTeamOne = -1;
-  clutchTeamTwo = -1;
   clutch: number[] = [-1, -1];
 
   private calculateClutch(): void {
@@ -131,8 +129,7 @@ export class EndroundBannerComponent {
         setTimeout(() => {
           this.runAnimation = false;
 
-          this.clutchTeamOne = -1;
-          this.clutchTeamTwo = -1;
+          this.clutch = [-1, -1];
         }, 2600);
       }, 200);
     } else if (roundPhase === "shopping") {
