@@ -129,24 +129,38 @@ export class MapBreakdown implements OnInit, OnDestroy {
 
         this.hasReceivedData = true;
         this.stopPolling();
-        this.processStatsData(response.data, groupCode);
+        this.processStatsDataIncoming(response.data, groupCode);
       });
   }
 
-  processStatsData(data: StatsApiMatch, groupCode: string) {
+  processStatsDataIncoming(data: StatsApiMatch, groupCode: string) {
     this.statsData = data;
     this.roundsPlayed = this.statsData.rounds.length;
 
-    this.leftTeam = this.statsData.teams.find((team) => team.team_id === this.leftTeamName);
-    this.rightTeam = this.statsData.teams.find((team) => team.team_id === this.rightTeamName);
+    this.http
+      .get<{ leftTeam: AuthTeam; rightTeam: AuthTeam; higherScore: 0 | 1 }>(
+        `${this.config.extrasEndpoint}/getTeamInfoForCode`,
+        {
+          params: { groupCode },
+        },
+      )
+      .subscribe((data: { leftTeam: AuthTeam; rightTeam: AuthTeam; higherScore: 0 | 1 }) => {
+        this.processTeamInfo(data);
+        this.processStatsDataFully();
+      });
+  }
+
+  processStatsDataFully() {
+    this.leftTeam = this.statsData!.teams.find((team) => team.team_id === this.leftTeamName);
+    this.rightTeam = this.statsData!.teams.find((team) => team.team_id === this.rightTeamName);
 
     // Do this here so that when the players get distributed they definitely have the info
     this.calculateFirstKills();
 
-    this.leftPlayers = this.statsData.players.filter(
+    this.leftPlayers = this.statsData!.players.filter(
       (player) => player.team_id === this.leftTeamName,
     );
-    this.rightPlayers = this.statsData.players.filter(
+    this.rightPlayers = this.statsData!.players.filter(
       (player) => player.team_id === this.rightTeamName,
     );
 
@@ -196,7 +210,7 @@ export class MapBreakdown implements OnInit, OnDestroy {
     let leftRetakeSuccesses = 0;
     let rightRetakeSuccesses = 0;
 
-    this.statsData.rounds.forEach((round) => {
+    this.statsData!.rounds.forEach((round) => {
       if (round.plant != null) {
         if (round.plant.player.team === this.rightTeamName) {
           leftRetakeOpportunities++;
@@ -290,17 +304,6 @@ export class MapBreakdown implements OnInit, OnDestroy {
     this.rightRetakeRate = Math.round(
       (rightRetakeSuccesses / (rightRetakeOpportunities || 1)) * 100,
     );
-
-    this.http
-      .get<{ leftTeam: AuthTeam; rightTeam: AuthTeam }>(
-        `${this.config.extrasEndpoint}/getTeamInfoForCode`,
-        {
-          params: { groupCode },
-        },
-      )
-      .subscribe((data: { leftTeam: AuthTeam; rightTeam: AuthTeam }) => {
-        this.processTeamInfo(data);
-      });
   }
 
   calculateFirstKills() {
@@ -390,7 +393,7 @@ export class MapBreakdown implements OnInit, OnDestroy {
     this.rightKillTradeRate = Math.round((rightTradedKills / (rightEligibleKills || 1)) * 100);
   }
 
-  processTeamInfo(teamInfo: { leftTeam: AuthTeam; rightTeam: AuthTeam }) {
+  processTeamInfo(teamInfo: { leftTeam: AuthTeam; rightTeam: AuthTeam; higherScore: 0 | 1 }) {
     this.leftTeam = {
       ...this.leftTeam!,
       name: teamInfo.leftTeam.name,
@@ -403,6 +406,16 @@ export class MapBreakdown implements OnInit, OnDestroy {
       tricode: teamInfo.rightTeam.tricode,
       url: teamInfo.rightTeam.url,
     };
+
+    const leftWon = teamInfo.higherScore === 0 ? true : false;
+    const winningTeam = this.statsData!.teams.find((team) => team.won === true);
+    if (leftWon) {
+      this.leftTeamName = winningTeam?.team_id || "Red";
+      this.rightTeamName = winningTeam?.team_id === "Red" ? "Blue" : "Red";
+    } else {
+      this.rightTeamName = winningTeam?.team_id || "Red";
+      this.leftTeamName = winningTeam?.team_id === "Red" ? "Blue" : "Red";
+    }
   }
 
   numSequence(n: number): number[] {
