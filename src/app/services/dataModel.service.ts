@@ -109,6 +109,7 @@ export class DataModelService {
   public readonly playercamsInfo = computed(() => this.match().tools.playercamsInfo, {
     equal: () => false,
   });
+  public readonly roundWinBoxSponsors = computed(() => this.match().tools.roundWinBoxSponsors);
 
   public readonly mapban = signal<IMapbanSessionData>(initialMapbanData, { equal: () => false });
 
@@ -190,6 +191,7 @@ export const initialMatchData: IMatchData = {
     },
     playercamsInfo: { enable: false },
     nameOverrides: { overrides: [] },
+    roundWinBoxSponsors: [],
   },
   timeoutState: {
     techPause: false,

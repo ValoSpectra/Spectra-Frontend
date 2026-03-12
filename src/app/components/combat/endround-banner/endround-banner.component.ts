@@ -1,7 +1,8 @@
-import { Component, computed, effect, inject, signal, WritableSignal } from "@angular/core";
+import { Component, computed, effect, inject, Signal, signal, WritableSignal } from "@angular/core";
 import { TranslatePipe } from "@ngx-translate/core";
 import { TranslateKeys } from "../../../services/i18nHelper";
 import { DataModelService } from "../../../services/dataModel.service";
+import { IRoundWinBoxSponsors } from "../../../services/Types";
 
 @Component({
   selector: "app-endround",
@@ -25,6 +26,8 @@ export class EndroundBannerComponent {
   roundWonType: WritableSignal<TranslateKeys> = signal(TranslateKeys.Endround_RoundWin);
 
   clutch: number[] = [-1, -1];
+
+  roundWonSponsor: Signal<IRoundWinBoxSponsors> = computed(() => this.calculateSponsor());
 
   private calculateClutch(): void {
     const teamOne = this.dataModel.match().teams[0];
@@ -77,15 +80,58 @@ export class EndroundBannerComponent {
     return TranslateKeys.Endround_RoundWin;
   }
 
-  tournamentBackgroundUrl = computed(() => {
-    const backdrop = this.dataModel.tournamentInfo().backdropUrl;
-    if (backdrop && backdrop !== "") return backdrop;
+  private calculateSponsor(): IRoundWinBoxSponsors {
+    const sponsors = this.dataModel.roundWinBoxSponsors();
+    const teamwon = this.teamWon();
+    const roundWonType = this.roundWonType();
+
+    const initialSponsor: IRoundWinBoxSponsors = {
+      wonTeam: "all",
+      roundCeremonie: "all",
+      iconUrl: "",
+      backdropUrl: "",
+    };
+
+    if (sponsors.length == 0) return initialSponsor;
+
+    let sponsor: IRoundWinBoxSponsors = sponsors[0];
+
+    for (const spons of sponsors) {
+      if (
+        spons.wonTeam == "all" ||
+        (spons.wonTeam == "left" && teamwon == 0) ||
+        (spons.wonTeam == "right" && teamwon == 1)
+      ) {
+        if (
+          spons.roundCeremonie == "all" ||
+          (spons.roundCeremonie == "normal" && roundWonType == TranslateKeys.Endround_RoundAce) ||
+          (spons.roundCeremonie == "ace" && roundWonType == TranslateKeys.Endround_RoundAce) ||
+          (spons.roundCeremonie == "clutch" && roundWonType == TranslateKeys.Endround_RoundAce) ||
+          (spons.roundCeremonie == "teamAce" && roundWonType == TranslateKeys.Endround_RoundAce) ||
+          (spons.roundCeremonie == "flawless" && roundWonType == TranslateKeys.Endround_RoundAce) ||
+          (spons.roundCeremonie == "thrifty" && roundWonType == TranslateKeys.Endround_RoundAce)
+        ) {
+          sponsor = spons;
+          break;
+        }
+      }
+    }
+    return sponsor;
+  }
+
+  bannerBackgroundUrl = computed(() => {
+    const backdropSponsor = this.roundWonSponsor().backdropUrl;
+    const backdropTournament = this.dataModel.tournamentInfo().backdropUrl;
+    if (backdropSponsor && backdropSponsor !== "") return backdropSponsor;
+    if (backdropTournament && backdropTournament !== "") return backdropTournament;
     else return false;
   });
 
-  tournamentIconUrl = computed(() => {
-    const logo = this.dataModel.tournamentInfo().logoUrl;
-    if (logo && logo !== "") return logo;
+  bannerTopIconUrl = computed(() => {
+    const logoSponsor = this.roundWonSponsor().iconUrl;
+    const logoTournament = this.dataModel.tournamentInfo().logoUrl;
+    if (logoSponsor && logoSponsor !== "") return logoSponsor;
+    if (logoTournament && logoTournament !== "") return logoTournament;
     else return "assets/misc/logo.webp";
   });
 
