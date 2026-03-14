@@ -86,7 +86,10 @@ export class TestingAgentSelectComponent implements OnInit {
         nameOverrides: {
           overrides: [],
         },
-        roundWinBoxSponsors: [],
+        roundWinBox: {
+          type: "tournamentInfo",
+          sponsors: [],
+        },
       },
       timeoutState: {
         techPause: false,

@@ -2,7 +2,7 @@ import { Component, computed, effect, inject, Signal, signal, WritableSignal } f
 import { TranslatePipe } from "@ngx-translate/core";
 import { TranslateKeys } from "../../../services/i18nHelper";
 import { DataModelService } from "../../../services/dataModel.service";
-import { IRoundWinBoxSponsors } from "../../../services/Types";
+import { IRoundWinBox, IRoundWinBoxSponsors } from "../../../services/Types";
 
 @Component({
   selector: "app-endround",
@@ -27,6 +27,7 @@ export class EndroundBannerComponent {
 
   clutch: number[] = [-1, -1];
 
+  roundWinBox: Signal<IRoundWinBox> = computed(() => this.dataModel.roundWinBox());
   roundWonSponsor: Signal<IRoundWinBoxSponsors> = computed(() => this.calculateSponsor());
 
   private calculateClutch(): void {
@@ -81,7 +82,7 @@ export class EndroundBannerComponent {
   }
 
   private calculateSponsor(): IRoundWinBoxSponsors {
-    const sponsors = this.dataModel.roundWinBoxSponsors();
+    console.log(this.roundWinBox());
     const teamwon = this.teamWon();
     const roundWonType = this.roundWonType();
 
@@ -92,11 +93,11 @@ export class EndroundBannerComponent {
       backdropUrl: "",
     };
 
-    if (sponsors.length == 0) return initialSponsor;
+    if (this.roundWinBox().sponsors.length == 0) return initialSponsor;
 
-    let sponsor: IRoundWinBoxSponsors = sponsors[0];
+    let sponsor: IRoundWinBoxSponsors = this.roundWinBox().sponsors[0];
 
-    for (const spons of sponsors) {
+    for (const spons of this.roundWinBox().sponsors) {
       if (
         spons.wonTeam == "all" ||
         (spons.wonTeam == "left" && teamwon == 0) ||
@@ -122,16 +123,24 @@ export class EndroundBannerComponent {
   bannerBackgroundUrl = computed(() => {
     const backdropSponsor = this.roundWonSponsor().backdropUrl;
     const backdropTournament = this.dataModel.tournamentInfo().backdropUrl;
-    if (backdropSponsor && backdropSponsor !== "") return backdropSponsor;
-    if (backdropTournament && backdropTournament !== "") return backdropTournament;
+    if (this.roundWinBox().type == "sponsors" && backdropSponsor && backdropSponsor !== "")
+      return backdropSponsor;
+    if (
+      this.roundWinBox().type == "tournamentInfo" &&
+      backdropTournament &&
+      backdropTournament !== ""
+    )
+      return backdropTournament;
     else return false;
   });
 
   bannerTopIconUrl = computed(() => {
     const logoSponsor = this.roundWonSponsor().iconUrl;
     const logoTournament = this.dataModel.tournamentInfo().logoUrl;
-    if (logoSponsor && logoSponsor !== "") return logoSponsor;
-    if (logoTournament && logoTournament !== "") return logoTournament;
+    if (this.roundWinBox().type == "sponsors" && logoSponsor && logoSponsor !== "")
+      return logoSponsor;
+    if (this.roundWinBox().type == "tournamentInfo" && logoTournament && logoTournament !== "")
+      return logoTournament;
     else return "assets/misc/logo.webp";
   });
 

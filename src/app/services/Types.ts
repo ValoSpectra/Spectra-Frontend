@@ -97,7 +97,7 @@ export interface IToolsData {
   watermarkInfo: IWatermarkInfo;
   playercamsInfo: IPlayercamsInfo;
   nameOverrides: INameOverrides;
-  roundWinBoxSponsors: IRoundWinBoxSponsors[];
+  roundWinBox: IRoundWinBox;
 }
 
 export interface ISeriesInfo {
@@ -148,6 +148,11 @@ export interface IPlayercamsInfo {
 
 export interface INameOverrides {
   overrides: string[];
+}
+
+export interface IRoundWinBox {
+  type: "disabled" | "tournamentInfo" | "sponsors";
+  sponsors: IRoundWinBoxSponsors[];
 }
 
 export interface IRoundWinBoxSponsors {

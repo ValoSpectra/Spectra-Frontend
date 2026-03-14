@@ -95,7 +95,10 @@ export class TestingComponent implements OnInit {
           removeTricodes: false,
         },
         nameOverrides: { overrides: [] },
-        roundWinBoxSponsors: [],
+        roundWinBox: {
+          type: "tournamentInfo",
+          sponsors: [],
+        },
       },
       teams: [
         {
