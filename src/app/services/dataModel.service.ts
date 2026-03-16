@@ -167,7 +167,6 @@ export const initialMatchData: IMatchData = {
       right: "",
     },
     tournamentInfo: {
-      enabled: false,
       name: "",
       logoUrl: "",
       backdropUrl: "",

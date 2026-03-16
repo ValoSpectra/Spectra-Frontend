@@ -116,7 +116,6 @@ export interface ITournamentInfo {
   name: string;
   logoUrl: string;
   backdropUrl: string;
-  enabled: boolean;
 }
 
 export interface ITimeoutInfo {
@@ -157,7 +156,7 @@ export interface IRoundWinBox {
 
 export interface IRoundWinBoxSponsors {
   wonTeam: "all" | "left" | "right";
-  roundCeremonie: "all" | "normal" | "ace" | "clutch" | "teamAce" | "flawless" | "thrifty";
+  roundCeremonie: ("all" | "normal" | "ace" | "clutch" | "teamAce" | "flawless" | "thrifty")[];
   iconUrl: string;
   backdropUrl: string;
 }

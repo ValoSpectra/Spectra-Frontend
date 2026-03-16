@@ -59,7 +59,6 @@ export class TestingAgentSelectComponent implements OnInit {
           right: "Group B",
         },
         tournamentInfo: {
-          enabled: true,
           name: "",
           logoUrl: "",
           backdropUrl: "",

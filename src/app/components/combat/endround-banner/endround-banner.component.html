@@ -1,4 +1,4 @@
-@if (dataModel.tournamentInfo().enabled) {
+@if (dataModel.roundWinBox().type !== "disabled") {
   <div
     class="vw-875 vh-200 animate-duration-300 animate-style-keep shadow-timer/80 relative top-0 overflow-hidden rounded-sm shadow-md"
     [class.animate-swish]="runAnimation"

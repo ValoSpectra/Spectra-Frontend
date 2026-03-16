@@ -62,12 +62,15 @@ export class EndroundBannerComponent {
       if (player.isAlive) flawless = false;
     });
     for (const player of wonTeam.players) {
-      const killsFromLostTeam = player.killedPlayerNames.filter((playerName) =>
-        lostTeamPlayerNames.has(playerName),
-      );
-      if (new Set(killsFromLostTeam).size >= 5) {
-        ace = true;
-        break;
+      if (player.killedPlayerNames) {
+        const killsFromLostTeam = player.killedPlayerNames.filter((playerName) =>
+          lostTeamPlayerNames.has(playerName),
+        );
+
+        if (new Set(killsFromLostTeam).size >= 5) {
+          ace = true;
+          break;
+        }
       }
       if (player.deathsThisRound >= 1) flawless = false;
       if (!(player.killsThisRound >= 1)) teamAce = false;
@@ -82,13 +85,12 @@ export class EndroundBannerComponent {
   }
 
   private calculateSponsor(): IRoundWinBoxSponsors {
-    console.log(this.roundWinBox());
     const teamwon = this.teamWon();
     const roundWonType = this.roundWonType();
 
     const initialSponsor: IRoundWinBoxSponsors = {
       wonTeam: "all",
-      roundCeremonie: "all",
+      roundCeremonie: ["all"],
       iconUrl: "",
       backdropUrl: "",
     };
@@ -97,26 +99,25 @@ export class EndroundBannerComponent {
 
     let sponsor: IRoundWinBoxSponsors = this.roundWinBox().sponsors[0];
 
-    for (const spons of this.roundWinBox().sponsors) {
+    this.roundWinBox().sponsors.forEach((spons) => {
       if (
         spons.wonTeam == "all" ||
         (spons.wonTeam == "left" && teamwon == 0) ||
         (spons.wonTeam == "right" && teamwon == 1)
       ) {
         if (
-          spons.roundCeremonie == "all" ||
-          (spons.roundCeremonie == "normal" && roundWonType == TranslateKeys.Endround_RoundAce) ||
-          (spons.roundCeremonie == "ace" && roundWonType == TranslateKeys.Endround_RoundAce) ||
-          (spons.roundCeremonie == "clutch" && roundWonType == TranslateKeys.Endround_RoundAce) ||
-          (spons.roundCeremonie == "teamAce" && roundWonType == TranslateKeys.Endround_RoundAce) ||
-          (spons.roundCeremonie == "flawless" && roundWonType == TranslateKeys.Endround_RoundAce) ||
-          (spons.roundCeremonie == "thrifty" && roundWonType == TranslateKeys.Endround_RoundAce)
+          spons.roundCeremonie.includes("all") ||
+          (spons.roundCeremonie.includes("normal") && roundWonType == TranslateKeys.Endround_RoundWin) ||
+          (spons.roundCeremonie.includes("ace") && roundWonType == TranslateKeys.Endround_RoundAce) ||
+          (spons.roundCeremonie.includes("clutch") && roundWonType == TranslateKeys.Endround_RoundClutch) ||
+          (spons.roundCeremonie.includes("teamAce") && roundWonType == TranslateKeys.Endround_RoundTeamAce) ||
+          (spons.roundCeremonie.includes("flawless") && roundWonType == TranslateKeys.Endround_RoundFlawless) ||
+          (spons.roundCeremonie.includes("thrifty") && roundWonType == TranslateKeys.Endround_RoundThrifty)
         ) {
           sponsor = spons;
-          break;
         }
       }
-    }
+    });
     return sponsor;
   }
 
@@ -157,15 +158,14 @@ export class EndroundBannerComponent {
   });
 
   readonly waitingBackgroundClass = computed(() => {
-    const test = `gradient-head-to-head-${this.dataModel.teams()[0].isAttacking ? "attacker" : "defender"}`;
-    return test;
+    return `gradient-head-to-head-${this.dataModel.teams()[0].isAttacking ? "attacker" : "defender"}`;
   });
 
   readonly winningTeamBackgroundClass = computed(() => {
     return `gradient-${this.leftWon() ? "left" : "right"}-${this.dataModel.match().attackersWon ? "attacker" : "defender"}`;
   });
 
-  ref = effect(() => {
+  _ref = effect(() => {
     const roundPhase = this.dataModel.match().roundPhase;
     const roundNumber = this.dataModel.match().roundNumber;
 
