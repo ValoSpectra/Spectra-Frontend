@@ -107,12 +107,18 @@ export class EndroundBannerComponent {
       ) {
         if (
           spons.roundCeremonie.includes("all") ||
-          (spons.roundCeremonie.includes("normal") && roundWonType == TranslateKeys.Endround_RoundWin) ||
-          (spons.roundCeremonie.includes("ace") && roundWonType == TranslateKeys.Endround_RoundAce) ||
-          (spons.roundCeremonie.includes("clutch") && roundWonType == TranslateKeys.Endround_RoundClutch) ||
-          (spons.roundCeremonie.includes("teamAce") && roundWonType == TranslateKeys.Endround_RoundTeamAce) ||
-          (spons.roundCeremonie.includes("flawless") && roundWonType == TranslateKeys.Endround_RoundFlawless) ||
-          (spons.roundCeremonie.includes("thrifty") && roundWonType == TranslateKeys.Endround_RoundThrifty)
+          (spons.roundCeremonie.includes("normal") &&
+            roundWonType == TranslateKeys.Endround_RoundWin) ||
+          (spons.roundCeremonie.includes("ace") &&
+            roundWonType == TranslateKeys.Endround_RoundAce) ||
+          (spons.roundCeremonie.includes("clutch") &&
+            roundWonType == TranslateKeys.Endround_RoundClutch) ||
+          (spons.roundCeremonie.includes("teamAce") &&
+            roundWonType == TranslateKeys.Endround_RoundTeamAce) ||
+          (spons.roundCeremonie.includes("flawless") &&
+            roundWonType == TranslateKeys.Endround_RoundFlawless) ||
+          (spons.roundCeremonie.includes("thrifty") &&
+            roundWonType == TranslateKeys.Endround_RoundThrifty)
         ) {
           sponsor = spons;
         }
