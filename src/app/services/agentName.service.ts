@@ -26,6 +26,7 @@ enum AgentName {
   "Guide" = "Skye",
   "Gumshoe" = "Cypher",
   "Hunter" = "Sova",
+  "Iris" = "Miks",
   "Killjoy" = "Killjoy",
   "Mage" = "Harbor",
   "Nox" = "Vyse",

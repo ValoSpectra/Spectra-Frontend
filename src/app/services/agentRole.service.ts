@@ -22,6 +22,7 @@ enum AgentRole {
   "Guide" = "Initiator",
   "Gumshoe" = "Sentinel",
   "Hunter" = "Initiator",
+  "Iris" = "Controller",
   "Killjoy" = "Sentinel",
   "Mage" = "Controller",
   "Nox" = "Sentinel",
