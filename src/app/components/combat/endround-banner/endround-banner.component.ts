@@ -97,9 +97,9 @@ export class EndroundBannerComponent {
 
     if (this.roundWinBox().sponsors.length == 0) return initialSponsor;
 
-    let sponsor: IRoundWinBoxSponsors = this.roundWinBox().sponsors[0];
+    const sponsor: IRoundWinBoxSponsors = this.roundWinBox().sponsors[0];
 
-    this.roundWinBox().sponsors.forEach((spons) => {
+    for (const spons of this.roundWinBox().sponsors) {
       if (
         spons.wonTeam == "all" ||
         (spons.wonTeam == "left" && teamwon == 0) ||
@@ -120,10 +120,10 @@ export class EndroundBannerComponent {
           (spons.roundCeremonie.includes("thrifty") &&
             roundWonType == TranslateKeys.Endround_RoundThrifty)
         ) {
-          sponsor = spons;
+          return spons;
         }
       }
-    });
+    }
     return sponsor;
   }
 
