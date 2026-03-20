@@ -109,6 +109,7 @@ export class DataModelService {
   public readonly playercamsInfo = computed(() => this.match().tools.playercamsInfo, {
     equal: () => false,
   });
+  public readonly roundWinBox = computed(() => this.match().tools.roundWinBox);
 
   public readonly mapban = signal<IMapbanSessionData>(initialMapbanData, { equal: () => false });
 
@@ -166,7 +167,6 @@ export const initialMatchData: IMatchData = {
       right: "",
     },
     tournamentInfo: {
-      enabled: false,
       name: "",
       logoUrl: "",
       backdropUrl: "",
@@ -190,6 +190,10 @@ export const initialMatchData: IMatchData = {
     },
     playercamsInfo: { enable: false },
     nameOverrides: { overrides: [] },
+    roundWinBox: {
+      type: "disabled",
+      sponsors: [],
+    },
   },
   timeoutState: {
     techPause: false,

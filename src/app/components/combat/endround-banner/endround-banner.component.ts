@@ -1,7 +1,8 @@
-import { Component, computed, effect, inject, signal, WritableSignal } from "@angular/core";
+import { Component, computed, effect, inject, Signal, signal, WritableSignal } from "@angular/core";
 import { TranslatePipe } from "@ngx-translate/core";
 import { TranslateKeys } from "../../../services/i18nHelper";
 import { DataModelService } from "../../../services/dataModel.service";
+import { IRoundWinBox, IRoundWinBoxSponsors } from "../../../services/Types";
 
 @Component({
   selector: "app-endround",
@@ -25,6 +26,9 @@ export class EndroundBannerComponent {
   roundWonType: WritableSignal<TranslateKeys> = signal(TranslateKeys.Endround_RoundWin);
 
   clutch: number[] = [-1, -1];
+
+  roundWinBox: Signal<IRoundWinBox> = computed(() => this.dataModel.roundWinBox());
+  roundWonSponsor: Signal<IRoundWinBoxSponsors> = computed(() => this.calculateSponsor());
 
   private calculateClutch(): void {
     const teamOne = this.dataModel.match().teams[0];
@@ -58,12 +62,15 @@ export class EndroundBannerComponent {
       if (player.isAlive) flawless = false;
     });
     for (const player of wonTeam.players) {
-      const killsFromLostTeam = player.killedPlayerNames.filter((playerName) =>
-        lostTeamPlayerNames.has(playerName),
-      );
-      if (new Set(killsFromLostTeam).size >= 5) {
-        ace = true;
-        break;
+      if (player.killedPlayerNames) {
+        const killsFromLostTeam = player.killedPlayerNames.filter((playerName) =>
+          lostTeamPlayerNames.has(playerName),
+        );
+
+        if (new Set(killsFromLostTeam).size >= 5) {
+          ace = true;
+          break;
+        }
       }
       if (player.deathsThisRound >= 1) flawless = false;
       if (!(player.killsThisRound >= 1)) teamAce = false;
@@ -77,15 +84,70 @@ export class EndroundBannerComponent {
     return TranslateKeys.Endround_RoundWin;
   }
 
-  tournamentBackgroundUrl = computed(() => {
-    const backdrop = this.dataModel.tournamentInfo().backdropUrl;
-    if (backdrop && backdrop !== "") return backdrop;
+  private calculateSponsor(): IRoundWinBoxSponsors {
+    const teamwon = this.teamWon();
+    const roundWonType = this.roundWonType();
+
+    const initialSponsor: IRoundWinBoxSponsors = {
+      wonTeam: "all",
+      roundCeremonie: ["all"],
+      iconUrl: "",
+      backdropUrl: "",
+    };
+
+    if (this.roundWinBox().sponsors.length == 0) return initialSponsor;
+
+    const sponsor: IRoundWinBoxSponsors = this.roundWinBox().sponsors[0];
+
+    for (const spons of this.roundWinBox().sponsors) {
+      if (
+        spons.wonTeam == "all" ||
+        (spons.wonTeam == "left" && teamwon == 0) ||
+        (spons.wonTeam == "right" && teamwon == 1)
+      ) {
+        if (
+          spons.roundCeremonie.includes("all") ||
+          (spons.roundCeremonie.includes("normal") &&
+            roundWonType == TranslateKeys.Endround_RoundWin) ||
+          (spons.roundCeremonie.includes("ace") &&
+            roundWonType == TranslateKeys.Endround_RoundAce) ||
+          (spons.roundCeremonie.includes("clutch") &&
+            roundWonType == TranslateKeys.Endround_RoundClutch) ||
+          (spons.roundCeremonie.includes("teamAce") &&
+            roundWonType == TranslateKeys.Endround_RoundTeamAce) ||
+          (spons.roundCeremonie.includes("flawless") &&
+            roundWonType == TranslateKeys.Endround_RoundFlawless) ||
+          (spons.roundCeremonie.includes("thrifty") &&
+            roundWonType == TranslateKeys.Endround_RoundThrifty)
+        ) {
+          return spons;
+        }
+      }
+    }
+    return sponsor;
+  }
+
+  bannerBackgroundUrl = computed(() => {
+    const backdropSponsor = this.roundWonSponsor().backdropUrl;
+    const backdropTournament = this.dataModel.tournamentInfo().backdropUrl;
+    if (this.roundWinBox().type == "sponsors" && backdropSponsor && backdropSponsor !== "")
+      return backdropSponsor;
+    if (
+      this.roundWinBox().type == "tournamentInfo" &&
+      backdropTournament &&
+      backdropTournament !== ""
+    )
+      return backdropTournament;
     else return false;
   });
 
-  tournamentIconUrl = computed(() => {
-    const logo = this.dataModel.tournamentInfo().logoUrl;
-    if (logo && logo !== "") return logo;
+  bannerTopIconUrl = computed(() => {
+    const logoSponsor = this.roundWonSponsor().iconUrl;
+    const logoTournament = this.dataModel.tournamentInfo().logoUrl;
+    if (this.roundWinBox().type == "sponsors" && logoSponsor && logoSponsor !== "")
+      return logoSponsor;
+    if (this.roundWinBox().type == "tournamentInfo" && logoTournament && logoTournament !== "")
+      return logoTournament;
     else return "assets/misc/logo.webp";
   });
 
@@ -102,15 +164,14 @@ export class EndroundBannerComponent {
   });
 
   readonly waitingBackgroundClass = computed(() => {
-    const test = `gradient-head-to-head-${this.dataModel.teams()[0].isAttacking ? "attacker" : "defender"}`;
-    return test;
+    return `gradient-head-to-head-${this.dataModel.teams()[0].isAttacking ? "attacker" : "defender"}`;
   });
 
   readonly winningTeamBackgroundClass = computed(() => {
     return `gradient-${this.leftWon() ? "left" : "right"}-${this.dataModel.match().attackersWon ? "attacker" : "defender"}`;
   });
 
-  ref = effect(() => {
+  _ref = effect(() => {
     const roundPhase = this.dataModel.match().roundPhase;
     const roundNumber = this.dataModel.match().roundNumber;
 

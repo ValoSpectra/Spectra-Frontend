@@ -59,7 +59,6 @@ export class TestingAgentSelectComponent implements OnInit {
           right: "Group B",
         },
         tournamentInfo: {
-          enabled: true,
           name: "",
           logoUrl: "",
           backdropUrl: "",
@@ -85,6 +84,10 @@ export class TestingAgentSelectComponent implements OnInit {
         },
         nameOverrides: {
           overrides: [],
+        },
+        roundWinBox: {
+          type: "tournamentInfo",
+          sponsors: [],
         },
       },
       timeoutState: {

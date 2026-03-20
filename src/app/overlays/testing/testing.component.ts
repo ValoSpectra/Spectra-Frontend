@@ -68,7 +68,6 @@ export class TestingComponent implements OnInit {
           right: "Group B",
         },
         tournamentInfo: {
-          enabled: true,
           name: "",
           logoUrl: "",
           backdropUrl: "",
@@ -95,6 +94,10 @@ export class TestingComponent implements OnInit {
           removeTricodes: false,
         },
         nameOverrides: { overrides: [] },
+        roundWinBox: {
+          type: "tournamentInfo",
+          sponsors: [],
+        },
       },
       teams: [
         {
