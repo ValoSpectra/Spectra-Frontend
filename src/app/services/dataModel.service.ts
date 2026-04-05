@@ -195,6 +195,7 @@ export const initialMatchData: IMatchData = {
       type: "disabled",
       sponsors: [],
     },
+    agentSelectActive: false,
   },
   toastInfo: {
     active: false,

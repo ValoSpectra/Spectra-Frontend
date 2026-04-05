@@ -108,6 +108,7 @@ export interface IToolsData {
   playercamsInfo: IPlayercamsInfo;
   nameOverrides: INameOverrides;
   roundWinBox: IRoundWinBox;
+  agentSelectActive: boolean;
 }
 
 export interface ISeriesInfo {

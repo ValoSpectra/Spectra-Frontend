@@ -89,6 +89,7 @@ export class TestingAgentSelectComponent implements OnInit {
           type: "tournamentInfo",
           sponsors: [],
         },
+        agentSelectActive: true,
       },
       toastInfo: {
         active: false,
