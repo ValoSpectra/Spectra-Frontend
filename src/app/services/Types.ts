@@ -166,7 +166,7 @@ export interface IRoundWinBox {
 
 export interface IRoundWinBoxSponsors {
   wonTeam: "all" | "left" | "right";
-  roundCeremonie: ("all" | "normal" | "ace" | "clutch" | "teamAce" | "flawless" | "thrifty")[];
+  roundCeremony: ("all" | "normal" | "ace" | "clutch" | "teamAce" | "flawless" | "thrifty")[];
   iconUrl: string;
   backdropUrl: string;
 }

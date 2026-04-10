@@ -87,7 +87,7 @@ export class EndroundBannerComponent {
   private calculateSponsor(): IRoundWinBoxSponsors {
     const initialSponsor: IRoundWinBoxSponsors = {
       wonTeam: "all",
-      roundCeremonie: ["all"],
+      roundCeremony: ["all"],
       iconUrl: "",
       backdropUrl: "",
     };
@@ -101,25 +101,25 @@ export class EndroundBannerComponent {
       const sponsor: IRoundWinBoxSponsors = this.roundWinBox().sponsors[0];
 
       for (const spons of this.roundWinBox().sponsors) {
-        if (spons.roundCeremonie) {
+        if (spons.roundCeremony) {
           if (
             spons.wonTeam == "all" ||
             (spons.wonTeam == "left" && teamwon == 0) ||
             (spons.wonTeam == "right" && teamwon == 1)
           ) {
             if (
-              spons.roundCeremonie.includes("all") ||
-              (spons.roundCeremonie.includes("normal") &&
+              spons.roundCeremony.includes("all") ||
+              (spons.roundCeremony.includes("normal") &&
                 roundWonType == TranslateKeys.Endround_RoundWin) ||
-              (spons.roundCeremonie.includes("ace") &&
+              (spons.roundCeremony.includes("ace") &&
                 roundWonType == TranslateKeys.Endround_RoundAce) ||
-              (spons.roundCeremonie.includes("clutch") &&
+              (spons.roundCeremony.includes("clutch") &&
                 roundWonType == TranslateKeys.Endround_RoundClutch) ||
-              (spons.roundCeremonie.includes("teamAce") &&
+              (spons.roundCeremony.includes("teamAce") &&
                 roundWonType == TranslateKeys.Endround_RoundTeamAce) ||
-              (spons.roundCeremonie.includes("flawless") &&
+              (spons.roundCeremony.includes("flawless") &&
                 roundWonType == TranslateKeys.Endround_RoundFlawless) ||
-              (spons.roundCeremonie.includes("thrifty") &&
+              (spons.roundCeremony.includes("thrifty") &&
                 roundWonType == TranslateKeys.Endround_RoundThrifty)
             ) {
               return spons;
