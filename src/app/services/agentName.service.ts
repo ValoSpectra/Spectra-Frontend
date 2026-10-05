@@ -15,7 +15,7 @@ export class AgentNameService {
 }
 
 enum AgentName {
-  "Aggrobot" = "Gekko",
+  "AggroBot" = "Gekko",
   "BountyHunter" = "Fade",
   "Breach" = "Breach",
   "Cable" = "Deadlock",

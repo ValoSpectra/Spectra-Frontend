@@ -575,7 +575,7 @@ export class TestingAgentSelectComponent implements OnInit {
   }
 
   agentList = [
-    "Aggrobot",
+    "AggroBot",
     "BountyHunter",
     "Breach",
     "Cable",
