@@ -11,7 +11,7 @@ export class AgentRoleService {
 }
 
 enum AgentRole {
-  "Aggrobot" = "Initiator",
+  "AggroBot" = "Initiator",
   "BountyHunter" = "Initiator",
   "Breach" = "Initiator",
   "Cable" = "Sentinel",
