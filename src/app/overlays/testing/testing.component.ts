@@ -227,7 +227,7 @@ export class TestingComponent implements OnInit {
               fullName: "Fourcefield#DEBUG",
               playerId: 3,
               isAlive: true,
-              agentInternal: "Killjoy",
+              agentInternal: "Paprika",
               isObserved: false,
               armorName: "Heavy",
               money: 2100,

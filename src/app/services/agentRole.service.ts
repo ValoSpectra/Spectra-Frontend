@@ -27,6 +27,7 @@ enum AgentRole {
   "Mage" = "Controller",
   "Nox" = "Sentinel",
   "Pandemic" = "Controller",
+  "Paprika" = "Duelist",
   "Pine" = "Sentinel",
   "Phoenix" = "Duelist",
   "Rift" = "Controller",
