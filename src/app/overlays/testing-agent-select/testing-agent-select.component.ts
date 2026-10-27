@@ -591,6 +591,7 @@ export class TestingAgentSelectComponent implements OnInit {
     "Mage",
     "Nox",
     "Pandemic",
+    "Paprika",
     "Phoenix",
     "Rift",
     "Sarge",
